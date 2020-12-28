@@ -50,16 +50,16 @@ class BaseTest(unittest.TestCase):
 
         self.test_data_path = "TestData"
         self.folder_name = "TempSlidesSDK"
-        self.changed_file_name = "changedtest.ppt"
-        self.file_name = "test.ppt"
+        self.changed_file_name = "changedtest.pptx"
+        self.file_name = "test.pptx"
         self.file_password = "password"
 
         if not BaseTest.slides_api:
             with open('testconfig.json') as f:
                 config = json.loads(f.read())
             BaseTest.configuration = Configuration()
-            BaseTest.configuration.app_sid = config['AppSid']
-            BaseTest.configuration.app_key = config['AppKey']
+            BaseTest.configuration.app_sid = config['ClientId']
+            BaseTest.configuration.app_key = config['ClientSecret']
             BaseTest.configuration.base_url = config['BaseUrl']
             BaseTest.configuration.auth_base_url = config['BaseUrl']
             if 'AuthBaseUrl' in config:

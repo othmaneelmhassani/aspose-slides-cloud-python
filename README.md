@@ -37,8 +37,8 @@ The example code below converts a PowerPoint document to PDF format using aspose
 	from asposeslidescloud.models.requests.slides_api_requests import PostSlidesConvertRequest
 
 	configuration = Configuration()
-	configuration.app_sid = 'MyAppSid'
-	configuration.app_key = 'MyAppKey'
+	configuration.app_sid = 'MyClientId'
+	configuration.app_key = 'MyClientSecret'
 	api = SlidesApi(configuration)
 
 	with open("MyPresentation.pptx", 'rb') as f:

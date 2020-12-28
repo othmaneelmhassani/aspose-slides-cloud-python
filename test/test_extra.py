@@ -94,12 +94,12 @@ class TestExtra(BaseTest):
         config.debug = self.configuration.debug
         config.timeout = 1
         api = asposeslidescloud.apis.slides_api.SlidesApi(config)  # noqa: E501
-        request = PostSlideSaveAsRequest("test.ppt", 1, "svg", None, None, None, "password", "TempSlidesSDK", None, None)
+        request = PostSlideSaveAsRequest("test.pptx", 1, "svg", None, None, None, "password", "TempSlidesSDK", None, None)
         result = api.post_slide_save_as(request)
 
     def test_base_shape(self):
         self.initialize('get_slide_shape', None, None)
-        request = GetSlideShapeRequest("test.ppt", 1, 1, "password", "TempSlidesSDK", None)
+        request = GetSlideShapeRequest("test.pptx", 1, 1, "password", "TempSlidesSDK", None)
         result = self.api.get_slide_shape(request)
         self.assertEqual("1", result.text)
 

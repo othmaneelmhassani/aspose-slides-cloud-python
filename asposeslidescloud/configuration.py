@@ -48,10 +48,10 @@ class Configuration(object):
         self.temp_folder_path = None
 
         # Authentication Settings
-        # App SID
+        # Client ID
         self.app_sid = ""
 
-        # App key
+        # Client Secret
         self.app_key = ""
 
         # access token for OAuth
@@ -196,5 +196,5 @@ class Configuration(object):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 3.0\n"\
-               "SDK Package Version: 20.10.0".\
+               "SDK Package Version: 20.12.0".\
                format(env=sys.platform, pyversion=sys.version)
