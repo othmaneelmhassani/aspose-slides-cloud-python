@@ -423,14 +423,14 @@ class SlidesApi(ApiBase):
         path_params['categoryIndex'] = request.category_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -542,14 +542,14 @@ class SlidesApi(ApiBase):
         path_params['pointIndex'] = request.point_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -657,14 +657,14 @@ class SlidesApi(ApiBase):
         path_params['seriesIndex'] = request.series_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -960,14 +960,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -1075,14 +1075,14 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -1189,14 +1189,14 @@ class SlidesApi(ApiBase):
         if request.paragraphs:
             query_params.append(('paragraphs', request.paragraphs))  # noqa: E501
             collection_formats['paragraphs'] = ''  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -1308,14 +1308,14 @@ class SlidesApi(ApiBase):
         path_params['portionIndex'] = request.portion_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -1426,14 +1426,14 @@ class SlidesApi(ApiBase):
         if request.portions:
             query_params.append(('portions', request.portions))  # noqa: E501
             collection_formats['portions'] = ''  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -1537,14 +1537,14 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -1647,14 +1647,14 @@ class SlidesApi(ApiBase):
         if request.shapes:
             query_params.append(('shapes', request.shapes))  # noqa: E501
             collection_formats['shapes'] = ''  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -1762,14 +1762,14 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -1876,14 +1876,14 @@ class SlidesApi(ApiBase):
         if request.paragraphs:
             query_params.append(('paragraphs', request.paragraphs))  # noqa: E501
             collection_formats['paragraphs'] = ''  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -1995,14 +1995,14 @@ class SlidesApi(ApiBase):
         path_params['portionIndex'] = request.portion_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -2113,14 +2113,14 @@ class SlidesApi(ApiBase):
         if request.portions:
             query_params.append(('portions', request.portions))  # noqa: E501
             collection_formats['portions'] = ''  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -2222,14 +2222,14 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.with_slides:
             query_params.append(('withSlides', request.with_slides))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -2330,14 +2330,14 @@ class SlidesApi(ApiBase):
             collection_formats['sections'] = ''  # noqa: E501
         if request.with_slides:
             query_params.append(('withSlides', request.with_slides))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -2437,14 +2437,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -2548,14 +2548,14 @@ class SlidesApi(ApiBase):
         path_params['effectIndex'] = request.effect_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -2659,14 +2659,14 @@ class SlidesApi(ApiBase):
         path_params['sequenceIndex'] = request.sequence_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -2774,14 +2774,14 @@ class SlidesApi(ApiBase):
         path_params['effectIndex'] = request.effect_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -2881,14 +2881,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -2988,14 +2988,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -3095,14 +3095,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -3206,14 +3206,14 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -3316,14 +3316,14 @@ class SlidesApi(ApiBase):
         if request.shapes:
             query_params.append(('shapes', request.shapes))  # noqa: E501
             collection_formats['shapes'] = ''  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -3428,14 +3428,14 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -3539,14 +3539,14 @@ class SlidesApi(ApiBase):
         if request.shapes:
             query_params.append(('shapes', request.shapes))  # noqa: E501
             collection_formats['shapes'] = ''  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -3645,14 +3645,14 @@ class SlidesApi(ApiBase):
         if request.slides:
             query_params.append(('slides', request.slides))  # noqa: E501
             collection_formats['slides'] = ''  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -3748,14 +3748,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -3855,14 +3855,14 @@ class SlidesApi(ApiBase):
         path_params['propertyName'] = request.property_name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -3962,14 +3962,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -4078,14 +4078,14 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -4193,14 +4193,14 @@ class SlidesApi(ApiBase):
         if request.paragraphs:
             query_params.append(('paragraphs', request.paragraphs))  # noqa: E501
             collection_formats['paragraphs'] = ''  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -4313,14 +4313,14 @@ class SlidesApi(ApiBase):
         path_params['portionIndex'] = request.portion_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -4432,14 +4432,14 @@ class SlidesApi(ApiBase):
         if request.portions:
             query_params.append(('portions', request.portions))  # noqa: E501
             collection_formats['portions'] = ''  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -4924,14 +4924,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -5027,14 +5027,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -5134,14 +5134,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -5237,14 +5237,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -5344,14 +5344,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -5451,14 +5451,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -5558,14 +5558,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -5669,14 +5669,14 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -5784,14 +5784,14 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -5895,14 +5895,14 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -6014,14 +6014,14 @@ class SlidesApi(ApiBase):
         path_params['portionIndex'] = request.portion_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -6129,14 +6129,14 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -6236,14 +6236,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -6351,8 +6351,6 @@ class SlidesApi(ApiBase):
             query_params.append(('width', request.width))  # noqa: E501
         if request.height:
             query_params.append(('height', request.height))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -6361,6 +6359,8 @@ class SlidesApi(ApiBase):
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -6472,14 +6472,14 @@ class SlidesApi(ApiBase):
         path_params['portionIndex'] = request.portion_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -6587,14 +6587,14 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -6690,14 +6690,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -6799,14 +6799,14 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.shape_index:
             query_params.append(('shapeIndex', request.shape_index))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -6906,14 +6906,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -7017,14 +7017,14 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -7132,14 +7132,14 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -7243,14 +7243,14 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -7350,14 +7350,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -7462,14 +7462,14 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -7578,14 +7578,14 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -7690,14 +7690,14 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -7798,14 +7798,14 @@ class SlidesApi(ApiBase):
         path_params['path'] = request.path  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -7994,14 +7994,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -8097,14 +8097,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -8204,14 +8204,14 @@ class SlidesApi(ApiBase):
         path_params['propertyName'] = request.property_name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -8311,14 +8311,14 @@ class SlidesApi(ApiBase):
         path_params['index'] = request.index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -8422,14 +8422,14 @@ class SlidesApi(ApiBase):
         path_params['format'] = request.format  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -8525,14 +8525,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -8636,14 +8636,14 @@ class SlidesApi(ApiBase):
         path_params['placeholderIndex'] = request.placeholder_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -8743,14 +8743,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -8848,14 +8848,14 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.with_empty:
             query_params.append(('withEmpty', request.with_empty))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -8883,6 +8883,109 @@ class SlidesApi(ApiBase):
             post_params=form_params,
             files=files,
             response_type='TextItems',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_slides_protection_properties(self, request, **kwargs):  # noqa: E501
+        """Read presentation protection properties.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_slides_protection_properties(request, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param get_slides_protection_propertiesRequest request: get_slides_protection_properties request object
+        :return: ProtectionProperties
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_slides_protection_properties_with_http_info(request, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_slides_protection_properties_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+
+    def get_slides_protection_properties_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Read presentation protection properties.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_slides_protection_properties_with_http_info(request, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param get_slides_protection_propertiesRequest request: get_slides_protection_properties request object
+        :return: ProtectionProperties
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_slides_protection_properties" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not request.name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_slides_protection_properties`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = request.name  # noqa: E501
+
+        query_params = []
+        if request.folder:
+            query_params.append(('folder', request.folder))  # noqa: E501
+        if request.storage:
+            query_params.append(('storage', request.storage))  # noqa: E501
+
+        header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
+
+        form_params = []
+        files = {}
+
+        body_params = None
+
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/protectionProperties', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=files,
+            response_type='ProtectionProperties',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -8955,14 +9058,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -9062,14 +9165,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -9169,14 +9272,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -9276,14 +9379,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -9311,6 +9414,109 @@ class SlidesApi(ApiBase):
             post_params=form_params,
             files=files,
             response_type='Images',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_slides_slide_properties(self, request, **kwargs):  # noqa: E501
+        """Read presentation slide properties.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_slides_slide_properties(request, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param get_slides_slide_propertiesRequest request: get_slides_slide_properties request object
+        :return: SlideProperties
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_slides_slide_properties_with_http_info(request, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_slides_slide_properties_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+
+    def get_slides_slide_properties_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Read presentation slide properties.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_slides_slide_properties_with_http_info(request, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param get_slides_slide_propertiesRequest request: get_slides_slide_properties request object
+        :return: SlideProperties
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_slides_slide_properties" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not request.name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_slides_slide_properties`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = request.name  # noqa: E501
+
+        query_params = []
+        if request.folder:
+            query_params.append(('folder', request.folder))  # noqa: E501
+        if request.storage:
+            query_params.append(('storage', request.storage))  # noqa: E501
+
+        header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
+
+        form_params = []
+        files = {}
+
+        body_params = None
+
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slideProperties', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=files,
+            response_type='SlideProperties',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -9385,14 +9591,14 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.with_empty:
             query_params.append(('withEmpty', request.with_empty))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -9488,14 +9694,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -9595,14 +9801,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -9702,14 +9908,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -9809,14 +10015,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -9916,14 +10122,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -10019,14 +10225,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -10139,14 +10345,14 @@ class SlidesApi(ApiBase):
         path_params['portionIndex'] = request.portion_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -10255,14 +10461,14 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -10681,8 +10887,6 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -10691,6 +10895,8 @@ class SlidesApi(ApiBase):
             query_params.append(('position', request.position))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -10803,8 +11009,6 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -10813,6 +11017,8 @@ class SlidesApi(ApiBase):
             query_params.append(('position', request.position))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -10914,8 +11120,6 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -10926,6 +11130,8 @@ class SlidesApi(ApiBase):
             query_params.append(('position', request.position))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -11028,8 +11234,6 @@ class SlidesApi(ApiBase):
         path_params['path'] = request.path  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -11040,6 +11244,8 @@ class SlidesApi(ApiBase):
             query_params.append(('position', request.position))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -11149,8 +11355,6 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -11159,6 +11363,8 @@ class SlidesApi(ApiBase):
             query_params.append(('position', request.position))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -11272,8 +11478,6 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -11282,6 +11486,8 @@ class SlidesApi(ApiBase):
             query_params.append(('position', request.position))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -11386,14 +11592,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -11502,14 +11708,14 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -11622,14 +11828,14 @@ class SlidesApi(ApiBase):
         path_params['seriesIndex'] = request.series_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -11738,14 +11944,14 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -11853,18 +12059,18 @@ class SlidesApi(ApiBase):
             query_params.append(('cloneFrom', request.clone_from))  # noqa: E501
         if request.clone_from_position:
             query_params.append(('cloneFromPosition', request.clone_from_position))  # noqa: E501
-        if request.clone_from_password:
-            query_params.append(('cloneFromPassword', request.clone_from_password))  # noqa: E501
         if request.clone_from_storage:
             query_params.append(('cloneFromStorage', request.clone_from_storage))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.clone_from_password:
+            header_params['cloneFromPassword'] = request.clone_from_password  # noqa: E501
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -11970,20 +12176,20 @@ class SlidesApi(ApiBase):
             query_params.append(('cloneFrom', request.clone_from))  # noqa: E501
         if request.clone_from_position:
             query_params.append(('cloneFromPosition', request.clone_from_position))  # noqa: E501
-        if request.clone_from_password:
-            query_params.append(('cloneFromPassword', request.clone_from_password))  # noqa: E501
         if request.clone_from_storage:
             query_params.append(('cloneFromStorage', request.clone_from_storage))  # noqa: E501
         if request.apply_to_all:
             query_params.append(('applyToAll', request.apply_to_all))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.clone_from_password:
+            header_params['cloneFromPassword'] = request.clone_from_password  # noqa: E501
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -12082,10 +12288,10 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -12186,10 +12392,10 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -12298,12 +12504,12 @@ class SlidesApi(ApiBase):
             query_params.append(('width', request.width))  # noqa: E501
         if request.height:
             query_params.append(('height', request.height))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.fonts_folder:
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -12412,8 +12618,6 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -12422,6 +12626,8 @@ class SlidesApi(ApiBase):
             query_params.append(('position', request.position))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -12534,8 +12740,6 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -12544,6 +12748,8 @@ class SlidesApi(ApiBase):
             query_params.append(('position', request.position))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -12648,8 +12854,6 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -12660,6 +12864,8 @@ class SlidesApi(ApiBase):
             query_params.append(('position', request.position))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -12769,8 +12975,6 @@ class SlidesApi(ApiBase):
         path_params['format'] = request.format  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -12785,6 +12989,8 @@ class SlidesApi(ApiBase):
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -12885,14 +13091,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -13000,14 +13206,14 @@ class SlidesApi(ApiBase):
             query_params.append(('sectionName', request.section_name))  # noqa: E501
         if request.slide_index:
             query_params.append(('slideIndex', request.slide_index))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -13112,14 +13318,14 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.new_position:
             query_params.append(('newPosition', request.new_position))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -13227,8 +13433,6 @@ class SlidesApi(ApiBase):
         path_params['format'] = request.format  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -13243,6 +13447,8 @@ class SlidesApi(ApiBase):
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -13347,14 +13553,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -13459,14 +13665,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -13575,14 +13781,14 @@ class SlidesApi(ApiBase):
         path_params['sequenceIndex'] = request.sequence_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -13692,8 +13898,6 @@ class SlidesApi(ApiBase):
             query_params.append(('width', request.width))  # noqa: E501
         if request.height:
             query_params.append(('height', request.height))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -13702,6 +13906,8 @@ class SlidesApi(ApiBase):
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -13801,8 +14007,6 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.position:
             query_params.append(('position', request.position))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -13811,6 +14015,8 @@ class SlidesApi(ApiBase):
             query_params.append(('layoutAlias', request.layout_alias))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -13909,12 +14115,12 @@ class SlidesApi(ApiBase):
         path_params['format'] = request.format  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.fonts_folder:
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -14021,18 +14227,18 @@ class SlidesApi(ApiBase):
             query_params.append(('position', request.position))  # noqa: E501
         if request.source:
             query_params.append(('source', request.source))  # noqa: E501
-        if request.source_password:
-            query_params.append(('sourcePassword', request.source_password))  # noqa: E501
         if request.source_storage:
             query_params.append(('sourceStorage', request.source_storage))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.source_password:
+            header_params['sourcePassword'] = request.source_password  # noqa: E501
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -14128,16 +14334,16 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.input_password:
-            query_params.append(('inputPassword', request.input_password))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
 
         header_params = {}
+        if request.input_password:
+            header_params['inputPassword'] = request.input_password  # noqa: E501
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -14235,14 +14441,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -14265,6 +14471,111 @@ class SlidesApi(ApiBase):
 
         return self.api_client.call_api(
             '/slides/{name}/fromHtml', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=files,
+            response_type='Document',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def post_slides_document_from_pdf(self, request, **kwargs):  # noqa: E501
+        """Create presentation document from pdf or append pdf to an existing presentation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.post_slides_document_from_pdf(request, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param post_slides_document_from_pdfRequest request: post_slides_document_from_pdf request object
+        :return: Document
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.post_slides_document_from_pdf_with_http_info(request, **kwargs)  # noqa: E501
+        else:
+            (data) = self.post_slides_document_from_pdf_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+
+    def post_slides_document_from_pdf_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Create presentation document from pdf or append pdf to an existing presentation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.post_slides_document_from_pdf_with_http_info(request, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param post_slides_document_from_pdfRequest request: post_slides_document_from_pdf request object
+        :return: Document
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_slides_document_from_pdf" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not request.name:
+            raise ValueError("Missing the required parameter `request.name` when calling `post_slides_document_from_pdf`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = request.name  # noqa: E501
+
+        query_params = []
+        if request.storage:
+            query_params.append(('storage', request.storage))  # noqa: E501
+        if request.folder:
+            query_params.append(('folder', request.folder))  # noqa: E501
+
+        header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
+
+        form_params = []
+        files = {}
+
+        body_params = None
+        if request.pdf:
+            body_params = request.pdf
+
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/octet-stream'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/fromPdf', 'POST',
             path_params,
             query_params,
             header_params,
@@ -14342,18 +14653,18 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.source_path:
             query_params.append(('sourcePath', request.source_path))  # noqa: E501
-        if request.source_password:
-            query_params.append(('sourcePassword', request.source_password))  # noqa: E501
         if request.source_storage:
             query_params.append(('sourceStorage', request.source_storage))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
 
         header_params = {}
+        if request.source_password:
+            header_params['sourcePassword'] = request.source_password  # noqa: E501
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -14454,20 +14765,20 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.template_path:
             query_params.append(('templatePath', request.template_path))  # noqa: E501
-        if request.template_password:
-            query_params.append(('templatePassword', request.template_password))  # noqa: E501
         if request.template_storage:
             query_params.append(('templateStorage', request.template_storage))  # noqa: E501
         if request.is_image_data_embedded:
             query_params.append(('isImageDataEmbedded', request.is_image_data_embedded))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
 
         header_params = {}
+        if request.template_password:
+            header_params['templatePassword'] = request.template_password  # noqa: E501
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -14676,14 +14987,14 @@ class SlidesApi(ApiBase):
             query_params.append(('newValue', request.new_value))  # noqa: E501
         if request.ignore_case:
             query_params.append(('ignoreCase', request.ignore_case))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -14788,14 +15099,14 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.new_position:
             query_params.append(('newPosition', request.new_position))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -14897,14 +15208,14 @@ class SlidesApi(ApiBase):
         if request.new_positions:
             query_params.append(('newPositions', request.new_positions))  # noqa: E501
             collection_formats['newPositions'] = ''  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -15004,8 +15315,6 @@ class SlidesApi(ApiBase):
         path_params['format'] = request.format  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
@@ -15014,6 +15323,8 @@ class SlidesApi(ApiBase):
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -15114,14 +15425,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -15235,14 +15546,14 @@ class SlidesApi(ApiBase):
             query_params.append(('newValue', request.new_value))  # noqa: E501
         if request.ignore_case:
             query_params.append(('ignoreCase', request.ignore_case))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -15350,8 +15661,6 @@ class SlidesApi(ApiBase):
             query_params.append(('from', request._from))  # noqa: E501
         if request.dest_folder:
             query_params.append(('destFolder', request.dest_folder))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
@@ -15360,6 +15669,8 @@ class SlidesApi(ApiBase):
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -15470,8 +15781,6 @@ class SlidesApi(ApiBase):
         path_params['format'] = request.format  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -15486,6 +15795,8 @@ class SlidesApi(ApiBase):
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -15598,14 +15909,14 @@ class SlidesApi(ApiBase):
         path_params['categoryIndex'] = request.category_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -15722,14 +16033,14 @@ class SlidesApi(ApiBase):
         path_params['pointIndex'] = request.point_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -15842,14 +16153,14 @@ class SlidesApi(ApiBase):
         path_params['seriesIndex'] = request.series_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -15954,14 +16265,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -16066,14 +16377,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -16188,8 +16499,6 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.out_path:
             query_params.append(('outPath', request.out_path))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -16204,6 +16513,8 @@ class SlidesApi(ApiBase):
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -16304,14 +16615,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -16418,14 +16729,14 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.section_name:
             query_params.append(('sectionName', request.section_name))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -16524,14 +16835,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -16648,14 +16959,14 @@ class SlidesApi(ApiBase):
         path_params['portionIndex'] = request.portion_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -16768,14 +17079,14 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -16893,14 +17204,14 @@ class SlidesApi(ApiBase):
         path_params['portionIndex'] = request.portion_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -17014,14 +17325,14 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -17136,8 +17447,6 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.out_path:
             query_params.append(('outPath', request.out_path))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -17152,6 +17461,8 @@ class SlidesApi(ApiBase):
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -17256,14 +17567,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -17372,14 +17683,14 @@ class SlidesApi(ApiBase):
         path_params['effectIndex'] = request.effect_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -17492,14 +17803,14 @@ class SlidesApi(ApiBase):
         path_params['effectIndex'] = request.effect_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -17604,14 +17915,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -17726,8 +18037,6 @@ class SlidesApi(ApiBase):
             query_params.append(('width', request.width))  # noqa: E501
         if request.height:
             query_params.append(('height', request.height))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -17736,6 +18045,8 @@ class SlidesApi(ApiBase):
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -17844,14 +18155,14 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -17961,14 +18272,14 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -18074,12 +18385,12 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.out_path:
             query_params.append(('outPath', request.out_path))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.fonts_folder:
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -18177,14 +18488,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -18285,14 +18596,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -18322,6 +18633,114 @@ class SlidesApi(ApiBase):
             post_params=form_params,
             files=files,
             response_type='Document',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def put_slides_protection_properties(self, request, **kwargs):  # noqa: E501
+        """Update presentation protection properties.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.put_slides_protection_properties(request, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param put_slides_protection_propertiesRequest request: put_slides_protection_properties request object
+        :return: ProtectionProperties
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.put_slides_protection_properties_with_http_info(request, **kwargs)  # noqa: E501
+        else:
+            (data) = self.put_slides_protection_properties_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+
+    def put_slides_protection_properties_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Update presentation protection properties.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.put_slides_protection_properties_with_http_info(request, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param put_slides_protection_propertiesRequest request: put_slides_protection_properties request object
+        :return: ProtectionProperties
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_slides_protection_properties" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not request.name:
+            raise ValueError("Missing the required parameter `request.name` when calling `put_slides_protection_properties`")  # noqa: E501
+        # verify the required parameter 'dto' is set
+        if not request.dto:
+            raise ValueError("Missing the required parameter `request.dto` when calling `put_slides_protection_properties`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = request.name  # noqa: E501
+
+        query_params = []
+        if request.folder:
+            query_params.append(('folder', request.folder))  # noqa: E501
+        if request.storage:
+            query_params.append(('storage', request.storage))  # noqa: E501
+
+        header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
+
+        form_params = []
+        files = {}
+
+        body_params = None
+        if request.dto:
+            body_params = request.dto
+
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/protectionProperties', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=files,
+            response_type='ProtectionProperties',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -18399,8 +18818,6 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.out_path:
             query_params.append(('outPath', request.out_path))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
@@ -18409,6 +18826,8 @@ class SlidesApi(ApiBase):
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -18513,14 +18932,14 @@ class SlidesApi(ApiBase):
         path_params['propertyName'] = request.property_name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -18625,14 +19044,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -18739,12 +19158,12 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -18853,12 +19272,12 @@ class SlidesApi(ApiBase):
             query_params.append(('color', request.color))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -18886,6 +19305,114 @@ class SlidesApi(ApiBase):
             post_params=form_params,
             files=files,
             response_type='SlideBackground',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def put_slides_slide_properties(self, request, **kwargs):  # noqa: E501
+        """Update presentation slide properties.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.put_slides_slide_properties(request, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param put_slides_slide_propertiesRequest request: put_slides_slide_properties request object
+        :return: SlideProperties
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.put_slides_slide_properties_with_http_info(request, **kwargs)  # noqa: E501
+        else:
+            (data) = self.put_slides_slide_properties_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+
+    def put_slides_slide_properties_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Update presentation slide properties.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.put_slides_slide_properties_with_http_info(request, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param put_slides_slide_propertiesRequest request: put_slides_slide_properties request object
+        :return: SlideProperties
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_slides_slide_properties" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not request.name:
+            raise ValueError("Missing the required parameter `request.name` when calling `put_slides_slide_properties`")  # noqa: E501
+        # verify the required parameter 'dto' is set
+        if not request.dto:
+            raise ValueError("Missing the required parameter `request.dto` when calling `put_slides_slide_properties`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = request.name  # noqa: E501
+
+        query_params = []
+        if request.folder:
+            query_params.append(('folder', request.folder))  # noqa: E501
+        if request.storage:
+            query_params.append(('storage', request.storage))  # noqa: E501
+
+        header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
+
+        form_params = []
+        files = {}
+
+        body_params = None
+        if request.dto:
+            body_params = request.dto
+
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slideProperties', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=files,
+            response_type='SlideProperties',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -18954,8 +19481,6 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
         if request.folder:
@@ -18970,6 +19495,8 @@ class SlidesApi(ApiBase):
             query_params.append(('scaleType', request.scale_type))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -19068,14 +19595,14 @@ class SlidesApi(ApiBase):
         path_params['name'] = request.name  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -19191,8 +19718,6 @@ class SlidesApi(ApiBase):
         query_params = []
         if request.out_path:
             query_params.append(('outPath', request.out_path))  # noqa: E501
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
@@ -19207,6 +19732,8 @@ class SlidesApi(ApiBase):
             query_params.append(('fontsFolder', request.fonts_folder))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -19311,14 +19838,14 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = request.slide_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -19427,14 +19954,14 @@ class SlidesApi(ApiBase):
         path_params['shapeIndex'] = request.shape_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -19547,14 +20074,14 @@ class SlidesApi(ApiBase):
         path_params['paragraphIndex'] = request.paragraph_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}
@@ -19671,14 +20198,14 @@ class SlidesApi(ApiBase):
         path_params['portionIndex'] = request.portion_index  # noqa: E501
 
         query_params = []
-        if request.password:
-            query_params.append(('password', request.password))  # noqa: E501
         if request.folder:
             query_params.append(('folder', request.folder))  # noqa: E501
         if request.storage:
             query_params.append(('storage', request.storage))  # noqa: E501
 
         header_params = {}
+        if request.password:
+            header_params['password'] = request.password  # noqa: E501
 
         form_params = []
         files = {}

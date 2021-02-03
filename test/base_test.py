@@ -110,7 +110,10 @@ class BaseTest(unittest.TestCase):
 
     def get_test_value(self, function_name, field_name, field_type):
         if field_type == 'Stream' or field_type == 'file':
-            with open(self.test_data_path + "/" + self.file_name, "rb") as bf:
+            bin_file_name = self.file_name
+            if function_name == 'post_slides_document_from_pdf':
+                bin_file_name = 'test.pdf'
+            with open(self.test_data_path + "/" + bin_file_name, "rb") as bf:
                 return bf.read()
         value = "test" + field_name
         for rule in self.get_rules(BaseTest.test_rules['Values'], function_name, field_name):

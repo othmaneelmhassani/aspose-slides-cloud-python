@@ -808,6 +808,14 @@ class GetSlidesPresentationTextItemsRequest(object):
         self.folder = folder
         self.storage = storage
 
+class GetSlidesProtectionPropertiesRequest(object):
+
+    def __init__(self, name, password = None, folder = None, storage = None):
+        self.name = name
+        self.password = password
+        self.folder = folder
+        self.storage = storage
+
 class GetSlidesSlideRequest(object):
 
     def __init__(self, name, slide_index, password = None, folder = None, storage = None):
@@ -840,6 +848,14 @@ class GetSlidesSlideImagesRequest(object):
     def __init__(self, name, slide_index, password = None, folder = None, storage = None):
         self.name = name
         self.slide_index = slide_index
+        self.password = password
+        self.folder = folder
+        self.storage = storage
+
+class GetSlidesSlidePropertiesRequest(object):
+
+    def __init__(self, name, password = None, folder = None, storage = None):
+        self.name = name
         self.password = password
         self.folder = folder
         self.storage = storage
@@ -1319,6 +1335,15 @@ class PostSlidesDocumentFromHtmlRequest(object):
         self.storage = storage
         self.folder = folder
 
+class PostSlidesDocumentFromPdfRequest(object):
+
+    def __init__(self, name, pdf = None, password = None, storage = None, folder = None):
+        self.name = name
+        self.pdf = pdf
+        self.password = password
+        self.storage = storage
+        self.folder = folder
+
 class PostSlidesDocumentFromSourceRequest(object):
 
     def __init__(self, name, source_path = None, source_password = None, source_storage = None, password = None, storage = None, folder = None):
@@ -1724,6 +1749,15 @@ class PutSlidesHeaderFooterRequest(object):
         self.storage = storage
         self.folder = folder
 
+class PutSlidesProtectionPropertiesRequest(object):
+
+    def __init__(self, name, dto, password = None, folder = None, storage = None):
+        self.name = name
+        self.dto = dto
+        self.password = password
+        self.folder = folder
+        self.storage = storage
+
 class PutSlidesSaveAsRequest(object):
 
     def __init__(self, name, out_path, format, options = None, password = None, storage = None, folder = None, fonts_folder = None):
@@ -1774,6 +1808,15 @@ class PutSlidesSlideBackgroundColorRequest(object):
         self.color = color
         self.folder = folder
         self.password = password
+        self.storage = storage
+
+class PutSlidesSlidePropertiesRequest(object):
+
+    def __init__(self, name, dto, password = None, folder = None, storage = None):
+        self.name = name
+        self.dto = dto
+        self.password = password
+        self.folder = folder
         self.storage = storage
 
 class PutSlidesSlideSizeRequest(object):
