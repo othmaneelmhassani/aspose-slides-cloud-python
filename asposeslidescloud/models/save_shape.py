@@ -70,7 +70,7 @@ class SaveShape(Task):
         self._shape_path = None
         self._output = None
         self._options = None
-        self.type: 'SaveShape'
+        self.type = 'SaveShape'
 
         self.format = format
         if shape_path is not None:

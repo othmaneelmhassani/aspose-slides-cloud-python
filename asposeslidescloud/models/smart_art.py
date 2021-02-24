@@ -103,7 +103,7 @@ class SmartArt(ShapeBase):
         self._color_style = None
         self._nodes = None
         self._is_reversed = None
-        self.type: 'SmartArt'
+        self.type = 'SmartArt'
 
         self.layout = layout
         self.quick_style = quick_style

@@ -76,7 +76,7 @@ class SaveSlide(Task):
         self._width = None
         self._height = None
         self._position = None
-        self.type: 'SaveSlide'
+        self.type = 'SaveSlide'
 
         if output is not None:
             self.output = output

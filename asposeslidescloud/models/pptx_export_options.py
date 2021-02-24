@@ -63,7 +63,7 @@ class PptxExportOptions(ExportOptions):
         super(PptxExportOptions, self).__init__(default_regular_font, format)
 
         self._conformance = None
-        self.format: 'pptx'
+        self.format = 'pptx'
 
         self.conformance = conformance
 

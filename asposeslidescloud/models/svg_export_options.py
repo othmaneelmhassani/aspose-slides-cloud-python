@@ -87,7 +87,7 @@ class SvgExportOptions(ExportOptions):
         self._pictures_compression = None
         self._delete_pictures_cropped_areas = None
         self._external_fonts_handling = None
-        self.format: 'svg'
+        self.format = 'svg'
 
         self.vectorize_text = vectorize_text
         self.metafile_rasterization_dpi = metafile_rasterization_dpi

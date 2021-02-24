@@ -72,7 +72,7 @@ class ImageExportOptions(ExportOptions):
         self._comments_position = None
         self._comments_area_width = None
         self._comments_area_color = None
-        self.format: 'image'
+        self.format = 'image'
 
         self.notes_position = notes_position
         self.comments_position = comments_position

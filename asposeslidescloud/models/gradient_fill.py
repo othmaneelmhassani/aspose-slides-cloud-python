@@ -76,7 +76,7 @@ class GradientFill(FillFormat):
         self._linear_angle = None
         self._is_scaled = None
         self._tile_flip = None
-        self.type: 'Gradient'
+        self.type = 'Gradient'
 
         self.direction = direction
         self.shape = shape

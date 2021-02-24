@@ -64,7 +64,7 @@ class UpdateBackground(Task):
 
         self._slides = None
         self._background = None
-        self.type: 'UpdateBackground'
+        self.type = 'UpdateBackground'
 
         if slides is not None:
             self.slides = slides

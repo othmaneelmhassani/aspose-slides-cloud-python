@@ -67,7 +67,7 @@ class Save(Task):
         self._format = None
         self._output = None
         self._options = None
-        self.type: 'Save'
+        self.type = 'Save'
 
         self.format = format
         if output is not None:

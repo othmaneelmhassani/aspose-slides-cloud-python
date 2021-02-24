@@ -61,7 +61,7 @@ class RemoveSlide(Task):
         super(RemoveSlide, self).__init__(type)
 
         self._position = None
-        self.type: 'RemoveSlide'
+        self.type = 'RemoveSlide'
 
         self.position = position
 

@@ -67,7 +67,7 @@ class AddMasterSlide(Task):
         self._clone_from_file = None
         self._clone_from_position = None
         self._apply_to_all = None
-        self.type: 'AddMasterSlide'
+        self.type = 'AddMasterSlide'
 
         if clone_from_file is not None:
             self.clone_from_file = clone_from_file

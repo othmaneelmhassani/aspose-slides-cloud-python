@@ -67,7 +67,7 @@ class PatternFill(FillFormat):
         self._back_color = None
         self._fore_color = None
         self._style = None
-        self.type: 'Pattern'
+        self.type = 'Pattern'
 
         if back_color is not None:
             self.back_color = back_color

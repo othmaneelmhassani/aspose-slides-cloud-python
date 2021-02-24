@@ -120,7 +120,7 @@ class SwfExportOptions(ExportOptions):
         self._comments_area_width = None
         self._comments_area_color = None
         self._show_comments_by_no_author = None
-        self.format: 'swf'
+        self.format = 'swf'
 
         self.show_hidden_slides = show_hidden_slides
         self.compressed = compressed

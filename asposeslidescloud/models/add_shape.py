@@ -64,7 +64,7 @@ class AddShape(Task):
 
         self._shape = None
         self._shape_path = None
-        self.type: 'AddShape'
+        self.type = 'AddShape'
 
         if shape is not None:
             self.shape = shape

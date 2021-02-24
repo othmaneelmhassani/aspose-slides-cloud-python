@@ -70,7 +70,7 @@ class ReplaceText(Task):
         self._new_text = None
         self._ignore_case = None
         self._slide_position = None
-        self.type: 'ReplaceText'
+        self.type = 'ReplaceText'
 
         if old_text is not None:
             self.old_text = old_text

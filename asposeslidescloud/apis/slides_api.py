@@ -120,7 +120,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -226,7 +225,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -321,7 +319,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -436,7 +433,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -556,7 +552,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -671,7 +666,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -769,7 +763,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -866,7 +859,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -973,7 +965,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -1089,7 +1080,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1202,7 +1192,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -1322,7 +1311,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1440,7 +1428,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1551,7 +1538,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1660,7 +1646,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -1776,7 +1761,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1889,7 +1873,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -2009,7 +1992,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -2127,7 +2109,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -2236,7 +2217,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -2344,7 +2324,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -2450,7 +2429,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -2562,7 +2540,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -2672,7 +2649,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -2788,7 +2764,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -2894,7 +2869,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -3002,7 +2976,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -3108,7 +3081,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -3220,7 +3192,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -3329,7 +3300,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -3442,7 +3412,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -3553,7 +3522,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -3659,7 +3627,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -3761,7 +3728,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -3869,7 +3835,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -3975,7 +3940,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -4092,7 +4056,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -4206,7 +4169,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -4327,7 +4289,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -4446,7 +4407,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -4544,7 +4504,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['multipart/form-data'])  # noqa: E501
@@ -4638,7 +4597,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -4735,7 +4693,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -4830,7 +4787,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -4938,7 +4894,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -5040,7 +4995,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -5148,7 +5102,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -5250,7 +5203,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -5358,7 +5310,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -5465,7 +5416,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -5571,7 +5521,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -5682,7 +5631,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -5798,7 +5746,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -5908,7 +5855,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -6028,7 +5974,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -6143,7 +6088,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -6249,7 +6193,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -6366,7 +6309,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -6486,7 +6428,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -6601,7 +6542,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -6703,7 +6643,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -6813,7 +6752,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -6919,7 +6857,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -7030,7 +6967,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -7146,7 +7082,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -7257,7 +7192,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -7363,7 +7297,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -7475,7 +7408,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -7592,7 +7524,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -7704,7 +7635,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -7812,7 +7742,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -7904,7 +7833,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -8008,7 +7936,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -8110,7 +8037,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -8218,7 +8144,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -8324,7 +8249,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -8436,7 +8360,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['multipart/form-data'])  # noqa: E501
@@ -8538,7 +8461,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -8650,7 +8572,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -8757,7 +8678,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -8862,7 +8782,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -8964,7 +8883,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -9072,7 +8990,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -9178,7 +9095,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -9286,7 +9202,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -9393,7 +9308,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -9495,7 +9409,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -9605,7 +9518,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -9707,7 +9619,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -9815,7 +9726,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -9921,7 +9831,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -10029,7 +9938,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -10136,7 +10044,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -10238,7 +10145,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -10359,7 +10265,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -10475,7 +10380,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -10583,7 +10487,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -10689,7 +10592,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -10786,7 +10688,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -10904,7 +10805,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -11027,7 +10927,6 @@ class SlidesApi(ApiBase):
         if request.dto:
             body_params = request.dto
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -11139,7 +11038,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -11253,7 +11151,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -11372,7 +11269,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -11496,7 +11392,6 @@ class SlidesApi(ApiBase):
         if request.dto:
             body_params = request.dto
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -11607,7 +11502,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -11723,7 +11617,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.category:
             body_params = request.category
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -11844,7 +11737,6 @@ class SlidesApi(ApiBase):
         if request.data_point:
             body_params = request.data_point
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -11959,7 +11851,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.series:
             body_params = request.series
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -12076,7 +11967,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -12196,7 +12086,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -12295,11 +12184,10 @@ class SlidesApi(ApiBase):
 
         form_params = []
         files = {}
+        if request.document:
+            files['document'] = request.document  # noqa: E501
 
         body_params = None
-        if request.document:
-            body_params = request.document
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -12307,7 +12195,7 @@ class SlidesApi(ApiBase):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/octet-stream', 'multipart/form-data'])  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['JWT']  # noqa: E501
@@ -12399,11 +12287,10 @@ class SlidesApi(ApiBase):
 
         form_params = []
         files = {}
+        if request.document:
+            files['document'] = request.document  # noqa: E501
 
         body_params = None
-        if request.document:
-            body_params = request.document
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -12411,7 +12298,7 @@ class SlidesApi(ApiBase):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/octet-stream'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['JWT']  # noqa: E501
@@ -12513,11 +12400,10 @@ class SlidesApi(ApiBase):
 
         form_params = []
         files = {}
+        if request.document:
+            files['document'] = request.document  # noqa: E501
 
         body_params = None
-        if request.document:
-            body_params = request.document
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -12525,7 +12411,7 @@ class SlidesApi(ApiBase):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/octet-stream', 'multipart/form-data'])  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['JWT']  # noqa: E501
@@ -12635,7 +12521,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -12758,7 +12643,6 @@ class SlidesApi(ApiBase):
         if request.dto:
             body_params = request.dto
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -12873,7 +12757,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -12999,7 +12882,6 @@ class SlidesApi(ApiBase):
         if request.options:
             body_params = request.options
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['multipart/form-data'])  # noqa: E501
@@ -13106,7 +12988,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.request:
             body_params = request.request
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -13220,7 +13101,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -13331,7 +13211,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -13457,7 +13336,6 @@ class SlidesApi(ApiBase):
         if request.options:
             body_params = request.options
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['multipart/form-data'])  # noqa: E501
@@ -13569,7 +13447,6 @@ class SlidesApi(ApiBase):
         if request.effect:
             body_params = request.effect
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -13680,7 +13557,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.sequence:
             body_params = request.sequence
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -13796,7 +13672,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.effect:
             body_params = request.effect
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -13916,7 +13791,6 @@ class SlidesApi(ApiBase):
         if request.options:
             body_params = request.options
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['multipart/form-data'])  # noqa: E501
@@ -14023,7 +13897,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -14124,11 +13997,10 @@ class SlidesApi(ApiBase):
 
         form_params = []
         files = {}
+        if request.document:
+            files['document'] = request.document  # noqa: E501
 
         body_params = None
-        if request.document:
-            body_params = request.document
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -14136,7 +14008,7 @@ class SlidesApi(ApiBase):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/octet-stream', 'multipart/form-data'])  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['JWT']  # noqa: E501
@@ -14245,7 +14117,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -14347,11 +14218,10 @@ class SlidesApi(ApiBase):
 
         form_params = []
         files = {}
+        if request.data:
+            files['data'] = request.data  # noqa: E501
 
         body_params = None
-        if request.data:
-            body_params = request.data
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -14359,7 +14229,7 @@ class SlidesApi(ApiBase):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/octet-stream', 'multipart/form-data'])  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['JWT']  # noqa: E501
@@ -14456,7 +14326,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.html:
             body_params = request.html
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -14557,11 +14426,10 @@ class SlidesApi(ApiBase):
 
         form_params = []
         files = {}
+        if request.pdf:
+            files['pdf'] = request.pdf  # noqa: E501
 
         body_params = None
-        if request.pdf:
-            body_params = request.pdf
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -14569,7 +14437,7 @@ class SlidesApi(ApiBase):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/octet-stream'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['JWT']  # noqa: E501
@@ -14670,7 +14538,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -14787,7 +14654,6 @@ class SlidesApi(ApiBase):
         if request.data:
             body_params = request.data
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -14880,12 +14746,11 @@ class SlidesApi(ApiBase):
 
         form_params = []
         files = {}
+        files = request.files
 
         body_params = None
         if request.pipeline:
             body_params = request.pipeline
-
-        files = request.files
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -15001,7 +14866,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -15113,7 +14977,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -15221,7 +15084,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -15333,7 +15195,6 @@ class SlidesApi(ApiBase):
         if request.options:
             body_params = request.options
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['multipart/form-data'])  # noqa: E501
@@ -15440,7 +15301,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.properties:
             body_params = request.properties
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -15560,7 +15420,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -15678,7 +15537,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.options:
             body_params = request.options
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -15805,7 +15663,6 @@ class SlidesApi(ApiBase):
         if request.options:
             body_params = request.options
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['multipart/form-data'])  # noqa: E501
@@ -15924,7 +15781,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.category:
             body_params = request.category
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -16049,7 +15905,6 @@ class SlidesApi(ApiBase):
         if request.data_point:
             body_params = request.data_point
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -16169,7 +16024,6 @@ class SlidesApi(ApiBase):
         if request.series:
             body_params = request.series
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -16281,7 +16135,6 @@ class SlidesApi(ApiBase):
         if request.slide_dto:
             body_params = request.slide_dto
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -16392,7 +16245,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -16523,7 +16375,6 @@ class SlidesApi(ApiBase):
         if request.options:
             body_params = request.options
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -16630,7 +16481,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.request:
             body_params = request.request
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -16743,7 +16593,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -16850,7 +16699,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.sections:
             body_params = request.sections
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -16975,7 +16823,6 @@ class SlidesApi(ApiBase):
         if request.dto:
             body_params = request.dto
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -17094,7 +16941,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -17220,7 +17066,6 @@ class SlidesApi(ApiBase):
         if request.dto:
             body_params = request.dto
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -17340,7 +17185,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -17471,7 +17315,6 @@ class SlidesApi(ApiBase):
         if request.options:
             body_params = request.options
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -17582,7 +17425,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.animation:
             body_params = request.animation
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -17698,7 +17540,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.effect:
             body_params = request.effect
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -17819,7 +17660,6 @@ class SlidesApi(ApiBase):
         if request.effect:
             body_params = request.effect
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -17930,7 +17770,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -18055,7 +17894,6 @@ class SlidesApi(ApiBase):
         if request.options:
             body_params = request.options
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -18170,7 +18008,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -18288,7 +18125,6 @@ class SlidesApi(ApiBase):
         if request.dto:
             body_params = request.dto
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -18394,11 +18230,10 @@ class SlidesApi(ApiBase):
 
         form_params = []
         files = {}
+        if request.document:
+            files['document'] = request.document  # noqa: E501
 
         body_params = None
-        if request.document:
-            body_params = request.document
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -18406,7 +18241,7 @@ class SlidesApi(ApiBase):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/octet-stream', 'multipart/form-data'])  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['JWT']  # noqa: E501
@@ -18503,7 +18338,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.html:
             body_params = request.html
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -18612,7 +18446,6 @@ class SlidesApi(ApiBase):
         if request.dto:
             body_params = request.dto
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -18719,7 +18552,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -18836,7 +18668,6 @@ class SlidesApi(ApiBase):
         if request.options:
             body_params = request.options
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -18947,7 +18778,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request._property:
             body_params = request._property
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -19060,7 +18890,6 @@ class SlidesApi(ApiBase):
         if request.slide_dto:
             body_params = request.slide_dto
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -19171,7 +19000,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.background:
             body_params = request.background
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -19284,7 +19112,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -19391,7 +19218,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -19503,7 +19329,6 @@ class SlidesApi(ApiBase):
 
         body_params = None
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -19610,7 +19435,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -19742,7 +19566,6 @@ class SlidesApi(ApiBase):
         if request.options:
             body_params = request.options
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -19853,7 +19676,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -19969,7 +19791,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -20089,7 +19910,6 @@ class SlidesApi(ApiBase):
         body_params = None
         if request.dto:
             body_params = request.dto
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -20214,7 +20034,6 @@ class SlidesApi(ApiBase):
         if request.dto:
             body_params = request.dto
 
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -20310,7 +20129,6 @@ class SlidesApi(ApiBase):
         files = {}
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -20411,7 +20229,6 @@ class SlidesApi(ApiBase):
             files['file'] = request.file  # noqa: E501
 
         body_params = None
-
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(

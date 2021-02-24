@@ -70,7 +70,7 @@ class AddSlide(Task):
         self._clone_from_position = None
         self._position = None
         self._layout_alias = None
-        self.type: 'AddSlide'
+        self.type = 'AddSlide'
 
         if clone_from_file is not None:
             self.clone_from_file = clone_from_file

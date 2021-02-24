@@ -64,7 +64,7 @@ class UpdateShape(Task):
 
         self._shape = None
         self._shape_path = None
-        self.type: 'UpdateShape'
+        self.type = 'UpdateShape'
 
         if shape is not None:
             self.shape = shape

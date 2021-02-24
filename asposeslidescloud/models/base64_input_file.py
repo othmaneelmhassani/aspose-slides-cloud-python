@@ -63,7 +63,7 @@ class Base64InputFile(InputFile):
         super(Base64InputFile, self).__init__(password, type)
 
         self._data = None
-        self.type: 'Base64'
+        self.type = 'Base64'
 
         if data is not None:
             self.data = data

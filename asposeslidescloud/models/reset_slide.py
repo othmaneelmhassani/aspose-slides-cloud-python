@@ -61,7 +61,7 @@ class ResetSlide(Task):
         super(ResetSlide, self).__init__(type)
 
         self._position = None
-        self.type: 'ResetSlide'
+        self.type = 'ResetSlide'
 
         self.position = position
 

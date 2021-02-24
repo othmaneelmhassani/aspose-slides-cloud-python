@@ -94,7 +94,7 @@ class OleObjectFrame(ShapeBase):
 
         self._is_object_icon = None
         self._substitute_picture_title = None
-        self.type: 'OleObjectFrame'
+        self.type = 'OleObjectFrame'
 
         self.is_object_icon = is_object_icon
         if substitute_picture_title is not None:

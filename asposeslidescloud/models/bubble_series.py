@@ -95,7 +95,7 @@ class BubbleSeries(Series):
         super(BubbleSeries, self).__init__(type, name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, number_format_of_y_values, number_format_of_x_values, number_format_of_values, number_format_of_bubble_sizes, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type)
 
         self._data_points = None
-        self.data_point_type: 'Bubble'
+        self.data_point_type = 'Bubble'
 
         if data_points is not None:
             self.data_points = data_points

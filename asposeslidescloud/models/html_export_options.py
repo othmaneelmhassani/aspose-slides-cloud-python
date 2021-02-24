@@ -96,7 +96,7 @@ class HtmlExportOptions(ExportOptions):
         self._comments_area_width = None
         self._comments_area_color = None
         self._show_comments_by_no_author = None
-        self.format: 'html'
+        self.format = 'html'
 
         self.save_as_zip = save_as_zip
         if sub_directory_name is not None:

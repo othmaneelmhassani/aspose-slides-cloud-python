@@ -96,7 +96,7 @@ class Shape(GeometryShape):
 
         self._text = None
         self._paragraphs = None
-        self.type: 'Shape'
+        self.type = 'Shape'
 
         if text is not None:
             self.text = text

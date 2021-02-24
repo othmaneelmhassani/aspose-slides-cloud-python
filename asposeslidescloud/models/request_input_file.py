@@ -63,7 +63,7 @@ class RequestInputFile(InputFile):
         super(RequestInputFile, self).__init__(password, type)
 
         self._index = None
-        self.type: 'Request'
+        self.type = 'Request'
 
         self.index = index
 

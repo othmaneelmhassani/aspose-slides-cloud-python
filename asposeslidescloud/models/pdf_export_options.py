@@ -117,7 +117,7 @@ class PdfExportOptions(ExportOptions):
         self._image_transparent_color = None
         self._apply_image_transparent = None
         self._access_permissions = None
-        self.format: 'pdf'
+        self.format = 'pdf'
 
         self.text_compression = text_compression
         self.embed_full_fonts = embed_full_fonts

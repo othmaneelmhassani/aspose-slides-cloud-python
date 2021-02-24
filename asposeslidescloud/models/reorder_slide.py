@@ -64,7 +64,7 @@ class ReorderSlide(Task):
 
         self._old_position = None
         self._new_position = None
-        self.type: 'ReoderSlide'
+        self.type = 'ReoderSlide'
 
         self.old_position = old_position
         self.new_position = new_position

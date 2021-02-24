@@ -61,7 +61,7 @@ class SolidFill(FillFormat):
         super(SolidFill, self).__init__(type)
 
         self._color = None
-        self.type: 'Solid'
+        self.type = 'Solid'
 
         if color is not None:
             self.color = color

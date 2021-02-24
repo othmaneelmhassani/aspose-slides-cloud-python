@@ -67,16 +67,17 @@ class ApiClient(object):
             configuration = Configuration()
         self.configuration = configuration
 
-        self.pool = ThreadPool()
+        self.pool = None
         self.rest_client = RESTClientObject(configuration)
-        self.default_headers = {'x-aspose-client': 'python sdk v21.1.0'}
+        self.default_headers = {'x-aspose-client': 'python sdk v21.2.0'}
         if configuration.timeout:
             self.default_headers['x-aspose-timeout'] = configuration.timeout
         self.default_headers.update(configuration.custom_headers)
 
     def __del__(self):
-        self.pool.close()
-        self.pool.join()
+        if not self.pool is None:
+            self.pool.close()
+            self.pool.join()
 
     def __call_api(self, resource_path, method,
                    path_params=None, query_params=None, header_params=None,
@@ -166,8 +167,11 @@ class ApiClient(object):
                 raise ex
         except ApiException as ex:
             if ex.body:
-                message = self.deserialize_model(json.loads(ex.body), "ErrorMessage")
-                self.__set_exception_message(ex, message)
+                try:
+                    message = self.deserialize_model(json.loads(ex.body), "ErrorMessage")
+                    self.__set_exception_message(ex, message)
+                except:
+                    pass #could not deserialize error message; just rethrow it as is
             raise ex
 
     def __set_exception_message(self, ex, message):
@@ -349,6 +353,8 @@ class ApiClient(object):
                                    response_type, auth_settings,
                                    _return_http_data_only, collection_formats, _preload_content, _request_timeout)
         else:
+            if self.pool is None:
+                self.pool = ThreadPool()
             thread = self.pool.apply_async(self.__call_api, (resource_path, method,
                                            path_params, query_params,
                                            header_params, body,

@@ -85,7 +85,7 @@ class PictureFill(FillFormat):
         self._base64_data = None
         self._svg_data = None
         self._picture_fill_mode = None
-        self.type: 'Picture'
+        self.type = 'Picture'
 
         self.crop_bottom = crop_bottom
         self.crop_left = crop_left

@@ -47,6 +47,7 @@ class LineFormat(object):
         'dash_style': 'str',
         'join_style': 'str',
         'style': 'str',
+        'sketch_type': 'str',
         'begin_arrow_head': 'ArrowHeadProperties',
         'end_arrow_head': 'ArrowHeadProperties',
         'custom_dash_pattern': 'CustomDashPattern',
@@ -61,6 +62,7 @@ class LineFormat(object):
         'dash_style': 'dashStyle',
         'join_style': 'joinStyle',
         'style': 'style',
+        'sketch_type': 'sketchType',
         'begin_arrow_head': 'beginArrowHead',
         'end_arrow_head': 'endArrowHead',
         'custom_dash_pattern': 'customDashPattern',
@@ -72,7 +74,7 @@ class LineFormat(object):
     type_determiners = {
     }
 
-    def __init__(self, alignment=None, cap_style=None, dash_style=None, join_style=None, style=None, begin_arrow_head=None, end_arrow_head=None, custom_dash_pattern=None, fill_format=None, miter_limit=None, width=None):  # noqa: E501
+    def __init__(self, alignment=None, cap_style=None, dash_style=None, join_style=None, style=None, sketch_type=None, begin_arrow_head=None, end_arrow_head=None, custom_dash_pattern=None, fill_format=None, miter_limit=None, width=None):  # noqa: E501
         """LineFormat - a model defined in Swagger"""  # noqa: E501
 
         self._alignment = None
@@ -80,6 +82,7 @@ class LineFormat(object):
         self._dash_style = None
         self._join_style = None
         self._style = None
+        self._sketch_type = None
         self._begin_arrow_head = None
         self._end_arrow_head = None
         self._custom_dash_pattern = None
@@ -97,6 +100,8 @@ class LineFormat(object):
             self.join_style = join_style
         if style is not None:
             self.style = style
+        if sketch_type is not None:
+            self.sketch_type = sketch_type
         if begin_arrow_head is not None:
             self.begin_arrow_head = begin_arrow_head
         if end_arrow_head is not None:
@@ -299,6 +304,44 @@ class LineFormat(object):
                     .format(style, allowed_values)
                 )
         self._style = style
+
+    @property
+    def sketch_type(self):
+        """Gets the sketch_type of this LineFormat.  # noqa: E501
+
+        Sketch type.  # noqa: E501
+
+        :return: The sketch_type of this LineFormat.  # noqa: E501
+        :rtype: str
+        """
+        return self._sketch_type
+
+    @sketch_type.setter
+    def sketch_type(self, sketch_type):
+        """Sets the sketch_type of this LineFormat.
+
+        Sketch type.  # noqa: E501
+
+        :param sketch_type: The sketch_type of this LineFormat.  # noqa: E501
+        :type: str
+        """
+        if sketch_type is not None:
+            allowed_values = ["None", "Curved", "Freehand", "Scribble", "NotDefined"]  # noqa: E501
+            if sketch_type.isdigit():
+                int_sketch_type = int(sketch_type)
+                if int_sketch_type < 0 or int_sketch_type >= len(allowed_values):
+                    raise ValueError(
+                        "Invalid value for `sketch_type` ({0}), must be one of {1}"  # noqa: E501
+                        .format(sketch_type, allowed_values)
+                    )
+                self._sketch_type = allowed_values[int_sketch_type]
+                return
+            if sketch_type not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `sketch_type` ({0}), must be one of {1}"  # noqa: E501
+                    .format(sketch_type, allowed_values)
+                )
+        self._sketch_type = sketch_type
 
     @property
     def begin_arrow_head(self):

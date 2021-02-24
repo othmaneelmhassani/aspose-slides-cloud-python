@@ -118,7 +118,7 @@ class Table(ShapeBase):
         self._last_row = None
         self._right_to_left = None
         self._vertical_banding = None
-        self.type: 'Table'
+        self.type = 'Table'
 
         if style is not None:
             self.style = style

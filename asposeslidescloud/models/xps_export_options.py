@@ -69,7 +69,7 @@ class XpsExportOptions(ExportOptions):
         self._show_hidden_slides = None
         self._save_metafiles_as_png = None
         self._draw_slides_frame = None
-        self.format: 'xps'
+        self.format = 'xps'
 
         self.show_hidden_slides = show_hidden_slides
         self.save_metafiles_as_png = save_metafiles_as_png

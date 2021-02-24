@@ -61,7 +61,7 @@ class Merge(Task):
         super(Merge, self).__init__(type)
 
         self._presentations = None
-        self.type: 'Merge'
+        self.type = 'Merge'
 
         if presentations is not None:
             self.presentations = presentations

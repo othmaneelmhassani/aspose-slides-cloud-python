@@ -93,7 +93,7 @@ class PictureFrame(GeometryShape):
         super(PictureFrame, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, line_format, type, shape_type)
 
         self._picture_fill_format = None
-        self.type: 'PictureFrame'
+        self.type = 'PictureFrame'
 
         if picture_fill_format is not None:
             self.picture_fill_format = picture_fill_format

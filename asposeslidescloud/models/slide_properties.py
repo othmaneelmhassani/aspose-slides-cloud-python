@@ -117,7 +117,7 @@ class SlideProperties(ResourceBase):
     def orientation(self):
         """Gets the orientation of this SlideProperties.  # noqa: E501
 
-        Last used view mode.  # noqa: E501
+        Slide orientation.  # noqa: E501
 
         :return: The orientation of this SlideProperties.  # noqa: E501
         :rtype: str
@@ -128,7 +128,7 @@ class SlideProperties(ResourceBase):
     def orientation(self, orientation):
         """Sets the orientation of this SlideProperties.
 
-        Last used view mode.  # noqa: E501
+        Slide orientation.  # noqa: E501
 
         :param orientation: The orientation of this SlideProperties.  # noqa: E501
         :type: str

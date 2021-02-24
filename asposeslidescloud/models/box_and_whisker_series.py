@@ -109,7 +109,7 @@ class BoxAndWhiskerSeries(OneValueSeries):
         self._show_mean_line = None
         self._show_mean_markers = None
         self._show_outlier_points = None
-        self.data_point_type: 'OneValue'
+        self.data_point_type = 'OneValue'
 
         if quartile_method is not None:
             self.quartile_method = quartile_method

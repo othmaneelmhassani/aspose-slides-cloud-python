@@ -96,7 +96,7 @@ class TiffExportOptions(ExportOptions):
         self._comments_area_width = None
         self._comments_area_color = None
         self._show_comments_by_no_author = None
-        self.format: 'tiff'
+        self.format = 'tiff'
 
         self.compression = compression
         if width is not None:

@@ -120,7 +120,7 @@ class AudioFrame(GeometryShape):
         self._play_mode = None
         self._volume = None
         self._base64_data = None
-        self.type: 'AudioFrame'
+        self.type = 'AudioFrame'
 
         if audio_cd_end_track is not None:
             self.audio_cd_end_track = audio_cd_end_track

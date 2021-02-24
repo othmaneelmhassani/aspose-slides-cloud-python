@@ -64,7 +64,7 @@ class PathOutputFile(OutputFile):
 
         self._path = None
         self._storage = None
-        self.type: 'Path'
+        self.type = 'Path'
 
         if path is not None:
             self.path = path

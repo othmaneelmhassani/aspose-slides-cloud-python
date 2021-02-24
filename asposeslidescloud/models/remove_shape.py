@@ -61,7 +61,7 @@ class RemoveShape(Task):
         super(RemoveShape, self).__init__(type)
 
         self._shape_path = None
-        self.type: 'RemoveShape'
+        self.type = 'RemoveShape'
 
         if shape_path is not None:
             self.shape_path = shape_path

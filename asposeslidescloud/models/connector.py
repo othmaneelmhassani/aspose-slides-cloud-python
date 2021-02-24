@@ -102,7 +102,7 @@ class Connector(GeometryShape):
         self._start_shape_connected_to_index = None
         self._end_shape_connected_to = None
         self._end_shape_connected_to_index = None
-        self.type: 'Connector'
+        self.type = 'Connector'
 
         if start_shape_connected_to is not None:
             self.start_shape_connected_to = start_shape_connected_to

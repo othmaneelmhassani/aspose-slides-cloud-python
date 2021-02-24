@@ -111,7 +111,7 @@ class VideoFrame(GeometryShape):
         self._rewind_video = None
         self._volume = None
         self._base64_data = None
-        self.type: 'VideoFrame'
+        self.type = 'VideoFrame'
 
         if full_screen_mode is not None:
             self.full_screen_mode = full_screen_mode
