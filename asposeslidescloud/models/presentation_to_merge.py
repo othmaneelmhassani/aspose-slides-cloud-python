@@ -44,24 +44,27 @@ class PresentationToMerge(object):
     swagger_types = {
         'path': 'str',
         'password': 'str',
-        'slides': 'list[int]'
+        'slides': 'list[int]',
+        'source': 'str'
     }
 
     attribute_map = {
         'path': 'path',
         'password': 'password',
-        'slides': 'slides'
+        'slides': 'slides',
+        'source': 'source'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, path=None, password=None, slides=None):  # noqa: E501
+    def __init__(self, path=None, password=None, slides=None, source=None):  # noqa: E501
         """PresentationToMerge - a model defined in Swagger"""  # noqa: E501
 
         self._path = None
         self._password = None
         self._slides = None
+        self._source = None
 
         if path is not None:
             self.path = path
@@ -69,6 +72,8 @@ class PresentationToMerge(object):
             self.password = password
         if slides is not None:
             self.slides = slides
+        if source is not None:
+            self.source = source
 
     @property
     def path(self):
@@ -135,6 +140,44 @@ class PresentationToMerge(object):
         :type: list[int]
         """
         self._slides = slides
+
+    @property
+    def source(self):
+        """Gets the source of this PresentationToMerge.  # noqa: E501
+
+        Merge (request or storage).   # noqa: E501
+
+        :return: The source of this PresentationToMerge.  # noqa: E501
+        :rtype: str
+        """
+        return self._source
+
+    @source.setter
+    def source(self, source):
+        """Sets the source of this PresentationToMerge.
+
+        Merge (request or storage).   # noqa: E501
+
+        :param source: The source of this PresentationToMerge.  # noqa: E501
+        :type: str
+        """
+        if source is not None:
+            allowed_values = ["Storage", "Request"]  # noqa: E501
+            if source.isdigit():
+                int_source = int(source)
+                if int_source < 0 or int_source >= len(allowed_values):
+                    raise ValueError(
+                        "Invalid value for `source` ({0}), must be one of {1}"  # noqa: E501
+                        .format(source, allowed_values)
+                    )
+                self._source = allowed_values[int_source]
+                return
+            if source not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `source` ({0}), must be one of {1}"  # noqa: E501
+                    .format(source, allowed_values)
+                )
+        self._source = source
 
     def to_dict(self):
         """Returns the model properties as a dict"""

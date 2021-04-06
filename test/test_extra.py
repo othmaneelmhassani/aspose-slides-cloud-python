@@ -29,9 +29,6 @@ from asposeslidescloud.models.one_value_series import OneValueSeries
 from asposeslidescloud.models.one_value_chart_data_point import OneValueChartDataPoint
 from asposeslidescloud.models.axes import Axes
 from asposeslidescloud.models.axis import Axis
-from asposeslidescloud.models.requests.slides_api_requests import PostSlidesPipelineRequest
-from asposeslidescloud.models.requests.slides_api_requests import PostSlideSaveAsRequest
-from asposeslidescloud.models.requests.slides_api_requests import GetSlideShapeRequest
 from asposeslidescloud.models.request_input_file import RequestInputFile
 from asposeslidescloud.models.save import Save
 
@@ -78,8 +75,7 @@ class TestExtra(BaseTest):
         with open("TestData/TemplateCV.pptx", 'rb') as f:
             files["file2"] = ("TemplateCV.pptx", f.read())
 
-        request = PostSlidesPipelineRequest(pipeline, files)
-        result = self.api.post_slides_pipeline(request)
+        result = self.api.pipeline(pipeline, files)
         self.assertTrue(isinstance(result, str))
         self.assertTrue(len(result) > 0)
 
@@ -94,13 +90,11 @@ class TestExtra(BaseTest):
         config.debug = self.configuration.debug
         config.timeout = 1
         api = asposeslidescloud.apis.slides_api.SlidesApi(config)  # noqa: E501
-        request = PostSlideSaveAsRequest("test.pptx", 1, "svg", None, None, None, "password", "TempSlidesSDK", None, None)
-        result = api.post_slide_save_as(request)
+        result = api.download_slide("test.pptx", 1, "svg", None, None, None, "password", "TempSlidesSDK")
 
     def test_base_shape(self):
         self.initialize('get_slide_shape', None, None)
-        request = GetSlideShapeRequest("test.pptx", 1, 1, "password", "TempSlidesSDK", None)
-        result = self.api.get_slide_shape(request)
+        result = self.api.get_shape("test.pptx", 1, 1, "password", "TempSlidesSDK")
         self.assertEqual("1", result.text)
 
     def test_chart(self):
@@ -116,8 +110,7 @@ class TestExtra(BaseTest):
         max1 = 104.3;
         max2 = 87;
         self.initialize('no_method', 'no_property', None)
-        copy_request = asposeslidescloud.models.requests.slides_api_requests.CopyFileRequest("TempTests/" + file_name, folder_name + "/" + file_name, None)
-        BaseTest.slides_api.copy_file(copy_request)
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
 
         test_dto = Chart()
         test_dto.chart_type = "Line"
@@ -145,11 +138,9 @@ class TestExtra(BaseTest):
         test_axis.max_value = max1
         test_axes.horizontal_axis = test_axis
         test_dto.axes = test_axes
-        post_request = asposeslidescloud.models.requests.slides_api_requests.PostAddNewShapeRequest(file_name, 1, test_dto, password, folder_name, None, None, None)
-        result = BaseTest.slides_api.post_add_new_shape(post_request)
+        result = BaseTest.slides_api.create_shape(file_name, 1, test_dto, None, None, password, folder_name)
 
-        get_request = asposeslidescloud.models.requests.slides_api_requests.GetSlideShapeRequest(file_name, 1, 4, password, folder_name, None)
-        result = BaseTest.slides_api.get_slide_shape(get_request)
+        result = BaseTest.slides_api.get_shape(file_name, 1, 4, password, folder_name)
         self.assertEqual(min1, result.axes.horizontal_axis.min_value)
         self.assertEqual(max1, result.axes.horizontal_axis.max_value)
 
@@ -159,10 +150,9 @@ class TestExtra(BaseTest):
         test_axis.min_value = min2
         test_axes.horizontal_axis = test_axis
         test_dto.axes = test_axes
-        put_request = asposeslidescloud.models.requests.slides_api_requests.PutSlideShapeInfoRequest(file_name, 1, 4, test_dto, password, folder_name)
-        result = BaseTest.slides_api.put_slide_shape_info(put_request)
+        result = BaseTest.slides_api.update_shape(file_name, 1, 4, test_dto, password, folder_name)
 
-        result = BaseTest.slides_api.get_slide_shape(get_request)
+        result = BaseTest.slides_api.get_shape(file_name, 1, 4, password, folder_name)
         self.assertEqual(min2, result.axes.horizontal_axis.min_value)
         self.assertEqual(max1, result.axes.horizontal_axis.max_value)
 
@@ -170,9 +160,9 @@ class TestExtra(BaseTest):
         test_axis.max_value = max2
         test_axes.horizontal_axis = test_axis
         test_dto.axes = test_axes
-        result = BaseTest.slides_api.put_slide_shape_info(put_request)
+        result = BaseTest.slides_api.update_shape(file_name, 1, 4, test_dto, password, folder_name)
 
-        result = BaseTest.slides_api.get_slide_shape(get_request)
+        result = BaseTest.slides_api.get_shape(file_name, 1, 4, password, folder_name)
         self.assertEqual(min2, result.axes.horizontal_axis.min_value)
         self.assertEqual(max2, result.axes.horizontal_axis.max_value)
 
@@ -184,7 +174,7 @@ class TestExtra(BaseTest):
         config.auth_base_url = self.configuration.auth_base_url
         config.debug = self.configuration.debug
         api = asposeslidescloud.apis.slides_api.SlidesApi(config)
-        api.get_slides_api_info()
+        api.get_api_info()
 
     def test_bad_auth(self):
         config = Configuration()
@@ -195,7 +185,7 @@ class TestExtra(BaseTest):
         config.debug = self.configuration.debug
         try:
             api = asposeslidescloud.apis.slides_api.SlidesApi(config)
-            api.get_slides_api_info()
+            api.get_api_info()
             self.fail("Must have failed")
         except ApiException as ex:
             self.assertEqual(401, ex.status)
@@ -208,10 +198,10 @@ class TestExtra(BaseTest):
         config.auth_base_url = self.configuration.auth_base_url
         config.debug = self.configuration.debug
         api = asposeslidescloud.apis.slides_api.SlidesApi(config)
-        api.get_slides_api_info()
+        api.get_api_info()
         config.app_sid = "invalid"
         api = asposeslidescloud.apis.slides_api.SlidesApi(config)
-        api.get_slides_api_info()
+        api.get_api_info()
 
     def test_bad_token(self):
         config = Configuration()
@@ -222,7 +212,7 @@ class TestExtra(BaseTest):
         config.debug = self.configuration.debug
         config.access_token = "invalid"
         api = asposeslidescloud.apis.slides_api.SlidesApi(config)
-        api.get_slides_api_info()
+        api.get_api_info()
 
 if __name__ == '__main__':
     unittest.main()
