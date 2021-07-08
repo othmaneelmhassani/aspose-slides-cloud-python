@@ -31,6 +31,6 @@ from __future__ import absolute_import
 # import models into model package
 
 from test.base_test import BaseTest
-from test.test_extra import TestExtra
+from test.test_use_cases import TestUseCases
 
 from test.test_slides_api import TestSlidesApi

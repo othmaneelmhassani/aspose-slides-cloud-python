@@ -46,30 +46,48 @@ class ProtectionProperties(ResourceBase):
         'self_uri': 'ResourceUri',
         'alternate_links': 'list[ResourceUri]',
         'encrypt_document_properties': 'bool',
-        'read_only_recommended': 'bool'
+        'read_only_recommended': 'bool',
+        'read_password': 'str',
+        'write_password': 'str',
+        'is_write_protected': 'bool',
+        'is_encrypted': 'bool'
     }
 
     attribute_map = {
         'self_uri': 'selfUri',
         'alternate_links': 'alternateLinks',
         'encrypt_document_properties': 'encryptDocumentProperties',
-        'read_only_recommended': 'readOnlyRecommended'
+        'read_only_recommended': 'readOnlyRecommended',
+        'read_password': 'readPassword',
+        'write_password': 'writePassword',
+        'is_write_protected': 'isWriteProtected',
+        'is_encrypted': 'isEncrypted'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, encrypt_document_properties=None, read_only_recommended=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, encrypt_document_properties=None, read_only_recommended=None, read_password=None, write_password=None, is_write_protected=None, is_encrypted=None):  # noqa: E501
         """ProtectionProperties - a model defined in Swagger"""  # noqa: E501
         super(ProtectionProperties, self).__init__(self_uri, alternate_links)
 
         self._encrypt_document_properties = None
         self._read_only_recommended = None
+        self._read_password = None
+        self._write_password = None
+        self._is_write_protected = None
+        self._is_encrypted = None
 
         if encrypt_document_properties is not None:
             self.encrypt_document_properties = encrypt_document_properties
         if read_only_recommended is not None:
             self.read_only_recommended = read_only_recommended
+        if read_password is not None:
+            self.read_password = read_password
+        if write_password is not None:
+            self.write_password = write_password
+        self.is_write_protected = is_write_protected
+        self.is_encrypted = is_encrypted
 
     @property
     def encrypt_document_properties(self):
@@ -114,6 +132,94 @@ class ProtectionProperties(ResourceBase):
         :type: bool
         """
         self._read_only_recommended = read_only_recommended
+
+    @property
+    def read_password(self):
+        """Gets the read_password of this ProtectionProperties.  # noqa: E501
+
+        Password for read protection.  # noqa: E501
+
+        :return: The read_password of this ProtectionProperties.  # noqa: E501
+        :rtype: str
+        """
+        return self._read_password
+
+    @read_password.setter
+    def read_password(self, read_password):
+        """Sets the read_password of this ProtectionProperties.
+
+        Password for read protection.  # noqa: E501
+
+        :param read_password: The read_password of this ProtectionProperties.  # noqa: E501
+        :type: str
+        """
+        self._read_password = read_password
+
+    @property
+    def write_password(self):
+        """Gets the write_password of this ProtectionProperties.  # noqa: E501
+
+        Password for write protection.  # noqa: E501
+
+        :return: The write_password of this ProtectionProperties.  # noqa: E501
+        :rtype: str
+        """
+        return self._write_password
+
+    @write_password.setter
+    def write_password(self, write_password):
+        """Sets the write_password of this ProtectionProperties.
+
+        Password for write protection.  # noqa: E501
+
+        :param write_password: The write_password of this ProtectionProperties.  # noqa: E501
+        :type: str
+        """
+        self._write_password = write_password
+
+    @property
+    def is_write_protected(self):
+        """Gets the is_write_protected of this ProtectionProperties.  # noqa: E501
+
+        Returns true if the presentation protected for editing.   # noqa: E501
+
+        :return: The is_write_protected of this ProtectionProperties.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_write_protected
+
+    @is_write_protected.setter
+    def is_write_protected(self, is_write_protected):
+        """Sets the is_write_protected of this ProtectionProperties.
+
+        Returns true if the presentation protected for editing.   # noqa: E501
+
+        :param is_write_protected: The is_write_protected of this ProtectionProperties.  # noqa: E501
+        :type: bool
+        """
+        self._is_write_protected = is_write_protected
+
+    @property
+    def is_encrypted(self):
+        """Gets the is_encrypted of this ProtectionProperties.  # noqa: E501
+
+        Returns true if the presentation protected for reading.   # noqa: E501
+
+        :return: The is_encrypted of this ProtectionProperties.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_encrypted
+
+    @is_encrypted.setter
+    def is_encrypted(self, is_encrypted):
+        """Sets the is_encrypted of this ProtectionProperties.
+
+        Returns true if the presentation protected for reading.   # noqa: E501
+
+        :param is_encrypted: The is_encrypted of this ProtectionProperties.  # noqa: E501
+        :type: bool
+        """
+        self._is_encrypted = is_encrypted
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -105,8 +105,10 @@ class BaseTest(unittest.TestCase):
     def get_test_value(self, function_name, field_name, field_type):
         if field_type == 'Stream' or field_type == 'file':
             bin_file_name = self.file_name
-            if function_name == 'post_slides_document_from_pdf':
+            if function_name == 'import_from_pdf':
                 bin_file_name = 'test.pdf'
+            if field_name == 'image':
+                bin_file_name = 'watermark.png'
             with open(self.test_data_path + "/" + bin_file_name, "rb") as bf:
                 return bf.read()
         if field_type == 'dict' and field_name == 'files':

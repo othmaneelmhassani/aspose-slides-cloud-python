@@ -32,7 +32,7 @@ from asposeslidescloud.models.axis import Axis
 from asposeslidescloud.models.request_input_file import RequestInputFile
 from asposeslidescloud.models.save import Save
 
-class TestExtra(BaseTest):
+class TestUseCases(BaseTest):
     """DocumentApi unit test stubs"""
 
     def setUp(self):
