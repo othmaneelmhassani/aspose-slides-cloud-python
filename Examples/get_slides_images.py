@@ -1,5 +1,4 @@
 from slides_configuration import *
 
-request=GetSlidesImagesRequest("test.pptx")
-response = images_api.get_slides_images(request)
+response = slides_api.get_presentation_images("test.pptx")
 print(response)

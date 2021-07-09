@@ -1,7 +1,5 @@
 from slides_configuration import *
 
-
-dto_obj={ "Text": "testNote" }
-request=PutUpdateNotesSlideRequest("test.pptx", slide_index=1, dto=dto_obj)
-response = notes_slides.put_update_notes_slide(request)
+dto_obj = { "Text": "testNote" }
+response = slides_api.update_notes_slide("test.pptx", 1, dto_obj)
 print(response)

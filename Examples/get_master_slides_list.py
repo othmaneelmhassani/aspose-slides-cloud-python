@@ -1,6 +1,4 @@
 from slides_configuration import *
 
-
-request=GetMasterSlidesListRequest("test.pptx")
-response =master_api.get_master_slides_list(request)
+response = slides_api.get_master_slides("test.pptx")
 print(response)

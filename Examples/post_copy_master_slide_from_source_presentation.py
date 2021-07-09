@@ -1,6 +1,4 @@
 from slides_configuration import *
 
-request=PostCopyMasterSlideFromSourcePresentationRequest("test.pptx", "test.pptx", clone_from_position=1)
-response = master_api.post_copy_master_slide_from_source_presentation(request)
-
+response = slides_api.copy_master_slide("test.pptx", "test.pptx", 1)
 print(response)

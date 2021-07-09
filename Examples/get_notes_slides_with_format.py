@@ -1,6 +1,4 @@
 from slides_configuration import *
 
-
-request=GetNotesSlideWithFormatRequest("test.pptx", slide_index=1, format="PNG")
-response = notes_slides.get_notes_slide_with_format(request)
-print(response)
+response = slides_api.download_notes_slide("test.pptx", 1, "PNG")
+print("The notes slide was saved to " + response)

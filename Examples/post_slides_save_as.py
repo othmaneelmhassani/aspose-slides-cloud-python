@@ -1,6 +1,4 @@
 from slides_configuration import *
 
-
-request=PostSlidesSaveAsRequest("test.pptx", "pdf")
-response =slides_api.post_slides_save_as(request)
-print(response)
+response =slides_api.download_presentation("test.pptx", "pdf")
+print("The presentation was saved to " + response)

@@ -1,6 +1,5 @@
 from slides_configuration import *
 
-request=GetLayoutSlideRequest("test.pptx", slide_index=1)
-response = layout_api.get_layout_slide(request)
+response = slides_api.get_layout_slide("test.pptx", 1)
 
 print(response)

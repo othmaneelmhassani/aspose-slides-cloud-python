@@ -1,10 +1,5 @@
 from slides_configuration import *
 
 dto={"MasterSlide": { "Uri": { "Href": "masterSlides/2" } }}
-
-
-
-request=PutLayoutSlideRequest("test.pptx", slide_index=1, slide_dto=dto)
-
-response = layout_api.put_layout_slide(request)
+response = slides_api.update_layout_slide("test.pptx", 1, dto)
 print(response)

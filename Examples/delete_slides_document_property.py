@@ -1,6 +1,4 @@
 from slides_configuration import *
 
-
-request=DeleteSlidesDocumentPropertyRequest("test.pptx", property_name="author")
-response = properties_api.delete_slides_document_property(request)
+response = slides_api.delete_document_property("test.pptx", "author")
 print(response)

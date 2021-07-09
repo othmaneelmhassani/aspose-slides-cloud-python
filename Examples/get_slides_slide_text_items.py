@@ -1,6 +1,9 @@
 from slides_configuration import *
 
+response = slides_api.get_slide_text_items("test.pptx", 1)
 
-request=GetSlidesSlideTextItemsRequest("test.pptx", slide_index=1)
-response = text_api.get_slides_slide_text_items(request)
-print(response)
+if response and response.items:
+    for item in response.items:
+        print("Text item: " + item.text)
+        print("Shape uri: " + item.uri.href)
+        print()

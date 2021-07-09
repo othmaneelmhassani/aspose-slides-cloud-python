@@ -1,5 +1,4 @@
 from slides_configuration import *
 
-request=GetSlidesPlaceholderRequest("placeholders.pptx", slide_index=1, placeholder_index=1,password="password")
-response = placeholder_api.get_slides_placeholder(request)
+response = slides_api.get_placeholder("placeholders.pptx", 1, 1, password = "password")
 print(response)

@@ -1,5 +1,4 @@
 from slides_configuration import *
 
-request=DeleteNotesSlideRequest("test.pptx", slide_index=3)
-response = notes_slides.delete_notes_slide(request)
+response = slides_api.delete_notes_slide("test.pptx", 1)
 print(response)

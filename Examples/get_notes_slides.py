@@ -1,5 +1,4 @@
 from slides_configuration import *
 
-request=GetNotesSlideRequest("test.pptx", slide_index=2)
-response = notes_slides.get_notes_slide(request)
+response = slides_api.get_notes_slide("test.pptx", 2)
 print(response)
