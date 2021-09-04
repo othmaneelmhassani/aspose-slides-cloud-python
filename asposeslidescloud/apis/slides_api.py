@@ -169,12 +169,12 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def convert(self, document, format, password = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def convert(self, document, format, password = None, storage = None, fonts_folder = None, slides = None, **kwargs):  # noqa: E501
         """Convert presentation from request content to format specified.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(document, format, password, storage, fonts_folder, is_async=True)
+        >>> thread = api.(document, format, password, storage, fonts_folder, slides, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -183,23 +183,24 @@ class SlidesApi(ApiBase):
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Custom fonts folder.
+        :param slides The indices of the slides to be converted. If not specified, all slides are converted by default.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.convert_with_http_info(document, format, password, storage, fonts_folder, **kwargs)  # noqa: E501
+            return self.convert_with_http_info(document, format, password, storage, fonts_folder, slides, **kwargs)  # noqa: E501
         else:
-            (data) = self.convert_with_http_info(document, format, password, storage, fonts_folder, **kwargs)  # noqa: E501
+            (data) = self.convert_with_http_info(document, format, password, storage, fonts_folder, slides, **kwargs)  # noqa: E501
             return data
 
-    def convert_with_http_info(self, document, format, password = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def convert_with_http_info(self, document, format, password = None, storage = None, fonts_folder = None, slides = None, **kwargs):  # noqa: E501
         """Convert presentation from request content to format specified.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.convert_with_http_info(document, format, password, storage, fonts_folder, is_async=True)
+        >>> thread = api.convert_with_http_info(document, format, password, storage, fonts_folder, slides, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -208,6 +209,7 @@ class SlidesApi(ApiBase):
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Custom fonts folder.
+        :param slides The indices of the slides to be converted. If not specified, all slides are converted by default.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -245,6 +247,9 @@ class SlidesApi(ApiBase):
             query_params.append(('storage', storage))  # noqa: E501
         if fonts_folder:
             query_params.append(('fontsFolder', fonts_folder))  # noqa: E501
+        if slides:
+            query_params.append(('slides', slides))  # noqa: E501
+            collection_formats['slides'] = ''  # noqa: E501
 
         header_params = {}
         if password:
@@ -284,12 +289,12 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def convert_and_save(self, document, format, out_path, password = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def convert_and_save(self, document, format, out_path, password = None, storage = None, fonts_folder = None, slides = None, **kwargs):  # noqa: E501
         """Convert presentation from request content to format specified.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(document, format, out_path, password, storage, fonts_folder, is_async=True)
+        >>> thread = api.(document, format, out_path, password, storage, fonts_folder, slides, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -299,23 +304,24 @@ class SlidesApi(ApiBase):
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Custom fonts folder.
+        :param slides The indices of the slides to be converted. If not specified, all slides are converted by default.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.convert_and_save_with_http_info(document, format, out_path, password, storage, fonts_folder, **kwargs)  # noqa: E501
+            return self.convert_and_save_with_http_info(document, format, out_path, password, storage, fonts_folder, slides, **kwargs)  # noqa: E501
         else:
-            (data) = self.convert_and_save_with_http_info(document, format, out_path, password, storage, fonts_folder, **kwargs)  # noqa: E501
+            (data) = self.convert_and_save_with_http_info(document, format, out_path, password, storage, fonts_folder, slides, **kwargs)  # noqa: E501
             return data
 
-    def convert_and_save_with_http_info(self, document, format, out_path, password = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def convert_and_save_with_http_info(self, document, format, out_path, password = None, storage = None, fonts_folder = None, slides = None, **kwargs):  # noqa: E501
         """Convert presentation from request content to format specified.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.convert_and_save_with_http_info(document, format, out_path, password, storage, fonts_folder, is_async=True)
+        >>> thread = api.convert_and_save_with_http_info(document, format, out_path, password, storage, fonts_folder, slides, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -325,6 +331,7 @@ class SlidesApi(ApiBase):
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Custom fonts folder.
+        :param slides The indices of the slides to be converted. If not specified, all slides are converted by default.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -367,6 +374,9 @@ class SlidesApi(ApiBase):
             query_params.append(('storage', storage))  # noqa: E501
         if fonts_folder:
             query_params.append(('fontsFolder', fonts_folder))  # noqa: E501
+        if slides:
+            query_params.append(('slides', slides))  # noqa: E501
+            collection_formats['slides'] = ''  # noqa: E501
 
         header_params = {}
         if password:
@@ -11294,12 +11304,12 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def download_presentation(self, name, format, options = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def download_presentation(self, name, format, options = None, password = None, folder = None, storage = None, fonts_folder = None, slides = None, **kwargs):  # noqa: E501
         """Save a presentation to a specified format.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, format, options, password, folder, storage, fonts_folder, is_async=True)
+        >>> thread = api.(name, format, options, password, folder, storage, fonts_folder, slides, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -11310,23 +11320,24 @@ class SlidesApi(ApiBase):
         :param folder Document folder.
         :param storage Document storage.
         :param fonts_folder Custom fonts folder.
+        :param slides The indices of the slides to be saved. If not specified, all slides are saved by default.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.download_presentation_with_http_info(name, format, options, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
+            return self.download_presentation_with_http_info(name, format, options, password, folder, storage, fonts_folder, slides, **kwargs)  # noqa: E501
         else:
-            (data) = self.download_presentation_with_http_info(name, format, options, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
+            (data) = self.download_presentation_with_http_info(name, format, options, password, folder, storage, fonts_folder, slides, **kwargs)  # noqa: E501
             return data
 
-    def download_presentation_with_http_info(self, name, format, options = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def download_presentation_with_http_info(self, name, format, options = None, password = None, folder = None, storage = None, fonts_folder = None, slides = None, **kwargs):  # noqa: E501
         """Save a presentation to a specified format.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.download_presentation_with_http_info(name, format, options, password, folder, storage, fonts_folder, is_async=True)
+        >>> thread = api.download_presentation_with_http_info(name, format, options, password, folder, storage, fonts_folder, slides, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -11337,6 +11348,7 @@ class SlidesApi(ApiBase):
         :param folder Document folder.
         :param storage Document storage.
         :param fonts_folder Custom fonts folder.
+        :param slides The indices of the slides to be saved. If not specified, all slides are saved by default.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -11377,6 +11389,9 @@ class SlidesApi(ApiBase):
             query_params.append(('storage', storage))  # noqa: E501
         if fonts_folder:
             query_params.append(('fontsFolder', fonts_folder))  # noqa: E501
+        if slides:
+            query_params.append(('slides', slides))  # noqa: E501
+            collection_formats['slides'] = ''  # noqa: E501
 
         header_params = {}
         if password:
@@ -20446,12 +20461,12 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def save_presentation(self, name, format, out_path, options = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def save_presentation(self, name, format, out_path, options = None, password = None, folder = None, storage = None, fonts_folder = None, slides = None, **kwargs):  # noqa: E501
         """Save a presentation to a specified format.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, format, out_path, options, password, folder, storage, fonts_folder, is_async=True)
+        >>> thread = api.(name, format, out_path, options, password, folder, storage, fonts_folder, slides, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -20463,23 +20478,24 @@ class SlidesApi(ApiBase):
         :param folder Document folder.
         :param storage Document storage.
         :param fonts_folder Custom fonts folder.
+        :param slides The indices of the slides to be saved. If not specified, all slides are saved by default.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.save_presentation_with_http_info(name, format, out_path, options, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
+            return self.save_presentation_with_http_info(name, format, out_path, options, password, folder, storage, fonts_folder, slides, **kwargs)  # noqa: E501
         else:
-            (data) = self.save_presentation_with_http_info(name, format, out_path, options, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
+            (data) = self.save_presentation_with_http_info(name, format, out_path, options, password, folder, storage, fonts_folder, slides, **kwargs)  # noqa: E501
             return data
 
-    def save_presentation_with_http_info(self, name, format, out_path, options = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def save_presentation_with_http_info(self, name, format, out_path, options = None, password = None, folder = None, storage = None, fonts_folder = None, slides = None, **kwargs):  # noqa: E501
         """Save a presentation to a specified format.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.save_presentation_with_http_info(name, format, out_path, options, password, folder, storage, fonts_folder, is_async=True)
+        >>> thread = api.save_presentation_with_http_info(name, format, out_path, options, password, folder, storage, fonts_folder, slides, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -20491,6 +20507,7 @@ class SlidesApi(ApiBase):
         :param folder Document folder.
         :param storage Document storage.
         :param fonts_folder Custom fonts folder.
+        :param slides The indices of the slides to be saved. If not specified, all slides are saved by default.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -20536,6 +20553,9 @@ class SlidesApi(ApiBase):
             query_params.append(('storage', storage))  # noqa: E501
         if fonts_folder:
             query_params.append(('fontsFolder', fonts_folder))  # noqa: E501
+        if slides:
+            query_params.append(('slides', slides))  # noqa: E501
+            collection_formats['slides'] = ''  # noqa: E501
 
         header_params = {}
         if password:

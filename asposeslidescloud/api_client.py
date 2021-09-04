@@ -69,7 +69,7 @@ class ApiClient(object):
 
         self.pool = None
         self.rest_client = RESTClientObject(configuration)
-        self.default_headers = {'x-aspose-client': 'python sdk v21.6.0'}
+        self.default_headers = {'x-aspose-client': 'python sdk v21.8.0'}
         if configuration.timeout:
             self.default_headers['x-aspose-timeout'] = configuration.timeout
         self.default_headers.update(configuration.custom_headers)
@@ -155,7 +155,7 @@ class ApiClient(object):
                                      _preload_content=_preload_content,
                                      _request_timeout=_request_timeout)
             except ApiException as ex:
-                if ex.status == 401 or (ex.status == 500 and len(ex.body) == 0):
+                if ex.status == 401:
                     self.configuration.access_token = None
                     self.__authenticate(header_params, _request_timeout)
                     return self.request(method, url,
@@ -172,6 +172,8 @@ class ApiClient(object):
                     self.__set_exception_message(ex, message)
                 except:
                     pass #could not deserialize error message; just rethrow it as is
+            else:
+                ex.body =  ex.reason
             raise ex
 
     def __set_exception_message(self, ex, message):

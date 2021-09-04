@@ -145,7 +145,6 @@ class RESTClientObject(object):
             part_count = 1
         if files:
             part_count = part_count + len(files)
-
         if part_count > 1:
             headers['Content-Type'] = 'multipart/form-data'
         if 'Content-Type' not in headers:
@@ -183,11 +182,18 @@ class RESTClientObject(object):
                             body = json.dumps(body)
                         file_params["pipeline"] = (None, body, "text/json")
                     if not files is None:
-                        for file_key in files:
-                            if type(files[file_key]) == tuple:
-                                file_params[file_key] = (files[file_key][0], files[file_key][1])
-                            else:
-                                file_params[file_key] = (file_key, files[file_key])
+                        if type(files) is list:
+                            for index, item in enumerate(files):
+                                if type(item) == tuple:
+                                    file_params[item[0]] = (item[0], item[1])
+                                else:
+                                    file_params["file" + str(index + 1)] = ("file" + str(index + 1), item)
+                        else:
+                            for file_key in files:
+                                if type(files[file_key]) == tuple:
+                                    file_params[file_key] = (files[file_key][0], files[file_key][1])
+                                else:
+                                    file_params[file_key] = (file_key, files[file_key])
                     r = self.pool_manager.request(method, url,
                                               fields=file_params,
                                               encode_multipart=True,
@@ -218,11 +224,12 @@ class RESTClientObject(object):
                                           timeout=timeout,
                                           headers=headers)
                 else:
-                        r = self.pool_manager.request(method, url,
-                                                  body=body,
-                                                  preload_content=_preload_content,
-                                                  timeout=timeout,
-                                                  headers=headers)
+                    del headers['Content-Type']
+                    r = self.pool_manager.request(method, url,
+                                              body=body,
+                                              preload_content=_preload_content,
+                                              timeout=timeout,
+                                              headers=headers)
             # For `GET`, `HEAD`
             else:
                 r = self.pool_manager.request(method, url,

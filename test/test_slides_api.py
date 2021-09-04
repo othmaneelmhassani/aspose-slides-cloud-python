@@ -258,8 +258,9 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('convert', 'password', 'str')
         param_storage = self.get_test_value('convert', 'storage', 'str')
         param_fonts_folder = self.get_test_value('convert', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert', 'slides', 'list[int]')
         self.initialize('convert', None, None)
-        response = self.api.convert(param_document, param_format, param_password, param_storage, param_fonts_folder)
+        response = self.api.convert(param_document, param_format, param_password, param_storage, param_fonts_folder, param_slides)
         self.assertTrue(isinstance(response, str))
         self.assertTrue(len(response) > 0)
 
@@ -271,11 +272,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('convert', 'password', 'str')
         param_storage = self.get_test_value('convert', 'storage', 'str')
         param_fonts_folder = self.get_test_value('convert', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert', 'slides', 'list[int]')
         param_document = self.get_invalid_test_value('convert', 'document', param_document, 'file')
         self.initialize('convert', 'document', param_document)
         ok = False
         try:
-            self.api.convert(param_document, param_format, param_password, param_storage, param_fonts_folder)
+            self.api.convert(param_document, param_format, param_password, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'convert', 'document', param_document)
@@ -292,11 +294,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('convert', 'password', 'str')
         param_storage = self.get_test_value('convert', 'storage', 'str')
         param_fonts_folder = self.get_test_value('convert', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert', 'slides', 'list[int]')
         param_format = self.get_invalid_test_value('convert', 'format', param_format, 'str')
         self.initialize('convert', 'format', param_format)
         ok = False
         try:
-            self.api.convert(param_document, param_format, param_password, param_storage, param_fonts_folder)
+            self.api.convert(param_document, param_format, param_password, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'convert', 'format', param_format)
@@ -313,11 +316,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('convert', 'password', 'str')
         param_storage = self.get_test_value('convert', 'storage', 'str')
         param_fonts_folder = self.get_test_value('convert', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert', 'slides', 'list[int]')
         param_password = self.get_invalid_test_value('convert', 'password', param_password, 'str')
         self.initialize('convert', 'password', param_password)
         ok = False
         try:
-            self.api.convert(param_document, param_format, param_password, param_storage, param_fonts_folder)
+            self.api.convert(param_document, param_format, param_password, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'convert', 'password', param_password)
@@ -334,11 +338,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('convert', 'password', 'str')
         param_storage = self.get_test_value('convert', 'storage', 'str')
         param_fonts_folder = self.get_test_value('convert', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert', 'slides', 'list[int]')
         param_storage = self.get_invalid_test_value('convert', 'storage', param_storage, 'str')
         self.initialize('convert', 'storage', param_storage)
         ok = False
         try:
-            self.api.convert(param_document, param_format, param_password, param_storage, param_fonts_folder)
+            self.api.convert(param_document, param_format, param_password, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'convert', 'storage', param_storage)
@@ -355,11 +360,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('convert', 'password', 'str')
         param_storage = self.get_test_value('convert', 'storage', 'str')
         param_fonts_folder = self.get_test_value('convert', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert', 'slides', 'list[int]')
         param_fonts_folder = self.get_invalid_test_value('convert', 'fonts_folder', param_fonts_folder, 'str')
         self.initialize('convert', 'fonts_folder', param_fonts_folder)
         ok = False
         try:
-            self.api.convert(param_document, param_format, param_password, param_storage, param_fonts_folder)
+            self.api.convert(param_document, param_format, param_password, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'convert', 'fonts_folder', param_fonts_folder)
@@ -367,6 +373,28 @@ class TestSlidesApi(BaseTest):
             self.assert_value_error(ex, 'convert', 'fonts_folder', param_fonts_folder)
         if ok:
             self.assert_no_exception('convert', 'fonts_folder')
+
+    def test_convert_invalid_slides(self):
+        """Test case for convert with invalid slides
+        """
+        param_document = self.get_test_value('convert', 'document', 'file')
+        param_format = self.get_test_value('convert', 'format', 'str')
+        param_password = self.get_test_value('convert', 'password', 'str')
+        param_storage = self.get_test_value('convert', 'storage', 'str')
+        param_fonts_folder = self.get_test_value('convert', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert', 'slides', 'list[int]')
+        param_slides = self.get_invalid_test_value('convert', 'slides', param_slides, 'list[int]')
+        self.initialize('convert', 'slides', param_slides)
+        ok = False
+        try:
+            self.api.convert(param_document, param_format, param_password, param_storage, param_fonts_folder, param_slides)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'convert', 'slides', param_slides)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'convert', 'slides', param_slides)
+        if ok:
+            self.assert_no_exception('convert', 'slides')
 
     def test_convert_and_save(self):
         """Test case for convert_and_save
@@ -377,8 +405,9 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('convert_and_save', 'password', 'str')
         param_storage = self.get_test_value('convert_and_save', 'storage', 'str')
         param_fonts_folder = self.get_test_value('convert_and_save', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert_and_save', 'slides', 'list[int]')
         self.initialize('convert_and_save', None, None)
-        response = self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder)
+        response = self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder, param_slides)
         self.assertIsNone(response)
 
     def test_convert_and_save_invalid_document(self):
@@ -390,11 +419,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('convert_and_save', 'password', 'str')
         param_storage = self.get_test_value('convert_and_save', 'storage', 'str')
         param_fonts_folder = self.get_test_value('convert_and_save', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert_and_save', 'slides', 'list[int]')
         param_document = self.get_invalid_test_value('convert_and_save', 'document', param_document, 'file')
         self.initialize('convert_and_save', 'document', param_document)
         ok = False
         try:
-            self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder)
+            self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'convert_and_save', 'document', param_document)
@@ -412,11 +442,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('convert_and_save', 'password', 'str')
         param_storage = self.get_test_value('convert_and_save', 'storage', 'str')
         param_fonts_folder = self.get_test_value('convert_and_save', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert_and_save', 'slides', 'list[int]')
         param_format = self.get_invalid_test_value('convert_and_save', 'format', param_format, 'str')
         self.initialize('convert_and_save', 'format', param_format)
         ok = False
         try:
-            self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder)
+            self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'convert_and_save', 'format', param_format)
@@ -434,11 +465,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('convert_and_save', 'password', 'str')
         param_storage = self.get_test_value('convert_and_save', 'storage', 'str')
         param_fonts_folder = self.get_test_value('convert_and_save', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert_and_save', 'slides', 'list[int]')
         param_out_path = self.get_invalid_test_value('convert_and_save', 'out_path', param_out_path, 'str')
         self.initialize('convert_and_save', 'out_path', param_out_path)
         ok = False
         try:
-            self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder)
+            self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'convert_and_save', 'out_path', param_out_path)
@@ -456,11 +488,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('convert_and_save', 'password', 'str')
         param_storage = self.get_test_value('convert_and_save', 'storage', 'str')
         param_fonts_folder = self.get_test_value('convert_and_save', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert_and_save', 'slides', 'list[int]')
         param_password = self.get_invalid_test_value('convert_and_save', 'password', param_password, 'str')
         self.initialize('convert_and_save', 'password', param_password)
         ok = False
         try:
-            self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder)
+            self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'convert_and_save', 'password', param_password)
@@ -478,11 +511,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('convert_and_save', 'password', 'str')
         param_storage = self.get_test_value('convert_and_save', 'storage', 'str')
         param_fonts_folder = self.get_test_value('convert_and_save', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert_and_save', 'slides', 'list[int]')
         param_storage = self.get_invalid_test_value('convert_and_save', 'storage', param_storage, 'str')
         self.initialize('convert_and_save', 'storage', param_storage)
         ok = False
         try:
-            self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder)
+            self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'convert_and_save', 'storage', param_storage)
@@ -500,11 +534,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('convert_and_save', 'password', 'str')
         param_storage = self.get_test_value('convert_and_save', 'storage', 'str')
         param_fonts_folder = self.get_test_value('convert_and_save', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert_and_save', 'slides', 'list[int]')
         param_fonts_folder = self.get_invalid_test_value('convert_and_save', 'fonts_folder', param_fonts_folder, 'str')
         self.initialize('convert_and_save', 'fonts_folder', param_fonts_folder)
         ok = False
         try:
-            self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder)
+            self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'convert_and_save', 'fonts_folder', param_fonts_folder)
@@ -512,6 +547,29 @@ class TestSlidesApi(BaseTest):
             self.assert_value_error(ex, 'convert_and_save', 'fonts_folder', param_fonts_folder)
         if ok:
             self.assert_no_exception('convert_and_save', 'fonts_folder')
+
+    def test_convert_and_save_invalid_slides(self):
+        """Test case for convert_and_save with invalid slides
+        """
+        param_document = self.get_test_value('convert_and_save', 'document', 'file')
+        param_format = self.get_test_value('convert_and_save', 'format', 'str')
+        param_out_path = self.get_test_value('convert_and_save', 'out_path', 'str')
+        param_password = self.get_test_value('convert_and_save', 'password', 'str')
+        param_storage = self.get_test_value('convert_and_save', 'storage', 'str')
+        param_fonts_folder = self.get_test_value('convert_and_save', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('convert_and_save', 'slides', 'list[int]')
+        param_slides = self.get_invalid_test_value('convert_and_save', 'slides', param_slides, 'list[int]')
+        self.initialize('convert_and_save', 'slides', param_slides)
+        ok = False
+        try:
+            self.api.convert_and_save(param_document, param_format, param_out_path, param_password, param_storage, param_fonts_folder, param_slides)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'convert_and_save', 'slides', param_slides)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'convert_and_save', 'slides', param_slides)
+        if ok:
+            self.assert_no_exception('convert_and_save', 'slides')
 
     def test_copy_file(self):
         """Test case for copy_file
@@ -14604,8 +14662,9 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('download_presentation', 'folder', 'str')
         param_storage = self.get_test_value('download_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('download_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('download_presentation', 'slides', 'list[int]')
         self.initialize('download_presentation', None, None)
-        response = self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+        response = self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
         self.assertTrue(isinstance(response, str))
         self.assertTrue(len(response) > 0)
 
@@ -14619,11 +14678,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('download_presentation', 'folder', 'str')
         param_storage = self.get_test_value('download_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('download_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('download_presentation', 'slides', 'list[int]')
         param_name = self.get_invalid_test_value('download_presentation', 'name', param_name, 'str')
         self.initialize('download_presentation', 'name', param_name)
         ok = False
         try:
-            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'download_presentation', 'name', param_name)
@@ -14642,11 +14702,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('download_presentation', 'folder', 'str')
         param_storage = self.get_test_value('download_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('download_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('download_presentation', 'slides', 'list[int]')
         param_format = self.get_invalid_test_value('download_presentation', 'format', param_format, 'str')
         self.initialize('download_presentation', 'format', param_format)
         ok = False
         try:
-            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'download_presentation', 'format', param_format)
@@ -14665,11 +14726,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('download_presentation', 'folder', 'str')
         param_storage = self.get_test_value('download_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('download_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('download_presentation', 'slides', 'list[int]')
         param_options = self.get_invalid_test_value('download_presentation', 'options', param_options, 'ExportOptions')
         self.initialize('download_presentation', 'options', param_options)
         ok = False
         try:
-            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'download_presentation', 'options', param_options)
@@ -14688,11 +14750,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('download_presentation', 'folder', 'str')
         param_storage = self.get_test_value('download_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('download_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('download_presentation', 'slides', 'list[int]')
         param_password = self.get_invalid_test_value('download_presentation', 'password', param_password, 'str')
         self.initialize('download_presentation', 'password', param_password)
         ok = False
         try:
-            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'download_presentation', 'password', param_password)
@@ -14711,11 +14774,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('download_presentation', 'folder', 'str')
         param_storage = self.get_test_value('download_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('download_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('download_presentation', 'slides', 'list[int]')
         param_folder = self.get_invalid_test_value('download_presentation', 'folder', param_folder, 'str')
         self.initialize('download_presentation', 'folder', param_folder)
         ok = False
         try:
-            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'download_presentation', 'folder', param_folder)
@@ -14734,11 +14798,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('download_presentation', 'folder', 'str')
         param_storage = self.get_test_value('download_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('download_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('download_presentation', 'slides', 'list[int]')
         param_storage = self.get_invalid_test_value('download_presentation', 'storage', param_storage, 'str')
         self.initialize('download_presentation', 'storage', param_storage)
         ok = False
         try:
-            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'download_presentation', 'storage', param_storage)
@@ -14757,11 +14822,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('download_presentation', 'folder', 'str')
         param_storage = self.get_test_value('download_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('download_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('download_presentation', 'slides', 'list[int]')
         param_fonts_folder = self.get_invalid_test_value('download_presentation', 'fonts_folder', param_fonts_folder, 'str')
         self.initialize('download_presentation', 'fonts_folder', param_fonts_folder)
         ok = False
         try:
-            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'download_presentation', 'fonts_folder', param_fonts_folder)
@@ -14769,6 +14835,30 @@ class TestSlidesApi(BaseTest):
             self.assert_value_error(ex, 'download_presentation', 'fonts_folder', param_fonts_folder)
         if ok:
             self.assert_no_exception('download_presentation', 'fonts_folder')
+
+    def test_download_presentation_invalid_slides(self):
+        """Test case for download_presentation with invalid slides
+        """
+        param_name = self.get_test_value('download_presentation', 'name', 'str')
+        param_format = self.get_test_value('download_presentation', 'format', 'str')
+        param_options = self.get_test_value('download_presentation', 'options', 'ExportOptions')
+        param_password = self.get_test_value('download_presentation', 'password', 'str')
+        param_folder = self.get_test_value('download_presentation', 'folder', 'str')
+        param_storage = self.get_test_value('download_presentation', 'storage', 'str')
+        param_fonts_folder = self.get_test_value('download_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('download_presentation', 'slides', 'list[int]')
+        param_slides = self.get_invalid_test_value('download_presentation', 'slides', param_slides, 'list[int]')
+        self.initialize('download_presentation', 'slides', param_slides)
+        ok = False
+        try:
+            self.api.download_presentation(param_name, param_format, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'download_presentation', 'slides', param_slides)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'download_presentation', 'slides', param_slides)
+        if ok:
+            self.assert_no_exception('download_presentation', 'slides')
 
     def test_download_shape(self):
         """Test case for download_shape
@@ -25393,8 +25483,9 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('save_presentation', 'folder', 'str')
         param_storage = self.get_test_value('save_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('save_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('save_presentation', 'slides', 'list[int]')
         self.initialize('save_presentation', None, None)
-        response = self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+        response = self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
         self.assertIsNone(response)
 
     def test_save_presentation_invalid_name(self):
@@ -25408,11 +25499,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('save_presentation', 'folder', 'str')
         param_storage = self.get_test_value('save_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('save_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('save_presentation', 'slides', 'list[int]')
         param_name = self.get_invalid_test_value('save_presentation', 'name', param_name, 'str')
         self.initialize('save_presentation', 'name', param_name)
         ok = False
         try:
-            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'save_presentation', 'name', param_name)
@@ -25432,11 +25524,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('save_presentation', 'folder', 'str')
         param_storage = self.get_test_value('save_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('save_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('save_presentation', 'slides', 'list[int]')
         param_format = self.get_invalid_test_value('save_presentation', 'format', param_format, 'str')
         self.initialize('save_presentation', 'format', param_format)
         ok = False
         try:
-            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'save_presentation', 'format', param_format)
@@ -25456,11 +25549,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('save_presentation', 'folder', 'str')
         param_storage = self.get_test_value('save_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('save_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('save_presentation', 'slides', 'list[int]')
         param_out_path = self.get_invalid_test_value('save_presentation', 'out_path', param_out_path, 'str')
         self.initialize('save_presentation', 'out_path', param_out_path)
         ok = False
         try:
-            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'save_presentation', 'out_path', param_out_path)
@@ -25480,11 +25574,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('save_presentation', 'folder', 'str')
         param_storage = self.get_test_value('save_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('save_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('save_presentation', 'slides', 'list[int]')
         param_options = self.get_invalid_test_value('save_presentation', 'options', param_options, 'ExportOptions')
         self.initialize('save_presentation', 'options', param_options)
         ok = False
         try:
-            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'save_presentation', 'options', param_options)
@@ -25504,11 +25599,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('save_presentation', 'folder', 'str')
         param_storage = self.get_test_value('save_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('save_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('save_presentation', 'slides', 'list[int]')
         param_password = self.get_invalid_test_value('save_presentation', 'password', param_password, 'str')
         self.initialize('save_presentation', 'password', param_password)
         ok = False
         try:
-            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'save_presentation', 'password', param_password)
@@ -25528,11 +25624,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('save_presentation', 'folder', 'str')
         param_storage = self.get_test_value('save_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('save_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('save_presentation', 'slides', 'list[int]')
         param_folder = self.get_invalid_test_value('save_presentation', 'folder', param_folder, 'str')
         self.initialize('save_presentation', 'folder', param_folder)
         ok = False
         try:
-            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'save_presentation', 'folder', param_folder)
@@ -25552,11 +25649,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('save_presentation', 'folder', 'str')
         param_storage = self.get_test_value('save_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('save_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('save_presentation', 'slides', 'list[int]')
         param_storage = self.get_invalid_test_value('save_presentation', 'storage', param_storage, 'str')
         self.initialize('save_presentation', 'storage', param_storage)
         ok = False
         try:
-            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'save_presentation', 'storage', param_storage)
@@ -25576,11 +25674,12 @@ class TestSlidesApi(BaseTest):
         param_folder = self.get_test_value('save_presentation', 'folder', 'str')
         param_storage = self.get_test_value('save_presentation', 'storage', 'str')
         param_fonts_folder = self.get_test_value('save_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('save_presentation', 'slides', 'list[int]')
         param_fonts_folder = self.get_invalid_test_value('save_presentation', 'fonts_folder', param_fonts_folder, 'str')
         self.initialize('save_presentation', 'fonts_folder', param_fonts_folder)
         ok = False
         try:
-            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder)
+            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'save_presentation', 'fonts_folder', param_fonts_folder)
@@ -25588,6 +25687,31 @@ class TestSlidesApi(BaseTest):
             self.assert_value_error(ex, 'save_presentation', 'fonts_folder', param_fonts_folder)
         if ok:
             self.assert_no_exception('save_presentation', 'fonts_folder')
+
+    def test_save_presentation_invalid_slides(self):
+        """Test case for save_presentation with invalid slides
+        """
+        param_name = self.get_test_value('save_presentation', 'name', 'str')
+        param_format = self.get_test_value('save_presentation', 'format', 'str')
+        param_out_path = self.get_test_value('save_presentation', 'out_path', 'str')
+        param_options = self.get_test_value('save_presentation', 'options', 'ExportOptions')
+        param_password = self.get_test_value('save_presentation', 'password', 'str')
+        param_folder = self.get_test_value('save_presentation', 'folder', 'str')
+        param_storage = self.get_test_value('save_presentation', 'storage', 'str')
+        param_fonts_folder = self.get_test_value('save_presentation', 'fonts_folder', 'str')
+        param_slides = self.get_test_value('save_presentation', 'slides', 'list[int]')
+        param_slides = self.get_invalid_test_value('save_presentation', 'slides', param_slides, 'list[int]')
+        self.initialize('save_presentation', 'slides', param_slides)
+        ok = False
+        try:
+            self.api.save_presentation(param_name, param_format, param_out_path, param_options, param_password, param_folder, param_storage, param_fonts_folder, param_slides)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'save_presentation', 'slides', param_slides)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'save_presentation', 'slides', param_slides)
+        if ok:
+            self.assert_no_exception('save_presentation', 'slides')
 
     def test_save_shape(self):
         """Test case for save_shape
