@@ -41,6 +41,10 @@ from asposeslidescloud.models.protection_properties import ProtectionProperties
 from asposeslidescloud.models.document_properties import DocumentProperties
 from asposeslidescloud.models.document_property import DocumentProperty
 from asposeslidescloud.models.shape import Shape
+from asposeslidescloud.models.paragraph import Paragraph
+from asposeslidescloud.models.portion import Portion
+from asposeslidescloud.models.slide_animation import SlideAnimation
+from asposeslidescloud.models.effect import Effect
 from asposeslidescloud.models.picture_frame import PictureFrame
 from asposeslidescloud.models.picture_fill import PictureFill
 from asposeslidescloud.models.audio_frame import AudioFrame
@@ -171,7 +175,16 @@ class TestUseCases(BaseTest):
         BaseTest.slides_api.save_presentation(file_name, 'pdf', out_path, None, "password", folder_name)
         self.assertTrue(BaseTest.slides_api.object_exists(out_path).exists)
 
-    def test_convert_with_options(self):
+    def test_convert_with_options_from_request(self):
+        with open("TestData/test.pptx", 'rb') as f:
+            source = f.read()
+        result = BaseTest.slides_api.convert(source, 'pdf', "password")
+        options = PdfExportOptions()
+        options.draw_slides_frame = True
+        result_with_options = BaseTest.slides_api.convert(source, 'pdf', "password", None, None, None, options)
+        self.assertNotEqual(os.path.getsize(result), os.path.getsize(result_with_options))
+
+    def test_convert_with_options_from_storage(self):
         folder_name = "TempSlidesSDK"
         file_name = "test.pptx"
         BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
@@ -207,7 +220,16 @@ class TestUseCases(BaseTest):
         BaseTest.slides_api.save_slide(file_name, 1, 'pdf', out_path, None, None, None, "password", folder_name)
         self.assertTrue(BaseTest.slides_api.object_exists(out_path).exists)
 
-    def test_convert_slide_with_options(self):
+    def test_convert_slide_with_options_from_request(self):
+        with open("TestData/test.pptx", 'rb') as f:
+            source = f.read()
+        result = BaseTest.slides_api.download_slide_online(source, 1, 'pdf', None, None, "password")
+        options = PdfExportOptions()
+        options.draw_slides_frame = True
+        result_with_options = BaseTest.slides_api.download_slide_online(source, 1, 'pdf', None, None, "password", None, None, options)
+        self.assertNotEqual(os.path.getsize(result), os.path.getsize(result_with_options))
+
+    def test_convert_slide_with_options_from_storage(self):
         folder_name = "TempSlidesSDK"
         file_name = "test.pptx"
         BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
@@ -279,6 +301,424 @@ class TestUseCases(BaseTest):
         with open("TestData/test.pptx", 'rb') as f:
             source = f.read()
         BaseTest.slides_api.download_notes_slide_online(source, 1, 'png', None, None, "password")
+
+    def test_notes_slide_shapes(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        slide_index = 1
+        shape_count = 3
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        shapes = BaseTest.slides_api.get_special_slide_shapes(file_name, slide_index, 'notesSlide', password, folder_name)
+        self.assertEqual(shape_count, len(shapes.shapes_links))
+
+        dto = Shape()
+        dto.x = 100
+        dto.y = 100
+        dto.width = 500
+        dto.height = 200
+        dto.shape_type = "Rectangle"
+        dto.text = "New shape"
+        shape = BaseTest.slides_api.create_special_slide_shape(file_name, slide_index, 'notesSlide', dto, None, None, password, folder_name)
+        self.assertEqual(dto.text, shape.text)
+        shapes = BaseTest.slides_api.get_special_slide_shapes(file_name, slide_index, 'notesSlide', password, folder_name)
+        self.assertEqual(shape_count + 1, len(shapes.shapes_links))
+
+        dto.Text = "updated shape"
+        shape = BaseTest.slides_api.update_special_slide_shape(file_name, slide_index, 'notesSlide', shape_count + 1, dto, password, folder_name)
+        self.assertEqual(dto.text, shape.text)
+        shapes = BaseTest.slides_api.get_special_slide_shapes(file_name, slide_index, 'notesSlide', password, folder_name)
+        self.assertEqual(shape_count + 1, len(shapes.shapes_links))
+
+        BaseTest.slides_api.delete_special_slide_shape(file_name, slide_index, 'notesSlide', shape_count + 1, password, folder_name)
+        shapes = BaseTest.slides_api.get_special_slide_shapes(file_name, slide_index, 'notesSlide', password, folder_name)
+        self.assertEqual(shape_count, len(shapes.shapes_links))
+
+    def test_notes_slide_paragraphs(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        slide_index = 1
+        shape_index = 2
+        paragraph_count = 1
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        paragraphs = BaseTest.slides_api.get_special_slide_paragraphs(file_name, slide_index, 'notesSlide', shape_index, password, folder_name)
+        self.assertEqual(paragraph_count, len(paragraphs.paragraph_links))
+
+        portion = Portion()
+        portion.text = "New Paragraph"
+        dto = Paragraph()
+        dto.alignment = "Right"
+        dto.portion_list = [ portion ]
+        paragraph = BaseTest.slides_api.create_special_slide_paragraph(file_name, slide_index, 'notesSlide', shape_index, dto, None, password, folder_name)
+        self.assertEqual(dto.alignment, paragraph.alignment)
+        paragraphs = BaseTest.slides_api.get_special_slide_paragraphs(file_name, slide_index, 'notesSlide', shape_index, password, folder_name)
+        self.assertEqual(paragraph_count + 1, len(paragraphs.paragraph_links))
+
+        dto = Paragraph()
+        dto.alignment = "Center"
+        paragraph = BaseTest.slides_api.update_special_slide_paragraph(file_name, slide_index, 'notesSlide', shape_index, paragraph_count + 1, dto, password, folder_name)
+        self.assertEqual(dto.alignment, paragraph.alignment)
+        paragraphs = BaseTest.slides_api.get_special_slide_paragraphs(file_name, slide_index, 'notesSlide', shape_index, password, folder_name)
+        self.assertEqual(paragraph_count + 1, len(paragraphs.paragraph_links))
+
+        BaseTest.slides_api.delete_special_slide_paragraph(file_name, slide_index, 'notesSlide', shape_index, paragraph_count + 1, password, folder_name)
+        paragraphs = BaseTest.slides_api.get_special_slide_paragraphs(file_name, slide_index, 'notesSlide', shape_index, password, folder_name)
+        self.assertEqual(paragraph_count, len(paragraphs.paragraph_links))
+
+    def test_notes_slide_portions(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        slide_index = 1
+        shape_index = 2
+        paragraph_index = 1
+        portion_count = 1
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        portions = BaseTest.slides_api.get_special_slide_portions(file_name, slide_index, 'notesSlide', shape_index, paragraph_index, password, folder_name)
+        self.assertEqual(portion_count, len(portions.items))
+
+        dto = Portion()
+        dto.text = "New portion"
+        dto.font_bold = "True"
+        portion = BaseTest.slides_api.create_special_slide_portion(file_name, slide_index, 'notesSlide', shape_index, paragraph_index, dto, None, password, folder_name)
+        self.assertEqual(dto.font_bold, portion.font_bold)
+        self.assertEqual(dto.text, portion.text)
+        portions = BaseTest.slides_api.get_special_slide_portions(file_name, slide_index, 'notesSlide', shape_index, paragraph_index, password, folder_name)
+        self.assertEqual(portion_count + 1, len(portions.items))
+
+        dto2 = Portion()
+        dto2.text = "Updated portion"
+        dto2.font_height = 22
+        portion = BaseTest.slides_api.update_special_slide_portion(file_name, slide_index, 'notesSlide', shape_index, paragraph_index, portion_count + 1, dto2, password, folder_name)
+        self.assertEqual(dto.font_bold, portion.font_bold)
+        self.assertEqual(dto2.font_height, portion.font_height)
+        self.assertEqual(dto2.text, portion.text)
+        portions = BaseTest.slides_api.get_special_slide_portions(file_name, slide_index, 'notesSlide', shape_index, paragraph_index, password, folder_name)
+        self.assertEqual(portion_count + 1, len(portions.items))
+
+        BaseTest.slides_api.delete_special_slide_portion(file_name, slide_index, 'notesSlide', shape_index, paragraph_index, portion_count + 1, password, folder_name)
+        portions = BaseTest.slides_api.get_special_slide_portions(file_name, slide_index, 'notesSlide', shape_index, paragraph_index, password, folder_name)
+        self.assertEqual(portion_count, len(portions.items))
+
+    def test_master_slides(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        source_file = "TemplateCV.pptx"
+        source_path = folder_name + "/" + source_file
+        password = "password"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        BaseTest.slides_api.copy_file("TempTests/" + source_file, source_path)
+
+        master_slides = BaseTest.slides_api.get_master_slides(file_name, password, folder_name)
+        self.assertEqual(1, len(master_slides.slide_list))
+
+        master_slide = BaseTest.slides_api.get_master_slide(file_name, 1, password, folder_name)
+        self.assertEqual("Office Theme", master_slide.name)
+
+        master_slide = BaseTest.slides_api.copy_master_slide(file_name, source_path, 1, None, None, None, password, folder_name)
+        self.assertEqual("Digital portfolio", master_slide.name)
+
+        master_slides = BaseTest.slides_api.get_master_slides(file_name, password, folder_name)
+        self.assertEqual(2, len(master_slides.slide_list))
+
+    def test_master_slide_shapes(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        slide_index = 1
+        shape_count = 6
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        shapes = BaseTest.slides_api.get_special_slide_shapes(file_name, slide_index, 'masterSlide', password, folder_name)
+        self.assertEqual(shape_count, len(shapes.shapes_links))
+
+        dto = Shape()
+        dto.x = 100
+        dto.y = 100
+        dto.width = 500
+        dto.height = 200
+        dto.shape_type = "Rectangle"
+        dto.text = "New shape"
+        shape = BaseTest.slides_api.create_special_slide_shape(file_name, slide_index, 'masterSlide', dto, None, None, password, folder_name)
+        self.assertEqual(dto.text, shape.text)
+        shapes = BaseTest.slides_api.get_special_slide_shapes(file_name, slide_index, 'masterSlide', password, folder_name)
+        self.assertEqual(shape_count + 1, len(shapes.shapes_links))
+
+        dto.Text = "updated shape"
+        shape = BaseTest.slides_api.update_special_slide_shape(file_name, slide_index, 'masterSlide', shape_count + 1, dto, password, folder_name)
+        self.assertEqual(dto.text, shape.text)
+        shapes = BaseTest.slides_api.get_special_slide_shapes(file_name, slide_index, 'masterSlide', password, folder_name)
+        self.assertEqual(shape_count + 1, len(shapes.shapes_links))
+
+        BaseTest.slides_api.delete_special_slide_shape(file_name, slide_index, 'masterSlide', shape_count + 1, password, folder_name)
+        shapes = BaseTest.slides_api.get_special_slide_shapes(file_name, slide_index, 'masterSlide', password, folder_name)
+        self.assertEqual(shape_count, len(shapes.shapes_links))
+
+    def test_master_slide_paragraphs(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        slide_index = 1
+        shape_index = 2
+        paragraph_count = 5
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        paragraphs = BaseTest.slides_api.get_special_slide_paragraphs(file_name, slide_index, 'masterSlide', shape_index, password, folder_name)
+        self.assertEqual(paragraph_count, len(paragraphs.paragraph_links))
+
+        portion = Portion()
+        portion.text = "New Paragraph"
+        dto = Paragraph()
+        dto.alignment = "Right"
+        dto.portion_list = [ portion ]
+        paragraph = BaseTest.slides_api.create_special_slide_paragraph(file_name, slide_index, 'masterSlide', shape_index, dto, None, password, folder_name)
+        self.assertEqual(dto.alignment, paragraph.alignment)
+        paragraphs = BaseTest.slides_api.get_special_slide_paragraphs(file_name, slide_index, 'masterSlide', shape_index, password, folder_name)
+        self.assertEqual(paragraph_count + 1, len(paragraphs.paragraph_links))
+
+        dto = Paragraph()
+        dto.alignment = "Center"
+        paragraph = BaseTest.slides_api.update_special_slide_paragraph(file_name, slide_index, 'masterSlide', shape_index, paragraph_count + 1, dto, password, folder_name)
+        self.assertEqual(dto.alignment, paragraph.alignment)
+        paragraphs = BaseTest.slides_api.get_special_slide_paragraphs(file_name, slide_index, 'masterSlide', shape_index, password, folder_name)
+        self.assertEqual(paragraph_count + 1, len(paragraphs.paragraph_links))
+
+        BaseTest.slides_api.delete_special_slide_paragraph(file_name, slide_index, 'masterSlide', shape_index, paragraph_count + 1, password, folder_name)
+        paragraphs = BaseTest.slides_api.get_special_slide_paragraphs(file_name, slide_index, 'masterSlide', shape_index, password, folder_name)
+        self.assertEqual(paragraph_count, len(paragraphs.paragraph_links))
+
+    def test_master_slide_portions(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        slide_index = 1
+        shape_index = 2
+        paragraph_index = 3
+        portion_count = 1
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        portions = BaseTest.slides_api.get_special_slide_portions(file_name, slide_index, 'masterSlide', shape_index, paragraph_index, password, folder_name)
+        self.assertEqual(portion_count, len(portions.items))
+
+        dto = Portion()
+        dto.text = "New portion"
+        dto.font_bold = "True"
+        portion = BaseTest.slides_api.create_special_slide_portion(file_name, slide_index, 'masterSlide', shape_index, paragraph_index, dto, None, password, folder_name)
+        self.assertEqual(dto.font_bold, portion.font_bold)
+        self.assertEqual(dto.text, portion.text)
+        portions = BaseTest.slides_api.get_special_slide_portions(file_name, slide_index, 'masterSlide', shape_index, paragraph_index, password, folder_name)
+        self.assertEqual(portion_count + 1, len(portions.items))
+
+        dto2 = Portion()
+        dto2.text = "Updated portion"
+        dto2.font_height = 22
+        portion = BaseTest.slides_api.update_special_slide_portion(file_name, slide_index, 'masterSlide', shape_index, paragraph_index, portion_count + 1, dto2, password, folder_name)
+        self.assertEqual(dto.font_bold, portion.font_bold)
+        self.assertEqual(dto2.font_height, portion.font_height)
+        self.assertEqual(dto2.text, portion.text)
+        portions = BaseTest.slides_api.get_special_slide_portions(file_name, slide_index, 'masterSlide', shape_index, paragraph_index, password, folder_name)
+        self.assertEqual(portion_count + 1, len(portions.items))
+
+        BaseTest.slides_api.delete_special_slide_portion(file_name, slide_index, 'masterSlide', shape_index, paragraph_index, portion_count + 1, password, folder_name)
+        portions = BaseTest.slides_api.get_special_slide_portions(file_name, slide_index, 'masterSlide', shape_index, paragraph_index, password, folder_name)
+        self.assertEqual(portion_count, len(portions.items))
+
+    def test_master_slide_animation(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        slide_index = 1
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        animation = BaseTest.slides_api.get_special_slide_animation(file_name, slide_index, 'masterSlide', None, password, folder_name)
+        self.assertEqual(1, len(animation.main_sequence))
+
+        effect1 = Effect()
+        effect1.type = "Blink"
+        effect1.shape_index = 2
+
+        effect2 = Effect()
+        effect2.type = "Appear"
+        effect2.shape_index = 3
+
+        dto = SlideAnimation()
+        dto.main_sequence = [ effect1, effect2 ]
+        animation = BaseTest.slides_api.set_special_slide_animation(file_name, slide_index, 'masterSlide', dto, password, folder_name)
+        self.assertEqual(len(dto.main_sequence), len(animation.main_sequence))
+
+        animation = BaseTest.slides_api.get_special_slide_animation(file_name, slide_index, 'masterSlide', 3, password, folder_name)
+        self.assertEqual(1, len(animation.main_sequence))
+
+        BaseTest.slides_api.delete_special_slide_animation_effect(file_name, slide_index, 'masterSlide', 2, password, folder_name)
+        self.assertEqual(len(dto.main_sequence) - 1, len(animation.main_sequence))
+
+        animation = BaseTest.slides_api.get_special_slide_animation(file_name, slide_index, 'masterSlide', 3, password, folder_name)
+        self.assertEqual(0, len(animation.main_sequence))
+
+        BaseTest.slides_api.delete_special_slide_animation(file_name, slide_index, 'masterSlide', password, folder_name)
+        self.assertEqual(0, len(animation.main_sequence))
+
+    def test_layout_slides(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        source_file = "TemplateCV.pptx"
+        source_path = folder_name + "/" + source_file
+        password = "password"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        BaseTest.slides_api.copy_file("TempTests/" + source_file, source_path)
+
+        layout_slides = BaseTest.slides_api.get_layout_slides(file_name, password, folder_name)
+        self.assertEqual(11, len(layout_slides.slide_list))
+
+        layout_slide = BaseTest.slides_api.get_layout_slide(file_name, 1, password, folder_name)
+        self.assertEqual("Title Slide", layout_slide.name)
+
+        layout_slide = BaseTest.slides_api.copy_layout_slide(file_name, source_path, 2, None, None, password, folder_name)
+        self.assertEqual("Title and Content", layout_slide.name)
+
+        layout_slides = BaseTest.slides_api.get_layout_slides(file_name, password, folder_name)
+        self.assertEqual(12, len(layout_slides.slide_list))
+
+    def test_layout_slide_shapes(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        slide_index = 1
+        shape_count = 5
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        shapes = BaseTest.slides_api.get_special_slide_shapes(file_name, slide_index, 'layoutSlide', password, folder_name)
+        self.assertEqual(shape_count, len(shapes.shapes_links))
+
+        dto = Shape()
+        dto.x = 100
+        dto.y = 100
+        dto.width = 500
+        dto.height = 200
+        dto.shape_type = "Rectangle"
+        dto.text = "New shape"
+        shape = BaseTest.slides_api.create_special_slide_shape(file_name, slide_index, 'layoutSlide', dto, None, None, password, folder_name)
+        self.assertEqual(dto.text, shape.text)
+        shapes = BaseTest.slides_api.get_special_slide_shapes(file_name, slide_index, 'layoutSlide', password, folder_name)
+        self.assertEqual(shape_count + 1, len(shapes.shapes_links))
+
+        dto.Text = "updated shape"
+        shape = BaseTest.slides_api.update_special_slide_shape(file_name, slide_index, 'layoutSlide', shape_count + 1, dto, password, folder_name)
+        self.assertEqual(dto.text, shape.text)
+        shapes = BaseTest.slides_api.get_special_slide_shapes(file_name, slide_index, 'layoutSlide', password, folder_name)
+        self.assertEqual(shape_count + 1, len(shapes.shapes_links))
+
+        BaseTest.slides_api.delete_special_slide_shape(file_name, slide_index, 'layoutSlide', shape_count + 1, password, folder_name)
+        shapes = BaseTest.slides_api.get_special_slide_shapes(file_name, slide_index, 'layoutSlide', password, folder_name)
+        self.assertEqual(shape_count, len(shapes.shapes_links))
+
+    def test_layout_slide_paragraphs(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        slide_index = 1
+        shape_index = 2
+        paragraph_count = 1
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        paragraphs = BaseTest.slides_api.get_special_slide_paragraphs(file_name, slide_index, 'layoutSlide', shape_index, password, folder_name)
+        self.assertEqual(paragraph_count, len(paragraphs.paragraph_links))
+
+        portion = Portion()
+        portion.text = "New Paragraph"
+        dto = Paragraph()
+        dto.alignment = "Right"
+        dto.portion_list = [ portion ]
+        paragraph = BaseTest.slides_api.create_special_slide_paragraph(file_name, slide_index, 'layoutSlide', shape_index, dto, None, password, folder_name)
+        self.assertEqual(dto.alignment, paragraph.alignment)
+        paragraphs = BaseTest.slides_api.get_special_slide_paragraphs(file_name, slide_index, 'layoutSlide', shape_index, password, folder_name)
+        self.assertEqual(paragraph_count + 1, len(paragraphs.paragraph_links))
+
+        dto = Paragraph()
+        dto.alignment = "Center"
+        paragraph = BaseTest.slides_api.update_special_slide_paragraph(file_name, slide_index, 'layoutSlide', shape_index, paragraph_count + 1, dto, password, folder_name)
+        self.assertEqual(dto.alignment, paragraph.alignment)
+        paragraphs = BaseTest.slides_api.get_special_slide_paragraphs(file_name, slide_index, 'layoutSlide', shape_index, password, folder_name)
+        self.assertEqual(paragraph_count + 1, len(paragraphs.paragraph_links))
+
+        BaseTest.slides_api.delete_special_slide_paragraph(file_name, slide_index, 'layoutSlide', shape_index, paragraph_count + 1, password, folder_name)
+        paragraphs = BaseTest.slides_api.get_special_slide_paragraphs(file_name, slide_index, 'layoutSlide', shape_index, password, folder_name)
+        self.assertEqual(paragraph_count, len(paragraphs.paragraph_links))
+
+    def test_layout_slide_portions(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        slide_index = 1
+        shape_index = 2
+        paragraph_index = 1
+        portion_count = 1
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        portions = BaseTest.slides_api.get_special_slide_portions(file_name, slide_index, 'layoutSlide', shape_index, paragraph_index, password, folder_name)
+        self.assertEqual(portion_count, len(portions.items))
+
+        dto = Portion()
+        dto.text = "New portion"
+        dto.font_bold = "True"
+        portion = BaseTest.slides_api.create_special_slide_portion(file_name, slide_index, 'layoutSlide', shape_index, paragraph_index, dto, None, password, folder_name)
+        self.assertEqual(dto.font_bold, portion.font_bold)
+        self.assertEqual(dto.text, portion.text)
+        portions = BaseTest.slides_api.get_special_slide_portions(file_name, slide_index, 'layoutSlide', shape_index, paragraph_index, password, folder_name)
+        self.assertEqual(portion_count + 1, len(portions.items))
+
+        dto2 = Portion()
+        dto2.text = "Updated portion"
+        dto2.font_height = 22
+        portion = BaseTest.slides_api.update_special_slide_portion(file_name, slide_index, 'layoutSlide', shape_index, paragraph_index, portion_count + 1, dto2, password, folder_name)
+        self.assertEqual(dto.font_bold, portion.font_bold)
+        self.assertEqual(dto2.font_height, portion.font_height)
+        self.assertEqual(dto2.text, portion.text)
+        portions = BaseTest.slides_api.get_special_slide_portions(file_name, slide_index, 'layoutSlide', shape_index, paragraph_index, password, folder_name)
+        self.assertEqual(portion_count + 1, len(portions.items))
+
+        BaseTest.slides_api.delete_special_slide_portion(file_name, slide_index, 'layoutSlide', shape_index, paragraph_index, portion_count + 1, password, folder_name)
+        portions = BaseTest.slides_api.get_special_slide_portions(file_name, slide_index, 'layoutSlide', shape_index, paragraph_index, password, folder_name)
+        self.assertEqual(portion_count, len(portions.items))
+
+    def test_layout_slide_animation(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        slide_index = 1
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        animation = BaseTest.slides_api.get_special_slide_animation(file_name, slide_index, 'layoutSlide', None, password, folder_name)
+        self.assertEqual(0, len(animation.main_sequence))
+
+        effect1 = Effect()
+        effect1.type = "Blink"
+        effect1.shape_index = 2
+
+        effect2 = Effect()
+        effect2.type = "Appear"
+        effect2.shape_index = 3
+
+        dto = SlideAnimation()
+        dto.main_sequence = [ effect1, effect2 ]
+        animation = BaseTest.slides_api.set_special_slide_animation(file_name, slide_index, 'layoutSlide', dto, password, folder_name)
+        self.assertEqual(len(dto.main_sequence), len(animation.main_sequence))
+
+        animation = BaseTest.slides_api.get_special_slide_animation(file_name, slide_index, 'layoutSlide', 3, password, folder_name)
+        self.assertEqual(1, len(animation.main_sequence))
+
+        BaseTest.slides_api.delete_special_slide_animation_effect(file_name, slide_index, 'layoutSlide', 2, password, folder_name)
+        self.assertEqual(len(dto.main_sequence) - 1, len(animation.main_sequence))
+
+        animation = BaseTest.slides_api.get_special_slide_animation(file_name, slide_index, 'layoutSlide', 3, password, folder_name)
+        self.assertEqual(0, len(animation.main_sequence))
+
+        BaseTest.slides_api.delete_special_slide_animation(file_name, slide_index, 'layoutSlide', password, folder_name)
+        self.assertEqual(0, len(animation.main_sequence))
 
     def test_shape_add(self):
         folder_name = "TempSlidesSDK"
@@ -1519,7 +1959,7 @@ class TestUseCases(BaseTest):
 
     def test_nullable_properties(self):
         folder_name = "TempSlidesSDK";
-        file_name = "placeholders.pptx";
+        file_name = "test.pptx";
         password = "password";
         min1  = 44.3;
         min2 = 12;
@@ -1556,7 +1996,7 @@ class TestUseCases(BaseTest):
         test_dto.axes = test_axes
         result = BaseTest.slides_api.create_shape(file_name, 1, test_dto, None, None, password, folder_name)
 
-        result = BaseTest.slides_api.get_shape(file_name, 1, 4, password, folder_name)
+        result = BaseTest.slides_api.get_shape(file_name, 1, 5, password, folder_name)
         self.assertEqual(min1, result.axes.horizontal_axis.min_value)
         self.assertEqual(max1, result.axes.horizontal_axis.max_value)
 
@@ -1566,9 +2006,9 @@ class TestUseCases(BaseTest):
         test_axis.min_value = min2
         test_axes.horizontal_axis = test_axis
         test_dto.axes = test_axes
-        result = BaseTest.slides_api.update_shape(file_name, 1, 4, test_dto, password, folder_name)
+        result = BaseTest.slides_api.update_shape(file_name, 1, 5, test_dto, password, folder_name)
 
-        result = BaseTest.slides_api.get_shape(file_name, 1, 4, password, folder_name)
+        result = BaseTest.slides_api.get_shape(file_name, 1, 5, password, folder_name)
         self.assertEqual(min2, result.axes.horizontal_axis.min_value)
         self.assertEqual(max1, result.axes.horizontal_axis.max_value)
 
@@ -1576,9 +2016,9 @@ class TestUseCases(BaseTest):
         test_axis.max_value = max2
         test_axes.horizontal_axis = test_axis
         test_dto.axes = test_axes
-        result = BaseTest.slides_api.update_shape(file_name, 1, 4, test_dto, password, folder_name)
+        result = BaseTest.slides_api.update_shape(file_name, 1, 5, test_dto, password, folder_name)
 
-        result = BaseTest.slides_api.get_shape(file_name, 1, 4, password, folder_name)
+        result = BaseTest.slides_api.get_shape(file_name, 1, 5, password, folder_name)
         self.assertEqual(min2, result.axes.horizontal_axis.min_value)
         self.assertEqual(max2, result.axes.horizontal_axis.max_value)
 

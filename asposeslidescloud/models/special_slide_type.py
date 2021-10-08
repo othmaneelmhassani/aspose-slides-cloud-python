@@ -31,8 +31,14 @@ import re  # noqa: F401
 import six
 
 
-class ExportOptions(object):
+class SpecialSlideType(object):
 
+    """
+    allowed enum values
+    """
+    MASTERSLIDE = "MasterSlide"
+    LAYOUTSLIDE = "LayoutSlide"
+    NOTESSLIDE = "NotesSlide"
 
     """
     Attributes:
@@ -42,70 +48,16 @@ class ExportOptions(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'default_regular_font': 'str',
-        'format': 'str'
     }
 
     attribute_map = {
-        'default_regular_font': 'defaultRegularFont',
-        'format': 'format'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, default_regular_font=None, format=None):  # noqa: E501
-        """ExportOptions - a model defined in Swagger"""  # noqa: E501
-
-        self._default_regular_font = None
-        self._format = None
-
-        if default_regular_font is not None:
-            self.default_regular_font = default_regular_font
-        if format is not None:
-            self.format = format
-
-    @property
-    def default_regular_font(self):
-        """Gets the default_regular_font of this ExportOptions.  # noqa: E501
-
-        Default regular font for rendering the presentation.   # noqa: E501
-
-        :return: The default_regular_font of this ExportOptions.  # noqa: E501
-        :rtype: str
-        """
-        return self._default_regular_font
-
-    @default_regular_font.setter
-    def default_regular_font(self, default_regular_font):
-        """Sets the default_regular_font of this ExportOptions.
-
-        Default regular font for rendering the presentation.   # noqa: E501
-
-        :param default_regular_font: The default_regular_font of this ExportOptions.  # noqa: E501
-        :type: str
-        """
-        self._default_regular_font = default_regular_font
-
-    @property
-    def format(self):
-        """Gets the format of this ExportOptions.  # noqa: E501
-
-
-        :return: The format of this ExportOptions.  # noqa: E501
-        :rtype: str
-        """
-        return self._format
-
-    @format.setter
-    def format(self, format):
-        """Sets the format of this ExportOptions.
-
-
-        :param format: The format of this ExportOptions.  # noqa: E501
-        :type: str
-        """
-        self._format = format
+    def __init__(self):  # noqa: E501
+        """SpecialSlideType - a model defined in Swagger"""  # noqa: E501
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -141,7 +93,7 @@ class ExportOptions(object):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ExportOptions):
+        if not isinstance(other, SpecialSlideType):
             return False
 
         return self.__dict__ == other.__dict__

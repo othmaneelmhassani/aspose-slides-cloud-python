@@ -55,7 +55,7 @@ class BaseTest(unittest.TestCase):
         self.file_password = "password"
 
         if not BaseTest.slides_api:
-            with open('testconfig.json') as f:
+            with open('testConfig.json') as f:
                 config = json.loads(f.read())
             BaseTest.configuration = Configuration()
             BaseTest.configuration.app_sid = config['ClientId']
@@ -66,7 +66,7 @@ class BaseTest(unittest.TestCase):
                 BaseTest.configuration.auth_base_url = config['AuthBaseUrl']
             BaseTest.configuration.debug = config['Debug']
 
-            with open('testrules.json') as f:
+            with open('testRules.json') as f:
                 BaseTest.test_rules = json.loads(f.read())
 
             BaseTest.slides_api = asposeslidescloud.apis.slides_api.SlidesApi(self.configuration)  # noqa: E501

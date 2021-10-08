@@ -169,12 +169,147 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def convert(self, document, format, password = None, storage = None, fonts_folder = None, slides = None, **kwargs):  # noqa: E501
+    def align_special_slide_shapes(self, name, slide_index, slide_type, alignment_type, align_to_slide = None, shapes = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Changes the placement of selected shapes on the master slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, alignment_type, align_to_slide, shapes, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param alignment_type Alignment type that will be applied to the shapes.
+        :param align_to_slide If true, shapes will be aligned relative to the slide edges.
+        :param shapes Shapes indexes.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.align_special_slide_shapes_with_http_info(name, slide_index, slide_type, alignment_type, align_to_slide, shapes, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.align_special_slide_shapes_with_http_info(name, slide_index, slide_type, alignment_type, align_to_slide, shapes, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def align_special_slide_shapes_with_http_info(self, name, slide_index, slide_type, alignment_type, align_to_slide = None, shapes = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Changes the placement of selected shapes on the master slide. Aligns shapes to the margins or the edge of the slide or aligns them relative to each other.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.align_special_slide_shapes_with_http_info(name, slide_index, slide_type, alignment_type, align_to_slide, shapes, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param alignment_type Alignment type that will be applied to the shapes.
+        :param align_to_slide If true, shapes will be aligned relative to the slide edges.
+        :param shapes Shapes indexes.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method align_special_slide_shapes" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `align_special_slide_shapes`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `align_special_slide_shapes`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `align_special_slide_shapes`")  # noqa: E501
+        # verify the required parameter 'alignment_type' is set
+        if not alignment_type:
+            raise ValueError("Missing the required parameter `request.alignment_type` when calling `align_special_slide_shapes`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['alignmentType'] = alignment_type  # noqa: E501
+
+        query_params = []
+        if align_to_slide:
+            query_params.append(('alignToSlide', align_to_slide))  # noqa: E501
+        if shapes:
+            query_params.append(('shapes', shapes))  # noqa: E501
+            collection_formats['shapes'] = ''  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/align/{alignmentType}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Shapes',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def convert(self, document, format, password = None, storage = None, fonts_folder = None, slides = None, options = None, **kwargs):  # noqa: E501
         """Convert presentation from request content to format specified.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(document, format, password, storage, fonts_folder, slides, is_async=True)
+        >>> thread = api.(document, format, password, storage, fonts_folder, slides, options, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -184,23 +319,24 @@ class SlidesApi(ApiBase):
         :param storage Document storage.
         :param fonts_folder Custom fonts folder.
         :param slides The indices of the slides to be converted. If not specified, all slides are converted by default.
+        :param options Export options.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.convert_with_http_info(document, format, password, storage, fonts_folder, slides, **kwargs)  # noqa: E501
+            return self.convert_with_http_info(document, format, password, storage, fonts_folder, slides, options, **kwargs)  # noqa: E501
         else:
-            (data) = self.convert_with_http_info(document, format, password, storage, fonts_folder, slides, **kwargs)  # noqa: E501
+            (data) = self.convert_with_http_info(document, format, password, storage, fonts_folder, slides, options, **kwargs)  # noqa: E501
             return data
 
-    def convert_with_http_info(self, document, format, password = None, storage = None, fonts_folder = None, slides = None, **kwargs):  # noqa: E501
+    def convert_with_http_info(self, document, format, password = None, storage = None, fonts_folder = None, slides = None, options = None, **kwargs):  # noqa: E501
         """Convert presentation from request content to format specified.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.convert_with_http_info(document, format, password, storage, fonts_folder, slides, is_async=True)
+        >>> thread = api.convert_with_http_info(document, format, password, storage, fonts_folder, slides, options, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -210,6 +346,7 @@ class SlidesApi(ApiBase):
         :param storage Document storage.
         :param fonts_folder Custom fonts folder.
         :param slides The indices of the slides to be converted. If not specified, all slides are converted by default.
+        :param options Export options.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -261,6 +398,8 @@ class SlidesApi(ApiBase):
             param_files['document'] = document  # noqa: E501
 
         body_params = None
+        if options:
+            body_params = options
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -289,12 +428,12 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def convert_and_save(self, document, format, out_path, password = None, storage = None, fonts_folder = None, slides = None, **kwargs):  # noqa: E501
+    def convert_and_save(self, document, format, out_path, password = None, storage = None, fonts_folder = None, slides = None, options = None, **kwargs):  # noqa: E501
         """Convert presentation from request content to format specified.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(document, format, out_path, password, storage, fonts_folder, slides, is_async=True)
+        >>> thread = api.(document, format, out_path, password, storage, fonts_folder, slides, options, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -305,23 +444,24 @@ class SlidesApi(ApiBase):
         :param storage Document storage.
         :param fonts_folder Custom fonts folder.
         :param slides The indices of the slides to be converted. If not specified, all slides are converted by default.
+        :param options Export options.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.convert_and_save_with_http_info(document, format, out_path, password, storage, fonts_folder, slides, **kwargs)  # noqa: E501
+            return self.convert_and_save_with_http_info(document, format, out_path, password, storage, fonts_folder, slides, options, **kwargs)  # noqa: E501
         else:
-            (data) = self.convert_and_save_with_http_info(document, format, out_path, password, storage, fonts_folder, slides, **kwargs)  # noqa: E501
+            (data) = self.convert_and_save_with_http_info(document, format, out_path, password, storage, fonts_folder, slides, options, **kwargs)  # noqa: E501
             return data
 
-    def convert_and_save_with_http_info(self, document, format, out_path, password = None, storage = None, fonts_folder = None, slides = None, **kwargs):  # noqa: E501
+    def convert_and_save_with_http_info(self, document, format, out_path, password = None, storage = None, fonts_folder = None, slides = None, options = None, **kwargs):  # noqa: E501
         """Convert presentation from request content to format specified.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.convert_and_save_with_http_info(document, format, out_path, password, storage, fonts_folder, slides, is_async=True)
+        >>> thread = api.convert_and_save_with_http_info(document, format, out_path, password, storage, fonts_folder, slides, options, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -332,6 +472,7 @@ class SlidesApi(ApiBase):
         :param storage Document storage.
         :param fonts_folder Custom fonts folder.
         :param slides The indices of the slides to be converted. If not specified, all slides are converted by default.
+        :param options Export options.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -388,6 +529,8 @@ class SlidesApi(ApiBase):
             param_files['document'] = document  # noqa: E501
 
         body_params = None
+        if options:
+            body_params = options
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -2474,403 +2617,6 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_notes_slide_paragraph(self, name, slide_index, shape_index, dto, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Creates new paragraph.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, dto, position, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param dto Paragraph DTO.
-        :param position Position of the new paragraph in the list. Default is at the end of the list.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Paragraph
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.create_notes_slide_paragraph_with_http_info(name, slide_index, shape_index, dto, position, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.create_notes_slide_paragraph_with_http_info(name, slide_index, shape_index, dto, position, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def create_notes_slide_paragraph_with_http_info(self, name, slide_index, shape_index, dto, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Creates new paragraph.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.create_notes_slide_paragraph_with_http_info(name, slide_index, shape_index, dto, position, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param dto Paragraph DTO.
-        :param position Position of the new paragraph in the list. Default is at the end of the list.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Paragraph
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_notes_slide_paragraph" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_notes_slide_paragraph`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_notes_slide_paragraph`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_notes_slide_paragraph`")  # noqa: E501
-        # verify the required parameter 'dto' is set
-        if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `create_notes_slide_paragraph`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-
-        query_params = []
-        if position:
-            query_params.append(('position', position))  # noqa: E501
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-        if dto:
-            body_params = dto
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Paragraph',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def create_notes_slide_portion(self, name, slide_index, shape_index, paragraph_index, dto, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Creates new portion.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, paragraph_index, dto, position, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param dto Portion DTO.
-        :param position Position of the new portion in the list. Default is at the end of the list.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Portion
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.create_notes_slide_portion_with_http_info(name, slide_index, shape_index, paragraph_index, dto, position, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.create_notes_slide_portion_with_http_info(name, slide_index, shape_index, paragraph_index, dto, position, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def create_notes_slide_portion_with_http_info(self, name, slide_index, shape_index, paragraph_index, dto, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Creates new portion.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.create_notes_slide_portion_with_http_info(name, slide_index, shape_index, paragraph_index, dto, position, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param dto Portion DTO.
-        :param position Position of the new portion in the list. Default is at the end of the list.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Portion
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_notes_slide_portion" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'paragraph_index' is set
-        if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `create_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'dto' is set
-        if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `create_notes_slide_portion`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
-
-        query_params = []
-        if position:
-            query_params.append(('position', position))  # noqa: E501
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-        if dto:
-            body_params = dto
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Portion',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def create_notes_slide_shape(self, name, slide_index, dto, shape_to_clone = None, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Create new shape.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, dto, shape_to_clone, position, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param dto Shape DTO.
-        :param shape_to_clone Optional index for clone shape instead of adding a new one.
-        :param position Position of the new shape in the list. Default is at the end of the list.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: ShapeBase
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.create_notes_slide_shape_with_http_info(name, slide_index, dto, shape_to_clone, position, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.create_notes_slide_shape_with_http_info(name, slide_index, dto, shape_to_clone, position, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def create_notes_slide_shape_with_http_info(self, name, slide_index, dto, shape_to_clone = None, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Create new shape.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.create_notes_slide_shape_with_http_info(name, slide_index, dto, shape_to_clone, position, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param dto Shape DTO.
-        :param shape_to_clone Optional index for clone shape instead of adding a new one.
-        :param position Position of the new shape in the list. Default is at the end of the list.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: ShapeBase
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_notes_slide_shape" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'dto' is set
-        if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `create_notes_slide_shape`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-
-        query_params = []
-        if shape_to_clone:
-            query_params.append(('shapeToClone', shape_to_clone))  # noqa: E501
-        if position:
-            query_params.append(('position', position))  # noqa: E501
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-        if dto:
-            body_params = dto
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='ShapeBase',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def create_paragraph(self, name, slide_index, shape_index, dto, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Creates new paragraph.  # noqa: E501
 
@@ -3863,6 +3609,1235 @@ class SlidesApi(ApiBase):
             post_params=form_params,
             files=param_files,
             response_type='Slides',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_special_slide_animation_effect(self, name, slide_index, slide_type, effect, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Add an effect to special slide (master, layout, notes) animation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, effect, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param effect Animation effect DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.create_special_slide_animation_effect_with_http_info(name, slide_index, slide_type, effect, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_special_slide_animation_effect_with_http_info(name, slide_index, slide_type, effect, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def create_special_slide_animation_effect_with_http_info(self, name, slide_index, slide_type, effect, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Add an effect to special slide (master, layout, notes) animation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.create_special_slide_animation_effect_with_http_info(name, slide_index, slide_type, effect, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param effect Animation effect DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_special_slide_animation_effect" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_animation_effect`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_animation_effect`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_animation_effect`")  # noqa: E501
+        # verify the required parameter 'effect' is set
+        if not effect:
+            raise ValueError("Missing the required parameter `request.effect` when calling `create_special_slide_animation_effect`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if effect:
+            body_params = effect
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/animation/mainSequence', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SlideAnimation',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_special_slide_animation_interactive_sequence(self, name, slide_index, slide_type, sequence, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Set special slide (master, layout, notes) animation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, sequence, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param sequence Animation sequence DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.create_special_slide_animation_interactive_sequence_with_http_info(name, slide_index, slide_type, sequence, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_special_slide_animation_interactive_sequence_with_http_info(name, slide_index, slide_type, sequence, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def create_special_slide_animation_interactive_sequence_with_http_info(self, name, slide_index, slide_type, sequence, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Set special slide (master, layout, notes) animation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.create_special_slide_animation_interactive_sequence_with_http_info(name, slide_index, slide_type, sequence, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param sequence Animation sequence DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_special_slide_animation_interactive_sequence" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_animation_interactive_sequence`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_animation_interactive_sequence`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_animation_interactive_sequence`")  # noqa: E501
+        # verify the required parameter 'sequence' is set
+        if not sequence:
+            raise ValueError("Missing the required parameter `request.sequence` when calling `create_special_slide_animation_interactive_sequence`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if sequence:
+            body_params = sequence
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/animation/interactiveSequences', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SlideAnimation',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_special_slide_animation_interactive_sequence_effect(self, name, slide_index, slide_type, sequence_index, effect, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Add an animation effect to a special slide (master, layout, notes) interactive sequence.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, sequence_index, effect, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param sequence_index The position of the interactive sequence.
+        :param effect Animation effect DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.create_special_slide_animation_interactive_sequence_effect_with_http_info(name, slide_index, slide_type, sequence_index, effect, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_special_slide_animation_interactive_sequence_effect_with_http_info(name, slide_index, slide_type, sequence_index, effect, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def create_special_slide_animation_interactive_sequence_effect_with_http_info(self, name, slide_index, slide_type, sequence_index, effect, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Add an animation effect to a special slide (master, layout, notes) interactive sequence.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.create_special_slide_animation_interactive_sequence_effect_with_http_info(name, slide_index, slide_type, sequence_index, effect, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param sequence_index The position of the interactive sequence.
+        :param effect Animation effect DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_special_slide_animation_interactive_sequence_effect" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the required parameter 'sequence_index' is set
+        if not sequence_index:
+            raise ValueError("Missing the required parameter `request.sequence_index` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the required parameter 'effect' is set
+        if not effect:
+            raise ValueError("Missing the required parameter `request.effect` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['sequenceIndex'] = sequence_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if effect:
+            body_params = effect
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/animation/interactiveSequences/{sequenceIndex}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SlideAnimation',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_special_slide_paragraph(self, name, slide_index, slide_type, shape_index, dto, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Creates new paragraph.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, dto, position, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param dto Paragraph DTO.
+        :param position Position of the new paragraph in the list. Default is at the end of the list.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.create_special_slide_paragraph_with_http_info(name, slide_index, slide_type, shape_index, dto, position, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_special_slide_paragraph_with_http_info(name, slide_index, slide_type, shape_index, dto, position, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def create_special_slide_paragraph_with_http_info(self, name, slide_index, slide_type, shape_index, dto, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Creates new paragraph.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.create_special_slide_paragraph_with_http_info(name, slide_index, slide_type, shape_index, dto, position, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param dto Paragraph DTO.
+        :param position Position of the new paragraph in the list. Default is at the end of the list.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_special_slide_paragraph" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'dto' is set
+        if not dto:
+            raise ValueError("Missing the required parameter `request.dto` when calling `create_special_slide_paragraph`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if position:
+            query_params.append(('position', position))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if dto:
+            body_params = dto
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Paragraph',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_special_slide_portion(self, name, slide_index, slide_type, shape_index, paragraph_index, dto, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Creates new portion.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, paragraph_index, dto, position, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param dto Portion DTO.
+        :param position Position of the new portion in the list. Default is at the end of the list.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.create_special_slide_portion_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, dto, position, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_special_slide_portion_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, dto, position, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def create_special_slide_portion_with_http_info(self, name, slide_index, slide_type, shape_index, paragraph_index, dto, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Creates new portion.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.create_special_slide_portion_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, dto, position, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param dto Portion DTO.
+        :param position Position of the new portion in the list. Default is at the end of the list.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_special_slide_portion" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `create_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'dto' is set
+        if not dto:
+            raise ValueError("Missing the required parameter `request.dto` when calling `create_special_slide_portion`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if position:
+            query_params.append(('position', position))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if dto:
+            body_params = dto
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Portion',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_special_slide_shape(self, name, slide_index, slide_type, dto = None, shape_to_clone = None, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Create new shape.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, dto, shape_to_clone, position, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param dto Shape DTO.
+        :param shape_to_clone Optional index for clone shape instead of adding a new one.
+        :param position Position of the new shape in the list. Default is at the end of the list.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: ShapeBase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.create_special_slide_shape_with_http_info(name, slide_index, slide_type, dto, shape_to_clone, position, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_special_slide_shape_with_http_info(name, slide_index, slide_type, dto, shape_to_clone, position, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def create_special_slide_shape_with_http_info(self, name, slide_index, slide_type, dto = None, shape_to_clone = None, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Create new shape.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.create_special_slide_shape_with_http_info(name, slide_index, slide_type, dto, shape_to_clone, position, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param dto Shape DTO.
+        :param shape_to_clone Optional index for clone shape instead of adding a new one.
+        :param position Position of the new shape in the list. Default is at the end of the list.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: ShapeBase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_special_slide_shape" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_shape`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+
+        query_params = []
+        if shape_to_clone:
+            query_params.append(('shapeToClone', shape_to_clone))  # noqa: E501
+        if position:
+            query_params.append(('position', position))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if dto:
+            body_params = dto
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='ShapeBase',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_special_slide_subshape(self, name, slide_index, slide_type, path, dto = None, shape_to_clone = None, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Create new shape (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, dto, shape_to_clone, position, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param dto Shape DTO.
+        :param shape_to_clone Optional index for clone shape instead of adding a new one.
+        :param position Position of the new shape in the list. Default is at the end of the list.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: ShapeBase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.create_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, dto, shape_to_clone, position, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, dto, shape_to_clone, position, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def create_special_slide_subshape_with_http_info(self, name, slide_index, slide_type, path, dto = None, shape_to_clone = None, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Create new shape (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.create_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, dto, shape_to_clone, position, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param dto Shape DTO.
+        :param shape_to_clone Optional index for clone shape instead of adding a new one.
+        :param position Position of the new shape in the list. Default is at the end of the list.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: ShapeBase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_special_slide_subshape" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `create_special_slide_subshape`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+
+        query_params = []
+        if shape_to_clone:
+            query_params.append(('shapeToClone', shape_to_clone))  # noqa: E501
+        if position:
+            query_params.append(('position', position))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if dto:
+            body_params = dto
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='ShapeBase',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_special_slide_subshape_paragraph(self, name, slide_index, slide_type, path, shape_index, dto, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Creates new paragraph (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, dto, position, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param dto Paragraph DTO.
+        :param position Position of the new paragraph in the list. Default is at the end of the list.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.create_special_slide_subshape_paragraph_with_http_info(name, slide_index, slide_type, path, shape_index, dto, position, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_special_slide_subshape_paragraph_with_http_info(name, slide_index, slide_type, path, shape_index, dto, position, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def create_special_slide_subshape_paragraph_with_http_info(self, name, slide_index, slide_type, path, shape_index, dto, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Creates new paragraph (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.create_special_slide_subshape_paragraph_with_http_info(name, slide_index, slide_type, path, shape_index, dto, position, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param dto Paragraph DTO.
+        :param position Position of the new paragraph in the list. Default is at the end of the list.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_special_slide_subshape_paragraph" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'dto' is set
+        if not dto:
+            raise ValueError("Missing the required parameter `request.dto` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if position:
+            query_params.append(('position', position))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if dto:
+            body_params = dto
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Paragraph',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_special_slide_subshape_portion(self, name, slide_index, slide_type, path, shape_index, paragraph_index, dto, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Creates new portion (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, paragraph_index, dto, position, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param dto Portion DTO.
+        :param position Position of the new portion in the list. Default is at the end of the list.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.create_special_slide_subshape_portion_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, dto, position, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_special_slide_subshape_portion_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, dto, position, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def create_special_slide_subshape_portion_with_http_info(self, name, slide_index, slide_type, path, shape_index, paragraph_index, dto, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Creates new portion (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.create_special_slide_subshape_portion_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, dto, position, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param dto Portion DTO.
+        :param position Position of the new portion in the list. Default is at the end of the list.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_special_slide_subshape_portion" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'dto' is set
+        if not dto:
+            raise ValueError("Missing the required parameter `request.dto` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if position:
+            query_params.append(('position', position))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if dto:
+            body_params = dto
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/portions', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Portion',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -6498,759 +7473,6 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def delete_notes_slide_paragraph(self, name, slide_index, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Remove a paragraph.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, paragraph_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Paragraphs
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.delete_notes_slide_paragraph_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.delete_notes_slide_paragraph_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def delete_notes_slide_paragraph_with_http_info(self, name, slide_index, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Remove a paragraph.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.delete_notes_slide_paragraph_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Paragraphs
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_notes_slide_paragraph" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_notes_slide_paragraph`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_notes_slide_paragraph`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_notes_slide_paragraph`")  # noqa: E501
-        # verify the required parameter 'paragraph_index' is set
-        if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_notes_slide_paragraph`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
-
-        query_params = []
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}', 'DELETE',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Paragraphs',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def delete_notes_slide_paragraphs(self, name, slide_index, shape_index, paragraphs = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Remove a range of paragraphs.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, paragraphs, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraphs The indices of the shapes to be deleted; delete all by default.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Paragraphs
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.delete_notes_slide_paragraphs_with_http_info(name, slide_index, shape_index, paragraphs, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.delete_notes_slide_paragraphs_with_http_info(name, slide_index, shape_index, paragraphs, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def delete_notes_slide_paragraphs_with_http_info(self, name, slide_index, shape_index, paragraphs = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Remove a range of paragraphs.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.delete_notes_slide_paragraphs_with_http_info(name, slide_index, shape_index, paragraphs, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraphs The indices of the shapes to be deleted; delete all by default.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Paragraphs
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_notes_slide_paragraphs" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_notes_slide_paragraphs`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_notes_slide_paragraphs`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_notes_slide_paragraphs`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-
-        query_params = []
-        if paragraphs:
-            query_params.append(('paragraphs', paragraphs))  # noqa: E501
-            collection_formats['paragraphs'] = ''  # noqa: E501
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs', 'DELETE',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Paragraphs',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def delete_notes_slide_portion(self, name, slide_index, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Remove a portion.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param portion_index Portion index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Portions
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.delete_notes_slide_portion_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.delete_notes_slide_portion_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def delete_notes_slide_portion_with_http_info(self, name, slide_index, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Remove a portion.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.delete_notes_slide_portion_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param portion_index Portion index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Portions
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_notes_slide_portion" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'paragraph_index' is set
-        if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'portion_index' is set
-        if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `delete_notes_slide_portion`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
-        path_params['portionIndex'] = portion_index  # noqa: E501
-
-        query_params = []
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}', 'DELETE',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Portions',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def delete_notes_slide_portions(self, name, slide_index, shape_index, paragraph_index, portions = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Remove a range of portions.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, paragraph_index, portions, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param portions The indices of the shapes to be deleted; delete all by default.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Portions
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.delete_notes_slide_portions_with_http_info(name, slide_index, shape_index, paragraph_index, portions, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.delete_notes_slide_portions_with_http_info(name, slide_index, shape_index, paragraph_index, portions, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def delete_notes_slide_portions_with_http_info(self, name, slide_index, shape_index, paragraph_index, portions = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Remove a range of portions.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.delete_notes_slide_portions_with_http_info(name, slide_index, shape_index, paragraph_index, portions, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param portions The indices of the shapes to be deleted; delete all by default.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Portions
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_notes_slide_portions" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_notes_slide_portions`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_notes_slide_portions`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_notes_slide_portions`")  # noqa: E501
-        # verify the required parameter 'paragraph_index' is set
-        if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_notes_slide_portions`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
-
-        query_params = []
-        if portions:
-            query_params.append(('portions', portions))  # noqa: E501
-            collection_formats['portions'] = ''  # noqa: E501
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions', 'DELETE',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Portions',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def delete_notes_slide_shape(self, name, slide_index, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Remove a shape.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Shapes
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.delete_notes_slide_shape_with_http_info(name, slide_index, shape_index, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.delete_notes_slide_shape_with_http_info(name, slide_index, shape_index, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def delete_notes_slide_shape_with_http_info(self, name, slide_index, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Remove a shape.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.delete_notes_slide_shape_with_http_info(name, slide_index, shape_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Shapes
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_notes_slide_shape" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_notes_slide_shape`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-
-        query_params = []
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}', 'DELETE',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Shapes',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def delete_notes_slide_shapes(self, name, slide_index, shapes = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Remove a range of shapes.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shapes, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shapes The indices of the shapes to be deleted; delete all by default.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Shapes
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.delete_notes_slide_shapes_with_http_info(name, slide_index, shapes, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.delete_notes_slide_shapes_with_http_info(name, slide_index, shapes, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def delete_notes_slide_shapes_with_http_info(self, name, slide_index, shapes = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Remove a range of shapes.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.delete_notes_slide_shapes_with_http_info(name, slide_index, shapes, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shapes The indices of the shapes to be deleted; delete all by default.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Shapes
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_notes_slide_shapes" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_notes_slide_shapes`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_notes_slide_shapes`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-
-        query_params = []
-        if shapes:
-            query_params.append(('shapes', shapes))  # noqa: E501
-            collection_formats['shapes'] = ''  # noqa: E501
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes', 'DELETE',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Shapes',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def delete_paragraph(self, name, slide_index, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Remove a paragraph.  # noqa: E501
 
@@ -8907,6 +9129,2364 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def delete_special_slide_animation(self, name, slide_index, slide_type, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove animation from a special slide (master, layout, notes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_animation_with_http_info(name, slide_index, slide_type, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_animation_with_http_info(name, slide_index, slide_type, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_animation_with_http_info(self, name, slide_index, slide_type, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove animation from a special slide (master, layout, notes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_animation_with_http_info(name, slide_index, slide_type, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_animation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_animation`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_animation`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_animation`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/animation', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SlideAnimation',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_animation_effect(self, name, slide_index, slide_type, effect_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove an effect from special slide (master, layout, notes) animation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, effect_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param effect_index Index of the effect to be removed.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_animation_effect_with_http_info(name, slide_index, slide_type, effect_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_animation_effect_with_http_info(name, slide_index, slide_type, effect_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_animation_effect_with_http_info(self, name, slide_index, slide_type, effect_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove an effect from special slide (master, layout, notes) animation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_animation_effect_with_http_info(name, slide_index, slide_type, effect_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param effect_index Index of the effect to be removed.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_animation_effect" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_animation_effect`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_animation_effect`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_animation_effect`")  # noqa: E501
+        # verify the required parameter 'effect_index' is set
+        if not effect_index:
+            raise ValueError("Missing the required parameter `request.effect_index` when calling `delete_special_slide_animation_effect`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['effectIndex'] = effect_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/animation/mainSequence/{effectIndex}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SlideAnimation',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_animation_interactive_sequence(self, name, slide_index, slide_type, sequence_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove an interactive sequence from special slide (master, layout, notes) animation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, sequence_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param sequence_index The index of an interactive sequence to be deleted.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_animation_interactive_sequence_with_http_info(name, slide_index, slide_type, sequence_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_animation_interactive_sequence_with_http_info(name, slide_index, slide_type, sequence_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_animation_interactive_sequence_with_http_info(self, name, slide_index, slide_type, sequence_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove an interactive sequence from special slide (master, layout, notes) animation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_animation_interactive_sequence_with_http_info(name, slide_index, slide_type, sequence_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param sequence_index The index of an interactive sequence to be deleted.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_animation_interactive_sequence" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_animation_interactive_sequence`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_animation_interactive_sequence`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_animation_interactive_sequence`")  # noqa: E501
+        # verify the required parameter 'sequence_index' is set
+        if not sequence_index:
+            raise ValueError("Missing the required parameter `request.sequence_index` when calling `delete_special_slide_animation_interactive_sequence`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['sequenceIndex'] = sequence_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/animation/interactiveSequences/{sequenceIndex}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SlideAnimation',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_animation_interactive_sequence_effect(self, name, slide_index, slide_type, sequence_index, effect_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove an effect from special slide (master, layout, notes) animation interactive sequence.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, sequence_index, effect_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param sequence_index Interactive sequence index.
+        :param effect_index Index of the effect to be removed.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_animation_interactive_sequence_effect_with_http_info(name, slide_index, slide_type, sequence_index, effect_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_animation_interactive_sequence_effect_with_http_info(name, slide_index, slide_type, sequence_index, effect_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_animation_interactive_sequence_effect_with_http_info(self, name, slide_index, slide_type, sequence_index, effect_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove an effect from special slide (master, layout, notes) animation interactive sequence.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_animation_interactive_sequence_effect_with_http_info(name, slide_index, slide_type, sequence_index, effect_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param sequence_index Interactive sequence index.
+        :param effect_index Index of the effect to be removed.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_animation_interactive_sequence_effect" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the required parameter 'sequence_index' is set
+        if not sequence_index:
+            raise ValueError("Missing the required parameter `request.sequence_index` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the required parameter 'effect_index' is set
+        if not effect_index:
+            raise ValueError("Missing the required parameter `request.effect_index` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['sequenceIndex'] = sequence_index  # noqa: E501
+        path_params['effectIndex'] = effect_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/animation/interactiveSequences/{sequenceIndex}/{effectIndex}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SlideAnimation',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_animation_interactive_sequences(self, name, slide_index, slide_type, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Clear all interactive sequences from special slide (master, layout, notes) animation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_animation_interactive_sequences_with_http_info(name, slide_index, slide_type, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_animation_interactive_sequences_with_http_info(name, slide_index, slide_type, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_animation_interactive_sequences_with_http_info(self, name, slide_index, slide_type, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Clear all interactive sequences from special slide (master, layout, notes) animation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_animation_interactive_sequences_with_http_info(name, slide_index, slide_type, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_animation_interactive_sequences" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_animation_interactive_sequences`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_animation_interactive_sequences`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_animation_interactive_sequences`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/animation/interactiveSequences', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SlideAnimation',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_animation_main_sequence(self, name, slide_index, slide_type, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Clear main sequence in special slide (master, layout, notes) animation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_animation_main_sequence_with_http_info(name, slide_index, slide_type, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_animation_main_sequence_with_http_info(name, slide_index, slide_type, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_animation_main_sequence_with_http_info(self, name, slide_index, slide_type, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Clear main sequence in special slide (master, layout, notes) animation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_animation_main_sequence_with_http_info(name, slide_index, slide_type, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_animation_main_sequence" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_animation_main_sequence`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_animation_main_sequence`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_animation_main_sequence`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/animation/mainSequence', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SlideAnimation',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_paragraph(self, name, slide_index, slide_type, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a paragraph.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraphs
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_paragraph_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_paragraph_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_paragraph_with_http_info(self, name, slide_index, slide_type, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a paragraph.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_paragraph_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraphs
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_paragraph" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_special_slide_paragraph`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Paragraphs',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_paragraphs(self, name, slide_index, slide_type, shape_index, paragraphs = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a range of paragraphs.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, paragraphs, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraphs The indices of the shapes to be deleted; delete all by default.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraphs
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_paragraphs_with_http_info(name, slide_index, slide_type, shape_index, paragraphs, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_paragraphs_with_http_info(name, slide_index, slide_type, shape_index, paragraphs, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_paragraphs_with_http_info(self, name, slide_index, slide_type, shape_index, paragraphs = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a range of paragraphs.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_paragraphs_with_http_info(name, slide_index, slide_type, shape_index, paragraphs, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraphs The indices of the shapes to be deleted; delete all by default.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraphs
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_paragraphs" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_paragraphs`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_paragraphs`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_paragraphs`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_paragraphs`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if paragraphs:
+            query_params.append(('paragraphs', paragraphs))  # noqa: E501
+            collection_formats['paragraphs'] = ''  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Paragraphs',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_portion(self, name, slide_index, slide_type, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a portion.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portions
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_portion_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_portion_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_portion_with_http_info(self, name, slide_index, slide_type, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a portion.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_portion_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portions
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_portion" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'portion_index' is set
+        if not portion_index:
+            raise ValueError("Missing the required parameter `request.portion_index` when calling `delete_special_slide_portion`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+        path_params['portionIndex'] = portion_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Portions',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_portions(self, name, slide_index, slide_type, shape_index, paragraph_index, portions = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a range of portions.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, paragraph_index, portions, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portions The indices of the shapes to be deleted; delete all by default.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portions
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_portions_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, portions, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_portions_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, portions, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_portions_with_http_info(self, name, slide_index, slide_type, shape_index, paragraph_index, portions = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a range of portions.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_portions_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, portions, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portions The indices of the shapes to be deleted; delete all by default.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portions
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_portions" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_portions`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_portions`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_portions`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_portions`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_special_slide_portions`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if portions:
+            query_params.append(('portions', portions))  # noqa: E501
+            collection_formats['portions'] = ''  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Portions',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_shape(self, name, slide_index, slide_type, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a shape.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_shape_with_http_info(self, name, slide_index, slide_type, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a shape.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_shape" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_shape`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Shapes',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_shapes(self, name, slide_index, slide_type, shapes = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a range of shapes.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shapes, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shapes The indices of the shapes to be deleted; delete all by default.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_shapes_with_http_info(name, slide_index, slide_type, shapes, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_shapes_with_http_info(name, slide_index, slide_type, shapes, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_shapes_with_http_info(self, name, slide_index, slide_type, shapes = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a range of shapes.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_shapes_with_http_info(name, slide_index, slide_type, shapes, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shapes The indices of the shapes to be deleted; delete all by default.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_shapes" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_shapes`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_shapes`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_shapes`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+
+        query_params = []
+        if shapes:
+            query_params.append(('shapes', shapes))  # noqa: E501
+            collection_formats['shapes'] = ''  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Shapes',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_subshape(self, name, slide_index, slide_type, path, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a shape (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_subshape_with_http_info(self, name, slide_index, slide_type, path, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a shape (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_subshape" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `delete_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_subshape`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Shapes',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_subshape_paragraph(self, name, slide_index, slide_type, path, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a paragraph (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraphs
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_subshape_paragraph_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_subshape_paragraph_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_subshape_paragraph_with_http_info(self, name, slide_index, slide_type, path, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a paragraph (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_subshape_paragraph_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraphs
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_subshape_paragraph" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Paragraphs',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_subshape_paragraphs(self, name, slide_index, slide_type, path, shape_index, paragraphs = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a range of paragraphs (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, paragraphs, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraphs The indices of the shapes to be deleted; delete all by default.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraphs
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_subshape_paragraphs_with_http_info(name, slide_index, slide_type, path, shape_index, paragraphs, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_subshape_paragraphs_with_http_info(name, slide_index, slide_type, path, shape_index, paragraphs, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_subshape_paragraphs_with_http_info(self, name, slide_index, slide_type, path, shape_index, paragraphs = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a range of paragraphs (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_subshape_paragraphs_with_http_info(name, slide_index, slide_type, path, shape_index, paragraphs, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraphs The indices of the shapes to be deleted; delete all by default.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraphs
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_subshape_paragraphs" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if paragraphs:
+            query_params.append(('paragraphs', paragraphs))  # noqa: E501
+            collection_formats['paragraphs'] = ''  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Paragraphs',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_subshape_portion(self, name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a portion (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portions
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_subshape_portion_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_subshape_portion_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_subshape_portion_with_http_info(self, name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a portion (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_subshape_portion_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portions
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_subshape_portion" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'portion_index' is set
+        if not portion_index:
+            raise ValueError("Missing the required parameter `request.portion_index` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+        path_params['portionIndex'] = portion_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Portions',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_subshape_portions(self, name, slide_index, slide_type, path, shape_index, paragraph_index, portions = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a range of portions (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, paragraph_index, portions, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portions The indices of the shapes to be deleted; delete all by default.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portions
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_subshape_portions_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, portions, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_subshape_portions_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, portions, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_subshape_portions_with_http_info(self, name, slide_index, slide_type, path, shape_index, paragraph_index, portions = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a range of portions (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_subshape_portions_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, portions, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portions The indices of the shapes to be deleted; delete all by default.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portions
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_subshape_portions" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if portions:
+            query_params.append(('portions', portions))  # noqa: E501
+            collection_formats['portions'] = ''  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/portions', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Portions',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_special_slide_subshapes(self, name, slide_index, slide_type, path, shapes = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a range of shapes (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shapes, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shapes The indices of the shapes to be deleted; delete all by default.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_special_slide_subshapes_with_http_info(name, slide_index, slide_type, path, shapes, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_special_slide_subshapes_with_http_info(name, slide_index, slide_type, path, shapes, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_special_slide_subshapes_with_http_info(self, name, slide_index, slide_type, path, shapes = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Remove a range of shapes (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_special_slide_subshapes_with_http_info(name, slide_index, slide_type, path, shapes, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shapes The indices of the shapes to be deleted; delete all by default.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_special_slide_subshapes" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_subshapes`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_subshapes`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_subshapes`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `delete_special_slide_subshapes`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+
+        query_params = []
+        if shapes:
+            query_params.append(('shapes', shapes))  # noqa: E501
+            collection_formats['shapes'] = ''  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Shapes',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def delete_subshape(self, name, slide_index, path, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Remove a shape (for smart art and group shapes).  # noqa: E501
 
@@ -9787,7 +12367,7 @@ class SlidesApi(ApiBase):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['multipart/form-data'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['JWT']  # noqa: E501
@@ -11158,152 +13738,6 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def download_notes_slide_shape(self, name, slide_index, shape_index, format, options = None, scale_x = None, scale_y = None, bounds = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
-        """Render shape to specified picture format.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, format, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Presentation name.
-        :param slide_index Slide index.
-        :param shape_index Index of shape starting from 1
-        :param format Export picture format.
-        :param options export options
-        :param scale_x X scale ratio.
-        :param scale_y Y scale ratio.
-        :param bounds Shape thumbnail bounds type.
-        :param password Document password.
-        :param folder Presentation folder.
-        :param storage Presentation storage.
-        :param fonts_folder Fonts folder.
-        :return: file
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.download_notes_slide_shape_with_http_info(name, slide_index, shape_index, format, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
-        else:
-            (data) = self.download_notes_slide_shape_with_http_info(name, slide_index, shape_index, format, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
-            return data
-
-    def download_notes_slide_shape_with_http_info(self, name, slide_index, shape_index, format, options = None, scale_x = None, scale_y = None, bounds = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
-        """Render shape to specified picture format.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.download_notes_slide_shape_with_http_info(name, slide_index, shape_index, format, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Presentation name.
-        :param slide_index Slide index.
-        :param shape_index Index of shape starting from 1
-        :param format Export picture format.
-        :param options export options
-        :param scale_x X scale ratio.
-        :param scale_y Y scale ratio.
-        :param bounds Shape thumbnail bounds type.
-        :param password Document password.
-        :param folder Presentation folder.
-        :param storage Presentation storage.
-        :param fonts_folder Fonts folder.
-        :return: file
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method download_notes_slide_shape" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `download_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `download_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `download_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'format' is set
-        if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_notes_slide_shape`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-        path_params['format'] = format  # noqa: E501
-
-        query_params = []
-        if scale_x:
-            query_params.append(('scaleX', scale_x))  # noqa: E501
-        if scale_y:
-            query_params.append(('scaleY', scale_y))  # noqa: E501
-        if bounds:
-            query_params.append(('bounds', bounds))  # noqa: E501
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-        if fonts_folder:
-            query_params.append(('fontsFolder', fonts_folder))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-        if options:
-            body_params = options
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['multipart/form-data'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/{format}', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='file',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def download_presentation(self, name, format, options = None, password = None, folder = None, storage = None, fonts_folder = None, slides = None, **kwargs):  # noqa: E501
         """Save a presentation to a specified format.  # noqa: E501
 
@@ -11577,12 +14011,12 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def download_shape_online(self, document, slide_index, shape_index, format, scale_x = None, scale_y = None, bounds = None, password = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def download_shape_online(self, document, slide_index, shape_index, format, scale_x = None, scale_y = None, bounds = None, password = None, storage = None, fonts_folder = None, options = None, **kwargs):  # noqa: E501
         """Render shape to specified picture format.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(document, slide_index, shape_index, format, scale_x, scale_y, bounds, password, storage, fonts_folder, is_async=True)
+        >>> thread = api.(document, slide_index, shape_index, format, scale_x, scale_y, bounds, password, storage, fonts_folder, options, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -11596,23 +14030,24 @@ class SlidesApi(ApiBase):
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Fonts folder.
+        :param options Export options.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.download_shape_online_with_http_info(document, slide_index, shape_index, format, scale_x, scale_y, bounds, password, storage, fonts_folder, **kwargs)  # noqa: E501
+            return self.download_shape_online_with_http_info(document, slide_index, shape_index, format, scale_x, scale_y, bounds, password, storage, fonts_folder, options, **kwargs)  # noqa: E501
         else:
-            (data) = self.download_shape_online_with_http_info(document, slide_index, shape_index, format, scale_x, scale_y, bounds, password, storage, fonts_folder, **kwargs)  # noqa: E501
+            (data) = self.download_shape_online_with_http_info(document, slide_index, shape_index, format, scale_x, scale_y, bounds, password, storage, fonts_folder, options, **kwargs)  # noqa: E501
             return data
 
-    def download_shape_online_with_http_info(self, document, slide_index, shape_index, format, scale_x = None, scale_y = None, bounds = None, password = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def download_shape_online_with_http_info(self, document, slide_index, shape_index, format, scale_x = None, scale_y = None, bounds = None, password = None, storage = None, fonts_folder = None, options = None, **kwargs):  # noqa: E501
         """Render shape to specified picture format.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.download_shape_online_with_http_info(document, slide_index, shape_index, format, scale_x, scale_y, bounds, password, storage, fonts_folder, is_async=True)
+        >>> thread = api.download_shape_online_with_http_info(document, slide_index, shape_index, format, scale_x, scale_y, bounds, password, storage, fonts_folder, options, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -11626,6 +14061,7 @@ class SlidesApi(ApiBase):
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Fonts folder.
+        :param options Export options.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -11688,6 +14124,8 @@ class SlidesApi(ApiBase):
             param_files['document'] = document  # noqa: E501
 
         body_params = None
+        if options:
+            body_params = options
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -11852,12 +14290,12 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def download_slide_online(self, document, slide_index, format, width = None, height = None, password = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def download_slide_online(self, document, slide_index, format, width = None, height = None, password = None, storage = None, fonts_folder = None, options = None, **kwargs):  # noqa: E501
         """Save a slide to a specified format.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(document, slide_index, format, width, height, password, storage, fonts_folder, is_async=True)
+        >>> thread = api.(document, slide_index, format, width, height, password, storage, fonts_folder, options, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -11869,23 +14307,24 @@ class SlidesApi(ApiBase):
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Storage folder containing custom fonts to be used with the document.
+        :param options Export options.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.download_slide_online_with_http_info(document, slide_index, format, width, height, password, storage, fonts_folder, **kwargs)  # noqa: E501
+            return self.download_slide_online_with_http_info(document, slide_index, format, width, height, password, storage, fonts_folder, options, **kwargs)  # noqa: E501
         else:
-            (data) = self.download_slide_online_with_http_info(document, slide_index, format, width, height, password, storage, fonts_folder, **kwargs)  # noqa: E501
+            (data) = self.download_slide_online_with_http_info(document, slide_index, format, width, height, password, storage, fonts_folder, options, **kwargs)  # noqa: E501
             return data
 
-    def download_slide_online_with_http_info(self, document, slide_index, format, width = None, height = None, password = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def download_slide_online_with_http_info(self, document, slide_index, format, width = None, height = None, password = None, storage = None, fonts_folder = None, options = None, **kwargs):  # noqa: E501
         """Save a slide to a specified format.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.download_slide_online_with_http_info(document, slide_index, format, width, height, password, storage, fonts_folder, is_async=True)
+        >>> thread = api.download_slide_online_with_http_info(document, slide_index, format, width, height, password, storage, fonts_folder, options, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -11897,6 +14336,7 @@ class SlidesApi(ApiBase):
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Storage folder containing custom fonts to be used with the document.
+        :param options Export options.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -11953,6 +14393,8 @@ class SlidesApi(ApiBase):
             param_files['document'] = document  # noqa: E501
 
         body_params = None
+        if options:
+            body_params = options
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -11967,6 +14409,316 @@ class SlidesApi(ApiBase):
 
         return self.api_client.call_api(
             '/slides/slides/{slideIndex}/{format}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='file',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def download_special_slide_shape(self, name, slide_index, slide_type, shape_index, format, options = None, scale_x = None, scale_y = None, bounds = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+        """Render shape to specified picture format.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, format, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Presentation name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Index of shape starting from 1
+        :param format Export picture format.
+        :param options Export options
+        :param scale_x X scale ratio.
+        :param scale_y Y scale ratio.
+        :param bounds Shape thumbnail bounds type.
+        :param password Document password.
+        :param folder Presentation folder.
+        :param storage Presentation storage.
+        :param fonts_folder Fonts folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.download_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, format, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
+        else:
+            (data) = self.download_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, format, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
+            return data
+
+    def download_special_slide_shape_with_http_info(self, name, slide_index, slide_type, shape_index, format, options = None, scale_x = None, scale_y = None, bounds = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+        """Render shape to specified picture format.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.download_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, format, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Presentation name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Index of shape starting from 1
+        :param format Export picture format.
+        :param options Export options
+        :param scale_x X scale ratio.
+        :param scale_y Y scale ratio.
+        :param bounds Shape thumbnail bounds type.
+        :param password Document password.
+        :param folder Presentation folder.
+        :param storage Presentation storage.
+        :param fonts_folder Fonts folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method download_special_slide_shape" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `download_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `download_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `download_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `download_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'format' is set
+        if not format:
+            raise ValueError("Missing the required parameter `request.format` when calling `download_special_slide_shape`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['format'] = format  # noqa: E501
+
+        query_params = []
+        if scale_x:
+            query_params.append(('scaleX', scale_x))  # noqa: E501
+        if scale_y:
+            query_params.append(('scaleY', scale_y))  # noqa: E501
+        if bounds:
+            query_params.append(('bounds', bounds))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+        if fonts_folder:
+            query_params.append(('fontsFolder', fonts_folder))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if options:
+            body_params = options
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['multipart/form-data'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/{format}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='file',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def download_special_slide_subshape(self, name, slide_index, slide_type, path, shape_index, format, options = None, scale_x = None, scale_y = None, bounds = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+        """Render shape to specified picture format (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, format, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Presentation name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Index of shape starting from 1
+        :param format Export picture format.
+        :param options export options
+        :param scale_x X scale ratio.
+        :param scale_y Y scale ratio.
+        :param bounds Shape thumbnail bounds type.
+        :param password Document password.
+        :param folder Presentation folder.
+        :param storage Presentation storage.
+        :param fonts_folder Fonts folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.download_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, format, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
+        else:
+            (data) = self.download_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, format, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
+            return data
+
+    def download_special_slide_subshape_with_http_info(self, name, slide_index, slide_type, path, shape_index, format, options = None, scale_x = None, scale_y = None, bounds = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+        """Render shape to specified picture format (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.download_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, format, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Presentation name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Index of shape starting from 1
+        :param format Export picture format.
+        :param options export options
+        :param scale_x X scale ratio.
+        :param scale_y Y scale ratio.
+        :param bounds Shape thumbnail bounds type.
+        :param password Document password.
+        :param folder Presentation folder.
+        :param storage Presentation storage.
+        :param fonts_folder Fonts folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method download_special_slide_subshape" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `download_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `download_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `download_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `download_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `download_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'format' is set
+        if not format:
+            raise ValueError("Missing the required parameter `request.format` when calling `download_special_slide_subshape`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['format'] = format  # noqa: E501
+
+        query_params = []
+        if scale_x:
+            query_params.append(('scaleX', scale_x))  # noqa: E501
+        if scale_y:
+            query_params.append(('scaleY', scale_y))  # noqa: E501
+        if bounds:
+            query_params.append(('bounds', bounds))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+        if fonts_folder:
+            query_params.append(('fontsFolder', fonts_folder))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if options:
+            body_params = options
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['multipart/form-data'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/{format}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -14085,744 +16837,6 @@ class SlidesApi(ApiBase):
             post_params=form_params,
             files=param_files,
             response_type='NotesSlide',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_notes_slide_paragraph(self, name, slide_index, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Read shape paragraph info.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, paragraph_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Paragraph
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.get_notes_slide_paragraph_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.get_notes_slide_paragraph_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def get_notes_slide_paragraph_with_http_info(self, name, slide_index, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Read shape paragraph info.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.get_notes_slide_paragraph_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Paragraph
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_notes_slide_paragraph" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_notes_slide_paragraph`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_notes_slide_paragraph`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_notes_slide_paragraph`")  # noqa: E501
-        # verify the required parameter 'paragraph_index' is set
-        if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_notes_slide_paragraph`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
-
-        query_params = []
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Paragraph',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_notes_slide_paragraphs(self, name, slide_index, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Read shape paragraphs info.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Paragraphs
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.get_notes_slide_paragraphs_with_http_info(name, slide_index, shape_index, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.get_notes_slide_paragraphs_with_http_info(name, slide_index, shape_index, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def get_notes_slide_paragraphs_with_http_info(self, name, slide_index, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Read shape paragraphs info.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.get_notes_slide_paragraphs_with_http_info(name, slide_index, shape_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Paragraphs
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_notes_slide_paragraphs" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_notes_slide_paragraphs`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_notes_slide_paragraphs`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_notes_slide_paragraphs`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-
-        query_params = []
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Paragraphs',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_notes_slide_portion(self, name, slide_index, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Read paragraph portion info.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param portion_index Portion index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Portion
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.get_notes_slide_portion_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.get_notes_slide_portion_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def get_notes_slide_portion_with_http_info(self, name, slide_index, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Read paragraph portion info.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.get_notes_slide_portion_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param portion_index Portion index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Portion
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_notes_slide_portion" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'paragraph_index' is set
-        if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'portion_index' is set
-        if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `get_notes_slide_portion`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
-        path_params['portionIndex'] = portion_index  # noqa: E501
-
-        query_params = []
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Portion',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_notes_slide_portions(self, name, slide_index, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Read paragraph portions info.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, paragraph_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Portions
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.get_notes_slide_portions_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.get_notes_slide_portions_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def get_notes_slide_portions_with_http_info(self, name, slide_index, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Read paragraph portions info.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.get_notes_slide_portions_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Portions
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_notes_slide_portions" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_notes_slide_portions`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_notes_slide_portions`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_notes_slide_portions`")  # noqa: E501
-        # verify the required parameter 'paragraph_index' is set
-        if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_notes_slide_portions`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
-
-        query_params = []
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Portions',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_notes_slide_shape(self, name, slide_index, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Read slide shape info.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: ShapeBase
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.get_notes_slide_shape_with_http_info(name, slide_index, shape_index, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.get_notes_slide_shape_with_http_info(name, slide_index, shape_index, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def get_notes_slide_shape_with_http_info(self, name, slide_index, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Read slide shape info.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.get_notes_slide_shape_with_http_info(name, slide_index, shape_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: ShapeBase
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_notes_slide_shape" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_notes_slide_shape`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-
-        query_params = []
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='ShapeBase',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_notes_slide_shapes(self, name, slide_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Read slide shapes info.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Shapes
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.get_notes_slide_shapes_with_http_info(name, slide_index, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.get_notes_slide_shapes_with_http_info(name, slide_index, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def get_notes_slide_shapes_with_http_info(self, name, slide_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Read slide shapes info.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.get_notes_slide_shapes_with_http_info(name, slide_index, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Shapes
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_notes_slide_shapes" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_notes_slide_shapes`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_notes_slide_shapes`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-
-        query_params = []
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Shapes',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -17129,6 +19143,1714 @@ class SlidesApi(ApiBase):
             post_params=form_params,
             files=param_files,
             response_type='Slides',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_special_slide_animation(self, name, slide_index, slide_type, shape_index = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read special slide (master, layout, notes) animation effects.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index. If specified, only effects related to that shape are returned.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_special_slide_animation_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_special_slide_animation_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_special_slide_animation_with_http_info(self, name, slide_index, slide_type, shape_index = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read special slide (master, layout, notes) animation effects.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_special_slide_animation_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index. If specified, only effects related to that shape are returned.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_special_slide_animation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_animation`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_animation`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_animation`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+
+        query_params = []
+        if shape_index:
+            query_params.append(('shapeIndex', shape_index))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/animation', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SlideAnimation',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_special_slide_paragraph(self, name, slide_index, slide_type, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read shape paragraph info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_special_slide_paragraph_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_special_slide_paragraph_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_special_slide_paragraph_with_http_info(self, name, slide_index, slide_type, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read shape paragraph info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_special_slide_paragraph_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_special_slide_paragraph" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_special_slide_paragraph`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Paragraph',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_special_slide_paragraphs(self, name, slide_index, slide_type, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read special shape paragraphs info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraphs
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_special_slide_paragraphs_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_special_slide_paragraphs_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_special_slide_paragraphs_with_http_info(self, name, slide_index, slide_type, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read special shape paragraphs info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_special_slide_paragraphs_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraphs
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_special_slide_paragraphs" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_paragraphs`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_paragraphs`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_paragraphs`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_paragraphs`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Paragraphs',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_special_slide_portion(self, name, slide_index, slide_type, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read paragraph portion info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_special_slide_portion_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_special_slide_portion_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_special_slide_portion_with_http_info(self, name, slide_index, slide_type, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read paragraph portion info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_special_slide_portion_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_special_slide_portion" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'portion_index' is set
+        if not portion_index:
+            raise ValueError("Missing the required parameter `request.portion_index` when calling `get_special_slide_portion`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+        path_params['portionIndex'] = portion_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Portion',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_special_slide_portions(self, name, slide_index, slide_type, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read paragraph portions info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portions
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_special_slide_portions_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_special_slide_portions_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_special_slide_portions_with_http_info(self, name, slide_index, slide_type, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read paragraph portions info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_special_slide_portions_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portions
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_special_slide_portions" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_portions`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_portions`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_portions`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_portions`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_special_slide_portions`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Portions',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_special_slide_shape(self, name, slide_index, slide_type, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read special slide shape info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: ShapeBase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_special_slide_shape_with_http_info(self, name, slide_index, slide_type, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read special slide shape info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: ShapeBase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_special_slide_shape" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_shape`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='ShapeBase',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_special_slide_shapes(self, name, slide_index, slide_type, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read special slide shapes info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_special_slide_shapes_with_http_info(name, slide_index, slide_type, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_special_slide_shapes_with_http_info(name, slide_index, slide_type, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_special_slide_shapes_with_http_info(self, name, slide_index, slide_type, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read special slide shapes info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_special_slide_shapes_with_http_info(name, slide_index, slide_type, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_special_slide_shapes" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_shapes`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_shapes`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_shapes`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Shapes',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_special_slide_subshape(self, name, slide_index, slide_type, path, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read special slide shape info (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: ShapeBase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_special_slide_subshape_with_http_info(self, name, slide_index, slide_type, path, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read special slide shape info (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: ShapeBase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_special_slide_subshape" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `get_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_subshape`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='ShapeBase',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_special_slide_subshape_paragraph(self, name, slide_index, slide_type, path, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read shape paragraph info (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_special_slide_subshape_paragraph_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_special_slide_subshape_paragraph_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_special_slide_subshape_paragraph_with_http_info(self, name, slide_index, slide_type, path, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read shape paragraph info (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_special_slide_subshape_paragraph_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_special_slide_subshape_paragraph" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Paragraph',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_special_slide_subshape_paragraphs(self, name, slide_index, slide_type, path, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read shape paragraphs info (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraphs
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_special_slide_subshape_paragraphs_with_http_info(name, slide_index, slide_type, path, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_special_slide_subshape_paragraphs_with_http_info(name, slide_index, slide_type, path, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_special_slide_subshape_paragraphs_with_http_info(self, name, slide_index, slide_type, path, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read shape paragraphs info (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_special_slide_subshape_paragraphs_with_http_info(name, slide_index, slide_type, path, shape_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraphs
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_special_slide_subshape_paragraphs" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Paragraphs',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_special_slide_subshape_portion(self, name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read paragraph portion info (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_special_slide_subshape_portion_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_special_slide_subshape_portion_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_special_slide_subshape_portion_with_http_info(self, name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read paragraph portion info (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_special_slide_subshape_portion_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_special_slide_subshape_portion" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'portion_index' is set
+        if not portion_index:
+            raise ValueError("Missing the required parameter `request.portion_index` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+        path_params['portionIndex'] = portion_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Portion',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_special_slide_subshape_portions(self, name, slide_index, slide_type, path, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read paragraph portions info (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portions
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_special_slide_subshape_portions_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_special_slide_subshape_portions_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_special_slide_subshape_portions_with_http_info(self, name, slide_index, slide_type, path, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read paragraph portions info (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_special_slide_subshape_portions_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portions
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_special_slide_subshape_portions" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_subshape_portions`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_subshape_portions`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_subshape_portions`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `get_special_slide_subshape_portions`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_subshape_portions`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_special_slide_subshape_portions`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/portions', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Portions',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_special_slide_subshapes(self, name, slide_index, slide_type, path, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read special slide shapes info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path (for smart art and group shapes).
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_special_slide_subshapes_with_http_info(name, slide_index, slide_type, path, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_special_slide_subshapes_with_http_info(name, slide_index, slide_type, path, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_special_slide_subshapes_with_http_info(self, name, slide_index, slide_type, path, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read special slide shapes info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_special_slide_subshapes_with_http_info(name, slide_index, slide_type, path, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path (for smart art and group shapes).
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_special_slide_subshapes" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_subshapes`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_subshapes`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_subshapes`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `get_special_slide_subshapes`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Shapes',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -20308,159 +24030,6 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def save_notes_slide_shape(self, name, slide_index, shape_index, format, out_path, options = None, scale_x = None, scale_y = None, bounds = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
-        """Render shape to specified picture format.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, format, out_path, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Presentation name.
-        :param slide_index Slide index.
-        :param shape_index Index of shape starting from 1
-        :param format Export picture format.
-        :param out_path Output path.
-        :param options export options
-        :param scale_x X scale ratio.
-        :param scale_y Y scale ratio.
-        :param bounds Shape thumbnail bounds type.
-        :param password Document password.
-        :param folder Presentation folder.
-        :param storage Presentation storage.
-        :param fonts_folder Fonts folder.
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.save_notes_slide_shape_with_http_info(name, slide_index, shape_index, format, out_path, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
-        else:
-            (data) = self.save_notes_slide_shape_with_http_info(name, slide_index, shape_index, format, out_path, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
-            return data
-
-    def save_notes_slide_shape_with_http_info(self, name, slide_index, shape_index, format, out_path, options = None, scale_x = None, scale_y = None, bounds = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
-        """Render shape to specified picture format.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.save_notes_slide_shape_with_http_info(name, slide_index, shape_index, format, out_path, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Presentation name.
-        :param slide_index Slide index.
-        :param shape_index Index of shape starting from 1
-        :param format Export picture format.
-        :param out_path Output path.
-        :param options export options
-        :param scale_x X scale ratio.
-        :param scale_y Y scale ratio.
-        :param bounds Shape thumbnail bounds type.
-        :param password Document password.
-        :param folder Presentation folder.
-        :param storage Presentation storage.
-        :param fonts_folder Fonts folder.
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method save_notes_slide_shape" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `save_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `save_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `save_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'format' is set
-        if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `save_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'out_path' is set
-        if not out_path:
-            raise ValueError("Missing the required parameter `request.out_path` when calling `save_notes_slide_shape`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-        path_params['format'] = format  # noqa: E501
-
-        query_params = []
-        if out_path:
-            query_params.append(('outPath', out_path))  # noqa: E501
-        if scale_x:
-            query_params.append(('scaleX', scale_x))  # noqa: E501
-        if scale_y:
-            query_params.append(('scaleY', scale_y))  # noqa: E501
-        if bounds:
-            query_params.append(('bounds', bounds))  # noqa: E501
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-        if fonts_folder:
-            query_params.append(('fontsFolder', fonts_folder))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-        if options:
-            body_params = options
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/{format}', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type=None,  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def save_presentation(self, name, format, out_path, options = None, password = None, folder = None, storage = None, fonts_folder = None, slides = None, **kwargs):  # noqa: E501
         """Save a presentation to a specified format.  # noqa: E501
 
@@ -20748,12 +24317,12 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def save_shape_online(self, document, slide_index, shape_index, format, out_path, scale_x = None, scale_y = None, bounds = None, password = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def save_shape_online(self, document, slide_index, shape_index, format, out_path, scale_x = None, scale_y = None, bounds = None, password = None, storage = None, fonts_folder = None, options = None, **kwargs):  # noqa: E501
         """Render shape to specified picture format.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(document, slide_index, shape_index, format, out_path, scale_x, scale_y, bounds, password, storage, fonts_folder, is_async=True)
+        >>> thread = api.(document, slide_index, shape_index, format, out_path, scale_x, scale_y, bounds, password, storage, fonts_folder, options, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -20768,23 +24337,24 @@ class SlidesApi(ApiBase):
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Fonts folder.
+        :param options Export options.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.save_shape_online_with_http_info(document, slide_index, shape_index, format, out_path, scale_x, scale_y, bounds, password, storage, fonts_folder, **kwargs)  # noqa: E501
+            return self.save_shape_online_with_http_info(document, slide_index, shape_index, format, out_path, scale_x, scale_y, bounds, password, storage, fonts_folder, options, **kwargs)  # noqa: E501
         else:
-            (data) = self.save_shape_online_with_http_info(document, slide_index, shape_index, format, out_path, scale_x, scale_y, bounds, password, storage, fonts_folder, **kwargs)  # noqa: E501
+            (data) = self.save_shape_online_with_http_info(document, slide_index, shape_index, format, out_path, scale_x, scale_y, bounds, password, storage, fonts_folder, options, **kwargs)  # noqa: E501
             return data
 
-    def save_shape_online_with_http_info(self, document, slide_index, shape_index, format, out_path, scale_x = None, scale_y = None, bounds = None, password = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def save_shape_online_with_http_info(self, document, slide_index, shape_index, format, out_path, scale_x = None, scale_y = None, bounds = None, password = None, storage = None, fonts_folder = None, options = None, **kwargs):  # noqa: E501
         """Render shape to specified picture format.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.save_shape_online_with_http_info(document, slide_index, shape_index, format, out_path, scale_x, scale_y, bounds, password, storage, fonts_folder, is_async=True)
+        >>> thread = api.save_shape_online_with_http_info(document, slide_index, shape_index, format, out_path, scale_x, scale_y, bounds, password, storage, fonts_folder, options, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -20799,6 +24369,7 @@ class SlidesApi(ApiBase):
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Fonts folder.
+        :param options Export options.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -20866,6 +24437,8 @@ class SlidesApi(ApiBase):
             param_files['document'] = document  # noqa: E501
 
         body_params = None
+        if options:
+            body_params = options
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -21037,12 +24610,12 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def save_slide_online(self, document, slide_index, format, out_path, width = None, height = None, password = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def save_slide_online(self, document, slide_index, format, out_path, width = None, height = None, password = None, storage = None, fonts_folder = None, options = None, **kwargs):  # noqa: E501
         """Save a slide to a specified format.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(document, slide_index, format, out_path, width, height, password, storage, fonts_folder, is_async=True)
+        >>> thread = api.(document, slide_index, format, out_path, width, height, password, storage, fonts_folder, options, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -21055,23 +24628,24 @@ class SlidesApi(ApiBase):
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Storage folder containing custom fonts to be used with the document.
+        :param options Export options.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.save_slide_online_with_http_info(document, slide_index, format, out_path, width, height, password, storage, fonts_folder, **kwargs)  # noqa: E501
+            return self.save_slide_online_with_http_info(document, slide_index, format, out_path, width, height, password, storage, fonts_folder, options, **kwargs)  # noqa: E501
         else:
-            (data) = self.save_slide_online_with_http_info(document, slide_index, format, out_path, width, height, password, storage, fonts_folder, **kwargs)  # noqa: E501
+            (data) = self.save_slide_online_with_http_info(document, slide_index, format, out_path, width, height, password, storage, fonts_folder, options, **kwargs)  # noqa: E501
             return data
 
-    def save_slide_online_with_http_info(self, document, slide_index, format, out_path, width = None, height = None, password = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+    def save_slide_online_with_http_info(self, document, slide_index, format, out_path, width = None, height = None, password = None, storage = None, fonts_folder = None, options = None, **kwargs):  # noqa: E501
         """Save a slide to a specified format.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.save_slide_online_with_http_info(document, slide_index, format, out_path, width, height, password, storage, fonts_folder, is_async=True)
+        >>> thread = api.save_slide_online_with_http_info(document, slide_index, format, out_path, width, height, password, storage, fonts_folder, options, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -21084,6 +24658,7 @@ class SlidesApi(ApiBase):
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Storage folder containing custom fonts to be used with the document.
+        :param options Export options.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -21145,6 +24720,8 @@ class SlidesApi(ApiBase):
             param_files['document'] = document  # noqa: E501
 
         body_params = None
+        if options:
+            body_params = options
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -21159,6 +24736,330 @@ class SlidesApi(ApiBase):
 
         return self.api_client.call_api(
             '/slides/slides/{slideIndex}/{format}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def save_special_slide_shape(self, name, slide_index, slide_type, shape_index, format, out_path, options = None, scale_x = None, scale_y = None, bounds = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+        """Render shape to specified picture format.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, format, out_path, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Presentation name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Index of shape starting from 1
+        :param format Export picture format.
+        :param out_path Output path.
+        :param options export options
+        :param scale_x X scale ratio.
+        :param scale_y Y scale ratio.
+        :param bounds Shape thumbnail bounds type.
+        :param password Document password.
+        :param folder Presentation folder.
+        :param storage Presentation storage.
+        :param fonts_folder Fonts folder.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.save_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, format, out_path, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
+        else:
+            (data) = self.save_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, format, out_path, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
+            return data
+
+    def save_special_slide_shape_with_http_info(self, name, slide_index, slide_type, shape_index, format, out_path, options = None, scale_x = None, scale_y = None, bounds = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+        """Render shape to specified picture format.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.save_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, format, out_path, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Presentation name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Index of shape starting from 1
+        :param format Export picture format.
+        :param out_path Output path.
+        :param options export options
+        :param scale_x X scale ratio.
+        :param scale_y Y scale ratio.
+        :param bounds Shape thumbnail bounds type.
+        :param password Document password.
+        :param folder Presentation folder.
+        :param storage Presentation storage.
+        :param fonts_folder Fonts folder.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method save_special_slide_shape" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `save_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `save_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `save_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `save_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'format' is set
+        if not format:
+            raise ValueError("Missing the required parameter `request.format` when calling `save_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'out_path' is set
+        if not out_path:
+            raise ValueError("Missing the required parameter `request.out_path` when calling `save_special_slide_shape`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['format'] = format  # noqa: E501
+
+        query_params = []
+        if out_path:
+            query_params.append(('outPath', out_path))  # noqa: E501
+        if scale_x:
+            query_params.append(('scaleX', scale_x))  # noqa: E501
+        if scale_y:
+            query_params.append(('scaleY', scale_y))  # noqa: E501
+        if bounds:
+            query_params.append(('bounds', bounds))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+        if fonts_folder:
+            query_params.append(('fontsFolder', fonts_folder))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if options:
+            body_params = options
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/{format}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def save_special_slide_subshape(self, name, slide_index, slide_type, path, shape_index, format, out_path, options = None, scale_x = None, scale_y = None, bounds = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+        """Render shape to specified picture format.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, format, out_path, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Presentation name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path (for smart art and group shapes).
+        :param shape_index Index of shape starting from 1
+        :param format Export picture format.
+        :param out_path Output path.
+        :param options export options
+        :param scale_x X scale ratio.
+        :param scale_y Y scale ratio.
+        :param bounds Shape thumbnail bounds type.
+        :param password Document password.
+        :param folder Presentation folder.
+        :param storage Presentation storage.
+        :param fonts_folder Fonts folder.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.save_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, format, out_path, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
+        else:
+            (data) = self.save_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, format, out_path, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
+            return data
+
+    def save_special_slide_subshape_with_http_info(self, name, slide_index, slide_type, path, shape_index, format, out_path, options = None, scale_x = None, scale_y = None, bounds = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+        """Render shape to specified picture format.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.save_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, format, out_path, options, scale_x, scale_y, bounds, password, folder, storage, fonts_folder, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Presentation name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path (for smart art and group shapes).
+        :param shape_index Index of shape starting from 1
+        :param format Export picture format.
+        :param out_path Output path.
+        :param options export options
+        :param scale_x X scale ratio.
+        :param scale_y Y scale ratio.
+        :param bounds Shape thumbnail bounds type.
+        :param password Document password.
+        :param folder Presentation folder.
+        :param storage Presentation storage.
+        :param fonts_folder Fonts folder.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method save_special_slide_subshape" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `save_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `save_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `save_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `save_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `save_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'format' is set
+        if not format:
+            raise ValueError("Missing the required parameter `request.format` when calling `save_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'out_path' is set
+        if not out_path:
+            raise ValueError("Missing the required parameter `request.out_path` when calling `save_special_slide_subshape`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['format'] = format  # noqa: E501
+
+        query_params = []
+        if out_path:
+            query_params.append(('outPath', out_path))  # noqa: E501
+        if scale_x:
+            query_params.append(('scaleX', scale_x))  # noqa: E501
+        if scale_y:
+            query_params.append(('scaleY', scale_y))  # noqa: E501
+        if bounds:
+            query_params.append(('bounds', bounds))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+        if fonts_folder:
+            query_params.append(('fontsFolder', fonts_folder))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if options:
+            body_params = options
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/{format}', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -22741,6 +26642,133 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def set_special_slide_animation(self, name, slide_index, slide_type, animation, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Set special slide (master, layout, notes) animation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, animation, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param animation Animation DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.set_special_slide_animation_with_http_info(name, slide_index, slide_type, animation, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.set_special_slide_animation_with_http_info(name, slide_index, slide_type, animation, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def set_special_slide_animation_with_http_info(self, name, slide_index, slide_type, animation, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Set special slide (master, layout, notes) animation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.set_special_slide_animation_with_http_info(name, slide_index, slide_type, animation, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param animation Animation DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method set_special_slide_animation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `set_special_slide_animation`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `set_special_slide_animation`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `set_special_slide_animation`")  # noqa: E501
+        # verify the required parameter 'animation' is set
+        if not animation:
+            raise ValueError("Missing the required parameter `request.animation` when calling `set_special_slide_animation`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if animation:
+            body_params = animation
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/animation', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SlideAnimation',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def set_view_properties(self, name, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Update presentation document properties.  # noqa: E501
 
@@ -24265,405 +28293,6 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def update_notes_slide_paragraph(self, name, slide_index, shape_index, paragraph_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Update paragraph properties.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, paragraph_index, dto, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param dto Paragraph DTO.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Paragraph
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.update_notes_slide_paragraph_with_http_info(name, slide_index, shape_index, paragraph_index, dto, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.update_notes_slide_paragraph_with_http_info(name, slide_index, shape_index, paragraph_index, dto, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def update_notes_slide_paragraph_with_http_info(self, name, slide_index, shape_index, paragraph_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Update paragraph properties.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.update_notes_slide_paragraph_with_http_info(name, slide_index, shape_index, paragraph_index, dto, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param dto Paragraph DTO.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Paragraph
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_notes_slide_paragraph" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_notes_slide_paragraph`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_notes_slide_paragraph`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_notes_slide_paragraph`")  # noqa: E501
-        # verify the required parameter 'paragraph_index' is set
-        if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `update_notes_slide_paragraph`")  # noqa: E501
-        # verify the required parameter 'dto' is set
-        if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_notes_slide_paragraph`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
-
-        query_params = []
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-        if dto:
-            body_params = dto
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Paragraph',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def update_notes_slide_portion(self, name, slide_index, shape_index, paragraph_index, portion_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Update portion properties.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, paragraph_index, portion_index, dto, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param portion_index Portion index.
-        :param dto Portion DTO.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Portion
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.update_notes_slide_portion_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, dto, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.update_notes_slide_portion_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, dto, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def update_notes_slide_portion_with_http_info(self, name, slide_index, shape_index, paragraph_index, portion_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Update portion properties.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.update_notes_slide_portion_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, dto, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param paragraph_index Paragraph index.
-        :param portion_index Portion index.
-        :param dto Portion DTO.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Portion
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_notes_slide_portion" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'paragraph_index' is set
-        if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `update_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'portion_index' is set
-        if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `update_notes_slide_portion`")  # noqa: E501
-        # verify the required parameter 'dto' is set
-        if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_notes_slide_portion`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
-        path_params['portionIndex'] = portion_index  # noqa: E501
-
-        query_params = []
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-        if dto:
-            body_params = dto
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Portion',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def update_notes_slide_shape(self, name, slide_index, shape_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Update shape properties.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, dto, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param dto Shape DTO.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: ShapeBase
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.update_notes_slide_shape_with_http_info(name, slide_index, shape_index, dto, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.update_notes_slide_shape_with_http_info(name, slide_index, shape_index, dto, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def update_notes_slide_shape_with_http_info(self, name, slide_index, shape_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Update shape properties.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.update_notes_slide_shape_with_http_info(name, slide_index, shape_index, dto, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index.
-        :param dto Shape DTO.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: ShapeBase
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_notes_slide_shape" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_notes_slide_shape`")  # noqa: E501
-        # verify the required parameter 'dto' is set
-        if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_notes_slide_shape`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-
-        query_params = []
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-        if dto:
-            body_params = dto
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/notesSlide/shapes/{shapeIndex}', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='ShapeBase',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def update_paragraph(self, name, slide_index, shape_index, paragraph_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Update paragraph properties.  # noqa: E501
 
@@ -25298,6 +28927,1130 @@ class SlidesApi(ApiBase):
             post_params=form_params,
             files=param_files,
             response_type='Slide',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_special_slide_animation_effect(self, name, slide_index, slide_type, effect_index, effect, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Modify an animation effect for a special slide (master, layout, notes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, effect_index, effect, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param effect_index The position of the effect to be modified.
+        :param effect Animation effect DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.update_special_slide_animation_effect_with_http_info(name, slide_index, slide_type, effect_index, effect, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_special_slide_animation_effect_with_http_info(name, slide_index, slide_type, effect_index, effect, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def update_special_slide_animation_effect_with_http_info(self, name, slide_index, slide_type, effect_index, effect, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Modify an animation effect for a special slide (master, layout, notes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.update_special_slide_animation_effect_with_http_info(name, slide_index, slide_type, effect_index, effect, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param effect_index The position of the effect to be modified.
+        :param effect Animation effect DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_special_slide_animation_effect" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_animation_effect`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_animation_effect`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_animation_effect`")  # noqa: E501
+        # verify the required parameter 'effect_index' is set
+        if not effect_index:
+            raise ValueError("Missing the required parameter `request.effect_index` when calling `update_special_slide_animation_effect`")  # noqa: E501
+        # verify the required parameter 'effect' is set
+        if not effect:
+            raise ValueError("Missing the required parameter `request.effect` when calling `update_special_slide_animation_effect`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['effectIndex'] = effect_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if effect:
+            body_params = effect
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/animation/mainSequence/{effectIndex}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SlideAnimation',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_special_slide_animation_interactive_sequence_effect(self, name, slide_index, slide_type, sequence_index, effect_index, effect, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Modify an animation effect for a special slide (master, layout, notes) interactive sequence.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, sequence_index, effect_index, effect, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param sequence_index The position of the interactive sequence.
+        :param effect_index The position of the effect to be modified.
+        :param effect Animation effect DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.update_special_slide_animation_interactive_sequence_effect_with_http_info(name, slide_index, slide_type, sequence_index, effect_index, effect, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_special_slide_animation_interactive_sequence_effect_with_http_info(name, slide_index, slide_type, sequence_index, effect_index, effect, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def update_special_slide_animation_interactive_sequence_effect_with_http_info(self, name, slide_index, slide_type, sequence_index, effect_index, effect, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Modify an animation effect for a special slide (master, layout, notes) interactive sequence.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.update_special_slide_animation_interactive_sequence_effect_with_http_info(name, slide_index, slide_type, sequence_index, effect_index, effect, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param sequence_index The position of the interactive sequence.
+        :param effect_index The position of the effect to be modified.
+        :param effect Animation effect DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SlideAnimation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_special_slide_animation_interactive_sequence_effect" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the required parameter 'sequence_index' is set
+        if not sequence_index:
+            raise ValueError("Missing the required parameter `request.sequence_index` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the required parameter 'effect_index' is set
+        if not effect_index:
+            raise ValueError("Missing the required parameter `request.effect_index` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the required parameter 'effect' is set
+        if not effect:
+            raise ValueError("Missing the required parameter `request.effect` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['sequenceIndex'] = sequence_index  # noqa: E501
+        path_params['effectIndex'] = effect_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if effect:
+            body_params = effect
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/animation/interactiveSequences/{sequenceIndex}/{effectIndex}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SlideAnimation',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_special_slide_paragraph(self, name, slide_index, slide_type, shape_index, paragraph_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Update paragraph properties.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, paragraph_index, dto, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param dto Paragraph DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.update_special_slide_paragraph_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, dto, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_special_slide_paragraph_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, dto, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def update_special_slide_paragraph_with_http_info(self, name, slide_index, slide_type, shape_index, paragraph_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Update paragraph properties.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.update_special_slide_paragraph_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, dto, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param dto Paragraph DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_special_slide_paragraph" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `update_special_slide_paragraph`")  # noqa: E501
+        # verify the required parameter 'dto' is set
+        if not dto:
+            raise ValueError("Missing the required parameter `request.dto` when calling `update_special_slide_paragraph`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if dto:
+            body_params = dto
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Paragraph',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_special_slide_portion(self, name, slide_index, slide_type, shape_index, paragraph_index, portion_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Update portion properties.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, paragraph_index, portion_index, dto, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param dto Portion DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.update_special_slide_portion_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, portion_index, dto, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_special_slide_portion_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, portion_index, dto, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def update_special_slide_portion_with_http_info(self, name, slide_index, slide_type, shape_index, paragraph_index, portion_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Update portion properties.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.update_special_slide_portion_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, portion_index, dto, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param dto Portion DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_special_slide_portion" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `update_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'portion_index' is set
+        if not portion_index:
+            raise ValueError("Missing the required parameter `request.portion_index` when calling `update_special_slide_portion`")  # noqa: E501
+        # verify the required parameter 'dto' is set
+        if not dto:
+            raise ValueError("Missing the required parameter `request.dto` when calling `update_special_slide_portion`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+        path_params['portionIndex'] = portion_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if dto:
+            body_params = dto
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Portion',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_special_slide_shape(self, name, slide_index, slide_type, shape_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Update shape properties.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, shape_index, dto, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param dto Shape DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: ShapeBase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.update_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, dto, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, dto, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def update_special_slide_shape_with_http_info(self, name, slide_index, slide_type, shape_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Update shape properties.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.update_special_slide_shape_with_http_info(name, slide_index, slide_type, shape_index, dto, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param shape_index Shape index.
+        :param dto Shape DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: ShapeBase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_special_slide_shape" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_special_slide_shape`")  # noqa: E501
+        # verify the required parameter 'dto' is set
+        if not dto:
+            raise ValueError("Missing the required parameter `request.dto` when calling `update_special_slide_shape`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if dto:
+            body_params = dto
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{shapeIndex}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='ShapeBase',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_special_slide_subshape(self, name, slide_index, slide_type, path, shape_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Update shape properties (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, dto, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param dto Shape DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: ShapeBase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.update_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, dto, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, dto, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def update_special_slide_subshape_with_http_info(self, name, slide_index, slide_type, path, shape_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Update shape properties (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.update_special_slide_subshape_with_http_info(name, slide_index, slide_type, path, shape_index, dto, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param dto Shape DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: ShapeBase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_special_slide_subshape" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `update_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_special_slide_subshape`")  # noqa: E501
+        # verify the required parameter 'dto' is set
+        if not dto:
+            raise ValueError("Missing the required parameter `request.dto` when calling `update_special_slide_subshape`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if dto:
+            body_params = dto
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='ShapeBase',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_special_slide_subshape_paragraph(self, name, slide_index, slide_type, path, shape_index, paragraph_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Update paragraph properties (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, paragraph_index, dto, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param dto Paragraph DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.update_special_slide_subshape_paragraph_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, dto, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_special_slide_subshape_paragraph_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, dto, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def update_special_slide_subshape_paragraph_with_http_info(self, name, slide_index, slide_type, path, shape_index, paragraph_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Update paragraph properties (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.update_special_slide_subshape_paragraph_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, dto, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param dto Paragraph DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_special_slide_subshape_paragraph" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the required parameter 'dto' is set
+        if not dto:
+            raise ValueError("Missing the required parameter `request.dto` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if dto:
+            body_params = dto
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Paragraph',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_special_slide_subshape_portion(self, name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Update portion properties (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, dto, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param dto Portion DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.update_special_slide_subshape_portion_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, dto, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_special_slide_subshape_portion_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, dto, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def update_special_slide_subshape_portion_with_http_info(self, name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Update portion properties (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.update_special_slide_subshape_portion_with_http_info(name, slide_index, slide_type, path, shape_index, paragraph_index, portion_index, dto, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Parent slide index.
+        :param slide_type Slide type (master, layout or notes).
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param dto Portion DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_special_slide_subshape_portion" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'slide_type' is set
+        if not slide_type:
+            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `request.path` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'portion_index' is set
+        if not portion_index:
+            raise ValueError("Missing the required parameter `request.portion_index` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+        # verify the required parameter 'dto' is set
+        if not dto:
+            raise ValueError("Missing the required parameter `request.dto` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['slideType'] = slide_type  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+        path_params['portionIndex'] = portion_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if dto:
+            body_params = dto
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/{slideType}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Portion',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),

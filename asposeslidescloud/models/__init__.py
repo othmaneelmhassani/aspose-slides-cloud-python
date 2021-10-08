@@ -89,6 +89,7 @@ from asposeslidescloud.models.slide_comment import SlideComment
 from asposeslidescloud.models.slide_export_format import SlideExportFormat
 from asposeslidescloud.models.smart_art_node import SmartArtNode
 from asposeslidescloud.models.soft_edge_effect import SoftEdgeEffect
+from asposeslidescloud.models.special_slide_type import SpecialSlideType
 from asposeslidescloud.models.storage_exist import StorageExist
 from asposeslidescloud.models.storage_file import StorageFile
 from asposeslidescloud.models.table_cell import TableCell
