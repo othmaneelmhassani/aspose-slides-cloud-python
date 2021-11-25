@@ -3,6 +3,8 @@
 # Python REST API to Process Presentation in Cloud
 This repository contains Aspose.Slides Cloud SDK for Python source code. This SDK allows you to [process & manipulate PPT, PPTX, ODP, OTP](https://products.aspose.cloud/slides/python) using Aspose.slides Cloud REST APIs in your Python applications.
 
+You may want to check out Aspose free [[PowerPoint to Word Converter]](https://products.aspose.app/slides/conversion/ppt-to-word) because it is a live implementation of one of the most popular conversion processes.
+
 ## Presentation Processing Features
 
 - Fetch presentation images in any of the supported file formats.
