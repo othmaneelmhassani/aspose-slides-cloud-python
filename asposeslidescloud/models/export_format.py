@@ -51,6 +51,7 @@ class ExportFormat(object):
     POTX = "Potx"
     POTM = "Potm"
     HTML = "Html"
+    HTML5 = "Html5"
     SWF = "Swf"
     SVG = "Svg"
     JPEG = "Jpeg"

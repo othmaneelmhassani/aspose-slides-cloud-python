@@ -21407,11 +21407,12 @@ class TestSlidesApi(BaseTest):
         param_name = self.get_test_value('get_animation', 'name', 'str')
         param_slide_index = self.get_test_value('get_animation', 'slide_index', 'int')
         param_shape_index = self.get_test_value('get_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_animation', 'password', 'str')
         param_folder = self.get_test_value('get_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_animation', 'storage', 'str')
         self.initialize('get_animation', None, None)
-        response = self.api.get_animation(param_name, param_slide_index, param_shape_index, param_password, param_folder, param_storage)
+        response = self.api.get_animation(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
         self.assertIsNotNone(response)
 
     def test_get_animation_invalid_name(self):
@@ -21420,6 +21421,7 @@ class TestSlidesApi(BaseTest):
         param_name = self.get_test_value('get_animation', 'name', 'str')
         param_slide_index = self.get_test_value('get_animation', 'slide_index', 'int')
         param_shape_index = self.get_test_value('get_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_animation', 'password', 'str')
         param_folder = self.get_test_value('get_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_animation', 'storage', 'str')
@@ -21427,7 +21429,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('get_animation', 'name', param_name)
         ok = False
         try:
-            self.api.get_animation(param_name, param_slide_index, param_shape_index, param_password, param_folder, param_storage)
+            self.api.get_animation(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_animation', 'name', param_name)
@@ -21442,6 +21444,7 @@ class TestSlidesApi(BaseTest):
         param_name = self.get_test_value('get_animation', 'name', 'str')
         param_slide_index = self.get_test_value('get_animation', 'slide_index', 'int')
         param_shape_index = self.get_test_value('get_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_animation', 'password', 'str')
         param_folder = self.get_test_value('get_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_animation', 'storage', 'str')
@@ -21449,7 +21452,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('get_animation', 'slide_index', param_slide_index)
         ok = False
         try:
-            self.api.get_animation(param_name, param_slide_index, param_shape_index, param_password, param_folder, param_storage)
+            self.api.get_animation(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_animation', 'slide_index', param_slide_index)
@@ -21464,6 +21467,7 @@ class TestSlidesApi(BaseTest):
         param_name = self.get_test_value('get_animation', 'name', 'str')
         param_slide_index = self.get_test_value('get_animation', 'slide_index', 'int')
         param_shape_index = self.get_test_value('get_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_animation', 'password', 'str')
         param_folder = self.get_test_value('get_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_animation', 'storage', 'str')
@@ -21471,7 +21475,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('get_animation', 'shape_index', param_shape_index)
         ok = False
         try:
-            self.api.get_animation(param_name, param_slide_index, param_shape_index, param_password, param_folder, param_storage)
+            self.api.get_animation(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_animation', 'shape_index', param_shape_index)
@@ -21480,12 +21484,36 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('get_animation', 'shape_index')
 
+    def test_get_animation_invalid_paragraph_index(self):
+        """Test case for get_animation with invalid paragraph_index
+        """
+        param_name = self.get_test_value('get_animation', 'name', 'str')
+        param_slide_index = self.get_test_value('get_animation', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_animation', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_animation', 'password', 'str')
+        param_folder = self.get_test_value('get_animation', 'folder', 'str')
+        param_storage = self.get_test_value('get_animation', 'storage', 'str')
+        param_paragraph_index = self.get_invalid_test_value('get_animation', 'paragraph_index', param_paragraph_index, 'int')
+        self.initialize('get_animation', 'paragraph_index', param_paragraph_index)
+        ok = False
+        try:
+            self.api.get_animation(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_animation', 'paragraph_index', param_paragraph_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_animation', 'paragraph_index', param_paragraph_index)
+        if ok:
+            self.assert_no_exception('get_animation', 'paragraph_index')
+
     def test_get_animation_invalid_password(self):
         """Test case for get_animation with invalid password
         """
         param_name = self.get_test_value('get_animation', 'name', 'str')
         param_slide_index = self.get_test_value('get_animation', 'slide_index', 'int')
         param_shape_index = self.get_test_value('get_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_animation', 'password', 'str')
         param_folder = self.get_test_value('get_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_animation', 'storage', 'str')
@@ -21493,7 +21521,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('get_animation', 'password', param_password)
         ok = False
         try:
-            self.api.get_animation(param_name, param_slide_index, param_shape_index, param_password, param_folder, param_storage)
+            self.api.get_animation(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_animation', 'password', param_password)
@@ -21508,6 +21536,7 @@ class TestSlidesApi(BaseTest):
         param_name = self.get_test_value('get_animation', 'name', 'str')
         param_slide_index = self.get_test_value('get_animation', 'slide_index', 'int')
         param_shape_index = self.get_test_value('get_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_animation', 'password', 'str')
         param_folder = self.get_test_value('get_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_animation', 'storage', 'str')
@@ -21515,7 +21544,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('get_animation', 'folder', param_folder)
         ok = False
         try:
-            self.api.get_animation(param_name, param_slide_index, param_shape_index, param_password, param_folder, param_storage)
+            self.api.get_animation(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_animation', 'folder', param_folder)
@@ -21530,6 +21559,7 @@ class TestSlidesApi(BaseTest):
         param_name = self.get_test_value('get_animation', 'name', 'str')
         param_slide_index = self.get_test_value('get_animation', 'slide_index', 'int')
         param_shape_index = self.get_test_value('get_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_animation', 'password', 'str')
         param_folder = self.get_test_value('get_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_animation', 'storage', 'str')
@@ -21537,7 +21567,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('get_animation', 'storage', param_storage)
         ok = False
         try:
-            self.api.get_animation(param_name, param_slide_index, param_shape_index, param_password, param_folder, param_storage)
+            self.api.get_animation(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_animation', 'storage', param_storage)
@@ -25570,11 +25600,12 @@ class TestSlidesApi(BaseTest):
         param_slide_index = self.get_test_value('get_special_slide_animation', 'slide_index', 'int')
         param_slide_type = self.get_test_value('get_special_slide_animation', 'slide_type', 'str')
         param_shape_index = self.get_test_value('get_special_slide_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_special_slide_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_special_slide_animation', 'password', 'str')
         param_folder = self.get_test_value('get_special_slide_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_special_slide_animation', 'storage', 'str')
         self.initialize('get_special_slide_animation', None, None)
-        response = self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_password, param_folder, param_storage)
+        response = self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
         self.assertIsNotNone(response)
 
     def test_get_special_slide_animation_invalid_name(self):
@@ -25584,6 +25615,7 @@ class TestSlidesApi(BaseTest):
         param_slide_index = self.get_test_value('get_special_slide_animation', 'slide_index', 'int')
         param_slide_type = self.get_test_value('get_special_slide_animation', 'slide_type', 'str')
         param_shape_index = self.get_test_value('get_special_slide_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_special_slide_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_special_slide_animation', 'password', 'str')
         param_folder = self.get_test_value('get_special_slide_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_special_slide_animation', 'storage', 'str')
@@ -25591,7 +25623,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('get_special_slide_animation', 'name', param_name)
         ok = False
         try:
-            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_password, param_folder, param_storage)
+            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_special_slide_animation', 'name', param_name)
@@ -25607,6 +25639,7 @@ class TestSlidesApi(BaseTest):
         param_slide_index = self.get_test_value('get_special_slide_animation', 'slide_index', 'int')
         param_slide_type = self.get_test_value('get_special_slide_animation', 'slide_type', 'str')
         param_shape_index = self.get_test_value('get_special_slide_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_special_slide_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_special_slide_animation', 'password', 'str')
         param_folder = self.get_test_value('get_special_slide_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_special_slide_animation', 'storage', 'str')
@@ -25614,7 +25647,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('get_special_slide_animation', 'slide_index', param_slide_index)
         ok = False
         try:
-            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_password, param_folder, param_storage)
+            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_special_slide_animation', 'slide_index', param_slide_index)
@@ -25630,6 +25663,7 @@ class TestSlidesApi(BaseTest):
         param_slide_index = self.get_test_value('get_special_slide_animation', 'slide_index', 'int')
         param_slide_type = self.get_test_value('get_special_slide_animation', 'slide_type', 'str')
         param_shape_index = self.get_test_value('get_special_slide_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_special_slide_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_special_slide_animation', 'password', 'str')
         param_folder = self.get_test_value('get_special_slide_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_special_slide_animation', 'storage', 'str')
@@ -25637,7 +25671,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('get_special_slide_animation', 'slide_type', param_slide_type)
         ok = False
         try:
-            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_password, param_folder, param_storage)
+            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_special_slide_animation', 'slide_type', param_slide_type)
@@ -25653,6 +25687,7 @@ class TestSlidesApi(BaseTest):
         param_slide_index = self.get_test_value('get_special_slide_animation', 'slide_index', 'int')
         param_slide_type = self.get_test_value('get_special_slide_animation', 'slide_type', 'str')
         param_shape_index = self.get_test_value('get_special_slide_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_special_slide_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_special_slide_animation', 'password', 'str')
         param_folder = self.get_test_value('get_special_slide_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_special_slide_animation', 'storage', 'str')
@@ -25660,7 +25695,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('get_special_slide_animation', 'shape_index', param_shape_index)
         ok = False
         try:
-            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_password, param_folder, param_storage)
+            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_special_slide_animation', 'shape_index', param_shape_index)
@@ -25669,6 +25704,30 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('get_special_slide_animation', 'shape_index')
 
+    def test_get_special_slide_animation_invalid_paragraph_index(self):
+        """Test case for get_special_slide_animation with invalid paragraph_index
+        """
+        param_name = self.get_test_value('get_special_slide_animation', 'name', 'str')
+        param_slide_index = self.get_test_value('get_special_slide_animation', 'slide_index', 'int')
+        param_slide_type = self.get_test_value('get_special_slide_animation', 'slide_type', 'str')
+        param_shape_index = self.get_test_value('get_special_slide_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_special_slide_animation', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_special_slide_animation', 'password', 'str')
+        param_folder = self.get_test_value('get_special_slide_animation', 'folder', 'str')
+        param_storage = self.get_test_value('get_special_slide_animation', 'storage', 'str')
+        param_paragraph_index = self.get_invalid_test_value('get_special_slide_animation', 'paragraph_index', param_paragraph_index, 'int')
+        self.initialize('get_special_slide_animation', 'paragraph_index', param_paragraph_index)
+        ok = False
+        try:
+            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_special_slide_animation', 'paragraph_index', param_paragraph_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_special_slide_animation', 'paragraph_index', param_paragraph_index)
+        if ok:
+            self.assert_no_exception('get_special_slide_animation', 'paragraph_index')
+
     def test_get_special_slide_animation_invalid_password(self):
         """Test case for get_special_slide_animation with invalid password
         """
@@ -25676,6 +25735,7 @@ class TestSlidesApi(BaseTest):
         param_slide_index = self.get_test_value('get_special_slide_animation', 'slide_index', 'int')
         param_slide_type = self.get_test_value('get_special_slide_animation', 'slide_type', 'str')
         param_shape_index = self.get_test_value('get_special_slide_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_special_slide_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_special_slide_animation', 'password', 'str')
         param_folder = self.get_test_value('get_special_slide_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_special_slide_animation', 'storage', 'str')
@@ -25683,7 +25743,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('get_special_slide_animation', 'password', param_password)
         ok = False
         try:
-            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_password, param_folder, param_storage)
+            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_special_slide_animation', 'password', param_password)
@@ -25699,6 +25759,7 @@ class TestSlidesApi(BaseTest):
         param_slide_index = self.get_test_value('get_special_slide_animation', 'slide_index', 'int')
         param_slide_type = self.get_test_value('get_special_slide_animation', 'slide_type', 'str')
         param_shape_index = self.get_test_value('get_special_slide_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_special_slide_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_special_slide_animation', 'password', 'str')
         param_folder = self.get_test_value('get_special_slide_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_special_slide_animation', 'storage', 'str')
@@ -25706,7 +25767,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('get_special_slide_animation', 'folder', param_folder)
         ok = False
         try:
-            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_password, param_folder, param_storage)
+            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_special_slide_animation', 'folder', param_folder)
@@ -25722,6 +25783,7 @@ class TestSlidesApi(BaseTest):
         param_slide_index = self.get_test_value('get_special_slide_animation', 'slide_index', 'int')
         param_slide_type = self.get_test_value('get_special_slide_animation', 'slide_type', 'str')
         param_shape_index = self.get_test_value('get_special_slide_animation', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_special_slide_animation', 'paragraph_index', 'int')
         param_password = self.get_test_value('get_special_slide_animation', 'password', 'str')
         param_folder = self.get_test_value('get_special_slide_animation', 'folder', 'str')
         param_storage = self.get_test_value('get_special_slide_animation', 'storage', 'str')
@@ -25729,7 +25791,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('get_special_slide_animation', 'storage', param_storage)
         ok = False
         try:
-            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_password, param_folder, param_storage)
+            self.api.get_special_slide_animation(param_name, param_slide_index, param_slide_type, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_special_slide_animation', 'storage', param_storage)

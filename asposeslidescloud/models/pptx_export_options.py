@@ -44,12 +44,16 @@ class PptxExportOptions(ExportOptions):
     """
     swagger_types = {
         'default_regular_font': 'str',
+        'height': 'int',
+        'width': 'int',
         'format': 'str',
         'conformance': 'str'
     }
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
+        'height': 'height',
+        'width': 'width',
         'format': 'format',
         'conformance': 'conformance'
     }
@@ -58,14 +62,15 @@ class PptxExportOptions(ExportOptions):
         'format': 'pptx',
     }
 
-    def __init__(self, default_regular_font=None, format='pptx', conformance=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, height=None, width=None, format='pptx', conformance=None):  # noqa: E501
         """PptxExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(PptxExportOptions, self).__init__(default_regular_font, format)
+        super(PptxExportOptions, self).__init__(default_regular_font, height, width, format)
 
         self._conformance = None
         self.format = 'pptx'
 
-        self.conformance = conformance
+        if conformance is not None:
+            self.conformance = conformance
 
     @property
     def conformance(self):

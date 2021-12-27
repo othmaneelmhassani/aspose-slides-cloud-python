@@ -44,6 +44,8 @@ class HtmlExportOptions(ExportOptions):
     """
     swagger_types = {
         'default_regular_font': 'str',
+        'height': 'int',
+        'width': 'int',
         'format': 'str',
         'save_as_zip': 'bool',
         'sub_directory_name': 'str',
@@ -61,6 +63,8 @@ class HtmlExportOptions(ExportOptions):
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
+        'height': 'height',
+        'width': 'width',
         'format': 'format',
         'save_as_zip': 'saveAsZip',
         'sub_directory_name': 'subDirectoryName',
@@ -80,9 +84,9 @@ class HtmlExportOptions(ExportOptions):
         'format': 'html',
     }
 
-    def __init__(self, default_regular_font=None, format='html', save_as_zip=None, sub_directory_name=None, show_hidden_slides=None, svg_responsive_layout=None, jpeg_quality=None, pictures_compression=None, delete_pictures_cropped_areas=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None, show_comments_by_no_author=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, height=None, width=None, format='html', save_as_zip=None, sub_directory_name=None, show_hidden_slides=None, svg_responsive_layout=None, jpeg_quality=None, pictures_compression=None, delete_pictures_cropped_areas=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None, show_comments_by_no_author=None):  # noqa: E501
         """HtmlExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(HtmlExportOptions, self).__init__(default_regular_font, format)
+        super(HtmlExportOptions, self).__init__(default_regular_font, height, width, format)
 
         self._save_as_zip = None
         self._sub_directory_name = None
@@ -98,21 +102,30 @@ class HtmlExportOptions(ExportOptions):
         self._show_comments_by_no_author = None
         self.format = 'html'
 
-        self.save_as_zip = save_as_zip
+        if save_as_zip is not None:
+            self.save_as_zip = save_as_zip
         if sub_directory_name is not None:
             self.sub_directory_name = sub_directory_name
-        self.show_hidden_slides = show_hidden_slides
-        self.svg_responsive_layout = svg_responsive_layout
-        self.jpeg_quality = jpeg_quality
+        if show_hidden_slides is not None:
+            self.show_hidden_slides = show_hidden_slides
+        if svg_responsive_layout is not None:
+            self.svg_responsive_layout = svg_responsive_layout
+        if jpeg_quality is not None:
+            self.jpeg_quality = jpeg_quality
         if pictures_compression is not None:
             self.pictures_compression = pictures_compression
-        self.delete_pictures_cropped_areas = delete_pictures_cropped_areas
-        self.notes_position = notes_position
-        self.comments_position = comments_position
-        self.comments_area_width = comments_area_width
+        if delete_pictures_cropped_areas is not None:
+            self.delete_pictures_cropped_areas = delete_pictures_cropped_areas
+        if notes_position is not None:
+            self.notes_position = notes_position
+        if comments_position is not None:
+            self.comments_position = comments_position
+        if comments_area_width is not None:
+            self.comments_area_width = comments_area_width
         if comments_area_color is not None:
             self.comments_area_color = comments_area_color
-        self.show_comments_by_no_author = show_comments_by_no_author
+        if show_comments_by_no_author is not None:
+            self.show_comments_by_no_author = show_comments_by_no_author
 
     @property
     def save_as_zip(self):

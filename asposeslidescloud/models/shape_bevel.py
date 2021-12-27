@@ -31,7 +31,7 @@ import re  # noqa: F401
 import six
 
 
-class ExportOptions(object):
+class ShapeBevel(object):
 
 
     """
@@ -42,124 +42,115 @@ class ExportOptions(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'default_regular_font': 'str',
-        'height': 'int',
-        'width': 'int',
-        'format': 'str'
+        'bevel_type': 'str',
+        'width': 'float',
+        'height': 'float'
     }
 
     attribute_map = {
-        'default_regular_font': 'defaultRegularFont',
-        'height': 'height',
+        'bevel_type': 'bevelType',
         'width': 'width',
-        'format': 'format'
+        'height': 'height'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, format=None):  # noqa: E501
-        """ExportOptions - a model defined in Swagger"""  # noqa: E501
+    def __init__(self, bevel_type=None, width=None, height=None):  # noqa: E501
+        """ShapeBevel - a model defined in Swagger"""  # noqa: E501
 
-        self._default_regular_font = None
-        self._height = None
+        self._bevel_type = None
         self._width = None
-        self._format = None
+        self._height = None
 
-        if default_regular_font is not None:
-            self.default_regular_font = default_regular_font
-        if height is not None:
-            self.height = height
+        if bevel_type is not None:
+            self.bevel_type = bevel_type
         if width is not None:
             self.width = width
-        if format is not None:
-            self.format = format
+        if height is not None:
+            self.height = height
 
     @property
-    def default_regular_font(self):
-        """Gets the default_regular_font of this ExportOptions.  # noqa: E501
+    def bevel_type(self):
+        """Gets the bevel_type of this ShapeBevel.  # noqa: E501
 
-        Default regular font for rendering the presentation.   # noqa: E501
+        Bevel type  # noqa: E501
 
-        :return: The default_regular_font of this ExportOptions.  # noqa: E501
+        :return: The bevel_type of this ShapeBevel.  # noqa: E501
         :rtype: str
         """
-        return self._default_regular_font
+        return self._bevel_type
 
-    @default_regular_font.setter
-    def default_regular_font(self, default_regular_font):
-        """Sets the default_regular_font of this ExportOptions.
+    @bevel_type.setter
+    def bevel_type(self, bevel_type):
+        """Sets the bevel_type of this ShapeBevel.
 
-        Default regular font for rendering the presentation.   # noqa: E501
+        Bevel type  # noqa: E501
 
-        :param default_regular_font: The default_regular_font of this ExportOptions.  # noqa: E501
+        :param bevel_type: The bevel_type of this ShapeBevel.  # noqa: E501
         :type: str
         """
-        self._default_regular_font = default_regular_font
-
-    @property
-    def height(self):
-        """Gets the height of this ExportOptions.  # noqa: E501
-
-        Gets or sets the height of slides in the output format, e.g. image size, pdf page size etc.  # noqa: E501
-
-        :return: The height of this ExportOptions.  # noqa: E501
-        :rtype: int
-        """
-        return self._height
-
-    @height.setter
-    def height(self, height):
-        """Sets the height of this ExportOptions.
-
-        Gets or sets the height of slides in the output format, e.g. image size, pdf page size etc.  # noqa: E501
-
-        :param height: The height of this ExportOptions.  # noqa: E501
-        :type: int
-        """
-        self._height = height
+        if bevel_type is not None:
+            allowed_values = ["Angle", "ArtDeco", "Circle", "Convex", "CoolSlant", "Cross", "Divot", "HardEdge", "RelaxedInset", "Riblet", "Slope", "SoftRound", "NotDefined"]  # noqa: E501
+            if bevel_type.isdigit():
+                int_bevel_type = int(bevel_type)
+                if int_bevel_type < 0 or int_bevel_type >= len(allowed_values):
+                    raise ValueError(
+                        "Invalid value for `bevel_type` ({0}), must be one of {1}"  # noqa: E501
+                        .format(bevel_type, allowed_values)
+                    )
+                self._bevel_type = allowed_values[int_bevel_type]
+                return
+            if bevel_type not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `bevel_type` ({0}), must be one of {1}"  # noqa: E501
+                    .format(bevel_type, allowed_values)
+                )
+        self._bevel_type = bevel_type
 
     @property
     def width(self):
-        """Gets the width of this ExportOptions.  # noqa: E501
+        """Gets the width of this ShapeBevel.  # noqa: E501
 
-        Gets or sets the height of slides in the output format, e.g. image size, pdf page size etc.  # noqa: E501
+        Bevel width  # noqa: E501
 
-        :return: The width of this ExportOptions.  # noqa: E501
-        :rtype: int
+        :return: The width of this ShapeBevel.  # noqa: E501
+        :rtype: float
         """
         return self._width
 
     @width.setter
     def width(self, width):
-        """Sets the width of this ExportOptions.
+        """Sets the width of this ShapeBevel.
 
-        Gets or sets the height of slides in the output format, e.g. image size, pdf page size etc.  # noqa: E501
+        Bevel width  # noqa: E501
 
-        :param width: The width of this ExportOptions.  # noqa: E501
-        :type: int
+        :param width: The width of this ShapeBevel.  # noqa: E501
+        :type: float
         """
         self._width = width
 
     @property
-    def format(self):
-        """Gets the format of this ExportOptions.  # noqa: E501
+    def height(self):
+        """Gets the height of this ShapeBevel.  # noqa: E501
 
+        Bevel height  # noqa: E501
 
-        :return: The format of this ExportOptions.  # noqa: E501
-        :rtype: str
+        :return: The height of this ShapeBevel.  # noqa: E501
+        :rtype: float
         """
-        return self._format
+        return self._height
 
-    @format.setter
-    def format(self, format):
-        """Sets the format of this ExportOptions.
+    @height.setter
+    def height(self, height):
+        """Sets the height of this ShapeBevel.
 
+        Bevel height  # noqa: E501
 
-        :param format: The format of this ExportOptions.  # noqa: E501
-        :type: str
+        :param height: The height of this ShapeBevel.  # noqa: E501
+        :type: float
         """
-        self._format = format
+        self._height = height
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -195,7 +186,7 @@ class ExportOptions(object):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ExportOptions):
+        if not isinstance(other, ShapeBevel):
             return False
 
         return self.__dict__ == other.__dict__

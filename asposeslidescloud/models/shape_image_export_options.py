@@ -66,9 +66,12 @@ class ShapeImageExportOptions(object):
         self._thumbnail_bounds = None
         self._format = None
 
-        self.scale_x = scale_x
-        self.scale_y = scale_y
-        self.thumbnail_bounds = thumbnail_bounds
+        if scale_x is not None:
+            self.scale_x = scale_x
+        if scale_y is not None:
+            self.scale_y = scale_y
+        if thumbnail_bounds is not None:
+            self.thumbnail_bounds = thumbnail_bounds
         if format is not None:
             self.format = format
 

@@ -57,6 +57,7 @@ class Table(ShapeBase):
         'shapes': 'ResourceUri',
         'fill_format': 'FillFormat',
         'effect_format': 'EffectFormat',
+        'three_d_format': 'ThreeDFormat',
         'line_format': 'LineFormat',
         'type': 'str',
         'style': 'str',
@@ -86,6 +87,7 @@ class Table(ShapeBase):
         'shapes': 'shapes',
         'fill_format': 'fillFormat',
         'effect_format': 'effectFormat',
+        'three_d_format': 'threeDFormat',
         'line_format': 'lineFormat',
         'type': 'type',
         'style': 'style',
@@ -104,9 +106,9 @@ class Table(ShapeBase):
         'type': 'Table',
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, line_format=None, type='Table', style=None, rows=None, columns=None, first_col=None, first_row=None, horizontal_banding=None, last_col=None, last_row=None, right_to_left=None, vertical_banding=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, type='Table', style=None, rows=None, columns=None, first_col=None, first_row=None, horizontal_banding=None, last_col=None, last_row=None, right_to_left=None, vertical_banding=None):  # noqa: E501
         """Table - a model defined in Swagger"""  # noqa: E501
-        super(Table, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, line_format, type)
+        super(Table, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, three_d_format, line_format, type)
 
         self._style = None
         self._rows = None

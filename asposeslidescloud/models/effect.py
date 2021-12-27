@@ -46,6 +46,7 @@ class Effect(object):
         'subtype': 'str',
         'preset_class_type': 'str',
         'shape_index': 'int',
+        'paragraph_index': 'int',
         'trigger_type': 'str',
         'accelerate': 'float',
         'auto_reverse': 'bool',
@@ -63,6 +64,7 @@ class Effect(object):
         'subtype': 'subtype',
         'preset_class_type': 'presetClassType',
         'shape_index': 'shapeIndex',
+        'paragraph_index': 'paragraphIndex',
         'trigger_type': 'triggerType',
         'accelerate': 'accelerate',
         'auto_reverse': 'autoReverse',
@@ -78,13 +80,14 @@ class Effect(object):
     type_determiners = {
     }
 
-    def __init__(self, type=None, subtype=None, preset_class_type=None, shape_index=None, trigger_type=None, accelerate=None, auto_reverse=None, decelerate=None, duration=None, repeat_count=None, repeat_duration=None, restart=None, speed=None, trigger_delay_time=None):  # noqa: E501
+    def __init__(self, type=None, subtype=None, preset_class_type=None, shape_index=None, paragraph_index=None, trigger_type=None, accelerate=None, auto_reverse=None, decelerate=None, duration=None, repeat_count=None, repeat_duration=None, restart=None, speed=None, trigger_delay_time=None):  # noqa: E501
         """Effect - a model defined in Swagger"""  # noqa: E501
 
         self._type = None
         self._subtype = None
         self._preset_class_type = None
         self._shape_index = None
+        self._paragraph_index = None
         self._trigger_type = None
         self._accelerate = None
         self._auto_reverse = None
@@ -103,6 +106,8 @@ class Effect(object):
         if preset_class_type is not None:
             self.preset_class_type = preset_class_type
         self.shape_index = shape_index
+        if paragraph_index is not None:
+            self.paragraph_index = paragraph_index
         if trigger_type is not None:
             self.trigger_type = trigger_type
         if accelerate is not None:
@@ -259,6 +264,28 @@ class Effect(object):
         :type: int
         """
         self._shape_index = shape_index
+
+    @property
+    def paragraph_index(self):
+        """Gets the paragraph_index of this Effect.  # noqa: E501
+
+        Paragraph index.  # noqa: E501
+
+        :return: The paragraph_index of this Effect.  # noqa: E501
+        :rtype: int
+        """
+        return self._paragraph_index
+
+    @paragraph_index.setter
+    def paragraph_index(self, paragraph_index):
+        """Sets the paragraph_index of this Effect.
+
+        Paragraph index.  # noqa: E501
+
+        :param paragraph_index: The paragraph_index of this Effect.  # noqa: E501
+        :type: int
+        """
+        self._paragraph_index = paragraph_index
 
     @property
     def trigger_type(self):

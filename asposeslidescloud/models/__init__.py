@@ -34,6 +34,7 @@ from asposeslidescloud.models.arrow_head_properties import ArrowHeadProperties
 from asposeslidescloud.models.axes import Axes
 from asposeslidescloud.models.axis import Axis
 from asposeslidescloud.models.blur_effect import BlurEffect
+from asposeslidescloud.models.camera import Camera
 from asposeslidescloud.models.chart_category import ChartCategory
 from asposeslidescloud.models.chart_title import ChartTitle
 from asposeslidescloud.models.chart_wall import ChartWall
@@ -63,6 +64,7 @@ from asposeslidescloud.models.input import Input
 from asposeslidescloud.models.input_file import InputFile
 from asposeslidescloud.models.interactive_sequence import InteractiveSequence
 from asposeslidescloud.models.legend import Legend
+from asposeslidescloud.models.light_rig import LightRig
 from asposeslidescloud.models.line_format import LineFormat
 from asposeslidescloud.models.merging_source import MergingSource
 from asposeslidescloud.models.normal_view_restored_properties import NormalViewRestoredProperties
@@ -81,6 +83,7 @@ from asposeslidescloud.models.resource_base import ResourceBase
 from asposeslidescloud.models.resource_uri import ResourceUri
 from asposeslidescloud.models.series import Series
 from asposeslidescloud.models.series_marker import SeriesMarker
+from asposeslidescloud.models.shape_bevel import ShapeBevel
 from asposeslidescloud.models.shape_export_format import ShapeExportFormat
 from asposeslidescloud.models.shape_image_export_options import ShapeImageExportOptions
 from asposeslidescloud.models.shape_thumbnail_bounds import ShapeThumbnailBounds
@@ -97,6 +100,7 @@ from asposeslidescloud.models.table_column import TableColumn
 from asposeslidescloud.models.table_row import TableRow
 from asposeslidescloud.models.task import Task
 from asposeslidescloud.models.text_item import TextItem
+from asposeslidescloud.models.three_d_format import ThreeDFormat
 from asposeslidescloud.models.add_layout_slide import AddLayoutSlide
 from asposeslidescloud.models.add_master_slide import AddMasterSlide
 from asposeslidescloud.models.add_shape import AddShape

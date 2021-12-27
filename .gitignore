@@ -5,3 +5,4 @@ test-reports/
 build/
 dist/
 cid
+setup.py

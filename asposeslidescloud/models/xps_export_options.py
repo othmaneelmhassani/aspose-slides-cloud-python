@@ -44,6 +44,8 @@ class XpsExportOptions(ExportOptions):
     """
     swagger_types = {
         'default_regular_font': 'str',
+        'height': 'int',
+        'width': 'int',
         'format': 'str',
         'show_hidden_slides': 'bool',
         'save_metafiles_as_png': 'bool',
@@ -52,6 +54,8 @@ class XpsExportOptions(ExportOptions):
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
+        'height': 'height',
+        'width': 'width',
         'format': 'format',
         'show_hidden_slides': 'showHiddenSlides',
         'save_metafiles_as_png': 'saveMetafilesAsPng',
@@ -62,18 +66,21 @@ class XpsExportOptions(ExportOptions):
         'format': 'xps',
     }
 
-    def __init__(self, default_regular_font=None, format='xps', show_hidden_slides=None, save_metafiles_as_png=None, draw_slides_frame=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, height=None, width=None, format='xps', show_hidden_slides=None, save_metafiles_as_png=None, draw_slides_frame=None):  # noqa: E501
         """XpsExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(XpsExportOptions, self).__init__(default_regular_font, format)
+        super(XpsExportOptions, self).__init__(default_regular_font, height, width, format)
 
         self._show_hidden_slides = None
         self._save_metafiles_as_png = None
         self._draw_slides_frame = None
         self.format = 'xps'
 
-        self.show_hidden_slides = show_hidden_slides
-        self.save_metafiles_as_png = save_metafiles_as_png
-        self.draw_slides_frame = draw_slides_frame
+        if show_hidden_slides is not None:
+            self.show_hidden_slides = show_hidden_slides
+        if save_metafiles_as_png is not None:
+            self.save_metafiles_as_png = save_metafiles_as_png
+        if draw_slides_frame is not None:
+            self.draw_slides_frame = draw_slides_frame
 
     @property
     def show_hidden_slides(self):

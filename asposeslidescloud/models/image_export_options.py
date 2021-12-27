@@ -44,6 +44,8 @@ class ImageExportOptions(ExportOptions):
     """
     swagger_types = {
         'default_regular_font': 'str',
+        'height': 'int',
+        'width': 'int',
         'format': 'str',
         'notes_position': 'str',
         'comments_position': 'str',
@@ -53,6 +55,8 @@ class ImageExportOptions(ExportOptions):
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
+        'height': 'height',
+        'width': 'width',
         'format': 'format',
         'notes_position': 'notesPosition',
         'comments_position': 'commentsPosition',
@@ -64,9 +68,9 @@ class ImageExportOptions(ExportOptions):
         'format': 'image',
     }
 
-    def __init__(self, default_regular_font=None, format='image', notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, height=None, width=None, format='image', notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None):  # noqa: E501
         """ImageExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(ImageExportOptions, self).__init__(default_regular_font, format)
+        super(ImageExportOptions, self).__init__(default_regular_font, height, width, format)
 
         self._notes_position = None
         self._comments_position = None
@@ -74,9 +78,12 @@ class ImageExportOptions(ExportOptions):
         self._comments_area_color = None
         self.format = 'image'
 
-        self.notes_position = notes_position
-        self.comments_position = comments_position
-        self.comments_area_width = comments_area_width
+        if notes_position is not None:
+            self.notes_position = notes_position
+        if comments_position is not None:
+            self.comments_position = comments_position
+        if comments_area_width is not None:
+            self.comments_area_width = comments_area_width
         if comments_area_color is not None:
             self.comments_area_color = comments_area_color
 

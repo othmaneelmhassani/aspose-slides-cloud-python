@@ -57,6 +57,7 @@ class ShapeBase(ResourceBase):
         'shapes': 'ResourceUri',
         'fill_format': 'FillFormat',
         'effect_format': 'EffectFormat',
+        'three_d_format': 'ThreeDFormat',
         'line_format': 'LineFormat',
         'type': 'str'
     }
@@ -76,6 +77,7 @@ class ShapeBase(ResourceBase):
         'shapes': 'shapes',
         'fill_format': 'fillFormat',
         'effect_format': 'effectFormat',
+        'three_d_format': 'threeDFormat',
         'line_format': 'lineFormat',
         'type': 'type'
     }
@@ -83,7 +85,7 @@ class ShapeBase(ResourceBase):
     type_determiners = {
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, line_format=None, type=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, type=None):  # noqa: E501
         """ShapeBase - a model defined in Swagger"""  # noqa: E501
         super(ShapeBase, self).__init__(self_uri, alternate_links)
 
@@ -99,6 +101,7 @@ class ShapeBase(ResourceBase):
         self._shapes = None
         self._fill_format = None
         self._effect_format = None
+        self._three_d_format = None
         self._line_format = None
         self._type = None
 
@@ -125,6 +128,8 @@ class ShapeBase(ResourceBase):
             self.fill_format = fill_format
         if effect_format is not None:
             self.effect_format = effect_format
+        if three_d_format is not None:
+            self.three_d_format = three_d_format
         if line_format is not None:
             self.line_format = line_format
         if type is not None:
@@ -393,6 +398,28 @@ class ShapeBase(ResourceBase):
         :type: EffectFormat
         """
         self._effect_format = effect_format
+
+    @property
+    def three_d_format(self):
+        """Gets the three_d_format of this ShapeBase.  # noqa: E501
+
+        Gets or sets the 3D format  # noqa: E501
+
+        :return: The three_d_format of this ShapeBase.  # noqa: E501
+        :rtype: ThreeDFormat
+        """
+        return self._three_d_format
+
+    @three_d_format.setter
+    def three_d_format(self, three_d_format):
+        """Sets the three_d_format of this ShapeBase.
+
+        Gets or sets the 3D format  # noqa: E501
+
+        :param three_d_format: The three_d_format of this ShapeBase.  # noqa: E501
+        :type: ThreeDFormat
+        """
+        self._three_d_format = three_d_format
 
     @property
     def line_format(self):

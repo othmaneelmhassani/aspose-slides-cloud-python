@@ -44,6 +44,8 @@ class SvgExportOptions(ExportOptions):
     """
     swagger_types = {
         'default_regular_font': 'str',
+        'height': 'int',
+        'width': 'int',
         'format': 'str',
         'vectorize_text': 'bool',
         'metafile_rasterization_dpi': 'int',
@@ -58,6 +60,8 @@ class SvgExportOptions(ExportOptions):
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
+        'height': 'height',
+        'width': 'width',
         'format': 'format',
         'vectorize_text': 'vectorizeText',
         'metafile_rasterization_dpi': 'metafileRasterizationDpi',
@@ -74,9 +78,9 @@ class SvgExportOptions(ExportOptions):
         'format': 'svg',
     }
 
-    def __init__(self, default_regular_font=None, format='svg', vectorize_text=None, metafile_rasterization_dpi=None, disable3_d_text=None, disable_gradient_split=None, disable_line_end_cropping=None, jpeg_quality=None, pictures_compression=None, delete_pictures_cropped_areas=None, external_fonts_handling=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, height=None, width=None, format='svg', vectorize_text=None, metafile_rasterization_dpi=None, disable3_d_text=None, disable_gradient_split=None, disable_line_end_cropping=None, jpeg_quality=None, pictures_compression=None, delete_pictures_cropped_areas=None, external_fonts_handling=None):  # noqa: E501
         """SvgExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(SvgExportOptions, self).__init__(default_regular_font, format)
+        super(SvgExportOptions, self).__init__(default_regular_font, height, width, format)
 
         self._vectorize_text = None
         self._metafile_rasterization_dpi = None
@@ -89,15 +93,24 @@ class SvgExportOptions(ExportOptions):
         self._external_fonts_handling = None
         self.format = 'svg'
 
-        self.vectorize_text = vectorize_text
-        self.metafile_rasterization_dpi = metafile_rasterization_dpi
-        self.disable3_d_text = disable3_d_text
-        self.disable_gradient_split = disable_gradient_split
-        self.disable_line_end_cropping = disable_line_end_cropping
-        self.jpeg_quality = jpeg_quality
-        self.pictures_compression = pictures_compression
-        self.delete_pictures_cropped_areas = delete_pictures_cropped_areas
-        self.external_fonts_handling = external_fonts_handling
+        if vectorize_text is not None:
+            self.vectorize_text = vectorize_text
+        if metafile_rasterization_dpi is not None:
+            self.metafile_rasterization_dpi = metafile_rasterization_dpi
+        if disable3_d_text is not None:
+            self.disable3_d_text = disable3_d_text
+        if disable_gradient_split is not None:
+            self.disable_gradient_split = disable_gradient_split
+        if disable_line_end_cropping is not None:
+            self.disable_line_end_cropping = disable_line_end_cropping
+        if jpeg_quality is not None:
+            self.jpeg_quality = jpeg_quality
+        if pictures_compression is not None:
+            self.pictures_compression = pictures_compression
+        if delete_pictures_cropped_areas is not None:
+            self.delete_pictures_cropped_areas = delete_pictures_cropped_areas
+        if external_fonts_handling is not None:
+            self.external_fonts_handling = external_fonts_handling
 
     @property
     def vectorize_text(self):

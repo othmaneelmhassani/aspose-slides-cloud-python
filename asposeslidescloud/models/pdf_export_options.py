@@ -44,6 +44,8 @@ class PdfExportOptions(ExportOptions):
     """
     swagger_types = {
         'default_regular_font': 'str',
+        'height': 'int',
+        'width': 'int',
         'format': 'str',
         'text_compression': 'str',
         'embed_full_fonts': 'bool',
@@ -68,6 +70,8 @@ class PdfExportOptions(ExportOptions):
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
+        'height': 'height',
+        'width': 'width',
         'format': 'format',
         'text_compression': 'textCompression',
         'embed_full_fonts': 'embedFullFonts',
@@ -94,9 +98,9 @@ class PdfExportOptions(ExportOptions):
         'format': 'pdf',
     }
 
-    def __init__(self, default_regular_font=None, format='pdf', text_compression=None, embed_full_fonts=None, compliance=None, sufficient_resolution=None, jpeg_quality=None, draw_slides_frame=None, show_hidden_slides=None, save_metafiles_as_png=None, password=None, embed_true_type_fonts_for_ascii=None, additional_common_font_families=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None, show_comments_by_no_author=None, image_transparent_color=None, apply_image_transparent=None, access_permissions=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, height=None, width=None, format='pdf', text_compression=None, embed_full_fonts=None, compliance=None, sufficient_resolution=None, jpeg_quality=None, draw_slides_frame=None, show_hidden_slides=None, save_metafiles_as_png=None, password=None, embed_true_type_fonts_for_ascii=None, additional_common_font_families=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None, show_comments_by_no_author=None, image_transparent_color=None, apply_image_transparent=None, access_permissions=None):  # noqa: E501
         """PdfExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(PdfExportOptions, self).__init__(default_regular_font, format)
+        super(PdfExportOptions, self).__init__(default_regular_font, height, width, format)
 
         self._text_compression = None
         self._embed_full_fonts = None
@@ -119,29 +123,44 @@ class PdfExportOptions(ExportOptions):
         self._access_permissions = None
         self.format = 'pdf'
 
-        self.text_compression = text_compression
-        self.embed_full_fonts = embed_full_fonts
-        self.compliance = compliance
-        self.sufficient_resolution = sufficient_resolution
-        self.jpeg_quality = jpeg_quality
-        self.draw_slides_frame = draw_slides_frame
-        self.show_hidden_slides = show_hidden_slides
-        self.save_metafiles_as_png = save_metafiles_as_png
+        if text_compression is not None:
+            self.text_compression = text_compression
+        if embed_full_fonts is not None:
+            self.embed_full_fonts = embed_full_fonts
+        if compliance is not None:
+            self.compliance = compliance
+        if sufficient_resolution is not None:
+            self.sufficient_resolution = sufficient_resolution
+        if jpeg_quality is not None:
+            self.jpeg_quality = jpeg_quality
+        if draw_slides_frame is not None:
+            self.draw_slides_frame = draw_slides_frame
+        if show_hidden_slides is not None:
+            self.show_hidden_slides = show_hidden_slides
+        if save_metafiles_as_png is not None:
+            self.save_metafiles_as_png = save_metafiles_as_png
         if password is not None:
             self.password = password
-        self.embed_true_type_fonts_for_ascii = embed_true_type_fonts_for_ascii
+        if embed_true_type_fonts_for_ascii is not None:
+            self.embed_true_type_fonts_for_ascii = embed_true_type_fonts_for_ascii
         if additional_common_font_families is not None:
             self.additional_common_font_families = additional_common_font_families
-        self.notes_position = notes_position
-        self.comments_position = comments_position
-        self.comments_area_width = comments_area_width
+        if notes_position is not None:
+            self.notes_position = notes_position
+        if comments_position is not None:
+            self.comments_position = comments_position
+        if comments_area_width is not None:
+            self.comments_area_width = comments_area_width
         if comments_area_color is not None:
             self.comments_area_color = comments_area_color
-        self.show_comments_by_no_author = show_comments_by_no_author
+        if show_comments_by_no_author is not None:
+            self.show_comments_by_no_author = show_comments_by_no_author
         if image_transparent_color is not None:
             self.image_transparent_color = image_transparent_color
-        self.apply_image_transparent = apply_image_transparent
-        self.access_permissions = access_permissions
+        if apply_image_transparent is not None:
+            self.apply_image_transparent = apply_image_transparent
+        if access_permissions is not None:
+            self.access_permissions = access_permissions
 
     @property
     def text_compression(self):

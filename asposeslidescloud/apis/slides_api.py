@@ -34,6 +34,7 @@ import six
 
 from asposeslidescloud.apis.api_base import ApiBase
 from asposeslidescloud.api_client import ApiClient
+from asposeslidescloud.models import *
 
 class SlidesApi(ApiBase):
 
@@ -107,13 +108,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `align_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `align_shapes`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `align_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `align_shapes`")  # noqa: E501
         # verify the required parameter 'alignment_type' is set
         if not alignment_type:
-            raise ValueError("Missing the required parameter `request.alignment_type` when calling `align_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `alignment_type` when calling `align_shapes`")  # noqa: E501
+        # verify the value of parameter 'alignment_type' is valid
+        if not alignment_type.upper() in ShapesAlignmentType.__dict__:
+            raise ValueError("Invalid value for parameter `alignment_type` when calling `align_shapes`")  # noqa: E501
 
         collection_formats = {}
 
@@ -238,16 +242,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `align_special_slide_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `align_special_slide_shapes`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `align_special_slide_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `align_special_slide_shapes`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `align_special_slide_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `align_special_slide_shapes`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `align_special_slide_shapes`")  # noqa: E501
         # verify the required parameter 'alignment_type' is set
         if not alignment_type:
-            raise ValueError("Missing the required parameter `request.alignment_type` when calling `align_special_slide_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `alignment_type` when calling `align_special_slide_shapes`")  # noqa: E501
+        # verify the value of parameter 'alignment_type' is valid
+        if not alignment_type.upper() in ShapesAlignmentType.__dict__:
+            raise ValueError("Invalid value for parameter `alignment_type` when calling `align_special_slide_shapes`")  # noqa: E501
 
         collection_formats = {}
 
@@ -369,10 +379,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `convert`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `convert`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `convert`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `convert`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `convert`")  # noqa: E501
 
         collection_formats = {}
 
@@ -495,13 +508,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `convert_and_save`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `convert_and_save`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `convert_and_save`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `convert_and_save`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `convert_and_save`")  # noqa: E501
         # verify the required parameter 'out_path' is set
         if not out_path:
-            raise ValueError("Missing the required parameter `request.out_path` when calling `convert_and_save`")  # noqa: E501
+            raise ValueError("Missing the required parameter `out_path` when calling `convert_and_save`")  # noqa: E501
 
         collection_formats = {}
 
@@ -620,10 +636,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'src_path' is set
         if not src_path:
-            raise ValueError("Missing the required parameter `request.src_path` when calling `copy_file`")  # noqa: E501
+            raise ValueError("Missing the required parameter `src_path` when calling `copy_file`")  # noqa: E501
         # verify the required parameter 'dest_path' is set
         if not dest_path:
-            raise ValueError("Missing the required parameter `request.dest_path` when calling `copy_file`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dest_path` when calling `copy_file`")  # noqa: E501
 
         collection_formats = {}
 
@@ -733,10 +749,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'src_path' is set
         if not src_path:
-            raise ValueError("Missing the required parameter `request.src_path` when calling `copy_folder`")  # noqa: E501
+            raise ValueError("Missing the required parameter `src_path` when calling `copy_folder`")  # noqa: E501
         # verify the required parameter 'dest_path' is set
         if not dest_path:
-            raise ValueError("Missing the required parameter `request.dest_path` when calling `copy_folder`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dest_path` when calling `copy_folder`")  # noqa: E501
 
         collection_formats = {}
 
@@ -852,13 +868,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `copy_layout_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `copy_layout_slide`")  # noqa: E501
         # verify the required parameter 'clone_from' is set
         if not clone_from:
-            raise ValueError("Missing the required parameter `request.clone_from` when calling `copy_layout_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `clone_from` when calling `copy_layout_slide`")  # noqa: E501
         # verify the required parameter 'clone_from_position' is set
         if not clone_from_position:
-            raise ValueError("Missing the required parameter `request.clone_from_position` when calling `copy_layout_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `clone_from_position` when calling `copy_layout_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -984,13 +1000,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `copy_master_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `copy_master_slide`")  # noqa: E501
         # verify the required parameter 'clone_from' is set
         if not clone_from:
-            raise ValueError("Missing the required parameter `request.clone_from` when calling `copy_master_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `clone_from` when calling `copy_master_slide`")  # noqa: E501
         # verify the required parameter 'clone_from_position' is set
         if not clone_from_position:
-            raise ValueError("Missing the required parameter `request.clone_from_position` when calling `copy_master_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `clone_from_position` when calling `copy_master_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1118,10 +1134,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `copy_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `copy_slide`")  # noqa: E501
         # verify the required parameter 'slide_to_copy' is set
         if not slide_to_copy:
-            raise ValueError("Missing the required parameter `request.slide_to_copy` when calling `copy_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_to_copy` when calling `copy_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1243,13 +1259,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_animation_effect`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_animation_effect`")  # noqa: E501
         # verify the required parameter 'effect' is set
         if not effect:
-            raise ValueError("Missing the required parameter `request.effect` when calling `create_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect` when calling `create_animation_effect`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1364,13 +1380,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_animation_interactive_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_animation_interactive_sequence`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_animation_interactive_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_animation_interactive_sequence`")  # noqa: E501
         # verify the required parameter 'sequence' is set
         if not sequence:
-            raise ValueError("Missing the required parameter `request.sequence` when calling `create_animation_interactive_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `sequence` when calling `create_animation_interactive_sequence`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1487,16 +1503,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'sequence_index' is set
         if not sequence_index:
-            raise ValueError("Missing the required parameter `request.sequence_index` when calling `create_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `sequence_index` when calling `create_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'effect' is set
         if not effect:
-            raise ValueError("Missing the required parameter `request.effect` when calling `create_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect` when calling `create_animation_interactive_sequence_effect`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1614,16 +1630,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_chart_category`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_chart_category`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_chart_category`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_chart_category`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_chart_category`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `create_chart_category`")  # noqa: E501
         # verify the required parameter 'category' is set
         if not category:
-            raise ValueError("Missing the required parameter `request.category` when calling `create_chart_category`")  # noqa: E501
+            raise ValueError("Missing the required parameter `category` when calling `create_chart_category`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1743,19 +1759,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_chart_data_point`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_chart_data_point`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `create_chart_data_point`")  # noqa: E501
         # verify the required parameter 'series_index' is set
         if not series_index:
-            raise ValueError("Missing the required parameter `request.series_index` when calling `create_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `series_index` when calling `create_chart_data_point`")  # noqa: E501
         # verify the required parameter 'data_point' is set
         if not data_point:
-            raise ValueError("Missing the required parameter `request.data_point` when calling `create_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `data_point` when calling `create_chart_data_point`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1874,16 +1890,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_chart_series`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_chart_series`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_chart_series`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_chart_series`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_chart_series`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `create_chart_series`")  # noqa: E501
         # verify the required parameter 'series' is set
         if not series:
-            raise ValueError("Missing the required parameter `request.series` when calling `create_chart_series`")  # noqa: E501
+            raise ValueError("Missing the required parameter `series` when calling `create_chart_series`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1999,13 +2015,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_comment`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_comment`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_comment`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_comment`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `create_comment`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `create_comment`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2116,13 +2132,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `create_comment_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `create_comment_online`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_comment_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_comment_online`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `create_comment_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `create_comment_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2226,7 +2242,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `create_folder`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `create_folder`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2334,7 +2350,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_image_watermark`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_image_watermark`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2446,7 +2462,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `create_image_watermark_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `create_image_watermark_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2559,13 +2575,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_notes_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_notes_slide`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_notes_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_notes_slide`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `create_notes_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `create_notes_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2684,16 +2700,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `create_paragraph`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `create_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `create_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2817,19 +2833,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `create_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `create_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `create_portion`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `create_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `create_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2895,8 +2911,8 @@ class SlidesApi(ApiBase):
 
         :param is_async bool
         :param name Document name.
-        :param data Document input data.
-        :param input_password The password for input document.
+        :param data Source presentation binary data.
+        :param input_password The password for source presentation.
         :param password The document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -2921,8 +2937,8 @@ class SlidesApi(ApiBase):
 
         :param is_async bool
         :param name Document name.
-        :param data Document input data.
-        :param input_password The password for input document.
+        :param data Source presentation binary data.
+        :param input_password The password for source presentation.
         :param password The document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -2948,7 +2964,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_presentation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_presentation`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3011,9 +3027,9 @@ class SlidesApi(ApiBase):
 
         :param is_async bool
         :param name Document name.
-        :param source_path Template file path.
-        :param source_password Template file password.
-        :param source_storage Template storage name.
+        :param source_path Source file path.
+        :param source_password Source file password.
+        :param source_storage Source storage name.
         :param password The document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -3038,9 +3054,9 @@ class SlidesApi(ApiBase):
 
         :param is_async bool
         :param name Document name.
-        :param source_path Template file path.
-        :param source_password Template file password.
-        :param source_storage Template storage name.
+        :param source_path Source file path.
+        :param source_password Source file password.
+        :param source_storage Source storage name.
         :param password The document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -3066,7 +3082,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_presentation_from_source`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_presentation_from_source`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3190,10 +3206,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_presentation_from_template`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_presentation_from_template`")  # noqa: E501
         # verify the required parameter 'template_path' is set
         if not template_path:
-            raise ValueError("Missing the required parameter `request.template_path` when calling `create_presentation_from_template`")  # noqa: E501
+            raise ValueError("Missing the required parameter `template_path` when calling `create_presentation_from_template`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3315,13 +3331,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_section`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_section`")  # noqa: E501
         # verify the required parameter 'section_name' is set
         if not section_name:
-            raise ValueError("Missing the required parameter `request.section_name` when calling `create_section`")  # noqa: E501
+            raise ValueError("Missing the required parameter `section_name` when calling `create_section`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_section`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_section`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3441,10 +3457,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_shape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_shape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3563,7 +3579,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3681,16 +3697,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_special_slide_animation_effect`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_special_slide_animation_effect`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `create_special_slide_animation_effect`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `create_special_slide_animation_effect`")  # noqa: E501
         # verify the required parameter 'effect' is set
         if not effect:
-            raise ValueError("Missing the required parameter `request.effect` when calling `create_special_slide_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect` when calling `create_special_slide_animation_effect`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3808,16 +3827,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_animation_interactive_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_special_slide_animation_interactive_sequence`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_animation_interactive_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_special_slide_animation_interactive_sequence`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_animation_interactive_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `create_special_slide_animation_interactive_sequence`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `create_special_slide_animation_interactive_sequence`")  # noqa: E501
         # verify the required parameter 'sequence' is set
         if not sequence:
-            raise ValueError("Missing the required parameter `request.sequence` when calling `create_special_slide_animation_interactive_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `sequence` when calling `create_special_slide_animation_interactive_sequence`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3937,19 +3959,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'sequence_index' is set
         if not sequence_index:
-            raise ValueError("Missing the required parameter `request.sequence_index` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `sequence_index` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'effect' is set
         if not effect:
-            raise ValueError("Missing the required parameter `request.effect` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect` when calling `create_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4072,19 +4097,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `create_special_slide_paragraph`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `create_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `create_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `create_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `create_special_slide_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4211,22 +4239,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `create_special_slide_portion`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `create_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `create_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `create_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `create_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `create_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `create_special_slide_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4352,13 +4383,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `create_special_slide_shape`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `create_special_slide_shape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4486,16 +4520,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `create_special_slide_subshape`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `create_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `create_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `create_special_slide_subshape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4624,22 +4661,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `create_special_slide_subshape_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4769,25 +4809,28 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `create_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `create_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `create_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `create_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `create_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `create_special_slide_subshape_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4914,13 +4957,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_subshape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_subshape`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `create_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `create_subshape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5046,19 +5089,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `create_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `create_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `create_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `create_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `create_subshape_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5185,22 +5228,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_subshape_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `create_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_subshape_portion`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `create_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `create_subshape_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `create_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `create_subshape_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `create_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `create_subshape_portion`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `create_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `create_subshape_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5326,7 +5369,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `create_watermark`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `create_watermark`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5450,7 +5493,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `create_watermark_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `create_watermark_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5567,10 +5610,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_animation`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_animation`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5683,13 +5726,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_animation_effect`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_animation_effect`")  # noqa: E501
         # verify the required parameter 'effect_index' is set
         if not effect_index:
-            raise ValueError("Missing the required parameter `request.effect_index` when calling `delete_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect_index` when calling `delete_animation_effect`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5803,13 +5846,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_animation_interactive_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_animation_interactive_sequence`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_animation_interactive_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_animation_interactive_sequence`")  # noqa: E501
         # verify the required parameter 'sequence_index' is set
         if not sequence_index:
-            raise ValueError("Missing the required parameter `request.sequence_index` when calling `delete_animation_interactive_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `sequence_index` when calling `delete_animation_interactive_sequence`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5925,16 +5968,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'sequence_index' is set
         if not sequence_index:
-            raise ValueError("Missing the required parameter `request.sequence_index` when calling `delete_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `sequence_index` when calling `delete_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'effect_index' is set
         if not effect_index:
-            raise ValueError("Missing the required parameter `request.effect_index` when calling `delete_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect_index` when calling `delete_animation_interactive_sequence_effect`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6047,10 +6090,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_animation_interactive_sequences`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_animation_interactive_sequences`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_animation_interactive_sequences`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_animation_interactive_sequences`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6161,10 +6204,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_animation_main_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_animation_main_sequence`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_animation_main_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_animation_main_sequence`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6275,10 +6318,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_background`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_background`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_background`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_background`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6393,16 +6436,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_chart_category`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_chart_category`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_chart_category`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_chart_category`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_chart_category`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_chart_category`")  # noqa: E501
         # verify the required parameter 'category_index' is set
         if not category_index:
-            raise ValueError("Missing the required parameter `request.category_index` when calling `delete_chart_category`")  # noqa: E501
+            raise ValueError("Missing the required parameter `category_index` when calling `delete_chart_category`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6521,19 +6564,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_chart_data_point`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_chart_data_point`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_chart_data_point`")  # noqa: E501
         # verify the required parameter 'series_index' is set
         if not series_index:
-            raise ValueError("Missing the required parameter `request.series_index` when calling `delete_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `series_index` when calling `delete_chart_data_point`")  # noqa: E501
         # verify the required parameter 'point_index' is set
         if not point_index:
-            raise ValueError("Missing the required parameter `request.point_index` when calling `delete_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `point_index` when calling `delete_chart_data_point`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6651,16 +6694,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_chart_series`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_chart_series`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_chart_series`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_chart_series`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_chart_series`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_chart_series`")  # noqa: E501
         # verify the required parameter 'series_index' is set
         if not series_index:
-            raise ValueError("Missing the required parameter `request.series_index` when calling `delete_chart_series`")  # noqa: E501
+            raise ValueError("Missing the required parameter `series_index` when calling `delete_chart_series`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6773,7 +6816,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_comments`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_comments`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6881,7 +6924,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `delete_comments_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `delete_comments_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6988,7 +7031,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_document_properties`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_document_properties`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7098,10 +7141,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_document_property`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_document_property`")  # noqa: E501
         # verify the required parameter 'property_name' is set
         if not property_name:
-            raise ValueError("Missing the required parameter `request.property_name` when calling `delete_document_property`")  # noqa: E501
+            raise ValueError("Missing the required parameter `property_name` when calling `delete_document_property`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7208,7 +7251,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `delete_file`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `delete_file`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7312,7 +7355,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `delete_folder`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `delete_folder`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7420,10 +7463,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_notes_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_notes_slide`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_notes_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_notes_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7538,16 +7581,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_paragraph`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `delete_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7664,13 +7707,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_paragraphs`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_paragraphs`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_paragraphs`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7791,19 +7834,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `delete_portion`")  # noqa: E501
         # verify the required parameter 'portion_index' is set
         if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `delete_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `portion_index` when calling `delete_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7923,16 +7966,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_portions`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_portions`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_portions`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `delete_portions`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8046,7 +8089,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_protection`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_protection`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8150,10 +8193,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `delete_protection_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `delete_protection_online`")  # noqa: E501
         # verify the required parameter 'password' is set
         if not password:
-            raise ValueError("Missing the required parameter `request.password` when calling `delete_protection_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `password` when calling `delete_protection_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8262,10 +8305,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_section`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_section`")  # noqa: E501
         # verify the required parameter 'section_index' is set
         if not section_index:
-            raise ValueError("Missing the required parameter `request.section_index` when calling `delete_section`")  # noqa: E501
+            raise ValueError("Missing the required parameter `section_index` when calling `delete_section`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8380,7 +8423,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_sections`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_sections`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8497,13 +8540,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_shape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_shape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_shape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8617,10 +8660,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_shapes`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_shapes`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8734,10 +8777,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_slide`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8850,10 +8893,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_slide_comments`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_slide_comments`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_slide_comments`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_slide_comments`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8964,10 +9007,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `delete_slide_comments_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `delete_slide_comments_online`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_slide_comments_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_slide_comments_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9077,7 +9120,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_slides`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_slides`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9192,13 +9235,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_animation`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_animation`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_animation`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_animation`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9314,16 +9360,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_animation_effect`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_animation_effect`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_animation_effect`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_animation_effect`")  # noqa: E501
         # verify the required parameter 'effect_index' is set
         if not effect_index:
-            raise ValueError("Missing the required parameter `request.effect_index` when calling `delete_special_slide_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect_index` when calling `delete_special_slide_animation_effect`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9440,16 +9489,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_animation_interactive_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_animation_interactive_sequence`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_animation_interactive_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_animation_interactive_sequence`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_animation_interactive_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_animation_interactive_sequence`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_animation_interactive_sequence`")  # noqa: E501
         # verify the required parameter 'sequence_index' is set
         if not sequence_index:
-            raise ValueError("Missing the required parameter `request.sequence_index` when calling `delete_special_slide_animation_interactive_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `sequence_index` when calling `delete_special_slide_animation_interactive_sequence`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9568,19 +9620,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'sequence_index' is set
         if not sequence_index:
-            raise ValueError("Missing the required parameter `request.sequence_index` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `sequence_index` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'effect_index' is set
         if not effect_index:
-            raise ValueError("Missing the required parameter `request.effect_index` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect_index` when calling `delete_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9696,13 +9751,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_animation_interactive_sequences`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_animation_interactive_sequences`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_animation_interactive_sequences`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_animation_interactive_sequences`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_animation_interactive_sequences`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_animation_interactive_sequences`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_animation_interactive_sequences`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9816,13 +9874,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_animation_main_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_animation_main_sequence`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_animation_main_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_animation_main_sequence`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_animation_main_sequence`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_animation_main_sequence`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_animation_main_sequence`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9940,19 +10001,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_paragraph`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `delete_special_slide_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10072,16 +10136,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_paragraphs`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_paragraphs`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_paragraphs`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_paragraphs`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_special_slide_paragraphs`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10205,22 +10272,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_portion`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `delete_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'portion_index' is set
         if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `delete_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `portion_index` when calling `delete_special_slide_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10343,19 +10413,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_portions`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_portions`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_portions`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_portions`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_special_slide_portions`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_special_slide_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `delete_special_slide_portions`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10476,16 +10549,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_shape`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_special_slide_shape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10602,13 +10678,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_shapes`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_shapes`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_shapes`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_shapes`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10729,19 +10808,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_subshape`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `delete_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `delete_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_special_slide_subshape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10863,22 +10945,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `delete_special_slide_subshape_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -11001,19 +11086,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_special_slide_subshape_paragraphs`")  # noqa: E501
 
         collection_formats = {}
 
@@ -11140,25 +11228,28 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'portion_index' is set
         if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `portion_index` when calling `delete_special_slide_subshape_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -11284,22 +11375,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `delete_special_slide_subshape_portions`")  # noqa: E501
 
         collection_formats = {}
 
@@ -11423,16 +11517,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_special_slide_subshapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_special_slide_subshapes`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_special_slide_subshapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_special_slide_subshapes`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `delete_special_slide_subshapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `delete_special_slide_subshapes`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `delete_special_slide_subshapes`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `delete_special_slide_subshapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `delete_special_slide_subshapes`")  # noqa: E501
 
         collection_formats = {}
 
@@ -11552,16 +11649,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_subshape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_subshape`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `delete_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `delete_subshape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_subshape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -11680,19 +11777,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `delete_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `delete_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `delete_subshape_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -11812,16 +11909,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_subshape_paragraphs`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_subshape_paragraphs`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `delete_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `delete_subshape_paragraphs`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_subshape_paragraphs`")  # noqa: E501
 
         collection_formats = {}
 
@@ -11945,22 +12042,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_subshape_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_subshape_portion`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `delete_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `delete_subshape_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_subshape_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `delete_subshape_portion`")  # noqa: E501
         # verify the required parameter 'portion_index' is set
         if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `delete_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `portion_index` when calling `delete_subshape_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12083,19 +12180,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_subshape_portions`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_subshape_portions`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `delete_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `delete_subshape_portions`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `delete_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `delete_subshape_portions`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `delete_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `delete_subshape_portions`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12216,13 +12313,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_subshapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_subshapes`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `delete_subshapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_subshapes`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `delete_subshapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `delete_subshapes`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12337,7 +12434,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `delete_watermark`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `delete_watermark`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12445,7 +12542,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `delete_watermark_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `delete_watermark_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12550,7 +12647,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `download_file`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `download_file`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12660,13 +12757,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `download_image`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `download_image`")  # noqa: E501
         # verify the required parameter 'index' is set
         if not index:
-            raise ValueError("Missing the required parameter `request.index` when calling `download_image`")  # noqa: E501
+            raise ValueError("Missing the required parameter `index` when calling `download_image`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_image`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `download_image`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ImageExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `download_image`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12778,10 +12878,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `download_image_default_format`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `download_image_default_format`")  # noqa: E501
         # verify the required parameter 'index' is set
         if not index:
-            raise ValueError("Missing the required parameter `request.index` when calling `download_image_default_format`")  # noqa: E501
+            raise ValueError("Missing the required parameter `index` when calling `download_image_default_format`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12888,10 +12988,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `download_image_default_format_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `download_image_default_format_online`")  # noqa: E501
         # verify the required parameter 'index' is set
         if not index:
-            raise ValueError("Missing the required parameter `request.index` when calling `download_image_default_format_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `index` when calling `download_image_default_format_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12997,13 +13097,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `download_image_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `download_image_online`")  # noqa: E501
         # verify the required parameter 'index' is set
         if not index:
-            raise ValueError("Missing the required parameter `request.index` when calling `download_image_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `index` when calling `download_image_online`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_image_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `download_image_online`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ImageExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `download_image_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -13112,10 +13215,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `download_images`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `download_images`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_images`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `download_images`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ImageExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `download_images`")  # noqa: E501
 
         collection_formats = {}
 
@@ -13224,7 +13330,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `download_images_default_format`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `download_images_default_format`")  # noqa: E501
 
         collection_formats = {}
 
@@ -13328,7 +13434,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `download_images_default_format_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `download_images_default_format_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -13431,10 +13537,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `download_images_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `download_images_online`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_images_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `download_images_online`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ImageExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `download_images_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -13550,13 +13659,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `download_notes_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `download_notes_slide`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `download_notes_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `download_notes_slide`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_notes_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `download_notes_slide`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in NotesSlideExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `download_notes_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -13678,13 +13790,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `download_notes_slide_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `download_notes_slide_online`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `download_notes_slide_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `download_notes_slide_online`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_notes_slide_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `download_notes_slide_online`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in NotesSlideExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `download_notes_slide_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -13805,10 +13920,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `download_presentation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `download_presentation`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_presentation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `download_presentation`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `download_presentation`")  # noqa: E501
 
         collection_formats = {}
 
@@ -13940,16 +14058,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `download_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `download_shape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `download_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `download_shape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `download_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `download_shape`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `download_shape`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ShapeExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `download_shape`")  # noqa: E501
+        # verify the value of parameter 'bounds' is valid
+        if bounds and not bounds.upper() in ShapeThumbnailBounds.__dict__:
+            raise ValueError("Invalid value for parameter `bounds` when calling `download_shape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -14084,16 +14208,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `download_shape_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `download_shape_online`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `download_shape_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `download_shape_online`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `download_shape_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `download_shape_online`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_shape_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `download_shape_online`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ShapeExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `download_shape_online`")  # noqa: E501
+        # verify the value of parameter 'bounds' is valid
+        if bounds and not bounds.upper() in ShapeThumbnailBounds.__dict__:
+            raise ValueError("Invalid value for parameter `bounds` when calling `download_shape_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -14225,13 +14355,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `download_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `download_slide`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `download_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `download_slide`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `download_slide`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in SlideExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `download_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -14359,13 +14492,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `download_slide_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `download_slide_online`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `download_slide_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `download_slide_online`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_slide_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `download_slide_online`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in SlideExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `download_slide_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -14500,19 +14636,28 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `download_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `download_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `download_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `download_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `download_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `download_special_slide_shape`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `download_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `download_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `download_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `download_special_slide_shape`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ShapeExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `download_special_slide_shape`")  # noqa: E501
+        # verify the value of parameter 'bounds' is valid
+        if bounds and not bounds.upper() in ShapeThumbnailBounds.__dict__:
+            raise ValueError("Invalid value for parameter `bounds` when calling `download_special_slide_shape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -14654,22 +14799,31 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `download_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `download_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `download_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `download_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `download_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `download_special_slide_subshape`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `download_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `download_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `download_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `download_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `download_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `download_special_slide_subshape`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ShapeExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `download_special_slide_subshape`")  # noqa: E501
+        # verify the value of parameter 'bounds' is valid
+        if bounds and not bounds.upper() in ShapeThumbnailBounds.__dict__:
+            raise ValueError("Invalid value for parameter `bounds` when calling `download_special_slide_subshape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -14810,19 +14964,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `download_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `download_subshape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `download_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `download_subshape`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `download_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `download_subshape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `download_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `download_subshape`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `download_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `download_subshape`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ShapeExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `download_subshape`")  # noqa: E501
+        # verify the value of parameter 'bounds' is valid
+        if bounds and not bounds.upper() in ShapeThumbnailBounds.__dict__:
+            raise ValueError("Invalid value for parameter `bounds` when calling `download_subshape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -14885,18 +15045,19 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_animation(self, name, slide_index, shape_index = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+    def get_animation(self, name, slide_index, shape_index = None, paragraph_index = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Read slide animation effects.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, password, folder, storage, is_async=True)
+        >>> thread = api.(name, slide_index, shape_index, paragraph_index, password, folder, storage, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
         :param name Document name.
         :param slide_index Slide index.
         :param shape_index Shape index. If specified, only effects related to that shape are returned.
+        :param paragraph_index Paragraph index.
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -14906,23 +15067,24 @@ class SlidesApi(ApiBase):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.get_animation_with_http_info(name, slide_index, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+            return self.get_animation_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_animation_with_http_info(name, slide_index, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+            (data) = self.get_animation_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
             return data
 
-    def get_animation_with_http_info(self, name, slide_index, shape_index = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+    def get_animation_with_http_info(self, name, slide_index, shape_index = None, paragraph_index = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Read slide animation effects.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.get_animation_with_http_info(name, slide_index, shape_index, password, folder, storage, is_async=True)
+        >>> thread = api.get_animation_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
         :param name Document name.
         :param slide_index Slide index.
         :param shape_index Shape index. If specified, only effects related to that shape are returned.
+        :param paragraph_index Paragraph index.
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -14948,10 +15110,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_animation`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_animation`")  # noqa: E501
 
         collection_formats = {}
 
@@ -14962,6 +15124,8 @@ class SlidesApi(ApiBase):
         query_params = []
         if shape_index:
             query_params.append(('shapeIndex', shape_index))  # noqa: E501
+        if paragraph_index:
+            query_params.append(('paragraphIndex', paragraph_index))  # noqa: E501
         if folder:
             query_params.append(('folder', folder))  # noqa: E501
         if storage:
@@ -15154,10 +15318,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_background`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_background`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_background`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_background`")  # noqa: E501
 
         collection_formats = {}
 
@@ -15268,10 +15432,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_color_scheme`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_color_scheme`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_color_scheme`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_color_scheme`")  # noqa: E501
 
         collection_formats = {}
 
@@ -15474,7 +15638,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_document_properties`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_document_properties`")  # noqa: E501
 
         collection_formats = {}
 
@@ -15584,10 +15748,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_document_property`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_document_property`")  # noqa: E501
         # verify the required parameter 'property_name' is set
         if not property_name:
-            raise ValueError("Missing the required parameter `request.property_name` when calling `get_document_property`")  # noqa: E501
+            raise ValueError("Missing the required parameter `property_name` when calling `get_document_property`")  # noqa: E501
 
         collection_formats = {}
 
@@ -15692,7 +15856,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `get_file_versions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `get_file_versions`")  # noqa: E501
 
         collection_formats = {}
 
@@ -15792,7 +15956,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `get_files_list`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `get_files_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -15898,10 +16062,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_font_scheme`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_font_scheme`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_font_scheme`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_font_scheme`")  # noqa: E501
 
         collection_formats = {}
 
@@ -16012,10 +16176,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_format_scheme`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_format_scheme`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_format_scheme`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_format_scheme`")  # noqa: E501
 
         collection_formats = {}
 
@@ -16126,10 +16290,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_layout_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_layout_slide`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_layout_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_layout_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -16238,7 +16402,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_layout_slides`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_layout_slides`")  # noqa: E501
 
         collection_formats = {}
 
@@ -16348,10 +16512,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_master_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_master_slide`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_master_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_master_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -16460,7 +16624,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_master_slides`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_master_slides`")  # noqa: E501
 
         collection_formats = {}
 
@@ -16570,10 +16734,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_notes_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_notes_slide`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_notes_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_notes_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -16684,10 +16848,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_notes_slide_header_footer`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_notes_slide_header_footer`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_notes_slide_header_footer`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_notes_slide_header_footer`")  # noqa: E501
 
         collection_formats = {}
 
@@ -16794,10 +16958,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `get_notes_slide_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `get_notes_slide_online`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_notes_slide_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_notes_slide_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -16909,16 +17073,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_paragraph`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -17033,13 +17197,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_paragraphs`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_paragraphs`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_paragraphs`")  # noqa: E501
 
         collection_formats = {}
 
@@ -17153,13 +17317,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_placeholder`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_placeholder`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_placeholder`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_placeholder`")  # noqa: E501
         # verify the required parameter 'placeholder_index' is set
         if not placeholder_index:
-            raise ValueError("Missing the required parameter `request.placeholder_index` when calling `get_placeholder`")  # noqa: E501
+            raise ValueError("Missing the required parameter `placeholder_index` when calling `get_placeholder`")  # noqa: E501
 
         collection_formats = {}
 
@@ -17271,10 +17435,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_placeholders`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_placeholders`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_placeholders`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_placeholders`")  # noqa: E501
 
         collection_formats = {}
 
@@ -17391,19 +17555,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_portion`")  # noqa: E501
         # verify the required parameter 'portion_index' is set
         if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `get_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `portion_index` when calling `get_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -17521,16 +17685,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_portions`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_portions`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_portions`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_portions`")  # noqa: E501
 
         collection_formats = {}
 
@@ -17641,7 +17805,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_presentation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_presentation`")  # noqa: E501
 
         collection_formats = {}
 
@@ -17749,7 +17913,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_presentation_images`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_presentation_images`")  # noqa: E501
 
         collection_formats = {}
 
@@ -17859,7 +18023,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_presentation_text_items`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_presentation_text_items`")  # noqa: E501
 
         collection_formats = {}
 
@@ -17969,7 +18133,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_protection_properties`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_protection_properties`")  # noqa: E501
 
         collection_formats = {}
 
@@ -18077,7 +18241,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_sections`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_sections`")  # noqa: E501
 
         collection_formats = {}
 
@@ -18189,13 +18353,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_shape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_shape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_shape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -18307,10 +18471,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_shapes`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_shapes`")  # noqa: E501
 
         collection_formats = {}
 
@@ -18421,10 +18585,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_slide`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -18535,10 +18699,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_slide_comments`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_slide_comments`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_slide_comments`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_slide_comments`")  # noqa: E501
 
         collection_formats = {}
 
@@ -18649,10 +18813,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_slide_header_footer`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_slide_header_footer`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_slide_header_footer`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_slide_header_footer`")  # noqa: E501
 
         collection_formats = {}
 
@@ -18763,10 +18927,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_slide_images`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_slide_images`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_slide_images`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_slide_images`")  # noqa: E501
 
         collection_formats = {}
 
@@ -18875,7 +19039,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_slide_properties`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_slide_properties`")  # noqa: E501
 
         collection_formats = {}
 
@@ -18987,10 +19151,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_slide_text_items`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_slide_text_items`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_slide_text_items`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_slide_text_items`")  # noqa: E501
 
         collection_formats = {}
 
@@ -19101,7 +19265,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_slides`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_slides`")  # noqa: E501
 
         collection_formats = {}
 
@@ -19150,12 +19314,12 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_special_slide_animation(self, name, slide_index, slide_type, shape_index = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+    def get_special_slide_animation(self, name, slide_index, slide_type, shape_index = None, paragraph_index = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Read special slide (master, layout, notes) animation effects.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, slide_type, shape_index, password, folder, storage, is_async=True)
+        >>> thread = api.(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -19163,6 +19327,7 @@ class SlidesApi(ApiBase):
         :param slide_index Parent slide index.
         :param slide_type Slide type (master, layout or notes).
         :param shape_index Shape index. If specified, only effects related to that shape are returned.
+        :param paragraph_index Paragraph index. If specified, only effects related to that paragraph are returned.
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -19172,17 +19337,17 @@ class SlidesApi(ApiBase):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.get_special_slide_animation_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+            return self.get_special_slide_animation_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_special_slide_animation_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, **kwargs)  # noqa: E501
+            (data) = self.get_special_slide_animation_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
             return data
 
-    def get_special_slide_animation_with_http_info(self, name, slide_index, slide_type, shape_index = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+    def get_special_slide_animation_with_http_info(self, name, slide_index, slide_type, shape_index = None, paragraph_index = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Read special slide (master, layout, notes) animation effects.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.get_special_slide_animation_with_http_info(name, slide_index, slide_type, shape_index, password, folder, storage, is_async=True)
+        >>> thread = api.get_special_slide_animation_with_http_info(name, slide_index, slide_type, shape_index, paragraph_index, password, folder, storage, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -19190,6 +19355,7 @@ class SlidesApi(ApiBase):
         :param slide_index Parent slide index.
         :param slide_type Slide type (master, layout or notes).
         :param shape_index Shape index. If specified, only effects related to that shape are returned.
+        :param paragraph_index Paragraph index. If specified, only effects related to that paragraph are returned.
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -19215,13 +19381,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_special_slide_animation`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_special_slide_animation`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `get_special_slide_animation`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `get_special_slide_animation`")  # noqa: E501
 
         collection_formats = {}
 
@@ -19233,6 +19402,8 @@ class SlidesApi(ApiBase):
         query_params = []
         if shape_index:
             query_params.append(('shapeIndex', shape_index))  # noqa: E501
+        if paragraph_index:
+            query_params.append(('paragraphIndex', paragraph_index))  # noqa: E501
         if folder:
             query_params.append(('folder', folder))  # noqa: E501
         if storage:
@@ -19341,19 +19512,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `get_special_slide_paragraph`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `get_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_special_slide_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -19471,16 +19645,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_special_slide_paragraphs`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_special_slide_paragraphs`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `get_special_slide_paragraphs`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `get_special_slide_paragraphs`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_special_slide_paragraphs`")  # noqa: E501
 
         collection_formats = {}
 
@@ -19601,22 +19778,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `get_special_slide_portion`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `get_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'portion_index' is set
         if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `get_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `portion_index` when calling `get_special_slide_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -19737,19 +19917,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_special_slide_portions`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_special_slide_portions`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `get_special_slide_portions`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `get_special_slide_portions`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_special_slide_portions`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_special_slide_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_special_slide_portions`")  # noqa: E501
 
         collection_formats = {}
 
@@ -19867,16 +20050,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `get_special_slide_shape`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `get_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_special_slide_shape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -19991,13 +20177,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_special_slide_shapes`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_special_slide_shapes`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_shapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `get_special_slide_shapes`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `get_special_slide_shapes`")  # noqa: E501
 
         collection_formats = {}
 
@@ -20115,19 +20304,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `get_special_slide_subshape`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `get_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `get_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `get_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_special_slide_subshape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -20249,22 +20441,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_special_slide_subshape_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -20385,19 +20580,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_special_slide_subshape_paragraphs`")  # noqa: E501
 
         collection_formats = {}
 
@@ -20521,25 +20719,28 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `get_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `get_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'portion_index' is set
         if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `get_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `portion_index` when calling `get_special_slide_subshape_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -20663,22 +20864,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_special_slide_subshape_portions`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_special_slide_subshape_portions`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `get_special_slide_subshape_portions`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `get_special_slide_subshape_portions`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `get_special_slide_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `get_special_slide_subshape_portions`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_special_slide_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_special_slide_subshape_portions`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_special_slide_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_special_slide_subshape_portions`")  # noqa: E501
 
         collection_formats = {}
 
@@ -20797,16 +21001,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_special_slide_subshapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_special_slide_subshapes`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_special_slide_subshapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_special_slide_subshapes`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `get_special_slide_subshapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `get_special_slide_subshapes`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `get_special_slide_subshapes`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `get_special_slide_subshapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `get_special_slide_subshapes`")  # noqa: E501
 
         collection_formats = {}
 
@@ -20923,16 +21130,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_subshape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_subshape`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `get_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `get_subshape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_subshape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -21051,19 +21258,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `get_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `get_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_subshape_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -21181,16 +21388,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_subshape_paragraphs`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_subshape_paragraphs`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `get_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `get_subshape_paragraphs`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_subshape_paragraphs`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_subshape_paragraphs`")  # noqa: E501
 
         collection_formats = {}
 
@@ -21311,22 +21518,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_subshape_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_subshape_portion`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `get_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `get_subshape_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_subshape_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_subshape_portion`")  # noqa: E501
         # verify the required parameter 'portion_index' is set
         if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `get_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `portion_index` when calling `get_subshape_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -21447,19 +21654,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_subshape_portions`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_subshape_portions`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `get_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `get_subshape_portions`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `get_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_subshape_portions`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `get_subshape_portions`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_subshape_portions`")  # noqa: E501
 
         collection_formats = {}
 
@@ -21575,13 +21782,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_subshapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_subshapes`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_subshapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_subshapes`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `get_subshapes`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `get_subshapes`")  # noqa: E501
 
         collection_formats = {}
 
@@ -21693,10 +21900,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_theme`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_theme`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `get_theme`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_theme`")  # noqa: E501
 
         collection_formats = {}
 
@@ -21805,7 +22012,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `get_view_properties`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `get_view_properties`")  # noqa: E501
 
         collection_formats = {}
 
@@ -21915,7 +22122,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `import_from_html`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `import_from_html`")  # noqa: E501
 
         collection_formats = {}
 
@@ -22027,7 +22234,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `import_from_pdf`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `import_from_pdf`")  # noqa: E501
 
         collection_formats = {}
 
@@ -22139,10 +22346,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `merge`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `merge`")  # noqa: E501
         # verify the required parameter 'request' is set
         if not request:
-            raise ValueError("Missing the required parameter `request.request` when calling `merge`")  # noqa: E501
+            raise ValueError("Missing the required parameter `request` when calling `merge`")  # noqa: E501
 
         collection_formats = {}
 
@@ -22252,7 +22459,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'out_path' is set
         if not out_path:
-            raise ValueError("Missing the required parameter `request.out_path` when calling `merge_and_save_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `out_path` when calling `merge_and_save_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -22463,10 +22670,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'src_path' is set
         if not src_path:
-            raise ValueError("Missing the required parameter `request.src_path` when calling `move_file`")  # noqa: E501
+            raise ValueError("Missing the required parameter `src_path` when calling `move_file`")  # noqa: E501
         # verify the required parameter 'dest_path' is set
         if not dest_path:
-            raise ValueError("Missing the required parameter `request.dest_path` when calling `move_file`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dest_path` when calling `move_file`")  # noqa: E501
 
         collection_formats = {}
 
@@ -22576,10 +22783,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'src_path' is set
         if not src_path:
-            raise ValueError("Missing the required parameter `request.src_path` when calling `move_folder`")  # noqa: E501
+            raise ValueError("Missing the required parameter `src_path` when calling `move_folder`")  # noqa: E501
         # verify the required parameter 'dest_path' is set
         if not dest_path:
-            raise ValueError("Missing the required parameter `request.dest_path` when calling `move_folder`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dest_path` when calling `move_folder`")  # noqa: E501
 
         collection_formats = {}
 
@@ -22691,13 +22898,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `move_section`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `move_section`")  # noqa: E501
         # verify the required parameter 'section_index' is set
         if not section_index:
-            raise ValueError("Missing the required parameter `request.section_index` when calling `move_section`")  # noqa: E501
+            raise ValueError("Missing the required parameter `section_index` when calling `move_section`")  # noqa: E501
         # verify the required parameter 'new_position' is set
         if not new_position:
-            raise ValueError("Missing the required parameter `request.new_position` when calling `move_section`")  # noqa: E501
+            raise ValueError("Missing the required parameter `new_position` when calling `move_section`")  # noqa: E501
 
         collection_formats = {}
 
@@ -22812,13 +23019,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `move_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `move_slide`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `move_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `move_slide`")  # noqa: E501
         # verify the required parameter 'new_position' is set
         if not new_position:
-            raise ValueError("Missing the required parameter `request.new_position` when calling `move_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `new_position` when calling `move_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -22931,10 +23138,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `notes_slide_exists`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `notes_slide_exists`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `notes_slide_exists`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `notes_slide_exists`")  # noqa: E501
 
         collection_formats = {}
 
@@ -23041,10 +23248,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `notes_slide_exists_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `notes_slide_exists_online`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `notes_slide_exists_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `notes_slide_exists_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -23148,7 +23355,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `object_exists`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `object_exists`")  # noqa: E501
 
         collection_formats = {}
 
@@ -23256,10 +23463,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `ordered_merge`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `ordered_merge`")  # noqa: E501
         # verify the required parameter 'request' is set
         if not request:
-            raise ValueError("Missing the required parameter `request.request` when calling `ordered_merge`")  # noqa: E501
+            raise ValueError("Missing the required parameter `request` when calling `ordered_merge`")  # noqa: E501
 
         collection_formats = {}
 
@@ -23365,7 +23572,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'pipeline' is set
         if not pipeline:
-            raise ValueError("Missing the required parameter `request.pipeline` when calling `pipeline`")  # noqa: E501
+            raise ValueError("Missing the required parameter `pipeline` when calling `pipeline`")  # noqa: E501
 
         collection_formats = {}
 
@@ -23473,7 +23680,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `reorder_slides`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `reorder_slides`")  # noqa: E501
 
         collection_formats = {}
 
@@ -23593,13 +23800,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `replace_presentation_text`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `replace_presentation_text`")  # noqa: E501
         # verify the required parameter 'old_value' is set
         if not old_value:
-            raise ValueError("Missing the required parameter `request.old_value` when calling `replace_presentation_text`")  # noqa: E501
+            raise ValueError("Missing the required parameter `old_value` when calling `replace_presentation_text`")  # noqa: E501
         # verify the required parameter 'new_value' is set
         if not new_value:
-            raise ValueError("Missing the required parameter `request.new_value` when calling `replace_presentation_text`")  # noqa: E501
+            raise ValueError("Missing the required parameter `new_value` when calling `replace_presentation_text`")  # noqa: E501
 
         collection_formats = {}
 
@@ -23715,13 +23922,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `replace_presentation_text_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `replace_presentation_text_online`")  # noqa: E501
         # verify the required parameter 'old_value' is set
         if not old_value:
-            raise ValueError("Missing the required parameter `request.old_value` when calling `replace_presentation_text_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `old_value` when calling `replace_presentation_text_online`")  # noqa: E501
         # verify the required parameter 'new_value' is set
         if not new_value:
-            raise ValueError("Missing the required parameter `request.new_value` when calling `replace_presentation_text_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `new_value` when calling `replace_presentation_text_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -23840,16 +24047,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `replace_slide_text`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `replace_slide_text`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `replace_slide_text`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `replace_slide_text`")  # noqa: E501
         # verify the required parameter 'old_value' is set
         if not old_value:
-            raise ValueError("Missing the required parameter `request.old_value` when calling `replace_slide_text`")  # noqa: E501
+            raise ValueError("Missing the required parameter `old_value` when calling `replace_slide_text`")  # noqa: E501
         # verify the required parameter 'new_value' is set
         if not new_value:
-            raise ValueError("Missing the required parameter `request.new_value` when calling `replace_slide_text`")  # noqa: E501
+            raise ValueError("Missing the required parameter `new_value` when calling `replace_slide_text`")  # noqa: E501
 
         collection_formats = {}
 
@@ -23968,16 +24175,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `replace_slide_text_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `replace_slide_text_online`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `replace_slide_text_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `replace_slide_text_online`")  # noqa: E501
         # verify the required parameter 'old_value' is set
         if not old_value:
-            raise ValueError("Missing the required parameter `request.old_value` when calling `replace_slide_text_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `old_value` when calling `replace_slide_text_online`")  # noqa: E501
         # verify the required parameter 'new_value' is set
         if not new_value:
-            raise ValueError("Missing the required parameter `request.new_value` when calling `replace_slide_text_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `new_value` when calling `replace_slide_text_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -24099,13 +24306,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `save_presentation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `save_presentation`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `save_presentation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `save_presentation`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `save_presentation`")  # noqa: E501
         # verify the required parameter 'out_path' is set
         if not out_path:
-            raise ValueError("Missing the required parameter `request.out_path` when calling `save_presentation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `out_path` when calling `save_presentation`")  # noqa: E501
 
         collection_formats = {}
 
@@ -24241,19 +24451,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `save_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `save_shape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `save_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `save_shape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `save_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `save_shape`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `save_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `save_shape`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ShapeExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `save_shape`")  # noqa: E501
         # verify the required parameter 'out_path' is set
         if not out_path:
-            raise ValueError("Missing the required parameter `request.out_path` when calling `save_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `out_path` when calling `save_shape`")  # noqa: E501
+        # verify the value of parameter 'bounds' is valid
+        if bounds and not bounds.upper() in ShapeThumbnailBounds.__dict__:
+            raise ValueError("Invalid value for parameter `bounds` when calling `save_shape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -24392,19 +24608,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `save_shape_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `save_shape_online`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `save_shape_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `save_shape_online`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `save_shape_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `save_shape_online`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `save_shape_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `save_shape_online`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ShapeExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `save_shape_online`")  # noqa: E501
         # verify the required parameter 'out_path' is set
         if not out_path:
-            raise ValueError("Missing the required parameter `request.out_path` when calling `save_shape_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `out_path` when calling `save_shape_online`")  # noqa: E501
+        # verify the value of parameter 'bounds' is valid
+        if bounds and not bounds.upper() in ShapeThumbnailBounds.__dict__:
+            raise ValueError("Invalid value for parameter `bounds` when calling `save_shape_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -24540,16 +24762,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `save_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `save_slide`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `save_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `save_slide`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `save_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `save_slide`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in SlideExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `save_slide`")  # noqa: E501
         # verify the required parameter 'out_path' is set
         if not out_path:
-            raise ValueError("Missing the required parameter `request.out_path` when calling `save_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `out_path` when calling `save_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -24681,16 +24906,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `save_slide_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `save_slide_online`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `save_slide_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `save_slide_online`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `save_slide_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `save_slide_online`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in SlideExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `save_slide_online`")  # noqa: E501
         # verify the required parameter 'out_path' is set
         if not out_path:
-            raise ValueError("Missing the required parameter `request.out_path` when calling `save_slide_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `out_path` when calling `save_slide_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -24829,22 +25057,31 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `save_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `save_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `save_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `save_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `save_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `save_special_slide_shape`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `save_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `save_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `save_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `save_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `save_special_slide_shape`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ShapeExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `save_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'out_path' is set
         if not out_path:
-            raise ValueError("Missing the required parameter `request.out_path` when calling `save_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `out_path` when calling `save_special_slide_shape`")  # noqa: E501
+        # verify the value of parameter 'bounds' is valid
+        if bounds and not bounds.upper() in ShapeThumbnailBounds.__dict__:
+            raise ValueError("Invalid value for parameter `bounds` when calling `save_special_slide_shape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -24990,25 +25227,34 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `save_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `save_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `save_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `save_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `save_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `save_special_slide_subshape`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `save_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `save_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `save_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `save_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `save_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `save_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `save_special_slide_subshape`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ShapeExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `save_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'out_path' is set
         if not out_path:
-            raise ValueError("Missing the required parameter `request.out_path` when calling `save_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `out_path` when calling `save_special_slide_subshape`")  # noqa: E501
+        # verify the value of parameter 'bounds' is valid
+        if bounds and not bounds.upper() in ShapeThumbnailBounds.__dict__:
+            raise ValueError("Invalid value for parameter `bounds` when calling `save_special_slide_subshape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -25153,22 +25399,28 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `save_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `save_subshape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `save_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `save_subshape`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `save_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `save_subshape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `save_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `save_subshape`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `save_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `save_subshape`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in ShapeExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `save_subshape`")  # noqa: E501
         # verify the required parameter 'out_path' is set
         if not out_path:
-            raise ValueError("Missing the required parameter `request.out_path` when calling `save_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `out_path` when calling `save_subshape`")  # noqa: E501
+        # verify the value of parameter 'bounds' is valid
+        if bounds and not bounds.upper() in ShapeThumbnailBounds.__dict__:
+            raise ValueError("Invalid value for parameter `bounds` when calling `save_subshape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -25296,13 +25548,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `set_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `set_animation`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `set_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `set_animation`")  # noqa: E501
         # verify the required parameter 'animation' is set
         if not animation:
-            raise ValueError("Missing the required parameter `request.animation` when calling `set_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `animation` when calling `set_animation`")  # noqa: E501
 
         collection_formats = {}
 
@@ -25417,13 +25669,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `set_background`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `set_background`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `set_background`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `set_background`")  # noqa: E501
         # verify the required parameter 'background' is set
         if not background:
-            raise ValueError("Missing the required parameter `request.background` when calling `set_background`")  # noqa: E501
+            raise ValueError("Missing the required parameter `background` when calling `set_background`")  # noqa: E501
 
         collection_formats = {}
 
@@ -25538,13 +25790,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `set_background_color`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `set_background_color`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `set_background_color`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `set_background_color`")  # noqa: E501
         # verify the required parameter 'color' is set
         if not color:
-            raise ValueError("Missing the required parameter `request.color` when calling `set_background_color`")  # noqa: E501
+            raise ValueError("Missing the required parameter `color` when calling `set_background_color`")  # noqa: E501
 
         collection_formats = {}
 
@@ -25657,10 +25909,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `set_document_properties`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `set_document_properties`")  # noqa: E501
         # verify the required parameter 'properties' is set
         if not properties:
-            raise ValueError("Missing the required parameter `request.properties` when calling `set_document_properties`")  # noqa: E501
+            raise ValueError("Missing the required parameter `properties` when calling `set_document_properties`")  # noqa: E501
 
         collection_formats = {}
 
@@ -25774,13 +26026,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `set_document_property`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `set_document_property`")  # noqa: E501
         # verify the required parameter 'property_name' is set
         if not property_name:
-            raise ValueError("Missing the required parameter `request.property_name` when calling `set_document_property`")  # noqa: E501
+            raise ValueError("Missing the required parameter `property_name` when calling `set_document_property`")  # noqa: E501
         # verify the required parameter '_property' is set
         if not _property:
-            raise ValueError("Missing the required parameter `request._property` when calling `set_document_property`")  # noqa: E501
+            raise ValueError("Missing the required parameter `_property` when calling `set_document_property`")  # noqa: E501
 
         collection_formats = {}
 
@@ -25895,13 +26147,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `set_notes_slide_header_footer`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `set_notes_slide_header_footer`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `set_notes_slide_header_footer`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `set_notes_slide_header_footer`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `set_notes_slide_header_footer`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `set_notes_slide_header_footer`")  # noqa: E501
 
         collection_formats = {}
 
@@ -26014,10 +26266,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `set_presentation_header_footer`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `set_presentation_header_footer`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `set_presentation_header_footer`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `set_presentation_header_footer`")  # noqa: E501
 
         collection_formats = {}
 
@@ -26129,10 +26381,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `set_protection`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `set_protection`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `set_protection`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `set_protection`")  # noqa: E501
 
         collection_formats = {}
 
@@ -26240,10 +26492,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `set_protection_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `set_protection_online`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `set_protection_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `set_protection_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -26352,10 +26604,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `set_sections`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `set_sections`")  # noqa: E501
         # verify the required parameter 'sections' is set
         if not sections:
-            raise ValueError("Missing the required parameter `request.sections` when calling `set_sections`")  # noqa: E501
+            raise ValueError("Missing the required parameter `sections` when calling `set_sections`")  # noqa: E501
 
         collection_formats = {}
 
@@ -26469,13 +26721,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `set_slide_header_footer`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `set_slide_header_footer`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `set_slide_header_footer`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `set_slide_header_footer`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `set_slide_header_footer`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `set_slide_header_footer`")  # noqa: E501
 
         collection_formats = {}
 
@@ -26588,10 +26840,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `set_slide_properties`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `set_slide_properties`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `set_slide_properties`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `set_slide_properties`")  # noqa: E501
 
         collection_formats = {}
 
@@ -26707,16 +26959,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `set_special_slide_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `set_special_slide_animation`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `set_special_slide_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `set_special_slide_animation`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `set_special_slide_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `set_special_slide_animation`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `set_special_slide_animation`")  # noqa: E501
         # verify the required parameter 'animation' is set
         if not animation:
-            raise ValueError("Missing the required parameter `request.animation` when calling `set_special_slide_animation`")  # noqa: E501
+            raise ValueError("Missing the required parameter `animation` when calling `set_special_slide_animation`")  # noqa: E501
 
         collection_formats = {}
 
@@ -26830,10 +27085,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `set_view_properties`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `set_view_properties`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `set_view_properties`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `set_view_properties`")  # noqa: E501
 
         collection_formats = {}
 
@@ -26959,7 +27214,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `split`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `split`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if format and not format.upper() in SlideExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `split`")  # noqa: E501
 
         collection_formats = {}
 
@@ -27095,10 +27353,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `split_and_save_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `split_and_save_online`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `split_and_save_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `split_and_save_online`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in SlideExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `split_and_save_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -27228,10 +27489,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'document' is set
         if not document:
-            raise ValueError("Missing the required parameter `request.document` when calling `split_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `document` when calling `split_online`")  # noqa: E501
         # verify the required parameter 'format' is set
         if not format:
-            raise ValueError("Missing the required parameter `request.format` when calling `split_online`")  # noqa: E501
+            raise ValueError("Missing the required parameter `format` when calling `split_online`")  # noqa: E501
+        # verify the value of parameter 'format' is valid
+        if not format.upper() in SlideExportFormat.__dict__:
+            raise ValueError("Invalid value for parameter `format` when calling `split_online`")  # noqa: E501
 
         collection_formats = {}
 
@@ -27343,7 +27607,7 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'storage_name' is set
         if not storage_name:
-            raise ValueError("Missing the required parameter `request.storage_name` when calling `storage_exists`")  # noqa: E501
+            raise ValueError("Missing the required parameter `storage_name` when calling `storage_exists`")  # noqa: E501
 
         collection_formats = {}
 
@@ -27451,16 +27715,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_animation_effect`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_animation_effect`")  # noqa: E501
         # verify the required parameter 'effect_index' is set
         if not effect_index:
-            raise ValueError("Missing the required parameter `request.effect_index` when calling `update_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect_index` when calling `update_animation_effect`")  # noqa: E501
         # verify the required parameter 'effect' is set
         if not effect:
-            raise ValueError("Missing the required parameter `request.effect` when calling `update_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect` when calling `update_animation_effect`")  # noqa: E501
 
         collection_formats = {}
 
@@ -27580,19 +27844,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'sequence_index' is set
         if not sequence_index:
-            raise ValueError("Missing the required parameter `request.sequence_index` when calling `update_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `sequence_index` when calling `update_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'effect_index' is set
         if not effect_index:
-            raise ValueError("Missing the required parameter `request.effect_index` when calling `update_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect_index` when calling `update_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'effect' is set
         if not effect:
-            raise ValueError("Missing the required parameter `request.effect` when calling `update_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect` when calling `update_animation_interactive_sequence_effect`")  # noqa: E501
 
         collection_formats = {}
 
@@ -27713,19 +27977,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_chart_category`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_chart_category`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_chart_category`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_chart_category`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_chart_category`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_chart_category`")  # noqa: E501
         # verify the required parameter 'category_index' is set
         if not category_index:
-            raise ValueError("Missing the required parameter `request.category_index` when calling `update_chart_category`")  # noqa: E501
+            raise ValueError("Missing the required parameter `category_index` when calling `update_chart_category`")  # noqa: E501
         # verify the required parameter 'category' is set
         if not category:
-            raise ValueError("Missing the required parameter `request.category` when calling `update_chart_category`")  # noqa: E501
+            raise ValueError("Missing the required parameter `category` when calling `update_chart_category`")  # noqa: E501
 
         collection_formats = {}
 
@@ -27848,22 +28112,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_chart_data_point`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_chart_data_point`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_chart_data_point`")  # noqa: E501
         # verify the required parameter 'series_index' is set
         if not series_index:
-            raise ValueError("Missing the required parameter `request.series_index` when calling `update_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `series_index` when calling `update_chart_data_point`")  # noqa: E501
         # verify the required parameter 'point_index' is set
         if not point_index:
-            raise ValueError("Missing the required parameter `request.point_index` when calling `update_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `point_index` when calling `update_chart_data_point`")  # noqa: E501
         # verify the required parameter 'data_point' is set
         if not data_point:
-            raise ValueError("Missing the required parameter `request.data_point` when calling `update_chart_data_point`")  # noqa: E501
+            raise ValueError("Missing the required parameter `data_point` when calling `update_chart_data_point`")  # noqa: E501
 
         collection_formats = {}
 
@@ -27985,19 +28249,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_chart_series`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_chart_series`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_chart_series`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_chart_series`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_chart_series`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_chart_series`")  # noqa: E501
         # verify the required parameter 'series_index' is set
         if not series_index:
-            raise ValueError("Missing the required parameter `request.series_index` when calling `update_chart_series`")  # noqa: E501
+            raise ValueError("Missing the required parameter `series_index` when calling `update_chart_series`")  # noqa: E501
         # verify the required parameter 'series' is set
         if not series:
-            raise ValueError("Missing the required parameter `request.series` when calling `update_chart_series`")  # noqa: E501
+            raise ValueError("Missing the required parameter `series` when calling `update_chart_series`")  # noqa: E501
 
         collection_formats = {}
 
@@ -28114,13 +28378,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_layout_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_layout_slide`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_layout_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_layout_slide`")  # noqa: E501
         # verify the required parameter 'slide_dto' is set
         if not slide_dto:
-            raise ValueError("Missing the required parameter `request.slide_dto` when calling `update_layout_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_dto` when calling `update_layout_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -28235,13 +28499,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_notes_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_notes_slide`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_notes_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_notes_slide`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_notes_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `update_notes_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -28360,19 +28624,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_paragraph`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `update_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `update_paragraph`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `update_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -28495,22 +28759,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `update_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `update_portion`")  # noqa: E501
         # verify the required parameter 'portion_index' is set
         if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `update_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `portion_index` when calling `update_portion`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `update_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -28628,13 +28892,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_section`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_section`")  # noqa: E501
         # verify the required parameter 'section_index' is set
         if not section_index:
-            raise ValueError("Missing the required parameter `request.section_index` when calling `update_section`")  # noqa: E501
+            raise ValueError("Missing the required parameter `section_index` when calling `update_section`")  # noqa: E501
         # verify the required parameter 'section_name' is set
         if not section_name:
-            raise ValueError("Missing the required parameter `request.section_name` when calling `update_section`")  # noqa: E501
+            raise ValueError("Missing the required parameter `section_name` when calling `update_section`")  # noqa: E501
 
         collection_formats = {}
 
@@ -28751,16 +29015,16 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_shape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_shape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_shape`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `update_shape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -28876,13 +29140,13 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_slide`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_slide`")  # noqa: E501
         # verify the required parameter 'slide_dto' is set
         if not slide_dto:
-            raise ValueError("Missing the required parameter `request.slide_dto` when calling `update_slide`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_dto` when calling `update_slide`")  # noqa: E501
 
         collection_formats = {}
 
@@ -29001,19 +29265,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_special_slide_animation_effect`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_special_slide_animation_effect`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `update_special_slide_animation_effect`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `update_special_slide_animation_effect`")  # noqa: E501
         # verify the required parameter 'effect_index' is set
         if not effect_index:
-            raise ValueError("Missing the required parameter `request.effect_index` when calling `update_special_slide_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect_index` when calling `update_special_slide_animation_effect`")  # noqa: E501
         # verify the required parameter 'effect' is set
         if not effect:
-            raise ValueError("Missing the required parameter `request.effect` when calling `update_special_slide_animation_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect` when calling `update_special_slide_animation_effect`")  # noqa: E501
 
         collection_formats = {}
 
@@ -29136,22 +29403,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'sequence_index' is set
         if not sequence_index:
-            raise ValueError("Missing the required parameter `request.sequence_index` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `sequence_index` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'effect_index' is set
         if not effect_index:
-            raise ValueError("Missing the required parameter `request.effect_index` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect_index` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
         # verify the required parameter 'effect' is set
         if not effect:
-            raise ValueError("Missing the required parameter `request.effect` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
+            raise ValueError("Missing the required parameter `effect` when calling `update_special_slide_animation_interactive_sequence_effect`")  # noqa: E501
 
         collection_formats = {}
 
@@ -29275,22 +29545,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `update_special_slide_paragraph`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `update_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `update_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `update_special_slide_paragraph`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_special_slide_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `update_special_slide_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -29416,25 +29689,28 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `update_special_slide_portion`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `update_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `update_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `update_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'portion_index' is set
         if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `update_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `portion_index` when calling `update_special_slide_portion`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_special_slide_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `update_special_slide_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -29557,19 +29833,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `update_special_slide_shape`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `update_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_special_slide_shape`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_special_slide_shape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `update_special_slide_shape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -29692,22 +29971,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `update_special_slide_subshape`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `update_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `update_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `update_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_special_slide_subshape`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_special_slide_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `update_special_slide_subshape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -29833,25 +30115,28 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `update_special_slide_subshape_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -29980,28 +30265,31 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'slide_type' is set
         if not slide_type:
-            raise ValueError("Missing the required parameter `request.slide_type` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_type` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+        # verify the value of parameter 'slide_type' is valid
+        if not slide_type.upper() in SpecialSlideType.__dict__:
+            raise ValueError("Invalid value for parameter `slide_type` when calling `update_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `update_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `update_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'portion_index' is set
         if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `portion_index` when calling `update_special_slide_subshape_portion`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_special_slide_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `update_special_slide_subshape_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -30125,19 +30413,19 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_subshape`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_subshape`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `update_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `update_subshape`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_subshape`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_subshape`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `update_subshape`")  # noqa: E501
 
         collection_formats = {}
 
@@ -30260,22 +30548,22 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `update_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `update_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `update_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `update_subshape_paragraph`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_subshape_paragraph`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `update_subshape_paragraph`")  # noqa: E501
 
         collection_formats = {}
 
@@ -30401,25 +30689,25 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'name' is set
         if not name:
-            raise ValueError("Missing the required parameter `request.name` when calling `update_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `update_subshape_portion`")  # noqa: E501
         # verify the required parameter 'slide_index' is set
         if not slide_index:
-            raise ValueError("Missing the required parameter `request.slide_index` when calling `update_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_subshape_portion`")  # noqa: E501
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `update_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `update_subshape_portion`")  # noqa: E501
         # verify the required parameter 'shape_index' is set
         if not shape_index:
-            raise ValueError("Missing the required parameter `request.shape_index` when calling `update_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_subshape_portion`")  # noqa: E501
         # verify the required parameter 'paragraph_index' is set
         if not paragraph_index:
-            raise ValueError("Missing the required parameter `request.paragraph_index` when calling `update_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `update_subshape_portion`")  # noqa: E501
         # verify the required parameter 'portion_index' is set
         if not portion_index:
-            raise ValueError("Missing the required parameter `request.portion_index` when calling `update_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `portion_index` when calling `update_subshape_portion`")  # noqa: E501
         # verify the required parameter 'dto' is set
         if not dto:
-            raise ValueError("Missing the required parameter `request.dto` when calling `update_subshape_portion`")  # noqa: E501
+            raise ValueError("Missing the required parameter `dto` when calling `update_subshape_portion`")  # noqa: E501
 
         collection_formats = {}
 
@@ -30532,10 +30820,10 @@ class SlidesApi(ApiBase):
         del params['kwargs']
         # verify the required parameter 'path' is set
         if not path:
-            raise ValueError("Missing the required parameter `request.path` when calling `upload_file`")  # noqa: E501
+            raise ValueError("Missing the required parameter `path` when calling `upload_file`")  # noqa: E501
         # verify the required parameter 'file' is set
         if not file:
-            raise ValueError("Missing the required parameter `request.file` when calling `upload_file`")  # noqa: E501
+            raise ValueError("Missing the required parameter `file` when calling `upload_file`")  # noqa: E501
 
         collection_formats = {}
 

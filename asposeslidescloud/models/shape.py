@@ -57,6 +57,7 @@ class Shape(GeometryShape):
         'shapes': 'ResourceUri',
         'fill_format': 'FillFormat',
         'effect_format': 'EffectFormat',
+        'three_d_format': 'ThreeDFormat',
         'line_format': 'LineFormat',
         'type': 'str',
         'shape_type': 'str',
@@ -79,6 +80,7 @@ class Shape(GeometryShape):
         'shapes': 'shapes',
         'fill_format': 'fillFormat',
         'effect_format': 'effectFormat',
+        'three_d_format': 'threeDFormat',
         'line_format': 'lineFormat',
         'type': 'type',
         'shape_type': 'shapeType',
@@ -90,9 +92,9 @@ class Shape(GeometryShape):
         'type': 'Shape',
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, line_format=None, type='Shape', shape_type=None, text=None, paragraphs=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, type='Shape', shape_type=None, text=None, paragraphs=None):  # noqa: E501
         """Shape - a model defined in Swagger"""  # noqa: E501
-        super(Shape, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, line_format, type, shape_type)
+        super(Shape, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, three_d_format, line_format, type, shape_type)
 
         self._text = None
         self._paragraphs = None
