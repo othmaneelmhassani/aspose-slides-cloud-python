@@ -96,7 +96,7 @@ class Save(Task):
         :type: str
         """
         if format is not None:
-            allowed_values = ["Pdf", "Xps", "Tiff", "Pptx", "Odp", "Otp", "Ppt", "Pps", "Ppsx", "Pptm", "Ppsm", "Pot", "Potx", "Potm", "Html", "Html5", "Swf", "Svg", "Jpeg", "Png", "Gif", "Bmp", "Fodp"]  # noqa: E501
+            allowed_values = ["Pdf", "Xps", "Tiff", "Pptx", "Odp", "Otp", "Ppt", "Pps", "Ppsx", "Pptm", "Ppsm", "Pot", "Potx", "Potm", "Html", "Html5", "Swf", "Svg", "Jpeg", "Png", "Gif", "Bmp", "Fodp", "Xaml"]  # noqa: E501
             if format.isdigit():
                 int_format = int(format)
                 if int_format < 0 or int_format >= len(allowed_values):

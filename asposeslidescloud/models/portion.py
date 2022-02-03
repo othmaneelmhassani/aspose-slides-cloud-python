@@ -46,6 +46,7 @@ class Portion(ResourceBase):
         'self_uri': 'ResourceUri',
         'alternate_links': 'list[ResourceUri]',
         'text': 'str',
+        'math_paragraph': 'MathParagraph',
         'font_bold': 'str',
         'font_italic': 'str',
         'font_underline': 'str',
@@ -69,13 +70,16 @@ class Portion(ResourceBase):
         'effect_format': 'EffectFormat',
         'line_format': 'LineFormat',
         'underline_fill_format': 'FillFormat',
-        'underline_line_format': 'LineFormat'
+        'underline_line_format': 'LineFormat',
+        'hyperlink_click': 'Hyperlink',
+        'hyperlink_mouse_over': 'Hyperlink'
     }
 
     attribute_map = {
         'self_uri': 'selfUri',
         'alternate_links': 'alternateLinks',
         'text': 'text',
+        'math_paragraph': 'mathParagraph',
         'font_bold': 'fontBold',
         'font_italic': 'fontItalic',
         'font_underline': 'fontUnderline',
@@ -99,17 +103,20 @@ class Portion(ResourceBase):
         'effect_format': 'effectFormat',
         'line_format': 'lineFormat',
         'underline_fill_format': 'underlineFillFormat',
-        'underline_line_format': 'underlineLineFormat'
+        'underline_line_format': 'underlineLineFormat',
+        'hyperlink_click': 'hyperlinkClick',
+        'hyperlink_mouse_over': 'hyperlinkMouseOver'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, text=None, font_bold=None, font_italic=None, font_underline=None, strikethrough_type=None, text_cap_type=None, escapement=None, spacing=None, font_color=None, highlight_color=None, font_height=None, normalise_height=None, proof_disabled=None, smart_tag_clean=None, kerning_minimal_size=None, kumimoji=None, language_id=None, alternative_language_id=None, is_hard_underline_fill=None, is_hard_underline_line=None, fill_format=None, effect_format=None, line_format=None, underline_fill_format=None, underline_line_format=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, text=None, math_paragraph=None, font_bold=None, font_italic=None, font_underline=None, strikethrough_type=None, text_cap_type=None, escapement=None, spacing=None, font_color=None, highlight_color=None, font_height=None, normalise_height=None, proof_disabled=None, smart_tag_clean=None, kerning_minimal_size=None, kumimoji=None, language_id=None, alternative_language_id=None, is_hard_underline_fill=None, is_hard_underline_line=None, fill_format=None, effect_format=None, line_format=None, underline_fill_format=None, underline_line_format=None, hyperlink_click=None, hyperlink_mouse_over=None):  # noqa: E501
         """Portion - a model defined in Swagger"""  # noqa: E501
         super(Portion, self).__init__(self_uri, alternate_links)
 
         self._text = None
+        self._math_paragraph = None
         self._font_bold = None
         self._font_italic = None
         self._font_underline = None
@@ -134,9 +141,13 @@ class Portion(ResourceBase):
         self._line_format = None
         self._underline_fill_format = None
         self._underline_line_format = None
+        self._hyperlink_click = None
+        self._hyperlink_mouse_over = None
 
         if text is not None:
             self.text = text
+        if math_paragraph is not None:
+            self.math_paragraph = math_paragraph
         if font_bold is not None:
             self.font_bold = font_bold
         if font_italic is not None:
@@ -185,6 +196,10 @@ class Portion(ResourceBase):
             self.underline_fill_format = underline_fill_format
         if underline_line_format is not None:
             self.underline_line_format = underline_line_format
+        if hyperlink_click is not None:
+            self.hyperlink_click = hyperlink_click
+        if hyperlink_mouse_over is not None:
+            self.hyperlink_mouse_over = hyperlink_mouse_over
 
     @property
     def text(self):
@@ -207,6 +222,28 @@ class Portion(ResourceBase):
         :type: str
         """
         self._text = text
+
+    @property
+    def math_paragraph(self):
+        """Gets the math_paragraph of this Portion.  # noqa: E501
+
+        Math paragraph.  # noqa: E501
+
+        :return: The math_paragraph of this Portion.  # noqa: E501
+        :rtype: MathParagraph
+        """
+        return self._math_paragraph
+
+    @math_paragraph.setter
+    def math_paragraph(self, math_paragraph):
+        """Sets the math_paragraph of this Portion.
+
+        Math paragraph.  # noqa: E501
+
+        :param math_paragraph: The math_paragraph of this Portion.  # noqa: E501
+        :type: MathParagraph
+        """
+        self._math_paragraph = math_paragraph
 
     @property
     def font_bold(self):
@@ -895,6 +932,50 @@ class Portion(ResourceBase):
         :type: LineFormat
         """
         self._underline_line_format = underline_line_format
+
+    @property
+    def hyperlink_click(self):
+        """Gets the hyperlink_click of this Portion.  # noqa: E501
+
+        Hyperlink defined for mouse click.  # noqa: E501
+
+        :return: The hyperlink_click of this Portion.  # noqa: E501
+        :rtype: Hyperlink
+        """
+        return self._hyperlink_click
+
+    @hyperlink_click.setter
+    def hyperlink_click(self, hyperlink_click):
+        """Sets the hyperlink_click of this Portion.
+
+        Hyperlink defined for mouse click.  # noqa: E501
+
+        :param hyperlink_click: The hyperlink_click of this Portion.  # noqa: E501
+        :type: Hyperlink
+        """
+        self._hyperlink_click = hyperlink_click
+
+    @property
+    def hyperlink_mouse_over(self):
+        """Gets the hyperlink_mouse_over of this Portion.  # noqa: E501
+
+        Hyperlink defined for mouse over.  # noqa: E501
+
+        :return: The hyperlink_mouse_over of this Portion.  # noqa: E501
+        :rtype: Hyperlink
+        """
+        return self._hyperlink_mouse_over
+
+    @hyperlink_mouse_over.setter
+    def hyperlink_mouse_over(self, hyperlink_mouse_over):
+        """Sets the hyperlink_mouse_over of this Portion.
+
+        Hyperlink defined for mouse over.  # noqa: E501
+
+        :param hyperlink_mouse_over: The hyperlink_mouse_over of this Portion.  # noqa: E501
+        :type: Hyperlink
+        """
+        self._hyperlink_mouse_over = hyperlink_mouse_over
 
     def to_dict(self):
         """Returns the model properties as a dict"""

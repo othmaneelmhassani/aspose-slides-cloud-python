@@ -59,6 +59,8 @@ class AudioFrame(GeometryShape):
         'effect_format': 'EffectFormat',
         'three_d_format': 'ThreeDFormat',
         'line_format': 'LineFormat',
+        'hyperlink_click': 'Hyperlink',
+        'hyperlink_mouse_over': 'Hyperlink',
         'type': 'str',
         'shape_type': 'str',
         'audio_cd_end_track': 'int',
@@ -70,7 +72,9 @@ class AudioFrame(GeometryShape):
         'play_loop_mode': 'bool',
         'play_mode': 'str',
         'volume': 'str',
-        'base64_data': 'str'
+        'base64_data': 'str',
+        'play_across_slides': 'bool',
+        'rewind_audio': 'bool'
     }
 
     attribute_map = {
@@ -90,6 +94,8 @@ class AudioFrame(GeometryShape):
         'effect_format': 'effectFormat',
         'three_d_format': 'threeDFormat',
         'line_format': 'lineFormat',
+        'hyperlink_click': 'hyperlinkClick',
+        'hyperlink_mouse_over': 'hyperlinkMouseOver',
         'type': 'type',
         'shape_type': 'shapeType',
         'audio_cd_end_track': 'audioCdEndTrack',
@@ -101,16 +107,18 @@ class AudioFrame(GeometryShape):
         'play_loop_mode': 'playLoopMode',
         'play_mode': 'playMode',
         'volume': 'volume',
-        'base64_data': 'base64Data'
+        'base64_data': 'base64Data',
+        'play_across_slides': 'playAcrossSlides',
+        'rewind_audio': 'rewindAudio'
     }
 
     type_determiners = {
         'type': 'AudioFrame',
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, type='AudioFrame', shape_type=None, audio_cd_end_track=None, audio_cd_end_track_time=None, audio_cd_start_track=None, audio_cd_start_track_time=None, embedded=None, hide_at_showing=None, play_loop_mode=None, play_mode=None, volume=None, base64_data=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='AudioFrame', shape_type=None, audio_cd_end_track=None, audio_cd_end_track_time=None, audio_cd_start_track=None, audio_cd_start_track_time=None, embedded=None, hide_at_showing=None, play_loop_mode=None, play_mode=None, volume=None, base64_data=None, play_across_slides=None, rewind_audio=None):  # noqa: E501
         """AudioFrame - a model defined in Swagger"""  # noqa: E501
-        super(AudioFrame, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, three_d_format, line_format, type, shape_type)
+        super(AudioFrame, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, three_d_format, line_format, hyperlink_click, hyperlink_mouse_over, type, shape_type)
 
         self._audio_cd_end_track = None
         self._audio_cd_end_track_time = None
@@ -122,6 +130,8 @@ class AudioFrame(GeometryShape):
         self._play_mode = None
         self._volume = None
         self._base64_data = None
+        self._play_across_slides = None
+        self._rewind_audio = None
         self.type = 'AudioFrame'
 
         if audio_cd_end_track is not None:
@@ -144,6 +154,10 @@ class AudioFrame(GeometryShape):
             self.volume = volume
         if base64_data is not None:
             self.base64_data = base64_data
+        if play_across_slides is not None:
+            self.play_across_slides = play_across_slides
+        if rewind_audio is not None:
+            self.rewind_audio = rewind_audio
 
     @property
     def audio_cd_end_track(self):
@@ -320,7 +334,7 @@ class AudioFrame(GeometryShape):
         :type: str
         """
         if play_mode is not None:
-            allowed_values = ["Auto", "OnClick", "AllSlides", "Mixed"]  # noqa: E501
+            allowed_values = ["Auto", "OnClick", "AllSlides", "InClickSequence", "Mixed"]  # noqa: E501
             if play_mode.isdigit():
                 int_play_mode = int(play_mode)
                 if int_play_mode < 0 or int_play_mode >= len(allowed_values):
@@ -396,6 +410,50 @@ class AudioFrame(GeometryShape):
         :type: str
         """
         self._base64_data = base64_data
+
+    @property
+    def play_across_slides(self):
+        """Gets the play_across_slides of this AudioFrame.  # noqa: E501
+
+        Determines whether an audio is playing across the slides.  # noqa: E501
+
+        :return: The play_across_slides of this AudioFrame.  # noqa: E501
+        :rtype: bool
+        """
+        return self._play_across_slides
+
+    @play_across_slides.setter
+    def play_across_slides(self, play_across_slides):
+        """Sets the play_across_slides of this AudioFrame.
+
+        Determines whether an audio is playing across the slides.  # noqa: E501
+
+        :param play_across_slides: The play_across_slides of this AudioFrame.  # noqa: E501
+        :type: bool
+        """
+        self._play_across_slides = play_across_slides
+
+    @property
+    def rewind_audio(self):
+        """Gets the rewind_audio of this AudioFrame.  # noqa: E501
+
+        Determines whether audio is automatically rewound to start after playing.  # noqa: E501
+
+        :return: The rewind_audio of this AudioFrame.  # noqa: E501
+        :rtype: bool
+        """
+        return self._rewind_audio
+
+    @rewind_audio.setter
+    def rewind_audio(self, rewind_audio):
+        """Sets the rewind_audio of this AudioFrame.
+
+        Determines whether audio is automatically rewound to start after playing.  # noqa: E501
+
+        :param rewind_audio: The rewind_audio of this AudioFrame.  # noqa: E501
+        :type: bool
+        """
+        self._rewind_audio = rewind_audio
 
     def to_dict(self):
         """Returns the model properties as a dict"""

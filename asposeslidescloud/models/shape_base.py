@@ -59,6 +59,8 @@ class ShapeBase(ResourceBase):
         'effect_format': 'EffectFormat',
         'three_d_format': 'ThreeDFormat',
         'line_format': 'LineFormat',
+        'hyperlink_click': 'Hyperlink',
+        'hyperlink_mouse_over': 'Hyperlink',
         'type': 'str'
     }
 
@@ -79,13 +81,15 @@ class ShapeBase(ResourceBase):
         'effect_format': 'effectFormat',
         'three_d_format': 'threeDFormat',
         'line_format': 'lineFormat',
+        'hyperlink_click': 'hyperlinkClick',
+        'hyperlink_mouse_over': 'hyperlinkMouseOver',
         'type': 'type'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, type=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type=None):  # noqa: E501
         """ShapeBase - a model defined in Swagger"""  # noqa: E501
         super(ShapeBase, self).__init__(self_uri, alternate_links)
 
@@ -103,6 +107,8 @@ class ShapeBase(ResourceBase):
         self._effect_format = None
         self._three_d_format = None
         self._line_format = None
+        self._hyperlink_click = None
+        self._hyperlink_mouse_over = None
         self._type = None
 
         if name is not None:
@@ -132,6 +138,10 @@ class ShapeBase(ResourceBase):
             self.three_d_format = three_d_format
         if line_format is not None:
             self.line_format = line_format
+        if hyperlink_click is not None:
+            self.hyperlink_click = hyperlink_click
+        if hyperlink_mouse_over is not None:
+            self.hyperlink_mouse_over = hyperlink_mouse_over
         if type is not None:
             self.type = type
 
@@ -442,6 +452,50 @@ class ShapeBase(ResourceBase):
         :type: LineFormat
         """
         self._line_format = line_format
+
+    @property
+    def hyperlink_click(self):
+        """Gets the hyperlink_click of this ShapeBase.  # noqa: E501
+
+        Hyperlink defined for mouse click.  # noqa: E501
+
+        :return: The hyperlink_click of this ShapeBase.  # noqa: E501
+        :rtype: Hyperlink
+        """
+        return self._hyperlink_click
+
+    @hyperlink_click.setter
+    def hyperlink_click(self, hyperlink_click):
+        """Sets the hyperlink_click of this ShapeBase.
+
+        Hyperlink defined for mouse click.  # noqa: E501
+
+        :param hyperlink_click: The hyperlink_click of this ShapeBase.  # noqa: E501
+        :type: Hyperlink
+        """
+        self._hyperlink_click = hyperlink_click
+
+    @property
+    def hyperlink_mouse_over(self):
+        """Gets the hyperlink_mouse_over of this ShapeBase.  # noqa: E501
+
+        Hyperlink defined for mouse over.  # noqa: E501
+
+        :return: The hyperlink_mouse_over of this ShapeBase.  # noqa: E501
+        :rtype: Hyperlink
+        """
+        return self._hyperlink_mouse_over
+
+    @hyperlink_mouse_over.setter
+    def hyperlink_mouse_over(self, hyperlink_mouse_over):
+        """Sets the hyperlink_mouse_over of this ShapeBase.
+
+        Hyperlink defined for mouse over.  # noqa: E501
+
+        :param hyperlink_mouse_over: The hyperlink_mouse_over of this ShapeBase.  # noqa: E501
+        :type: Hyperlink
+        """
+        self._hyperlink_mouse_over = hyperlink_mouse_over
 
     @property
     def type(self):

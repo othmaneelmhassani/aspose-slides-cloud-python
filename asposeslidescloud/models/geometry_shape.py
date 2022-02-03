@@ -59,6 +59,8 @@ class GeometryShape(ShapeBase):
         'effect_format': 'EffectFormat',
         'three_d_format': 'ThreeDFormat',
         'line_format': 'LineFormat',
+        'hyperlink_click': 'Hyperlink',
+        'hyperlink_mouse_over': 'Hyperlink',
         'type': 'str',
         'shape_type': 'str'
     }
@@ -80,6 +82,8 @@ class GeometryShape(ShapeBase):
         'effect_format': 'effectFormat',
         'three_d_format': 'threeDFormat',
         'line_format': 'lineFormat',
+        'hyperlink_click': 'hyperlinkClick',
+        'hyperlink_mouse_over': 'hyperlinkMouseOver',
         'type': 'type',
         'shape_type': 'shapeType'
     }
@@ -87,9 +91,9 @@ class GeometryShape(ShapeBase):
     type_determiners = {
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, type=None, shape_type=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type=None, shape_type=None):  # noqa: E501
         """GeometryShape - a model defined in Swagger"""  # noqa: E501
-        super(GeometryShape, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, three_d_format, line_format, type)
+        super(GeometryShape, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, three_d_format, line_format, hyperlink_click, hyperlink_mouse_over, type)
 
         self._shape_type = None
 

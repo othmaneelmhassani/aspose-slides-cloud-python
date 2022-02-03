@@ -57,6 +57,7 @@ class SlideExportFormat(object):
     POTM = "Potm"
     SVG = "Svg"
     FODP = "Fodp"
+    XAML = "Xaml"
 
     """
     Attributes:

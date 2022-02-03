@@ -491,6 +491,247 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('align_special_slide_shapes', 'storage')
 
+    def test_align_subshapes(self):
+        """Test case for align_subshapes
+        """
+        param_name = self.get_test_value('align_subshapes', 'name', 'str')
+        param_slide_index = self.get_test_value('align_subshapes', 'slide_index', 'int')
+        param_path = self.get_test_value('align_subshapes', 'path', 'str')
+        param_alignment_type = self.get_test_value('align_subshapes', 'alignment_type', 'str')
+        param_align_to_slide = self.get_test_value('align_subshapes', 'align_to_slide', 'bool')
+        param_shapes = self.get_test_value('align_subshapes', 'shapes', 'list[int]')
+        param_password = self.get_test_value('align_subshapes', 'password', 'str')
+        param_folder = self.get_test_value('align_subshapes', 'folder', 'str')
+        param_storage = self.get_test_value('align_subshapes', 'storage', 'str')
+        self.initialize('align_subshapes', None, None)
+        response = self.api.align_subshapes(param_name, param_slide_index, param_path, param_alignment_type, param_align_to_slide, param_shapes, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_align_subshapes_invalid_name(self):
+        """Test case for align_subshapes with invalid name
+        """
+        param_name = self.get_test_value('align_subshapes', 'name', 'str')
+        param_slide_index = self.get_test_value('align_subshapes', 'slide_index', 'int')
+        param_path = self.get_test_value('align_subshapes', 'path', 'str')
+        param_alignment_type = self.get_test_value('align_subshapes', 'alignment_type', 'str')
+        param_align_to_slide = self.get_test_value('align_subshapes', 'align_to_slide', 'bool')
+        param_shapes = self.get_test_value('align_subshapes', 'shapes', 'list[int]')
+        param_password = self.get_test_value('align_subshapes', 'password', 'str')
+        param_folder = self.get_test_value('align_subshapes', 'folder', 'str')
+        param_storage = self.get_test_value('align_subshapes', 'storage', 'str')
+        param_name = self.get_invalid_test_value('align_subshapes', 'name', param_name, 'str')
+        self.initialize('align_subshapes', 'name', param_name)
+        ok = False
+        try:
+            self.api.align_subshapes(param_name, param_slide_index, param_path, param_alignment_type, param_align_to_slide, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'align_subshapes', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'align_subshapes', 'name', param_name)
+        if ok:
+            self.assert_no_exception('align_subshapes', 'name')
+
+    def test_align_subshapes_invalid_slide_index(self):
+        """Test case for align_subshapes with invalid slide_index
+        """
+        param_name = self.get_test_value('align_subshapes', 'name', 'str')
+        param_slide_index = self.get_test_value('align_subshapes', 'slide_index', 'int')
+        param_path = self.get_test_value('align_subshapes', 'path', 'str')
+        param_alignment_type = self.get_test_value('align_subshapes', 'alignment_type', 'str')
+        param_align_to_slide = self.get_test_value('align_subshapes', 'align_to_slide', 'bool')
+        param_shapes = self.get_test_value('align_subshapes', 'shapes', 'list[int]')
+        param_password = self.get_test_value('align_subshapes', 'password', 'str')
+        param_folder = self.get_test_value('align_subshapes', 'folder', 'str')
+        param_storage = self.get_test_value('align_subshapes', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('align_subshapes', 'slide_index', param_slide_index, 'int')
+        self.initialize('align_subshapes', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.align_subshapes(param_name, param_slide_index, param_path, param_alignment_type, param_align_to_slide, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'align_subshapes', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'align_subshapes', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('align_subshapes', 'slide_index')
+
+    def test_align_subshapes_invalid_path(self):
+        """Test case for align_subshapes with invalid path
+        """
+        param_name = self.get_test_value('align_subshapes', 'name', 'str')
+        param_slide_index = self.get_test_value('align_subshapes', 'slide_index', 'int')
+        param_path = self.get_test_value('align_subshapes', 'path', 'str')
+        param_alignment_type = self.get_test_value('align_subshapes', 'alignment_type', 'str')
+        param_align_to_slide = self.get_test_value('align_subshapes', 'align_to_slide', 'bool')
+        param_shapes = self.get_test_value('align_subshapes', 'shapes', 'list[int]')
+        param_password = self.get_test_value('align_subshapes', 'password', 'str')
+        param_folder = self.get_test_value('align_subshapes', 'folder', 'str')
+        param_storage = self.get_test_value('align_subshapes', 'storage', 'str')
+        param_path = self.get_invalid_test_value('align_subshapes', 'path', param_path, 'str')
+        self.initialize('align_subshapes', 'path', param_path)
+        ok = False
+        try:
+            self.api.align_subshapes(param_name, param_slide_index, param_path, param_alignment_type, param_align_to_slide, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'align_subshapes', 'path', param_path)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'align_subshapes', 'path', param_path)
+        if ok:
+            self.assert_no_exception('align_subshapes', 'path')
+
+    def test_align_subshapes_invalid_alignment_type(self):
+        """Test case for align_subshapes with invalid alignment_type
+        """
+        param_name = self.get_test_value('align_subshapes', 'name', 'str')
+        param_slide_index = self.get_test_value('align_subshapes', 'slide_index', 'int')
+        param_path = self.get_test_value('align_subshapes', 'path', 'str')
+        param_alignment_type = self.get_test_value('align_subshapes', 'alignment_type', 'str')
+        param_align_to_slide = self.get_test_value('align_subshapes', 'align_to_slide', 'bool')
+        param_shapes = self.get_test_value('align_subshapes', 'shapes', 'list[int]')
+        param_password = self.get_test_value('align_subshapes', 'password', 'str')
+        param_folder = self.get_test_value('align_subshapes', 'folder', 'str')
+        param_storage = self.get_test_value('align_subshapes', 'storage', 'str')
+        param_alignment_type = self.get_invalid_test_value('align_subshapes', 'alignment_type', param_alignment_type, 'str')
+        self.initialize('align_subshapes', 'alignment_type', param_alignment_type)
+        ok = False
+        try:
+            self.api.align_subshapes(param_name, param_slide_index, param_path, param_alignment_type, param_align_to_slide, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'align_subshapes', 'alignment_type', param_alignment_type)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'align_subshapes', 'alignment_type', param_alignment_type)
+        if ok:
+            self.assert_no_exception('align_subshapes', 'alignment_type')
+
+    def test_align_subshapes_invalid_align_to_slide(self):
+        """Test case for align_subshapes with invalid align_to_slide
+        """
+        param_name = self.get_test_value('align_subshapes', 'name', 'str')
+        param_slide_index = self.get_test_value('align_subshapes', 'slide_index', 'int')
+        param_path = self.get_test_value('align_subshapes', 'path', 'str')
+        param_alignment_type = self.get_test_value('align_subshapes', 'alignment_type', 'str')
+        param_align_to_slide = self.get_test_value('align_subshapes', 'align_to_slide', 'bool')
+        param_shapes = self.get_test_value('align_subshapes', 'shapes', 'list[int]')
+        param_password = self.get_test_value('align_subshapes', 'password', 'str')
+        param_folder = self.get_test_value('align_subshapes', 'folder', 'str')
+        param_storage = self.get_test_value('align_subshapes', 'storage', 'str')
+        param_align_to_slide = self.get_invalid_test_value('align_subshapes', 'align_to_slide', param_align_to_slide, 'bool')
+        self.initialize('align_subshapes', 'align_to_slide', param_align_to_slide)
+        ok = False
+        try:
+            self.api.align_subshapes(param_name, param_slide_index, param_path, param_alignment_type, param_align_to_slide, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'align_subshapes', 'align_to_slide', param_align_to_slide)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'align_subshapes', 'align_to_slide', param_align_to_slide)
+        if ok:
+            self.assert_no_exception('align_subshapes', 'align_to_slide')
+
+    def test_align_subshapes_invalid_shapes(self):
+        """Test case for align_subshapes with invalid shapes
+        """
+        param_name = self.get_test_value('align_subshapes', 'name', 'str')
+        param_slide_index = self.get_test_value('align_subshapes', 'slide_index', 'int')
+        param_path = self.get_test_value('align_subshapes', 'path', 'str')
+        param_alignment_type = self.get_test_value('align_subshapes', 'alignment_type', 'str')
+        param_align_to_slide = self.get_test_value('align_subshapes', 'align_to_slide', 'bool')
+        param_shapes = self.get_test_value('align_subshapes', 'shapes', 'list[int]')
+        param_password = self.get_test_value('align_subshapes', 'password', 'str')
+        param_folder = self.get_test_value('align_subshapes', 'folder', 'str')
+        param_storage = self.get_test_value('align_subshapes', 'storage', 'str')
+        param_shapes = self.get_invalid_test_value('align_subshapes', 'shapes', param_shapes, 'list[int]')
+        self.initialize('align_subshapes', 'shapes', param_shapes)
+        ok = False
+        try:
+            self.api.align_subshapes(param_name, param_slide_index, param_path, param_alignment_type, param_align_to_slide, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'align_subshapes', 'shapes', param_shapes)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'align_subshapes', 'shapes', param_shapes)
+        if ok:
+            self.assert_no_exception('align_subshapes', 'shapes')
+
+    def test_align_subshapes_invalid_password(self):
+        """Test case for align_subshapes with invalid password
+        """
+        param_name = self.get_test_value('align_subshapes', 'name', 'str')
+        param_slide_index = self.get_test_value('align_subshapes', 'slide_index', 'int')
+        param_path = self.get_test_value('align_subshapes', 'path', 'str')
+        param_alignment_type = self.get_test_value('align_subshapes', 'alignment_type', 'str')
+        param_align_to_slide = self.get_test_value('align_subshapes', 'align_to_slide', 'bool')
+        param_shapes = self.get_test_value('align_subshapes', 'shapes', 'list[int]')
+        param_password = self.get_test_value('align_subshapes', 'password', 'str')
+        param_folder = self.get_test_value('align_subshapes', 'folder', 'str')
+        param_storage = self.get_test_value('align_subshapes', 'storage', 'str')
+        param_password = self.get_invalid_test_value('align_subshapes', 'password', param_password, 'str')
+        self.initialize('align_subshapes', 'password', param_password)
+        ok = False
+        try:
+            self.api.align_subshapes(param_name, param_slide_index, param_path, param_alignment_type, param_align_to_slide, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'align_subshapes', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'align_subshapes', 'password', param_password)
+        if ok:
+            self.assert_no_exception('align_subshapes', 'password')
+
+    def test_align_subshapes_invalid_folder(self):
+        """Test case for align_subshapes with invalid folder
+        """
+        param_name = self.get_test_value('align_subshapes', 'name', 'str')
+        param_slide_index = self.get_test_value('align_subshapes', 'slide_index', 'int')
+        param_path = self.get_test_value('align_subshapes', 'path', 'str')
+        param_alignment_type = self.get_test_value('align_subshapes', 'alignment_type', 'str')
+        param_align_to_slide = self.get_test_value('align_subshapes', 'align_to_slide', 'bool')
+        param_shapes = self.get_test_value('align_subshapes', 'shapes', 'list[int]')
+        param_password = self.get_test_value('align_subshapes', 'password', 'str')
+        param_folder = self.get_test_value('align_subshapes', 'folder', 'str')
+        param_storage = self.get_test_value('align_subshapes', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('align_subshapes', 'folder', param_folder, 'str')
+        self.initialize('align_subshapes', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.align_subshapes(param_name, param_slide_index, param_path, param_alignment_type, param_align_to_slide, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'align_subshapes', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'align_subshapes', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('align_subshapes', 'folder')
+
+    def test_align_subshapes_invalid_storage(self):
+        """Test case for align_subshapes with invalid storage
+        """
+        param_name = self.get_test_value('align_subshapes', 'name', 'str')
+        param_slide_index = self.get_test_value('align_subshapes', 'slide_index', 'int')
+        param_path = self.get_test_value('align_subshapes', 'path', 'str')
+        param_alignment_type = self.get_test_value('align_subshapes', 'alignment_type', 'str')
+        param_align_to_slide = self.get_test_value('align_subshapes', 'align_to_slide', 'bool')
+        param_shapes = self.get_test_value('align_subshapes', 'shapes', 'list[int]')
+        param_password = self.get_test_value('align_subshapes', 'password', 'str')
+        param_folder = self.get_test_value('align_subshapes', 'folder', 'str')
+        param_storage = self.get_test_value('align_subshapes', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('align_subshapes', 'storage', param_storage, 'str')
+        self.initialize('align_subshapes', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.align_subshapes(param_name, param_slide_index, param_path, param_alignment_type, param_align_to_slide, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'align_subshapes', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'align_subshapes', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('align_subshapes', 'storage')
+
     def test_convert(self):
         """Test case for convert
         """
@@ -18763,6 +19004,214 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('download_notes_slide_online', 'fonts_folder')
 
+    def test_download_portion_as_math_ml(self):
+        """Test case for download_portion_as_math_ml
+        """
+        param_name = self.get_test_value('download_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('download_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('download_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('download_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('download_portion_as_math_ml', 'portion_index', 'int')
+        param_password = self.get_test_value('download_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('download_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('download_portion_as_math_ml', 'storage', 'str')
+        self.initialize('download_portion_as_math_ml', None, None)
+        response = self.api.download_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+        self.assertTrue(isinstance(response, str))
+        self.assertTrue(len(response) > 0)
+
+    def test_download_portion_as_math_ml_invalid_name(self):
+        """Test case for download_portion_as_math_ml with invalid name
+        """
+        param_name = self.get_test_value('download_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('download_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('download_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('download_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('download_portion_as_math_ml', 'portion_index', 'int')
+        param_password = self.get_test_value('download_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('download_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('download_portion_as_math_ml', 'storage', 'str')
+        param_name = self.get_invalid_test_value('download_portion_as_math_ml', 'name', param_name, 'str')
+        self.initialize('download_portion_as_math_ml', 'name', param_name)
+        ok = False
+        try:
+            self.api.download_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'download_portion_as_math_ml', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'download_portion_as_math_ml', 'name', param_name)
+        if ok:
+            self.assert_no_exception('download_portion_as_math_ml', 'name')
+
+    def test_download_portion_as_math_ml_invalid_slide_index(self):
+        """Test case for download_portion_as_math_ml with invalid slide_index
+        """
+        param_name = self.get_test_value('download_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('download_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('download_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('download_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('download_portion_as_math_ml', 'portion_index', 'int')
+        param_password = self.get_test_value('download_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('download_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('download_portion_as_math_ml', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('download_portion_as_math_ml', 'slide_index', param_slide_index, 'int')
+        self.initialize('download_portion_as_math_ml', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.download_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'download_portion_as_math_ml', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'download_portion_as_math_ml', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('download_portion_as_math_ml', 'slide_index')
+
+    def test_download_portion_as_math_ml_invalid_shape_index(self):
+        """Test case for download_portion_as_math_ml with invalid shape_index
+        """
+        param_name = self.get_test_value('download_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('download_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('download_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('download_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('download_portion_as_math_ml', 'portion_index', 'int')
+        param_password = self.get_test_value('download_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('download_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('download_portion_as_math_ml', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('download_portion_as_math_ml', 'shape_index', param_shape_index, 'int')
+        self.initialize('download_portion_as_math_ml', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.download_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'download_portion_as_math_ml', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'download_portion_as_math_ml', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('download_portion_as_math_ml', 'shape_index')
+
+    def test_download_portion_as_math_ml_invalid_paragraph_index(self):
+        """Test case for download_portion_as_math_ml with invalid paragraph_index
+        """
+        param_name = self.get_test_value('download_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('download_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('download_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('download_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('download_portion_as_math_ml', 'portion_index', 'int')
+        param_password = self.get_test_value('download_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('download_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('download_portion_as_math_ml', 'storage', 'str')
+        param_paragraph_index = self.get_invalid_test_value('download_portion_as_math_ml', 'paragraph_index', param_paragraph_index, 'int')
+        self.initialize('download_portion_as_math_ml', 'paragraph_index', param_paragraph_index)
+        ok = False
+        try:
+            self.api.download_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'download_portion_as_math_ml', 'paragraph_index', param_paragraph_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'download_portion_as_math_ml', 'paragraph_index', param_paragraph_index)
+        if ok:
+            self.assert_no_exception('download_portion_as_math_ml', 'paragraph_index')
+
+    def test_download_portion_as_math_ml_invalid_portion_index(self):
+        """Test case for download_portion_as_math_ml with invalid portion_index
+        """
+        param_name = self.get_test_value('download_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('download_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('download_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('download_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('download_portion_as_math_ml', 'portion_index', 'int')
+        param_password = self.get_test_value('download_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('download_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('download_portion_as_math_ml', 'storage', 'str')
+        param_portion_index = self.get_invalid_test_value('download_portion_as_math_ml', 'portion_index', param_portion_index, 'int')
+        self.initialize('download_portion_as_math_ml', 'portion_index', param_portion_index)
+        ok = False
+        try:
+            self.api.download_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'download_portion_as_math_ml', 'portion_index', param_portion_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'download_portion_as_math_ml', 'portion_index', param_portion_index)
+        if ok:
+            self.assert_no_exception('download_portion_as_math_ml', 'portion_index')
+
+    def test_download_portion_as_math_ml_invalid_password(self):
+        """Test case for download_portion_as_math_ml with invalid password
+        """
+        param_name = self.get_test_value('download_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('download_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('download_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('download_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('download_portion_as_math_ml', 'portion_index', 'int')
+        param_password = self.get_test_value('download_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('download_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('download_portion_as_math_ml', 'storage', 'str')
+        param_password = self.get_invalid_test_value('download_portion_as_math_ml', 'password', param_password, 'str')
+        self.initialize('download_portion_as_math_ml', 'password', param_password)
+        ok = False
+        try:
+            self.api.download_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'download_portion_as_math_ml', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'download_portion_as_math_ml', 'password', param_password)
+        if ok:
+            self.assert_no_exception('download_portion_as_math_ml', 'password')
+
+    def test_download_portion_as_math_ml_invalid_folder(self):
+        """Test case for download_portion_as_math_ml with invalid folder
+        """
+        param_name = self.get_test_value('download_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('download_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('download_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('download_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('download_portion_as_math_ml', 'portion_index', 'int')
+        param_password = self.get_test_value('download_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('download_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('download_portion_as_math_ml', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('download_portion_as_math_ml', 'folder', param_folder, 'str')
+        self.initialize('download_portion_as_math_ml', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.download_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'download_portion_as_math_ml', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'download_portion_as_math_ml', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('download_portion_as_math_ml', 'folder')
+
+    def test_download_portion_as_math_ml_invalid_storage(self):
+        """Test case for download_portion_as_math_ml with invalid storage
+        """
+        param_name = self.get_test_value('download_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('download_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('download_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('download_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('download_portion_as_math_ml', 'portion_index', 'int')
+        param_password = self.get_test_value('download_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('download_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('download_portion_as_math_ml', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('download_portion_as_math_ml', 'storage', param_storage, 'str')
+        self.initialize('download_portion_as_math_ml', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.download_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'download_portion_as_math_ml', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'download_portion_as_math_ml', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('download_portion_as_math_ml', 'storage')
+
     def test_download_presentation(self):
         """Test case for download_presentation
         """
@@ -24680,6 +25129,151 @@ class TestSlidesApi(BaseTest):
             self.assert_value_error(ex, 'get_shape', 'storage', param_storage)
         if ok:
             self.assert_no_exception('get_shape', 'storage')
+
+    def test_get_shape_geometry_path(self):
+        """Test case for get_shape_geometry_path
+        """
+        param_name = self.get_test_value('get_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('get_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_shape_geometry_path', 'shape_index', 'int')
+        param_password = self.get_test_value('get_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('get_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('get_shape_geometry_path', 'storage', 'str')
+        self.initialize('get_shape_geometry_path', None, None)
+        response = self.api.get_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_get_shape_geometry_path_invalid_name(self):
+        """Test case for get_shape_geometry_path with invalid name
+        """
+        param_name = self.get_test_value('get_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('get_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_shape_geometry_path', 'shape_index', 'int')
+        param_password = self.get_test_value('get_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('get_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('get_shape_geometry_path', 'storage', 'str')
+        param_name = self.get_invalid_test_value('get_shape_geometry_path', 'name', param_name, 'str')
+        self.initialize('get_shape_geometry_path', 'name', param_name)
+        ok = False
+        try:
+            self.api.get_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_shape_geometry_path', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_shape_geometry_path', 'name', param_name)
+        if ok:
+            self.assert_no_exception('get_shape_geometry_path', 'name')
+
+    def test_get_shape_geometry_path_invalid_slide_index(self):
+        """Test case for get_shape_geometry_path with invalid slide_index
+        """
+        param_name = self.get_test_value('get_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('get_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_shape_geometry_path', 'shape_index', 'int')
+        param_password = self.get_test_value('get_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('get_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('get_shape_geometry_path', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('get_shape_geometry_path', 'slide_index', param_slide_index, 'int')
+        self.initialize('get_shape_geometry_path', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.get_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_shape_geometry_path', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_shape_geometry_path', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('get_shape_geometry_path', 'slide_index')
+
+    def test_get_shape_geometry_path_invalid_shape_index(self):
+        """Test case for get_shape_geometry_path with invalid shape_index
+        """
+        param_name = self.get_test_value('get_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('get_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_shape_geometry_path', 'shape_index', 'int')
+        param_password = self.get_test_value('get_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('get_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('get_shape_geometry_path', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('get_shape_geometry_path', 'shape_index', param_shape_index, 'int')
+        self.initialize('get_shape_geometry_path', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.get_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_shape_geometry_path', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_shape_geometry_path', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('get_shape_geometry_path', 'shape_index')
+
+    def test_get_shape_geometry_path_invalid_password(self):
+        """Test case for get_shape_geometry_path with invalid password
+        """
+        param_name = self.get_test_value('get_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('get_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_shape_geometry_path', 'shape_index', 'int')
+        param_password = self.get_test_value('get_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('get_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('get_shape_geometry_path', 'storage', 'str')
+        param_password = self.get_invalid_test_value('get_shape_geometry_path', 'password', param_password, 'str')
+        self.initialize('get_shape_geometry_path', 'password', param_password)
+        ok = False
+        try:
+            self.api.get_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_shape_geometry_path', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_shape_geometry_path', 'password', param_password)
+        if ok:
+            self.assert_no_exception('get_shape_geometry_path', 'password')
+
+    def test_get_shape_geometry_path_invalid_folder(self):
+        """Test case for get_shape_geometry_path with invalid folder
+        """
+        param_name = self.get_test_value('get_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('get_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_shape_geometry_path', 'shape_index', 'int')
+        param_password = self.get_test_value('get_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('get_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('get_shape_geometry_path', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('get_shape_geometry_path', 'folder', param_folder, 'str')
+        self.initialize('get_shape_geometry_path', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.get_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_shape_geometry_path', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_shape_geometry_path', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('get_shape_geometry_path', 'folder')
+
+    def test_get_shape_geometry_path_invalid_storage(self):
+        """Test case for get_shape_geometry_path with invalid storage
+        """
+        param_name = self.get_test_value('get_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('get_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_shape_geometry_path', 'shape_index', 'int')
+        param_password = self.get_test_value('get_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('get_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('get_shape_geometry_path', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('get_shape_geometry_path', 'storage', param_storage, 'str')
+        self.initialize('get_shape_geometry_path', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.get_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_shape_geometry_path', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_shape_geometry_path', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('get_shape_geometry_path', 'storage')
 
     def test_get_shapes(self):
         """Test case for get_shapes
@@ -31869,6 +32463,247 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('replace_slide_text_online', 'password')
 
+    def test_save_portion_as_math_ml(self):
+        """Test case for save_portion_as_math_ml
+        """
+        param_name = self.get_test_value('save_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('save_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('save_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('save_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('save_portion_as_math_ml', 'portion_index', 'int')
+        param_out_path = self.get_test_value('save_portion_as_math_ml', 'out_path', 'str')
+        param_password = self.get_test_value('save_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('save_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('save_portion_as_math_ml', 'storage', 'str')
+        self.initialize('save_portion_as_math_ml', None, None)
+        response = self.api.save_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_out_path, param_password, param_folder, param_storage)
+        self.assertIsNone(response)
+
+    def test_save_portion_as_math_ml_invalid_name(self):
+        """Test case for save_portion_as_math_ml with invalid name
+        """
+        param_name = self.get_test_value('save_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('save_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('save_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('save_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('save_portion_as_math_ml', 'portion_index', 'int')
+        param_out_path = self.get_test_value('save_portion_as_math_ml', 'out_path', 'str')
+        param_password = self.get_test_value('save_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('save_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('save_portion_as_math_ml', 'storage', 'str')
+        param_name = self.get_invalid_test_value('save_portion_as_math_ml', 'name', param_name, 'str')
+        self.initialize('save_portion_as_math_ml', 'name', param_name)
+        ok = False
+        try:
+            self.api.save_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_out_path, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'save_portion_as_math_ml', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'save_portion_as_math_ml', 'name', param_name)
+        if ok:
+            self.assert_no_exception('save_portion_as_math_ml', 'name')
+
+    def test_save_portion_as_math_ml_invalid_slide_index(self):
+        """Test case for save_portion_as_math_ml with invalid slide_index
+        """
+        param_name = self.get_test_value('save_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('save_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('save_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('save_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('save_portion_as_math_ml', 'portion_index', 'int')
+        param_out_path = self.get_test_value('save_portion_as_math_ml', 'out_path', 'str')
+        param_password = self.get_test_value('save_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('save_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('save_portion_as_math_ml', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('save_portion_as_math_ml', 'slide_index', param_slide_index, 'int')
+        self.initialize('save_portion_as_math_ml', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.save_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_out_path, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'save_portion_as_math_ml', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'save_portion_as_math_ml', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('save_portion_as_math_ml', 'slide_index')
+
+    def test_save_portion_as_math_ml_invalid_shape_index(self):
+        """Test case for save_portion_as_math_ml with invalid shape_index
+        """
+        param_name = self.get_test_value('save_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('save_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('save_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('save_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('save_portion_as_math_ml', 'portion_index', 'int')
+        param_out_path = self.get_test_value('save_portion_as_math_ml', 'out_path', 'str')
+        param_password = self.get_test_value('save_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('save_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('save_portion_as_math_ml', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('save_portion_as_math_ml', 'shape_index', param_shape_index, 'int')
+        self.initialize('save_portion_as_math_ml', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.save_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_out_path, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'save_portion_as_math_ml', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'save_portion_as_math_ml', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('save_portion_as_math_ml', 'shape_index')
+
+    def test_save_portion_as_math_ml_invalid_paragraph_index(self):
+        """Test case for save_portion_as_math_ml with invalid paragraph_index
+        """
+        param_name = self.get_test_value('save_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('save_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('save_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('save_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('save_portion_as_math_ml', 'portion_index', 'int')
+        param_out_path = self.get_test_value('save_portion_as_math_ml', 'out_path', 'str')
+        param_password = self.get_test_value('save_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('save_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('save_portion_as_math_ml', 'storage', 'str')
+        param_paragraph_index = self.get_invalid_test_value('save_portion_as_math_ml', 'paragraph_index', param_paragraph_index, 'int')
+        self.initialize('save_portion_as_math_ml', 'paragraph_index', param_paragraph_index)
+        ok = False
+        try:
+            self.api.save_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_out_path, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'save_portion_as_math_ml', 'paragraph_index', param_paragraph_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'save_portion_as_math_ml', 'paragraph_index', param_paragraph_index)
+        if ok:
+            self.assert_no_exception('save_portion_as_math_ml', 'paragraph_index')
+
+    def test_save_portion_as_math_ml_invalid_portion_index(self):
+        """Test case for save_portion_as_math_ml with invalid portion_index
+        """
+        param_name = self.get_test_value('save_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('save_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('save_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('save_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('save_portion_as_math_ml', 'portion_index', 'int')
+        param_out_path = self.get_test_value('save_portion_as_math_ml', 'out_path', 'str')
+        param_password = self.get_test_value('save_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('save_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('save_portion_as_math_ml', 'storage', 'str')
+        param_portion_index = self.get_invalid_test_value('save_portion_as_math_ml', 'portion_index', param_portion_index, 'int')
+        self.initialize('save_portion_as_math_ml', 'portion_index', param_portion_index)
+        ok = False
+        try:
+            self.api.save_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_out_path, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'save_portion_as_math_ml', 'portion_index', param_portion_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'save_portion_as_math_ml', 'portion_index', param_portion_index)
+        if ok:
+            self.assert_no_exception('save_portion_as_math_ml', 'portion_index')
+
+    def test_save_portion_as_math_ml_invalid_out_path(self):
+        """Test case for save_portion_as_math_ml with invalid out_path
+        """
+        param_name = self.get_test_value('save_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('save_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('save_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('save_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('save_portion_as_math_ml', 'portion_index', 'int')
+        param_out_path = self.get_test_value('save_portion_as_math_ml', 'out_path', 'str')
+        param_password = self.get_test_value('save_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('save_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('save_portion_as_math_ml', 'storage', 'str')
+        param_out_path = self.get_invalid_test_value('save_portion_as_math_ml', 'out_path', param_out_path, 'str')
+        self.initialize('save_portion_as_math_ml', 'out_path', param_out_path)
+        ok = False
+        try:
+            self.api.save_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_out_path, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'save_portion_as_math_ml', 'out_path', param_out_path)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'save_portion_as_math_ml', 'out_path', param_out_path)
+        if ok:
+            self.assert_no_exception('save_portion_as_math_ml', 'out_path')
+
+    def test_save_portion_as_math_ml_invalid_password(self):
+        """Test case for save_portion_as_math_ml with invalid password
+        """
+        param_name = self.get_test_value('save_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('save_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('save_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('save_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('save_portion_as_math_ml', 'portion_index', 'int')
+        param_out_path = self.get_test_value('save_portion_as_math_ml', 'out_path', 'str')
+        param_password = self.get_test_value('save_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('save_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('save_portion_as_math_ml', 'storage', 'str')
+        param_password = self.get_invalid_test_value('save_portion_as_math_ml', 'password', param_password, 'str')
+        self.initialize('save_portion_as_math_ml', 'password', param_password)
+        ok = False
+        try:
+            self.api.save_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_out_path, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'save_portion_as_math_ml', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'save_portion_as_math_ml', 'password', param_password)
+        if ok:
+            self.assert_no_exception('save_portion_as_math_ml', 'password')
+
+    def test_save_portion_as_math_ml_invalid_folder(self):
+        """Test case for save_portion_as_math_ml with invalid folder
+        """
+        param_name = self.get_test_value('save_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('save_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('save_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('save_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('save_portion_as_math_ml', 'portion_index', 'int')
+        param_out_path = self.get_test_value('save_portion_as_math_ml', 'out_path', 'str')
+        param_password = self.get_test_value('save_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('save_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('save_portion_as_math_ml', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('save_portion_as_math_ml', 'folder', param_folder, 'str')
+        self.initialize('save_portion_as_math_ml', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.save_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_out_path, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'save_portion_as_math_ml', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'save_portion_as_math_ml', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('save_portion_as_math_ml', 'folder')
+
+    def test_save_portion_as_math_ml_invalid_storage(self):
+        """Test case for save_portion_as_math_ml with invalid storage
+        """
+        param_name = self.get_test_value('save_portion_as_math_ml', 'name', 'str')
+        param_slide_index = self.get_test_value('save_portion_as_math_ml', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('save_portion_as_math_ml', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('save_portion_as_math_ml', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('save_portion_as_math_ml', 'portion_index', 'int')
+        param_out_path = self.get_test_value('save_portion_as_math_ml', 'out_path', 'str')
+        param_password = self.get_test_value('save_portion_as_math_ml', 'password', 'str')
+        param_folder = self.get_test_value('save_portion_as_math_ml', 'folder', 'str')
+        param_storage = self.get_test_value('save_portion_as_math_ml', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('save_portion_as_math_ml', 'storage', param_storage, 'str')
+        self.initialize('save_portion_as_math_ml', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.save_portion_as_math_ml(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_out_path, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'save_portion_as_math_ml', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'save_portion_as_math_ml', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('save_portion_as_math_ml', 'storage')
+
     def test_save_presentation(self):
         """Test case for save_presentation
         """
@@ -36083,6 +36918,181 @@ class TestSlidesApi(BaseTest):
             self.assert_value_error(ex, 'set_sections', 'storage', param_storage)
         if ok:
             self.assert_no_exception('set_sections', 'storage')
+
+    def test_set_shape_geometry_path(self):
+        """Test case for set_shape_geometry_path
+        """
+        param_name = self.get_test_value('set_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('set_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_shape_geometry_path', 'shape_index', 'int')
+        param_dto = self.get_test_value('set_shape_geometry_path', 'dto', 'GeometryPaths')
+        param_password = self.get_test_value('set_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('set_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('set_shape_geometry_path', 'storage', 'str')
+        self.initialize('set_shape_geometry_path', None, None)
+        response = self.api.set_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_dto, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_set_shape_geometry_path_invalid_name(self):
+        """Test case for set_shape_geometry_path with invalid name
+        """
+        param_name = self.get_test_value('set_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('set_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_shape_geometry_path', 'shape_index', 'int')
+        param_dto = self.get_test_value('set_shape_geometry_path', 'dto', 'GeometryPaths')
+        param_password = self.get_test_value('set_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('set_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('set_shape_geometry_path', 'storage', 'str')
+        param_name = self.get_invalid_test_value('set_shape_geometry_path', 'name', param_name, 'str')
+        self.initialize('set_shape_geometry_path', 'name', param_name)
+        ok = False
+        try:
+            self.api.set_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_dto, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_shape_geometry_path', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_shape_geometry_path', 'name', param_name)
+        if ok:
+            self.assert_no_exception('set_shape_geometry_path', 'name')
+
+    def test_set_shape_geometry_path_invalid_slide_index(self):
+        """Test case for set_shape_geometry_path with invalid slide_index
+        """
+        param_name = self.get_test_value('set_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('set_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_shape_geometry_path', 'shape_index', 'int')
+        param_dto = self.get_test_value('set_shape_geometry_path', 'dto', 'GeometryPaths')
+        param_password = self.get_test_value('set_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('set_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('set_shape_geometry_path', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('set_shape_geometry_path', 'slide_index', param_slide_index, 'int')
+        self.initialize('set_shape_geometry_path', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.set_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_dto, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_shape_geometry_path', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_shape_geometry_path', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('set_shape_geometry_path', 'slide_index')
+
+    def test_set_shape_geometry_path_invalid_shape_index(self):
+        """Test case for set_shape_geometry_path with invalid shape_index
+        """
+        param_name = self.get_test_value('set_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('set_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_shape_geometry_path', 'shape_index', 'int')
+        param_dto = self.get_test_value('set_shape_geometry_path', 'dto', 'GeometryPaths')
+        param_password = self.get_test_value('set_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('set_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('set_shape_geometry_path', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('set_shape_geometry_path', 'shape_index', param_shape_index, 'int')
+        self.initialize('set_shape_geometry_path', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.set_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_dto, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_shape_geometry_path', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_shape_geometry_path', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('set_shape_geometry_path', 'shape_index')
+
+    def test_set_shape_geometry_path_invalid_dto(self):
+        """Test case for set_shape_geometry_path with invalid dto
+        """
+        param_name = self.get_test_value('set_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('set_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_shape_geometry_path', 'shape_index', 'int')
+        param_dto = self.get_test_value('set_shape_geometry_path', 'dto', 'GeometryPaths')
+        param_password = self.get_test_value('set_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('set_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('set_shape_geometry_path', 'storage', 'str')
+        param_dto = self.get_invalid_test_value('set_shape_geometry_path', 'dto', param_dto, 'GeometryPaths')
+        self.initialize('set_shape_geometry_path', 'dto', param_dto)
+        ok = False
+        try:
+            self.api.set_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_dto, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_shape_geometry_path', 'dto', param_dto)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_shape_geometry_path', 'dto', param_dto)
+        if ok:
+            self.assert_no_exception('set_shape_geometry_path', 'dto')
+
+    def test_set_shape_geometry_path_invalid_password(self):
+        """Test case for set_shape_geometry_path with invalid password
+        """
+        param_name = self.get_test_value('set_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('set_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_shape_geometry_path', 'shape_index', 'int')
+        param_dto = self.get_test_value('set_shape_geometry_path', 'dto', 'GeometryPaths')
+        param_password = self.get_test_value('set_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('set_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('set_shape_geometry_path', 'storage', 'str')
+        param_password = self.get_invalid_test_value('set_shape_geometry_path', 'password', param_password, 'str')
+        self.initialize('set_shape_geometry_path', 'password', param_password)
+        ok = False
+        try:
+            self.api.set_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_dto, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_shape_geometry_path', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_shape_geometry_path', 'password', param_password)
+        if ok:
+            self.assert_no_exception('set_shape_geometry_path', 'password')
+
+    def test_set_shape_geometry_path_invalid_folder(self):
+        """Test case for set_shape_geometry_path with invalid folder
+        """
+        param_name = self.get_test_value('set_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('set_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_shape_geometry_path', 'shape_index', 'int')
+        param_dto = self.get_test_value('set_shape_geometry_path', 'dto', 'GeometryPaths')
+        param_password = self.get_test_value('set_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('set_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('set_shape_geometry_path', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('set_shape_geometry_path', 'folder', param_folder, 'str')
+        self.initialize('set_shape_geometry_path', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.set_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_dto, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_shape_geometry_path', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_shape_geometry_path', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('set_shape_geometry_path', 'folder')
+
+    def test_set_shape_geometry_path_invalid_storage(self):
+        """Test case for set_shape_geometry_path with invalid storage
+        """
+        param_name = self.get_test_value('set_shape_geometry_path', 'name', 'str')
+        param_slide_index = self.get_test_value('set_shape_geometry_path', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_shape_geometry_path', 'shape_index', 'int')
+        param_dto = self.get_test_value('set_shape_geometry_path', 'dto', 'GeometryPaths')
+        param_password = self.get_test_value('set_shape_geometry_path', 'password', 'str')
+        param_folder = self.get_test_value('set_shape_geometry_path', 'folder', 'str')
+        param_storage = self.get_test_value('set_shape_geometry_path', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('set_shape_geometry_path', 'storage', param_storage, 'str')
+        self.initialize('set_shape_geometry_path', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.set_shape_geometry_path(param_name, param_slide_index, param_shape_index, param_dto, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_shape_geometry_path', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_shape_geometry_path', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('set_shape_geometry_path', 'storage')
 
     def test_set_slide_header_footer(self):
         """Test case for set_slide_header_footer

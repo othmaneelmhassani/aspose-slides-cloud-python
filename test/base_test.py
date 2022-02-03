@@ -31,6 +31,7 @@ import json
 import os
 import unittest
 import asposeslidescloud
+from asposeslidescloud import models
 from asposeslidescloud.api_client import ApiClient
 from asposeslidescloud.apis.slides_api import SlidesApi
 from asposeslidescloud.configuration import Configuration
@@ -121,10 +122,15 @@ class BaseTest(unittest.TestCase):
         value = "test" + field_name
         for rule in self.get_rules(BaseTest.test_rules['Values'], function_name, field_name):
             if 'Value' in rule:
-                value = rule['Value']
+                rule_value = rule['Value']
                 if 'Type' in rule:
-                    api_client = ApiClient(Configuration())
-                    value = api_client.deserialize_model(value, rule['Type'])
+                    rule_class = getattr(models, rule['Type'])
+                    field_class = getattr(models, field_type)
+                    if rule_class and field_class and issubclass(rule_class, field_class):
+                        api_client = ApiClient(Configuration())
+                        value = api_client.deserialize_model(rule_value, rule['Type'])
+                else:
+                    value = rule_value
         return value
 
     def get_invalid_test_value(self, function_name, field_name, field_value, field_type):

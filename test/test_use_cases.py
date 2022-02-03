@@ -76,6 +76,18 @@ from asposeslidescloud.models.chart_category import ChartCategory
 from asposeslidescloud.models.axes import Axes
 from asposeslidescloud.models.axis import Axis
 from asposeslidescloud.models.connector import Connector
+from asposeslidescloud.models.geometry_paths import GeometryPaths
+from asposeslidescloud.models.geometry_path import GeometryPath
+from asposeslidescloud.models.hyperlink import Hyperlink
+from asposeslidescloud.models.math_paragraph import MathParagraph
+from asposeslidescloud.models.block_element import BlockElement
+from asposeslidescloud.models.function_element import FunctionElement
+from asposeslidescloud.models.fraction_element import FractionElement
+from asposeslidescloud.models.limit_element import LimitElement
+from asposeslidescloud.models.text_element import TextElement
+from asposeslidescloud.models.move_to_path_segment import MoveToPathSegment
+from asposeslidescloud.models.line_to_path_segment import LineToPathSegment
+from asposeslidescloud.models.close_path_segment import ClosePathSegment
 from asposeslidescloud.models.request_input_file import RequestInputFile
 from asposeslidescloud.models.save import Save
 
@@ -599,7 +611,7 @@ class TestUseCases(BaseTest):
         file_name = "test.pptx"
         password = "password"
         slide_index = 1
-        shape_count = 5
+        shape_count = 6
         BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
 
         shapes = BaseTest.slides_api.get_special_slide_shapes(file_name, slide_index, 'layoutSlide', password, folder_name)
@@ -704,7 +716,7 @@ class TestUseCases(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
 
         animation = BaseTest.slides_api.get_special_slide_animation(file_name, slide_index, 'layoutSlide', None, None, password, folder_name)
-        self.assertEqual(0, len(animation.main_sequence))
+        self.assertEqual(1, len(animation.main_sequence))
 
         effect1 = Effect()
         effect1.type = "Blink"
@@ -962,11 +974,8 @@ class TestUseCases(BaseTest):
         file_name = "test.pptx"
         BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
         dto = GroupShape()
-        try:
-            BaseTest.slides_api.create_shape(file_name, 1, dto, None, None, "password", folder_name)
-            self.fail("GroupShape should not have been created")
-        except ApiException as ex:
-            self.assertEqual(400, ex.status)
+        result = BaseTest.slides_api.create_shape(file_name, 1, dto, None, None, "password", folder_name)
+        self.assertTrue(isinstance(result, GroupShape))
 
     def test_connector_add(self):
         folder_name = "TempSlidesSDK"
@@ -1011,6 +1020,31 @@ class TestUseCases(BaseTest):
         BaseTest.slides_api.align_shapes(file_name, slide_index, "AlignLeft", True, [1, 2], password, folder_name)
         shape31 = BaseTest.slides_api.get_shape(file_name, slide_index, shape1_index, password, folder_name)
         shape32 = BaseTest.slides_api.get_shape(file_name, slide_index, shape2_index, password, folder_name)
+        self.assertLess(abs(shape31.x - shape32.x), 1)
+        self.assertLess(abs(shape31.x), 1)
+        self.assertLess(abs(shape31.y - shape32.y), 1)
+
+    def test_shapes_align_group(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        slide_index = 1
+        path = "4/shapes"
+        shape1_index = 1
+        shape2_index = 2
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        shape11 = BaseTest.slides_api.get_subshape(file_name, slide_index, path, shape1_index, password, folder_name)
+        shape12 = BaseTest.slides_api.get_subshape(file_name, slide_index, path, shape2_index, password, folder_name)
+        self.assertNotEqual(shape11.x, shape12.x)
+        self.assertNotEqual(shape11.y, shape12.y)
+        BaseTest.slides_api.align_subshapes(file_name, slide_index, path, "AlignTop", None, None, password, folder_name)
+        shape21 = BaseTest.slides_api.get_subshape(file_name, slide_index, path, shape1_index, password, folder_name)
+        shape22 = BaseTest.slides_api.get_subshape(file_name, slide_index, path, shape2_index, password, folder_name)
+        self.assertNotEqual(shape21.x, shape22.x)
+        self.assertLess(abs(shape21.y - shape22.y), 1)
+        BaseTest.slides_api.align_subshapes(file_name, slide_index, path, "AlignLeft", True, [1, 2], password, folder_name)
+        shape31 = BaseTest.slides_api.get_subshape(file_name, slide_index, path, shape1_index, password, folder_name)
+        shape32 = BaseTest.slides_api.get_subshape(file_name, slide_index, path, shape2_index, password, folder_name)
         self.assertLess(abs(shape31.x - shape32.x), 1)
         self.assertLess(abs(shape31.x), 1)
         self.assertLess(abs(shape31.y - shape32.y), 1)
@@ -1265,6 +1299,43 @@ class TestUseCases(BaseTest):
         self.assertEqual(1, len(result.series))
         self.assertEqual(4, len(result.categories))
 
+    def test_shape_geometry_get(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        paths = BaseTest.slides_api.get_shape_geometry_path(file_name, 4, 2, "password", folder_name)
+        self.assertIsNotNone(paths.paths)
+        self.assertEqual(1, len(paths.paths))
+
+    def test_shape_geometry_set(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        dto = GeometryPaths()
+        path = GeometryPath()
+        start = MoveToPathSegment()
+        start.x = 0
+        start.y = 0
+        line1 = LineToPathSegment()
+        line1.x = 0
+        line1.y = 200
+        line2 = LineToPathSegment()
+        line2.x = 200
+        line2.y = 300
+        line3 = LineToPathSegment()
+        line3.x = 400
+        line3.y = 200
+        line4 = LineToPathSegment()
+        line4.x = 400
+        line4.y = 0
+        end = ClosePathSegment()
+        path.path_data = [ start, line1, line2, line3, line4, end ]
+        dto.paths = [ path ]
+        shape = BaseTest.slides_api.set_shape_geometry_path(file_name, 4, 1, dto, "password", folder_name)
+        self.assertIsNotNone(shape)
+
     def test_shape_format_line(self):
         folder_name = "TempSlidesSDK"
         file_name = "test.pptx"
@@ -1359,6 +1430,191 @@ class TestUseCases(BaseTest):
         shape = BaseTest.slides_api.get_shape(file_name, 1, 1, password, folder_name)
         self.assertTrue(isinstance(shape, Shape))
         self.assertEqual(dto.three_d_format.depth, shape.three_d_format.depth)
+
+    def hyperlink_get_shape(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        shape = BaseTest.slides_api.get_shape(file_name, 2, 2, "password", folder_name)
+        self.assertIsNotNone(shape.hyperlink_click)
+        self.assertEqual("Hyperlink", shape.hyperlink_click.action_type)
+        self.assertIsNone(shape.hyperlink_mouse_over)
+
+    def hyperlink_get_portion(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        portion = BaseTest.slides_api.get_portion(file_name, 2, 1, 1, 2, "password", folder_name)
+        self.assertIsNone(portion.hyperlink_click)
+        self.assertIsNotNone(portion.hyperlink_mouse_over)
+        self.assertEqual("JumpLastSlide", portion.hyperlink_mouse_over.action_type)
+
+    def hyperlink_create_shape(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        shape = Shape()
+        hyperlink = Hyperlink()
+        hyperlink.action_type = "Hyperlink"
+        hyperlink.external_url = "https://docs.aspose.cloud/slides"
+        shape.hyperlink_click = hyperlink
+        updated_shape = BaseTest.slides_api.update_shape(file_name, 2, 2, shape, "password", folder_name)
+        self.assertIsNotNone(updated_shape.hyperlink_click)
+        self.assertEqual(shape.hyperlink_click.external_url, updated_shape.hyperlink_click.external_url)
+
+    def hyperlink_create_portion(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        dto = Portion()
+        dto.text = "Link text"
+        hyperlink = Hyperlink()
+        hyperlink.action_type = "JumpLastSlide"
+        dto.hyperlink_mouse_over = hyperlink
+        updated_portion = BaseTest.slides_api.create_portion(file_name, 1, 1, 1, dto, None, "password", folder_name)
+        self.assertIsNotNone(updated_portion.hyperlink_mouse_over)
+        self.assertEqual(dto.hyperlink_mouse_over.action_type, updated_portion.hyperlink_mouse_over.action_type)
+
+    def hyperlink_delete(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        shape = PictureFrame()
+        hyperlink = Hyperlink()
+        hyperlink.is_disabled = True
+        shape.hyperlink_click = hyperlink
+        updated_shape = BaseTest.slides_api.update_shape(file_name, 2, 2, shape, "password", folder_name)
+        self.assertIsNone(updated_shape.hyperlink_click)
+
+    def math_get(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+        portion = BaseTest.slides_api.get_portion(file_name, 2, 3, 1, 1, "password", folder_name)
+        self.assertIsNotNone(portion.math_paragraph)
+        self.assertIsNotNone(portion.math_paragraph.math_block_list)
+        self.assertEqual(1, len(portion.math_paragraph.math_block_list))
+        self.assertIsNotNone(portion.math_paragraph.math_block_list[0].math_element_list)
+        self.assertEqual(3, len(portion.math_paragraph.math_block_list[0].math_element_list))
+        self.assertTrue(isinstance(portion.math_paragraph.math_block_list[0].math_element_list[2], FractionElement))
+
+    def math_get_null(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        portion = BaseTest.slides_api.get_portion(file_name, 2, 1, 1, 1, "password", folder_name)
+        self.assertIsNone(portion.math_paragraph)
+
+    def math_create(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        dto = Portion()
+        math_paragraph = MathParagraph()
+        math_block = BlockElement()
+        function_element = FunctionElement()
+        limit_element = LimitElement()
+        text1 = TextElement()
+        text1.value = "lim"
+        limit_element.base = text1
+        text2 = TextElement()
+        text2.value = "x->0"
+        limit_element.limit = text2
+        function_element.name = limit_element
+        fraction_element = FractionElement()
+        sinus_element = FunctionElement()
+        text3 = TextElement()
+        text3.value = "sin"
+        sinus_element.name = text3
+        text4 = TextElement()
+        text4.value = "x"
+        sinus_element.name = text4
+        fraction_element.numerator = sinus_element
+        text5 = TextElement()
+        text5.value = "x"
+        fraction_element.denominator = text5
+        function_element.base = fraction_element
+        math_block.math_element_list = [ function_element ]
+        math_paragraph.math_block_list = [ math_block ]
+        dto.math_paragraph = math_paragraph
+        portion = BaseTest.slides_api.create_portion(file_name, 1, 1, 1, dto, None, "password", folder_name)
+        self.assertIsNotNone(portion.math_paragraph)
+        self.assertIsNotNone(portion.math_paragraph.math_block_list)
+        self.assertEqual(1, len(portion.math_paragraph.math_block_list))
+        self.assertIsNotNone(portion.math_paragraph.math_block_list[0].math_element_list)
+        self.assertEqual(1, len(portion.math_paragraph.math_block_list[0].math_element_list))
+        self.assertTrue(isinstance(portion.math_paragraph.math_block_list[0].math_element_list[0], FunctionElement))
+
+    def math_update(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        dto = Portion()
+        math_paragraph = MathParagraph()
+        math_block = BlockElement()
+        function_element = FunctionElement()
+        limit_element = LimitElement()
+        text1 = TextElement()
+        text1.value = "lim"
+        limit_element.base = text1
+        text2 = TextElement()
+        text2.value = "x->0"
+        limit_element.limit = text2
+        function_element.name = limit_element
+        fraction_element = FractionElement()
+        sinus_element = FunctionElement()
+        text3 = TextElement()
+        text3.value = "sin"
+        sinus_element.name = text3
+        text4 = TextElement()
+        text4.value = "x"
+        sinus_element.name = text4
+        fraction_element.numerator = sinus_element
+        text5 = TextElement()
+        text5.value = "x"
+        fraction_element.denominator = text5
+        function_element.base = fraction_element
+        math_block.math_element_list = [ function_element ]
+        math_paragraph.math_block_list = [ math_block ]
+        dto.math_paragraph = math_paragraph
+        portion = BaseTest.slides_api.update_portion(file_name, 2, 3, 1, 1, dto, "password", folder_name)
+        self.assertIsNotNone(portion.math_paragraph)
+        self.assertIsNotNone(portion.math_paragraph.math_block_list)
+        self.assertEqual(1, len(portion.math_paragraph.math_block_list))
+        self.assertIsNotNone(portion.math_paragraph.math_block_list[0].math_element_list)
+        self.assertEqual(1, len(portion.math_paragraph.math_block_list[0].math_element_list))
+        self.assertTrue(isinstance(portion.math_paragraph.math_block_list[0].math_element_list[0], FunctionElement))
+
+    def math_download(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        mathMl = BaseTest.slides_api.download_portion_as_math_ml(file_name, 2, 3, 1, 1, "password", folder_name)
+        self.assertGreater(os.path.getsize(mathMl), 0)
+
+    def math_download_null(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        try:
+            BaseTest.slides_api.download_portion_as_math_ml(file_name, 2, 1, 1, 1, "password", folder_name)
+            self.fail("Must have failed because conversion to MathML works only for math portions")
+        except ApiException as ex:
+            self.assertEqual(400, ex.status)
+
+    def math_save(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        out_path = folder_name + "/mathml.xml"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        BaseTest.slides_api.save_portion_as_math_ml(file_name, 2, 3, 1, 1, out_path, "password", folder_name)
+        self.assertTrue(BaseTest.slides_api.object_exists(out_path).exists)
 
     def test_header_footer_all_slides(self):
         folder_name = "TempSlidesSDK"
@@ -1720,11 +1976,13 @@ class TestUseCases(BaseTest):
         folder_name = "TempSlidesSDK"
         file_name = "test.pptx"
         file_name2 = "test-unprotected.pptx"
+        file_name_pdf = "test.pdf"
         password = "password"
         BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
         BaseTest.slides_api.copy_file("TempTests/" + file_name2, folder_name + "/" + file_name2)
+        BaseTest.slides_api.copy_file("TempTests/" + file_name_pdf, folder_name + "/" + file_name_pdf)
         request = PresentationsMergeRequest()
-        request.presentation_paths = [ folder_name + "/" + file_name2 ]
+        request.presentation_paths = [ folder_name + "/" + file_name2, folder_name + "/" + file_name_pdf ]
         BaseTest.slides_api.merge(file_name, request, password, folder_name)
 
     def test_merge_ordered_storage(self):

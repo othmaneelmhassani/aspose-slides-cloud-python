@@ -59,6 +59,8 @@ class OleObjectFrame(ShapeBase):
         'effect_format': 'EffectFormat',
         'three_d_format': 'ThreeDFormat',
         'line_format': 'LineFormat',
+        'hyperlink_click': 'Hyperlink',
+        'hyperlink_mouse_over': 'Hyperlink',
         'type': 'str',
         'is_object_icon': 'bool',
         'substitute_picture_title': 'str'
@@ -81,6 +83,8 @@ class OleObjectFrame(ShapeBase):
         'effect_format': 'effectFormat',
         'three_d_format': 'threeDFormat',
         'line_format': 'lineFormat',
+        'hyperlink_click': 'hyperlinkClick',
+        'hyperlink_mouse_over': 'hyperlinkMouseOver',
         'type': 'type',
         'is_object_icon': 'isObjectIcon',
         'substitute_picture_title': 'substitutePictureTitle'
@@ -90,9 +94,9 @@ class OleObjectFrame(ShapeBase):
         'type': 'OleObjectFrame',
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, type='OleObjectFrame', is_object_icon=None, substitute_picture_title=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='OleObjectFrame', is_object_icon=None, substitute_picture_title=None):  # noqa: E501
         """OleObjectFrame - a model defined in Swagger"""  # noqa: E501
-        super(OleObjectFrame, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, three_d_format, line_format, type)
+        super(OleObjectFrame, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, three_d_format, line_format, hyperlink_click, hyperlink_mouse_over, type)
 
         self._is_object_icon = None
         self._substitute_picture_title = None

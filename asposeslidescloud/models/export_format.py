@@ -59,6 +59,7 @@ class ExportFormat(object):
     GIF = "Gif"
     BMP = "Bmp"
     FODP = "Fodp"
+    XAML = "Xaml"
 
     """
     Attributes:
