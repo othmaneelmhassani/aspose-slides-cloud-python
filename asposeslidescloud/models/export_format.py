@@ -60,6 +60,7 @@ class ExportFormat(object):
     BMP = "Bmp"
     FODP = "Fodp"
     XAML = "Xaml"
+    MPEG4 = "Mpeg4"
 
     """
     Attributes:

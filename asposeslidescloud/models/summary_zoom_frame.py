@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.geometry_shape import GeometryShape
+from asposeslidescloud.models.shape_base import ShapeBase
 
-class Shape(GeometryShape):
+class SummaryZoomFrame(ShapeBase):
 
 
     """
@@ -62,10 +62,8 @@ class Shape(GeometryShape):
         'hyperlink_click': 'Hyperlink',
         'hyperlink_mouse_over': 'Hyperlink',
         'type': 'str',
-        'shape_type': 'str',
-        'text': 'str',
-        'paragraphs': 'ResourceUri',
-        'text_frame_format': 'TextFrameFormat'
+        'zoom_layout': 'str',
+        'sections': 'list[SummaryZoomSection]'
     }
 
     attribute_map = {
@@ -88,97 +86,86 @@ class Shape(GeometryShape):
         'hyperlink_click': 'hyperlinkClick',
         'hyperlink_mouse_over': 'hyperlinkMouseOver',
         'type': 'type',
-        'shape_type': 'shapeType',
-        'text': 'text',
-        'paragraphs': 'paragraphs',
-        'text_frame_format': 'textFrameFormat'
+        'zoom_layout': 'zoomLayout',
+        'sections': 'sections'
     }
 
     type_determiners = {
-        'type': 'Shape',
+        'type': 'SummaryZoomFrame',
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='Shape', shape_type=None, text=None, paragraphs=None, text_frame_format=None):  # noqa: E501
-        """Shape - a model defined in Swagger"""  # noqa: E501
-        super(Shape, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, three_d_format, line_format, hyperlink_click, hyperlink_mouse_over, type, shape_type)
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='SummaryZoomFrame', zoom_layout=None, sections=None):  # noqa: E501
+        """SummaryZoomFrame - a model defined in Swagger"""  # noqa: E501
+        super(SummaryZoomFrame, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, three_d_format, line_format, hyperlink_click, hyperlink_mouse_over, type)
 
-        self._text = None
-        self._paragraphs = None
-        self._text_frame_format = None
-        self.type = 'Shape'
+        self._zoom_layout = None
+        self._sections = None
+        self.type = 'SummaryZoomFrame'
 
-        if text is not None:
-            self.text = text
-        if paragraphs is not None:
-            self.paragraphs = paragraphs
-        if text_frame_format is not None:
-            self.text_frame_format = text_frame_format
+        if zoom_layout is not None:
+            self.zoom_layout = zoom_layout
+        if sections is not None:
+            self.sections = sections
 
     @property
-    def text(self):
-        """Gets the text of this Shape.  # noqa: E501
+    def zoom_layout(self):
+        """Gets the zoom_layout of this SummaryZoomFrame.  # noqa: E501
 
-        Gets or sets the text.  # noqa: E501
+        Zoom layout type  # noqa: E501
 
-        :return: The text of this Shape.  # noqa: E501
+        :return: The zoom_layout of this SummaryZoomFrame.  # noqa: E501
         :rtype: str
         """
-        return self._text
+        return self._zoom_layout
 
-    @text.setter
-    def text(self, text):
-        """Sets the text of this Shape.
+    @zoom_layout.setter
+    def zoom_layout(self, zoom_layout):
+        """Sets the zoom_layout of this SummaryZoomFrame.
 
-        Gets or sets the text.  # noqa: E501
+        Zoom layout type  # noqa: E501
 
-        :param text: The text of this Shape.  # noqa: E501
+        :param zoom_layout: The zoom_layout of this SummaryZoomFrame.  # noqa: E501
         :type: str
         """
-        self._text = text
+        if zoom_layout is not None:
+            allowed_values = ["GridLayout", "FixedLayout"]  # noqa: E501
+            if zoom_layout.isdigit():
+                int_zoom_layout = int(zoom_layout)
+                if int_zoom_layout < 0 or int_zoom_layout >= len(allowed_values):
+                    raise ValueError(
+                        "Invalid value for `zoom_layout` ({0}), must be one of {1}"  # noqa: E501
+                        .format(zoom_layout, allowed_values)
+                    )
+                self._zoom_layout = allowed_values[int_zoom_layout]
+                return
+            if zoom_layout not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `zoom_layout` ({0}), must be one of {1}"  # noqa: E501
+                    .format(zoom_layout, allowed_values)
+                )
+        self._zoom_layout = zoom_layout
 
     @property
-    def paragraphs(self):
-        """Gets the paragraphs of this Shape.  # noqa: E501
+    def sections(self):
+        """Gets the sections of this SummaryZoomFrame.  # noqa: E501
 
-        Get or sets list to paragraphs list  # noqa: E501
+        Zoom frame sections  # noqa: E501
 
-        :return: The paragraphs of this Shape.  # noqa: E501
-        :rtype: ResourceUri
+        :return: The sections of this SummaryZoomFrame.  # noqa: E501
+        :rtype: list[SummaryZoomSection]
         """
-        return self._paragraphs
+        return self._sections
 
-    @paragraphs.setter
-    def paragraphs(self, paragraphs):
-        """Sets the paragraphs of this Shape.
+    @sections.setter
+    def sections(self, sections):
+        """Sets the sections of this SummaryZoomFrame.
 
-        Get or sets list to paragraphs list  # noqa: E501
+        Zoom frame sections  # noqa: E501
 
-        :param paragraphs: The paragraphs of this Shape.  # noqa: E501
-        :type: ResourceUri
+        :param sections: The sections of this SummaryZoomFrame.  # noqa: E501
+        :type: list[SummaryZoomSection]
         """
-        self._paragraphs = paragraphs
-
-    @property
-    def text_frame_format(self):
-        """Gets the text_frame_format of this Shape.  # noqa: E501
-
-        Returns TextFrame's formatting properties.  # noqa: E501
-
-        :return: The text_frame_format of this Shape.  # noqa: E501
-        :rtype: TextFrameFormat
-        """
-        return self._text_frame_format
-
-    @text_frame_format.setter
-    def text_frame_format(self, text_frame_format):
-        """Sets the text_frame_format of this Shape.
-
-        Returns TextFrame's formatting properties.  # noqa: E501
-
-        :param text_frame_format: The text_frame_format of this Shape.  # noqa: E501
-        :type: TextFrameFormat
-        """
-        self._text_frame_format = text_frame_format
+        self._sections = sections
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -214,7 +201,7 @@ class Shape(GeometryShape):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, Shape):
+        if not isinstance(other, SummaryZoomFrame):
             return False
 
         return self.__dict__ == other.__dict__

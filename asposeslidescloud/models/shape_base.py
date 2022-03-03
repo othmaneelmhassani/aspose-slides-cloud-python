@@ -516,7 +516,7 @@ class ShapeBase(ResourceBase):
         :type: str
         """
         if type is not None:
-            allowed_values = ["Shape", "Chart", "Table", "PictureFrame", "VideoFrame", "AudioFrame", "SmartArt", "OleObjectFrame", "GroupShape", "GraphicalObject", "Connector", "SmartArtShape"]  # noqa: E501
+            allowed_values = ["Shape", "Chart", "Table", "PictureFrame", "VideoFrame", "AudioFrame", "SmartArt", "OleObjectFrame", "GroupShape", "GraphicalObject", "Connector", "SmartArtShape", "ZoomFrame", "SectionZoomFrame", "SummaryZoomFrame", "SummaryZoomSection"]  # noqa: E501
             if type.isdigit():
                 int_type = int(type)
                 if int_type < 0 or int_type >= len(allowed_values):

@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.series import Series
+from asposeslidescloud.models.xy_series import XYSeries
 
-class BubbleSeries(Series):
+class BubbleSeries(XYSeries):
 
 
     """
@@ -50,10 +50,6 @@ class BubbleSeries(Series):
         'smooth': 'bool',
         'plot_on_second_axis': 'bool',
         'order': 'int',
-        'number_format_of_y_values': 'str',
-        'number_format_of_x_values': 'str',
-        'number_format_of_values': 'str',
-        'number_format_of_bubble_sizes': 'str',
         'invert_if_negative': 'bool',
         'explosion': 'int',
         'marker': 'SeriesMarker',
@@ -61,7 +57,10 @@ class BubbleSeries(Series):
         'effect_format': 'EffectFormat',
         'line_format': 'LineFormat',
         'data_point_type': 'str',
-        'data_points': 'list[BubbleChartDataPoint]'
+        'number_format_of_y_values': 'str',
+        'number_format_of_x_values': 'str',
+        'data_points': 'list[BubbleChartDataPoint]',
+        'number_format_of_bubble_sizes': 'str'
     }
 
     attribute_map = {
@@ -72,10 +71,6 @@ class BubbleSeries(Series):
         'smooth': 'smooth',
         'plot_on_second_axis': 'plotOnSecondAxis',
         'order': 'order',
-        'number_format_of_y_values': 'numberFormatOfYValues',
-        'number_format_of_x_values': 'numberFormatOfXValues',
-        'number_format_of_values': 'numberFormatOfValues',
-        'number_format_of_bubble_sizes': 'numberFormatOfBubbleSizes',
         'invert_if_negative': 'invertIfNegative',
         'explosion': 'explosion',
         'marker': 'marker',
@@ -83,22 +78,28 @@ class BubbleSeries(Series):
         'effect_format': 'effectFormat',
         'line_format': 'lineFormat',
         'data_point_type': 'dataPointType',
-        'data_points': 'dataPoints'
+        'number_format_of_y_values': 'numberFormatOfYValues',
+        'number_format_of_x_values': 'numberFormatOfXValues',
+        'data_points': 'dataPoints',
+        'number_format_of_bubble_sizes': 'numberFormatOfBubbleSizes'
     }
 
     type_determiners = {
         'dataPointType': 'Bubble',
     }
 
-    def __init__(self, type=None, name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, number_format_of_y_values=None, number_format_of_x_values=None, number_format_of_values=None, number_format_of_bubble_sizes=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type='Bubble', data_points=None):  # noqa: E501
+    def __init__(self, type=None, name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type='Bubble', number_format_of_y_values=None, number_format_of_x_values=None, data_points=None, number_format_of_bubble_sizes=None):  # noqa: E501
         """BubbleSeries - a model defined in Swagger"""  # noqa: E501
-        super(BubbleSeries, self).__init__(type, name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, number_format_of_y_values, number_format_of_x_values, number_format_of_values, number_format_of_bubble_sizes, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type)
+        super(BubbleSeries, self).__init__(type, name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type, number_format_of_y_values, number_format_of_x_values)
 
         self._data_points = None
+        self._number_format_of_bubble_sizes = None
         self.data_point_type = 'Bubble'
 
         if data_points is not None:
             self.data_points = data_points
+        if number_format_of_bubble_sizes is not None:
+            self.number_format_of_bubble_sizes = number_format_of_bubble_sizes
 
     @property
     def data_points(self):
@@ -121,6 +122,28 @@ class BubbleSeries(Series):
         :type: list[BubbleChartDataPoint]
         """
         self._data_points = data_points
+
+    @property
+    def number_format_of_bubble_sizes(self):
+        """Gets the number_format_of_bubble_sizes of this BubbleSeries.  # noqa: E501
+
+        The number format for the series bubble sizes.  # noqa: E501
+
+        :return: The number_format_of_bubble_sizes of this BubbleSeries.  # noqa: E501
+        :rtype: str
+        """
+        return self._number_format_of_bubble_sizes
+
+    @number_format_of_bubble_sizes.setter
+    def number_format_of_bubble_sizes(self, number_format_of_bubble_sizes):
+        """Sets the number_format_of_bubble_sizes of this BubbleSeries.
+
+        The number format for the series bubble sizes.  # noqa: E501
+
+        :param number_format_of_bubble_sizes: The number_format_of_bubble_sizes of this BubbleSeries.  # noqa: E501
+        :type: str
+        """
+        self._number_format_of_bubble_sizes = number_format_of_bubble_sizes
 
     def to_dict(self):
         """Returns the model properties as a dict"""

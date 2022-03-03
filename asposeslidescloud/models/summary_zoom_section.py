@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.geometry_shape import GeometryShape
+from asposeslidescloud.models.section_zoom_frame import SectionZoomFrame
 
-class Shape(GeometryShape):
+class SummaryZoomSection(SectionZoomFrame):
 
 
     """
@@ -62,10 +62,14 @@ class Shape(GeometryShape):
         'hyperlink_click': 'Hyperlink',
         'hyperlink_mouse_over': 'Hyperlink',
         'type': 'str',
-        'shape_type': 'str',
-        'text': 'str',
-        'paragraphs': 'ResourceUri',
-        'text_frame_format': 'TextFrameFormat'
+        'image_type': 'str',
+        'return_to_parent': 'bool',
+        'show_background': 'bool',
+        'image': 'ResourceUri',
+        'transition_duration': 'float',
+        'target_section_index': 'int',
+        'title': 'str',
+        'description': 'str'
     }
 
     attribute_map = {
@@ -88,97 +92,76 @@ class Shape(GeometryShape):
         'hyperlink_click': 'hyperlinkClick',
         'hyperlink_mouse_over': 'hyperlinkMouseOver',
         'type': 'type',
-        'shape_type': 'shapeType',
-        'text': 'text',
-        'paragraphs': 'paragraphs',
-        'text_frame_format': 'textFrameFormat'
+        'image_type': 'imageType',
+        'return_to_parent': 'returnToParent',
+        'show_background': 'showBackground',
+        'image': 'image',
+        'transition_duration': 'transitionDuration',
+        'target_section_index': 'targetSectionIndex',
+        'title': 'title',
+        'description': 'description'
     }
 
     type_determiners = {
-        'type': 'Shape',
+        'type': 'SummaryZoomSection',
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='Shape', shape_type=None, text=None, paragraphs=None, text_frame_format=None):  # noqa: E501
-        """Shape - a model defined in Swagger"""  # noqa: E501
-        super(Shape, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, three_d_format, line_format, hyperlink_click, hyperlink_mouse_over, type, shape_type)
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='SummaryZoomSection', image_type=None, return_to_parent=None, show_background=None, image=None, transition_duration=None, target_section_index=None, title=None, description=None):  # noqa: E501
+        """SummaryZoomSection - a model defined in Swagger"""  # noqa: E501
+        super(SummaryZoomSection, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, three_d_format, line_format, hyperlink_click, hyperlink_mouse_over, type, image_type, return_to_parent, show_background, image, transition_duration, target_section_index)
 
-        self._text = None
-        self._paragraphs = None
-        self._text_frame_format = None
-        self.type = 'Shape'
+        self._title = None
+        self._description = None
+        self.type = 'SummaryZoomSection'
 
-        if text is not None:
-            self.text = text
-        if paragraphs is not None:
-            self.paragraphs = paragraphs
-        if text_frame_format is not None:
-            self.text_frame_format = text_frame_format
+        if title is not None:
+            self.title = title
+        if description is not None:
+            self.description = description
 
     @property
-    def text(self):
-        """Gets the text of this Shape.  # noqa: E501
+    def title(self):
+        """Gets the title of this SummaryZoomSection.  # noqa: E501
 
-        Gets or sets the text.  # noqa: E501
+        Section title  # noqa: E501
 
-        :return: The text of this Shape.  # noqa: E501
+        :return: The title of this SummaryZoomSection.  # noqa: E501
         :rtype: str
         """
-        return self._text
+        return self._title
 
-    @text.setter
-    def text(self, text):
-        """Sets the text of this Shape.
+    @title.setter
+    def title(self, title):
+        """Sets the title of this SummaryZoomSection.
 
-        Gets or sets the text.  # noqa: E501
+        Section title  # noqa: E501
 
-        :param text: The text of this Shape.  # noqa: E501
+        :param title: The title of this SummaryZoomSection.  # noqa: E501
         :type: str
         """
-        self._text = text
+        self._title = title
 
     @property
-    def paragraphs(self):
-        """Gets the paragraphs of this Shape.  # noqa: E501
+    def description(self):
+        """Gets the description of this SummaryZoomSection.  # noqa: E501
 
-        Get or sets list to paragraphs list  # noqa: E501
+        Description of the Summary Zoom Section object.   # noqa: E501
 
-        :return: The paragraphs of this Shape.  # noqa: E501
-        :rtype: ResourceUri
+        :return: The description of this SummaryZoomSection.  # noqa: E501
+        :rtype: str
         """
-        return self._paragraphs
+        return self._description
 
-    @paragraphs.setter
-    def paragraphs(self, paragraphs):
-        """Sets the paragraphs of this Shape.
+    @description.setter
+    def description(self, description):
+        """Sets the description of this SummaryZoomSection.
 
-        Get or sets list to paragraphs list  # noqa: E501
+        Description of the Summary Zoom Section object.   # noqa: E501
 
-        :param paragraphs: The paragraphs of this Shape.  # noqa: E501
-        :type: ResourceUri
+        :param description: The description of this SummaryZoomSection.  # noqa: E501
+        :type: str
         """
-        self._paragraphs = paragraphs
-
-    @property
-    def text_frame_format(self):
-        """Gets the text_frame_format of this Shape.  # noqa: E501
-
-        Returns TextFrame's formatting properties.  # noqa: E501
-
-        :return: The text_frame_format of this Shape.  # noqa: E501
-        :rtype: TextFrameFormat
-        """
-        return self._text_frame_format
-
-    @text_frame_format.setter
-    def text_frame_format(self, text_frame_format):
-        """Sets the text_frame_format of this Shape.
-
-        Returns TextFrame's formatting properties.  # noqa: E501
-
-        :param text_frame_format: The text_frame_format of this Shape.  # noqa: E501
-        :type: TextFrameFormat
-        """
-        self._text_frame_format = text_frame_format
+        self._description = description
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -214,7 +197,7 @@ class Shape(GeometryShape):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, Shape):
+        if not isinstance(other, SummaryZoomSection):
             return False
 
         return self.__dict__ == other.__dict__

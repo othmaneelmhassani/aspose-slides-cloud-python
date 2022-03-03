@@ -17585,6 +17585,143 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('delete_subshapes', 'storage')
 
+    def test_delete_unused_layout_slides(self):
+        """Test case for delete_unused_layout_slides
+        """
+        param_name = self.get_test_value('delete_unused_layout_slides', 'name', 'str')
+        param_password = self.get_test_value('delete_unused_layout_slides', 'password', 'str')
+        param_folder = self.get_test_value('delete_unused_layout_slides', 'folder', 'str')
+        param_storage = self.get_test_value('delete_unused_layout_slides', 'storage', 'str')
+        self.initialize('delete_unused_layout_slides', None, None)
+        response = self.api.delete_unused_layout_slides(param_name, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_delete_unused_layout_slides_invalid_name(self):
+        """Test case for delete_unused_layout_slides with invalid name
+        """
+        param_name = self.get_test_value('delete_unused_layout_slides', 'name', 'str')
+        param_password = self.get_test_value('delete_unused_layout_slides', 'password', 'str')
+        param_folder = self.get_test_value('delete_unused_layout_slides', 'folder', 'str')
+        param_storage = self.get_test_value('delete_unused_layout_slides', 'storage', 'str')
+        param_name = self.get_invalid_test_value('delete_unused_layout_slides', 'name', param_name, 'str')
+        self.initialize('delete_unused_layout_slides', 'name', param_name)
+        ok = False
+        try:
+            self.api.delete_unused_layout_slides(param_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_unused_layout_slides', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_unused_layout_slides', 'name', param_name)
+        if ok:
+            self.assert_no_exception('delete_unused_layout_slides', 'name')
+
+    def test_delete_unused_layout_slides_invalid_password(self):
+        """Test case for delete_unused_layout_slides with invalid password
+        """
+        param_name = self.get_test_value('delete_unused_layout_slides', 'name', 'str')
+        param_password = self.get_test_value('delete_unused_layout_slides', 'password', 'str')
+        param_folder = self.get_test_value('delete_unused_layout_slides', 'folder', 'str')
+        param_storage = self.get_test_value('delete_unused_layout_slides', 'storage', 'str')
+        param_password = self.get_invalid_test_value('delete_unused_layout_slides', 'password', param_password, 'str')
+        self.initialize('delete_unused_layout_slides', 'password', param_password)
+        ok = False
+        try:
+            self.api.delete_unused_layout_slides(param_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_unused_layout_slides', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_unused_layout_slides', 'password', param_password)
+        if ok:
+            self.assert_no_exception('delete_unused_layout_slides', 'password')
+
+    def test_delete_unused_layout_slides_invalid_folder(self):
+        """Test case for delete_unused_layout_slides with invalid folder
+        """
+        param_name = self.get_test_value('delete_unused_layout_slides', 'name', 'str')
+        param_password = self.get_test_value('delete_unused_layout_slides', 'password', 'str')
+        param_folder = self.get_test_value('delete_unused_layout_slides', 'folder', 'str')
+        param_storage = self.get_test_value('delete_unused_layout_slides', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('delete_unused_layout_slides', 'folder', param_folder, 'str')
+        self.initialize('delete_unused_layout_slides', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.delete_unused_layout_slides(param_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_unused_layout_slides', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_unused_layout_slides', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('delete_unused_layout_slides', 'folder')
+
+    def test_delete_unused_layout_slides_invalid_storage(self):
+        """Test case for delete_unused_layout_slides with invalid storage
+        """
+        param_name = self.get_test_value('delete_unused_layout_slides', 'name', 'str')
+        param_password = self.get_test_value('delete_unused_layout_slides', 'password', 'str')
+        param_folder = self.get_test_value('delete_unused_layout_slides', 'folder', 'str')
+        param_storage = self.get_test_value('delete_unused_layout_slides', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('delete_unused_layout_slides', 'storage', param_storage, 'str')
+        self.initialize('delete_unused_layout_slides', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.delete_unused_layout_slides(param_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_unused_layout_slides', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_unused_layout_slides', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('delete_unused_layout_slides', 'storage')
+
+    def test_delete_unused_layout_slides_online(self):
+        """Test case for delete_unused_layout_slides_online
+        """
+        param_document = self.get_test_value('delete_unused_layout_slides_online', 'document', 'file')
+        param_password = self.get_test_value('delete_unused_layout_slides_online', 'password', 'str')
+        self.initialize('delete_unused_layout_slides_online', None, None)
+        response = self.api.delete_unused_layout_slides_online(param_document, param_password)
+        self.assertTrue(isinstance(response, str))
+        self.assertTrue(len(response) > 0)
+
+    def test_delete_unused_layout_slides_online_invalid_document(self):
+        """Test case for delete_unused_layout_slides_online with invalid document
+        """
+        param_document = self.get_test_value('delete_unused_layout_slides_online', 'document', 'file')
+        param_password = self.get_test_value('delete_unused_layout_slides_online', 'password', 'str')
+        param_document = self.get_invalid_test_value('delete_unused_layout_slides_online', 'document', param_document, 'file')
+        self.initialize('delete_unused_layout_slides_online', 'document', param_document)
+        ok = False
+        try:
+            self.api.delete_unused_layout_slides_online(param_document, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_unused_layout_slides_online', 'document', param_document)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_unused_layout_slides_online', 'document', param_document)
+        if ok:
+            self.assert_no_exception('delete_unused_layout_slides_online', 'document')
+
+    def test_delete_unused_layout_slides_online_invalid_password(self):
+        """Test case for delete_unused_layout_slides_online with invalid password
+        """
+        param_document = self.get_test_value('delete_unused_layout_slides_online', 'document', 'file')
+        param_password = self.get_test_value('delete_unused_layout_slides_online', 'password', 'str')
+        param_password = self.get_invalid_test_value('delete_unused_layout_slides_online', 'password', param_password, 'str')
+        self.initialize('delete_unused_layout_slides_online', 'password', param_password)
+        ok = False
+        try:
+            self.api.delete_unused_layout_slides_online(param_document, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_unused_layout_slides_online', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_unused_layout_slides_online', 'password', param_password)
+        if ok:
+            self.assert_no_exception('delete_unused_layout_slides_online', 'password')
+
     def test_delete_watermark(self):
         """Test case for delete_watermark
         """
@@ -30249,6 +30386,560 @@ class TestSlidesApi(BaseTest):
             self.assert_value_error(ex, 'get_view_properties', 'storage', param_storage)
         if ok:
             self.assert_no_exception('get_view_properties', 'storage')
+
+    def test_highlight_shape_regex(self):
+        """Test case for highlight_shape_regex
+        """
+        param_name = self.get_test_value('highlight_shape_regex', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_regex', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_regex', 'shape_index', 'int')
+        param_regex = self.get_test_value('highlight_shape_regex', 'regex', 'str')
+        param_color = self.get_test_value('highlight_shape_regex', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_regex', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_regex', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_regex', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_regex', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_regex', 'storage', 'str')
+        self.initialize('highlight_shape_regex', None, None)
+        response = self.api.highlight_shape_regex(param_name, param_slide_index, param_shape_index, param_regex, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_highlight_shape_regex_invalid_name(self):
+        """Test case for highlight_shape_regex with invalid name
+        """
+        param_name = self.get_test_value('highlight_shape_regex', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_regex', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_regex', 'shape_index', 'int')
+        param_regex = self.get_test_value('highlight_shape_regex', 'regex', 'str')
+        param_color = self.get_test_value('highlight_shape_regex', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_regex', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_regex', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_regex', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_regex', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_regex', 'storage', 'str')
+        param_name = self.get_invalid_test_value('highlight_shape_regex', 'name', param_name, 'str')
+        self.initialize('highlight_shape_regex', 'name', param_name)
+        ok = False
+        try:
+            self.api.highlight_shape_regex(param_name, param_slide_index, param_shape_index, param_regex, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_regex', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_regex', 'name', param_name)
+        if ok:
+            self.assert_no_exception('highlight_shape_regex', 'name')
+
+    def test_highlight_shape_regex_invalid_slide_index(self):
+        """Test case for highlight_shape_regex with invalid slide_index
+        """
+        param_name = self.get_test_value('highlight_shape_regex', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_regex', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_regex', 'shape_index', 'int')
+        param_regex = self.get_test_value('highlight_shape_regex', 'regex', 'str')
+        param_color = self.get_test_value('highlight_shape_regex', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_regex', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_regex', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_regex', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_regex', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_regex', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('highlight_shape_regex', 'slide_index', param_slide_index, 'int')
+        self.initialize('highlight_shape_regex', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.highlight_shape_regex(param_name, param_slide_index, param_shape_index, param_regex, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_regex', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_regex', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('highlight_shape_regex', 'slide_index')
+
+    def test_highlight_shape_regex_invalid_shape_index(self):
+        """Test case for highlight_shape_regex with invalid shape_index
+        """
+        param_name = self.get_test_value('highlight_shape_regex', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_regex', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_regex', 'shape_index', 'int')
+        param_regex = self.get_test_value('highlight_shape_regex', 'regex', 'str')
+        param_color = self.get_test_value('highlight_shape_regex', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_regex', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_regex', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_regex', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_regex', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_regex', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('highlight_shape_regex', 'shape_index', param_shape_index, 'int')
+        self.initialize('highlight_shape_regex', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.highlight_shape_regex(param_name, param_slide_index, param_shape_index, param_regex, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_regex', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_regex', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('highlight_shape_regex', 'shape_index')
+
+    def test_highlight_shape_regex_invalid_regex(self):
+        """Test case for highlight_shape_regex with invalid regex
+        """
+        param_name = self.get_test_value('highlight_shape_regex', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_regex', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_regex', 'shape_index', 'int')
+        param_regex = self.get_test_value('highlight_shape_regex', 'regex', 'str')
+        param_color = self.get_test_value('highlight_shape_regex', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_regex', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_regex', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_regex', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_regex', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_regex', 'storage', 'str')
+        param_regex = self.get_invalid_test_value('highlight_shape_regex', 'regex', param_regex, 'str')
+        self.initialize('highlight_shape_regex', 'regex', param_regex)
+        ok = False
+        try:
+            self.api.highlight_shape_regex(param_name, param_slide_index, param_shape_index, param_regex, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_regex', 'regex', param_regex)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_regex', 'regex', param_regex)
+        if ok:
+            self.assert_no_exception('highlight_shape_regex', 'regex')
+
+    def test_highlight_shape_regex_invalid_color(self):
+        """Test case for highlight_shape_regex with invalid color
+        """
+        param_name = self.get_test_value('highlight_shape_regex', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_regex', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_regex', 'shape_index', 'int')
+        param_regex = self.get_test_value('highlight_shape_regex', 'regex', 'str')
+        param_color = self.get_test_value('highlight_shape_regex', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_regex', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_regex', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_regex', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_regex', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_regex', 'storage', 'str')
+        param_color = self.get_invalid_test_value('highlight_shape_regex', 'color', param_color, 'str')
+        self.initialize('highlight_shape_regex', 'color', param_color)
+        ok = False
+        try:
+            self.api.highlight_shape_regex(param_name, param_slide_index, param_shape_index, param_regex, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_regex', 'color', param_color)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_regex', 'color', param_color)
+        if ok:
+            self.assert_no_exception('highlight_shape_regex', 'color')
+
+    def test_highlight_shape_regex_invalid_whole_words_only(self):
+        """Test case for highlight_shape_regex with invalid whole_words_only
+        """
+        param_name = self.get_test_value('highlight_shape_regex', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_regex', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_regex', 'shape_index', 'int')
+        param_regex = self.get_test_value('highlight_shape_regex', 'regex', 'str')
+        param_color = self.get_test_value('highlight_shape_regex', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_regex', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_regex', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_regex', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_regex', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_regex', 'storage', 'str')
+        param_whole_words_only = self.get_invalid_test_value('highlight_shape_regex', 'whole_words_only', param_whole_words_only, 'bool')
+        self.initialize('highlight_shape_regex', 'whole_words_only', param_whole_words_only)
+        ok = False
+        try:
+            self.api.highlight_shape_regex(param_name, param_slide_index, param_shape_index, param_regex, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_regex', 'whole_words_only', param_whole_words_only)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_regex', 'whole_words_only', param_whole_words_only)
+        if ok:
+            self.assert_no_exception('highlight_shape_regex', 'whole_words_only')
+
+    def test_highlight_shape_regex_invalid_ignore_case(self):
+        """Test case for highlight_shape_regex with invalid ignore_case
+        """
+        param_name = self.get_test_value('highlight_shape_regex', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_regex', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_regex', 'shape_index', 'int')
+        param_regex = self.get_test_value('highlight_shape_regex', 'regex', 'str')
+        param_color = self.get_test_value('highlight_shape_regex', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_regex', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_regex', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_regex', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_regex', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_regex', 'storage', 'str')
+        param_ignore_case = self.get_invalid_test_value('highlight_shape_regex', 'ignore_case', param_ignore_case, 'bool')
+        self.initialize('highlight_shape_regex', 'ignore_case', param_ignore_case)
+        ok = False
+        try:
+            self.api.highlight_shape_regex(param_name, param_slide_index, param_shape_index, param_regex, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_regex', 'ignore_case', param_ignore_case)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_regex', 'ignore_case', param_ignore_case)
+        if ok:
+            self.assert_no_exception('highlight_shape_regex', 'ignore_case')
+
+    def test_highlight_shape_regex_invalid_password(self):
+        """Test case for highlight_shape_regex with invalid password
+        """
+        param_name = self.get_test_value('highlight_shape_regex', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_regex', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_regex', 'shape_index', 'int')
+        param_regex = self.get_test_value('highlight_shape_regex', 'regex', 'str')
+        param_color = self.get_test_value('highlight_shape_regex', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_regex', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_regex', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_regex', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_regex', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_regex', 'storage', 'str')
+        param_password = self.get_invalid_test_value('highlight_shape_regex', 'password', param_password, 'str')
+        self.initialize('highlight_shape_regex', 'password', param_password)
+        ok = False
+        try:
+            self.api.highlight_shape_regex(param_name, param_slide_index, param_shape_index, param_regex, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_regex', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_regex', 'password', param_password)
+        if ok:
+            self.assert_no_exception('highlight_shape_regex', 'password')
+
+    def test_highlight_shape_regex_invalid_folder(self):
+        """Test case for highlight_shape_regex with invalid folder
+        """
+        param_name = self.get_test_value('highlight_shape_regex', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_regex', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_regex', 'shape_index', 'int')
+        param_regex = self.get_test_value('highlight_shape_regex', 'regex', 'str')
+        param_color = self.get_test_value('highlight_shape_regex', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_regex', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_regex', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_regex', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_regex', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_regex', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('highlight_shape_regex', 'folder', param_folder, 'str')
+        self.initialize('highlight_shape_regex', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.highlight_shape_regex(param_name, param_slide_index, param_shape_index, param_regex, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_regex', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_regex', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('highlight_shape_regex', 'folder')
+
+    def test_highlight_shape_regex_invalid_storage(self):
+        """Test case for highlight_shape_regex with invalid storage
+        """
+        param_name = self.get_test_value('highlight_shape_regex', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_regex', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_regex', 'shape_index', 'int')
+        param_regex = self.get_test_value('highlight_shape_regex', 'regex', 'str')
+        param_color = self.get_test_value('highlight_shape_regex', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_regex', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_regex', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_regex', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_regex', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_regex', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('highlight_shape_regex', 'storage', param_storage, 'str')
+        self.initialize('highlight_shape_regex', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.highlight_shape_regex(param_name, param_slide_index, param_shape_index, param_regex, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_regex', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_regex', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('highlight_shape_regex', 'storage')
+
+    def test_highlight_shape_text(self):
+        """Test case for highlight_shape_text
+        """
+        param_name = self.get_test_value('highlight_shape_text', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_text', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_text', 'shape_index', 'int')
+        param_text = self.get_test_value('highlight_shape_text', 'text', 'str')
+        param_color = self.get_test_value('highlight_shape_text', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_text', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_text', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_text', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_text', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_text', 'storage', 'str')
+        self.initialize('highlight_shape_text', None, None)
+        response = self.api.highlight_shape_text(param_name, param_slide_index, param_shape_index, param_text, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_highlight_shape_text_invalid_name(self):
+        """Test case for highlight_shape_text with invalid name
+        """
+        param_name = self.get_test_value('highlight_shape_text', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_text', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_text', 'shape_index', 'int')
+        param_text = self.get_test_value('highlight_shape_text', 'text', 'str')
+        param_color = self.get_test_value('highlight_shape_text', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_text', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_text', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_text', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_text', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_text', 'storage', 'str')
+        param_name = self.get_invalid_test_value('highlight_shape_text', 'name', param_name, 'str')
+        self.initialize('highlight_shape_text', 'name', param_name)
+        ok = False
+        try:
+            self.api.highlight_shape_text(param_name, param_slide_index, param_shape_index, param_text, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_text', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_text', 'name', param_name)
+        if ok:
+            self.assert_no_exception('highlight_shape_text', 'name')
+
+    def test_highlight_shape_text_invalid_slide_index(self):
+        """Test case for highlight_shape_text with invalid slide_index
+        """
+        param_name = self.get_test_value('highlight_shape_text', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_text', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_text', 'shape_index', 'int')
+        param_text = self.get_test_value('highlight_shape_text', 'text', 'str')
+        param_color = self.get_test_value('highlight_shape_text', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_text', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_text', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_text', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_text', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_text', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('highlight_shape_text', 'slide_index', param_slide_index, 'int')
+        self.initialize('highlight_shape_text', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.highlight_shape_text(param_name, param_slide_index, param_shape_index, param_text, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_text', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_text', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('highlight_shape_text', 'slide_index')
+
+    def test_highlight_shape_text_invalid_shape_index(self):
+        """Test case for highlight_shape_text with invalid shape_index
+        """
+        param_name = self.get_test_value('highlight_shape_text', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_text', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_text', 'shape_index', 'int')
+        param_text = self.get_test_value('highlight_shape_text', 'text', 'str')
+        param_color = self.get_test_value('highlight_shape_text', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_text', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_text', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_text', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_text', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_text', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('highlight_shape_text', 'shape_index', param_shape_index, 'int')
+        self.initialize('highlight_shape_text', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.highlight_shape_text(param_name, param_slide_index, param_shape_index, param_text, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_text', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_text', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('highlight_shape_text', 'shape_index')
+
+    def test_highlight_shape_text_invalid_text(self):
+        """Test case for highlight_shape_text with invalid text
+        """
+        param_name = self.get_test_value('highlight_shape_text', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_text', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_text', 'shape_index', 'int')
+        param_text = self.get_test_value('highlight_shape_text', 'text', 'str')
+        param_color = self.get_test_value('highlight_shape_text', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_text', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_text', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_text', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_text', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_text', 'storage', 'str')
+        param_text = self.get_invalid_test_value('highlight_shape_text', 'text', param_text, 'str')
+        self.initialize('highlight_shape_text', 'text', param_text)
+        ok = False
+        try:
+            self.api.highlight_shape_text(param_name, param_slide_index, param_shape_index, param_text, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_text', 'text', param_text)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_text', 'text', param_text)
+        if ok:
+            self.assert_no_exception('highlight_shape_text', 'text')
+
+    def test_highlight_shape_text_invalid_color(self):
+        """Test case for highlight_shape_text with invalid color
+        """
+        param_name = self.get_test_value('highlight_shape_text', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_text', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_text', 'shape_index', 'int')
+        param_text = self.get_test_value('highlight_shape_text', 'text', 'str')
+        param_color = self.get_test_value('highlight_shape_text', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_text', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_text', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_text', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_text', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_text', 'storage', 'str')
+        param_color = self.get_invalid_test_value('highlight_shape_text', 'color', param_color, 'str')
+        self.initialize('highlight_shape_text', 'color', param_color)
+        ok = False
+        try:
+            self.api.highlight_shape_text(param_name, param_slide_index, param_shape_index, param_text, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_text', 'color', param_color)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_text', 'color', param_color)
+        if ok:
+            self.assert_no_exception('highlight_shape_text', 'color')
+
+    def test_highlight_shape_text_invalid_whole_words_only(self):
+        """Test case for highlight_shape_text with invalid whole_words_only
+        """
+        param_name = self.get_test_value('highlight_shape_text', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_text', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_text', 'shape_index', 'int')
+        param_text = self.get_test_value('highlight_shape_text', 'text', 'str')
+        param_color = self.get_test_value('highlight_shape_text', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_text', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_text', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_text', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_text', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_text', 'storage', 'str')
+        param_whole_words_only = self.get_invalid_test_value('highlight_shape_text', 'whole_words_only', param_whole_words_only, 'bool')
+        self.initialize('highlight_shape_text', 'whole_words_only', param_whole_words_only)
+        ok = False
+        try:
+            self.api.highlight_shape_text(param_name, param_slide_index, param_shape_index, param_text, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_text', 'whole_words_only', param_whole_words_only)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_text', 'whole_words_only', param_whole_words_only)
+        if ok:
+            self.assert_no_exception('highlight_shape_text', 'whole_words_only')
+
+    def test_highlight_shape_text_invalid_ignore_case(self):
+        """Test case for highlight_shape_text with invalid ignore_case
+        """
+        param_name = self.get_test_value('highlight_shape_text', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_text', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_text', 'shape_index', 'int')
+        param_text = self.get_test_value('highlight_shape_text', 'text', 'str')
+        param_color = self.get_test_value('highlight_shape_text', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_text', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_text', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_text', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_text', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_text', 'storage', 'str')
+        param_ignore_case = self.get_invalid_test_value('highlight_shape_text', 'ignore_case', param_ignore_case, 'bool')
+        self.initialize('highlight_shape_text', 'ignore_case', param_ignore_case)
+        ok = False
+        try:
+            self.api.highlight_shape_text(param_name, param_slide_index, param_shape_index, param_text, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_text', 'ignore_case', param_ignore_case)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_text', 'ignore_case', param_ignore_case)
+        if ok:
+            self.assert_no_exception('highlight_shape_text', 'ignore_case')
+
+    def test_highlight_shape_text_invalid_password(self):
+        """Test case for highlight_shape_text with invalid password
+        """
+        param_name = self.get_test_value('highlight_shape_text', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_text', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_text', 'shape_index', 'int')
+        param_text = self.get_test_value('highlight_shape_text', 'text', 'str')
+        param_color = self.get_test_value('highlight_shape_text', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_text', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_text', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_text', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_text', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_text', 'storage', 'str')
+        param_password = self.get_invalid_test_value('highlight_shape_text', 'password', param_password, 'str')
+        self.initialize('highlight_shape_text', 'password', param_password)
+        ok = False
+        try:
+            self.api.highlight_shape_text(param_name, param_slide_index, param_shape_index, param_text, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_text', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_text', 'password', param_password)
+        if ok:
+            self.assert_no_exception('highlight_shape_text', 'password')
+
+    def test_highlight_shape_text_invalid_folder(self):
+        """Test case for highlight_shape_text with invalid folder
+        """
+        param_name = self.get_test_value('highlight_shape_text', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_text', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_text', 'shape_index', 'int')
+        param_text = self.get_test_value('highlight_shape_text', 'text', 'str')
+        param_color = self.get_test_value('highlight_shape_text', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_text', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_text', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_text', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_text', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_text', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('highlight_shape_text', 'folder', param_folder, 'str')
+        self.initialize('highlight_shape_text', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.highlight_shape_text(param_name, param_slide_index, param_shape_index, param_text, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_text', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_text', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('highlight_shape_text', 'folder')
+
+    def test_highlight_shape_text_invalid_storage(self):
+        """Test case for highlight_shape_text with invalid storage
+        """
+        param_name = self.get_test_value('highlight_shape_text', 'name', 'str')
+        param_slide_index = self.get_test_value('highlight_shape_text', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('highlight_shape_text', 'shape_index', 'int')
+        param_text = self.get_test_value('highlight_shape_text', 'text', 'str')
+        param_color = self.get_test_value('highlight_shape_text', 'color', 'str')
+        param_whole_words_only = self.get_test_value('highlight_shape_text', 'whole_words_only', 'bool')
+        param_ignore_case = self.get_test_value('highlight_shape_text', 'ignore_case', 'bool')
+        param_password = self.get_test_value('highlight_shape_text', 'password', 'str')
+        param_folder = self.get_test_value('highlight_shape_text', 'folder', 'str')
+        param_storage = self.get_test_value('highlight_shape_text', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('highlight_shape_text', 'storage', param_storage, 'str')
+        self.initialize('highlight_shape_text', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.highlight_shape_text(param_name, param_slide_index, param_shape_index, param_text, param_color, param_whole_words_only, param_ignore_case, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'highlight_shape_text', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'highlight_shape_text', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('highlight_shape_text', 'storage')
 
     def test_import_from_html(self):
         """Test case for import_from_html

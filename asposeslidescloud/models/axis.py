@@ -376,7 +376,7 @@ class Axis(object):
         :type: str
         """
         if base_unit_scale is not None:
-            allowed_values = ["Days", "Months", "Years"]  # noqa: E501
+            allowed_values = ["None", "Days", "Months", "Years"]  # noqa: E501
             if base_unit_scale.isdigit():
                 int_base_unit_scale = int(base_unit_scale)
                 if int_base_unit_scale < 0 or int_base_unit_scale >= len(allowed_values):
@@ -458,7 +458,7 @@ class Axis(object):
         :type: str
         """
         if major_unit_scale is not None:
-            allowed_values = ["Days", "Months", "Years"]  # noqa: E501
+            allowed_values = ["None", "Days", "Months", "Years"]  # noqa: E501
             if major_unit_scale.isdigit():
                 int_major_unit_scale = int(major_unit_scale)
                 if int_major_unit_scale < 0 or int_major_unit_scale >= len(allowed_values):
@@ -578,7 +578,7 @@ class Axis(object):
         :type: str
         """
         if minor_unit_scale is not None:
-            allowed_values = ["Days", "Months", "Years"]  # noqa: E501
+            allowed_values = ["None", "Days", "Months", "Years"]  # noqa: E501
             if minor_unit_scale.isdigit():
                 int_minor_unit_scale = int(minor_unit_scale)
                 if int_minor_unit_scale < 0 or int_minor_unit_scale >= len(allowed_values):

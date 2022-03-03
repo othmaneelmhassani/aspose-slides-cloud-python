@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.xy_series import XYSeries
+from asposeslidescloud.models.zoom_object import ZoomObject
 
-class ScatterSeries(XYSeries):
+class ZoomFrame(ZoomObject):
 
 
     """
@@ -43,80 +43,96 @@ class ScatterSeries(XYSeries):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'type': 'str',
+        'self_uri': 'ResourceUri',
+        'alternate_links': 'list[ResourceUri]',
         'name': 'str',
-        'is_color_varied': 'bool',
-        'inverted_solid_fill_color': 'str',
-        'smooth': 'bool',
-        'plot_on_second_axis': 'bool',
-        'order': 'int',
-        'invert_if_negative': 'bool',
-        'explosion': 'int',
-        'marker': 'SeriesMarker',
+        'width': 'float',
+        'height': 'float',
+        'alternative_text': 'str',
+        'alternative_text_title': 'str',
+        'hidden': 'bool',
+        'x': 'float',
+        'y': 'float',
+        'z_order_position': 'int',
+        'shapes': 'ResourceUri',
         'fill_format': 'FillFormat',
         'effect_format': 'EffectFormat',
+        'three_d_format': 'ThreeDFormat',
         'line_format': 'LineFormat',
-        'data_point_type': 'str',
-        'number_format_of_y_values': 'str',
-        'number_format_of_x_values': 'str',
-        'data_points': 'list[ScatterChartDataPoint]'
+        'hyperlink_click': 'Hyperlink',
+        'hyperlink_mouse_over': 'Hyperlink',
+        'type': 'str',
+        'image_type': 'str',
+        'return_to_parent': 'bool',
+        'show_background': 'bool',
+        'image': 'ResourceUri',
+        'transition_duration': 'float',
+        'target_slide_index': 'int'
     }
 
     attribute_map = {
-        'type': 'type',
+        'self_uri': 'selfUri',
+        'alternate_links': 'alternateLinks',
         'name': 'name',
-        'is_color_varied': 'isColorVaried',
-        'inverted_solid_fill_color': 'invertedSolidFillColor',
-        'smooth': 'smooth',
-        'plot_on_second_axis': 'plotOnSecondAxis',
-        'order': 'order',
-        'invert_if_negative': 'invertIfNegative',
-        'explosion': 'explosion',
-        'marker': 'marker',
+        'width': 'width',
+        'height': 'height',
+        'alternative_text': 'alternativeText',
+        'alternative_text_title': 'alternativeTextTitle',
+        'hidden': 'hidden',
+        'x': 'x',
+        'y': 'y',
+        'z_order_position': 'zOrderPosition',
+        'shapes': 'shapes',
         'fill_format': 'fillFormat',
         'effect_format': 'effectFormat',
+        'three_d_format': 'threeDFormat',
         'line_format': 'lineFormat',
-        'data_point_type': 'dataPointType',
-        'number_format_of_y_values': 'numberFormatOfYValues',
-        'number_format_of_x_values': 'numberFormatOfXValues',
-        'data_points': 'dataPoints'
+        'hyperlink_click': 'hyperlinkClick',
+        'hyperlink_mouse_over': 'hyperlinkMouseOver',
+        'type': 'type',
+        'image_type': 'imageType',
+        'return_to_parent': 'returnToParent',
+        'show_background': 'showBackground',
+        'image': 'image',
+        'transition_duration': 'transitionDuration',
+        'target_slide_index': 'targetSlideIndex'
     }
 
     type_determiners = {
-        'dataPointType': 'Scatter',
+        'type': 'ZoomFrame',
     }
 
-    def __init__(self, type=None, name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type='Scatter', number_format_of_y_values=None, number_format_of_x_values=None, data_points=None):  # noqa: E501
-        """ScatterSeries - a model defined in Swagger"""  # noqa: E501
-        super(ScatterSeries, self).__init__(type, name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type, number_format_of_y_values, number_format_of_x_values)
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='ZoomFrame', image_type=None, return_to_parent=None, show_background=None, image=None, transition_duration=None, target_slide_index=None):  # noqa: E501
+        """ZoomFrame - a model defined in Swagger"""  # noqa: E501
+        super(ZoomFrame, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, three_d_format, line_format, hyperlink_click, hyperlink_mouse_over, type, image_type, return_to_parent, show_background, image, transition_duration)
 
-        self._data_points = None
-        self.data_point_type = 'Scatter'
+        self._target_slide_index = None
+        self.type = 'ZoomFrame'
 
-        if data_points is not None:
-            self.data_points = data_points
+        if target_slide_index is not None:
+            self.target_slide_index = target_slide_index
 
     @property
-    def data_points(self):
-        """Gets the data_points of this ScatterSeries.  # noqa: E501
+    def target_slide_index(self):
+        """Gets the target_slide_index of this ZoomFrame.  # noqa: E501
 
-        Gets or sets the values.  # noqa: E501
+        Links to the target slide  # noqa: E501
 
-        :return: The data_points of this ScatterSeries.  # noqa: E501
-        :rtype: list[ScatterChartDataPoint]
+        :return: The target_slide_index of this ZoomFrame.  # noqa: E501
+        :rtype: int
         """
-        return self._data_points
+        return self._target_slide_index
 
-    @data_points.setter
-    def data_points(self, data_points):
-        """Sets the data_points of this ScatterSeries.
+    @target_slide_index.setter
+    def target_slide_index(self, target_slide_index):
+        """Sets the target_slide_index of this ZoomFrame.
 
-        Gets or sets the values.  # noqa: E501
+        Links to the target slide  # noqa: E501
 
-        :param data_points: The data_points of this ScatterSeries.  # noqa: E501
-        :type: list[ScatterChartDataPoint]
+        :param target_slide_index: The target_slide_index of this ZoomFrame.  # noqa: E501
+        :type: int
         """
-        self._data_points = data_points
+        self._target_slide_index = target_slide_index
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -152,7 +168,7 @@ class ScatterSeries(XYSeries):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ScatterSeries):
+        if not isinstance(other, ZoomFrame):
             return False
 
         return self.__dict__ == other.__dict__

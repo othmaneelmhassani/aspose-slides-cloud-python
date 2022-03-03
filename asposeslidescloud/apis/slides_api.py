@@ -12511,6 +12511,215 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def delete_unused_layout_slides(self, name, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Removes unused layout slides.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: LayoutSlides
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_unused_layout_slides_with_http_info(name, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_unused_layout_slides_with_http_info(name, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_unused_layout_slides_with_http_info(self, name, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Removes unused layout slides.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_unused_layout_slides_with_http_info(name, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: LayoutSlides
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_unused_layout_slides" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `delete_unused_layout_slides`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/layoutSlides', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='LayoutSlides',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_unused_layout_slides_online(self, document, password = None, **kwargs):  # noqa: E501
+        """Removes unused layout slides.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(document, password, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data
+        :param password Document password.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_unused_layout_slides_online_with_http_info(document, password, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_unused_layout_slides_online_with_http_info(document, password, **kwargs)  # noqa: E501
+            return data
+
+    def delete_unused_layout_slides_online_with_http_info(self, document, password = None, **kwargs):  # noqa: E501
+        """Removes unused layout slides.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_unused_layout_slides_online_with_http_info(document, password, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data
+        :param password Document password.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_unused_layout_slides_online" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'document' is set
+        if not document:
+            raise ValueError("Missing the required parameter `document` when calling `delete_unused_layout_slides_online`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+        if document:
+            param_files['document'] = document  # noqa: E501
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['multipart/form-data'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/layoutSlides/delete', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='file',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def delete_watermark(self, name, shape_name = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Removes shapes with name \&quot;watermark\&quot; from the presentation.  # noqa: E501
 
@@ -22444,6 +22653,290 @@ class SlidesApi(ApiBase):
             post_params=form_params,
             files=param_files,
             response_type='ViewProperties',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def highlight_shape_regex(self, name, slide_index, shape_index, regex, color, whole_words_only = None, ignore_case = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Highlight all matches of sample in text frame text using specified color.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, shape_index, regex, color, whole_words_only, ignore_case, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param regex Regular expression.
+        :param color Highlighting color.
+        :param whole_words_only Match only whole words.
+        :param ignore_case True to search ignoring char case.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shape
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.highlight_shape_regex_with_http_info(name, slide_index, shape_index, regex, color, whole_words_only, ignore_case, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.highlight_shape_regex_with_http_info(name, slide_index, shape_index, regex, color, whole_words_only, ignore_case, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def highlight_shape_regex_with_http_info(self, name, slide_index, shape_index, regex, color, whole_words_only = None, ignore_case = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Highlight all matches of sample in text frame text using specified color.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.highlight_shape_regex_with_http_info(name, slide_index, shape_index, regex, color, whole_words_only, ignore_case, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param regex Regular expression.
+        :param color Highlighting color.
+        :param whole_words_only Match only whole words.
+        :param ignore_case True to search ignoring char case.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shape
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method highlight_shape_regex" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `highlight_shape_regex`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `highlight_shape_regex`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `shape_index` when calling `highlight_shape_regex`")  # noqa: E501
+        # verify the required parameter 'regex' is set
+        if not regex:
+            raise ValueError("Missing the required parameter `regex` when calling `highlight_shape_regex`")  # noqa: E501
+        # verify the required parameter 'color' is set
+        if not color:
+            raise ValueError("Missing the required parameter `color` when calling `highlight_shape_regex`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if regex:
+            query_params.append(('regex', regex))  # noqa: E501
+        if color:
+            query_params.append(('color', color))  # noqa: E501
+        if whole_words_only:
+            query_params.append(('wholeWordsOnly', whole_words_only))  # noqa: E501
+        if ignore_case:
+            query_params.append(('ignoreCase', ignore_case))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/highlightRegex', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Shape',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def highlight_shape_text(self, name, slide_index, shape_index, text, color, whole_words_only = None, ignore_case = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Highlight all matches of sample in text frame text using specified color.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, shape_index, text, color, whole_words_only, ignore_case, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param text Text sample to highlight.
+        :param color Highlighting color.
+        :param whole_words_only Match only whole words.
+        :param ignore_case True to search ignoring char case.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shape
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.highlight_shape_text_with_http_info(name, slide_index, shape_index, text, color, whole_words_only, ignore_case, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.highlight_shape_text_with_http_info(name, slide_index, shape_index, text, color, whole_words_only, ignore_case, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def highlight_shape_text_with_http_info(self, name, slide_index, shape_index, text, color, whole_words_only = None, ignore_case = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Highlight all matches of sample in text frame text using specified color.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.highlight_shape_text_with_http_info(name, slide_index, shape_index, text, color, whole_words_only, ignore_case, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param text Text sample to highlight.
+        :param color Highlighting color.
+        :param whole_words_only Match only whole words.
+        :param ignore_case True to search ignoring char case.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Shape
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method highlight_shape_text" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `highlight_shape_text`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `highlight_shape_text`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `shape_index` when calling `highlight_shape_text`")  # noqa: E501
+        # verify the required parameter 'text' is set
+        if not text:
+            raise ValueError("Missing the required parameter `text` when calling `highlight_shape_text`")  # noqa: E501
+        # verify the required parameter 'color' is set
+        if not color:
+            raise ValueError("Missing the required parameter `color` when calling `highlight_shape_text`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if text:
+            query_params.append(('text', text))  # noqa: E501
+        if color:
+            query_params.append(('color', color))  # noqa: E501
+        if whole_words_only:
+            query_params.append(('wholeWordsOnly', whole_words_only))  # noqa: E501
+        if ignore_case:
+            query_params.append(('ignoreCase', ignore_case))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/highlightText', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Shape',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),

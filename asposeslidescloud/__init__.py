@@ -112,6 +112,7 @@ from asposeslidescloud.models.table_cell import TableCell
 from asposeslidescloud.models.table_column import TableColumn
 from asposeslidescloud.models.table_row import TableRow
 from asposeslidescloud.models.task import Task
+from asposeslidescloud.models.text_frame_format import TextFrameFormat
 from asposeslidescloud.models.text_item import TextItem
 from asposeslidescloud.models.three_d_format import ThreeDFormat
 from asposeslidescloud.models.accent_element import AccentElement
@@ -126,7 +127,6 @@ from asposeslidescloud.models.base64_input_file import Base64InputFile
 from asposeslidescloud.models.block_element import BlockElement
 from asposeslidescloud.models.border_box_element import BorderBoxElement
 from asposeslidescloud.models.box_element import BoxElement
-from asposeslidescloud.models.bubble_series import BubbleSeries
 from asposeslidescloud.models.close_path_segment import ClosePathSegment
 from asposeslidescloud.models.color_scheme import ColorScheme
 from asposeslidescloud.models.cubic_bezier_to_path_segment import CubicBezierToPathSegment
@@ -191,7 +191,6 @@ from asposeslidescloud.models.save import Save
 from asposeslidescloud.models.save_shape import SaveShape
 from asposeslidescloud.models.save_slide import SaveSlide
 from asposeslidescloud.models.scatter_chart_data_point import ScatterChartDataPoint
-from asposeslidescloud.models.scatter_series import ScatterSeries
 from asposeslidescloud.models.section import Section
 from asposeslidescloud.models.sections import Sections
 from asposeslidescloud.models.shape_base import ShapeBase
@@ -214,27 +213,36 @@ from asposeslidescloud.models.theme import Theme
 from asposeslidescloud.models.tiff_export_options import TiffExportOptions
 from asposeslidescloud.models.update_background import UpdateBackground
 from asposeslidescloud.models.update_shape import UpdateShape
+from asposeslidescloud.models.video_export_options import VideoExportOptions
 from asposeslidescloud.models.view_properties import ViewProperties
+from asposeslidescloud.models.xy_series import XYSeries
 from asposeslidescloud.models.xaml_export_options import XamlExportOptions
 from asposeslidescloud.models.xps_export_options import XpsExportOptions
 from asposeslidescloud.models.box_and_whisker_series import BoxAndWhiskerSeries
 from asposeslidescloud.models.bubble_chart_data_point import BubbleChartDataPoint
+from asposeslidescloud.models.bubble_series import BubbleSeries
 from asposeslidescloud.models.chart import Chart
 from asposeslidescloud.models.document_replace_result import DocumentReplaceResult
 from asposeslidescloud.models.geometry_shape import GeometryShape
 from asposeslidescloud.models.graphical_object import GraphicalObject
 from asposeslidescloud.models.group_shape import GroupShape
 from asposeslidescloud.models.ole_object_frame import OleObjectFrame
+from asposeslidescloud.models.scatter_series import ScatterSeries
 from asposeslidescloud.models.slide_replace_result import SlideReplaceResult
 from asposeslidescloud.models.smart_art import SmartArt
+from asposeslidescloud.models.summary_zoom_frame import SummaryZoomFrame
 from asposeslidescloud.models.table import Table
 from asposeslidescloud.models.waterfall_chart_data_point import WaterfallChartDataPoint
 from asposeslidescloud.models.waterfall_series import WaterfallSeries
+from asposeslidescloud.models.zoom_object import ZoomObject
 from asposeslidescloud.models.audio_frame import AudioFrame
 from asposeslidescloud.models.connector import Connector
 from asposeslidescloud.models.picture_frame import PictureFrame
+from asposeslidescloud.models.section_zoom_frame import SectionZoomFrame
 from asposeslidescloud.models.shape import Shape
 from asposeslidescloud.models.smart_art_shape import SmartArtShape
 from asposeslidescloud.models.video_frame import VideoFrame
+from asposeslidescloud.models.zoom_frame import ZoomFrame
+from asposeslidescloud.models.summary_zoom_section import SummaryZoomSection
 
 

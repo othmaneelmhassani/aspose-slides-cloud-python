@@ -30,9 +30,8 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.task import Task
 
-class Save(Task):
+class TextFrameFormat(object):
 
 
     """
@@ -43,119 +42,88 @@ class Save(Task):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'type': 'str',
-        'format': 'str',
-        'output': 'OutputFile',
-        'options': 'ExportOptions'
+        'three_d_format': 'ThreeDFormat',
+        'transform': 'str'
     }
 
     attribute_map = {
-        'type': 'type',
-        'format': 'format',
-        'output': 'output',
-        'options': 'options'
+        'three_d_format': 'threeDFormat',
+        'transform': 'transform'
     }
 
     type_determiners = {
-        'type': 'Save',
     }
 
-    def __init__(self, type='Save', format=None, output=None, options=None):  # noqa: E501
-        """Save - a model defined in Swagger"""  # noqa: E501
-        super(Save, self).__init__(type)
+    def __init__(self, three_d_format=None, transform=None):  # noqa: E501
+        """TextFrameFormat - a model defined in Swagger"""  # noqa: E501
 
-        self._format = None
-        self._output = None
-        self._options = None
-        self.type = 'Save'
+        self._three_d_format = None
+        self._transform = None
 
-        self.format = format
-        if output is not None:
-            self.output = output
-        if options is not None:
-            self.options = options
+        if three_d_format is not None:
+            self.three_d_format = three_d_format
+        if transform is not None:
+            self.transform = transform
 
     @property
-    def format(self):
-        """Gets the format of this Save.  # noqa: E501
+    def three_d_format(self):
+        """Gets the three_d_format of this TextFrameFormat.  # noqa: E501
 
-        Format.  # noqa: E501
+        Represents 3d effect properties for a text.  # noqa: E501
 
-        :return: The format of this Save.  # noqa: E501
+        :return: The three_d_format of this TextFrameFormat.  # noqa: E501
+        :rtype: ThreeDFormat
+        """
+        return self._three_d_format
+
+    @three_d_format.setter
+    def three_d_format(self, three_d_format):
+        """Sets the three_d_format of this TextFrameFormat.
+
+        Represents 3d effect properties for a text.  # noqa: E501
+
+        :param three_d_format: The three_d_format of this TextFrameFormat.  # noqa: E501
+        :type: ThreeDFormat
+        """
+        self._three_d_format = three_d_format
+
+    @property
+    def transform(self):
+        """Gets the transform of this TextFrameFormat.  # noqa: E501
+
+        Gets or sets text wrapping shape.  # noqa: E501
+
+        :return: The transform of this TextFrameFormat.  # noqa: E501
         :rtype: str
         """
-        return self._format
+        return self._transform
 
-    @format.setter
-    def format(self, format):
-        """Sets the format of this Save.
+    @transform.setter
+    def transform(self, transform):
+        """Sets the transform of this TextFrameFormat.
 
-        Format.  # noqa: E501
+        Gets or sets text wrapping shape.  # noqa: E501
 
-        :param format: The format of this Save.  # noqa: E501
+        :param transform: The transform of this TextFrameFormat.  # noqa: E501
         :type: str
         """
-        if format is not None:
-            allowed_values = ["Pdf", "Xps", "Tiff", "Pptx", "Odp", "Otp", "Ppt", "Pps", "Ppsx", "Pptm", "Ppsm", "Pot", "Potx", "Potm", "Html", "Html5", "Swf", "Svg", "Jpeg", "Png", "Gif", "Bmp", "Fodp", "Xaml", "Mpeg4"]  # noqa: E501
-            if format.isdigit():
-                int_format = int(format)
-                if int_format < 0 or int_format >= len(allowed_values):
+        if transform is not None:
+            allowed_values = ["None", "Plain", "Stop", "Triangle", "TriangleInverted", "Chevron", "ChevronInverted", "RingInside", "RingOutside", "ArchUp", "ArchDown", "Circle", "Button", "ArchUpPour", "ArchDownPour", "CirclePour", "ButtonPour", "CurveUp", "CurveDown", "CanUp", "CanDown", "Wave1", "Wave2", "DoubleWave1", "Wave4", "Inflate", "Deflate", "InflateBottom", "DeflateBottom", "InflateTop", "DeflateTop", "DeflateInflate", "DeflateInflateDeflate", "FadeRight", "FadeLeft", "FadeUp", "FadeDown", "SlantUp", "SlantDown", "CascadeUp", "CascadeDown", "Custom", "NotDefined"]  # noqa: E501
+            if transform.isdigit():
+                int_transform = int(transform)
+                if int_transform < 0 or int_transform >= len(allowed_values):
                     raise ValueError(
-                        "Invalid value for `format` ({0}), must be one of {1}"  # noqa: E501
-                        .format(format, allowed_values)
+                        "Invalid value for `transform` ({0}), must be one of {1}"  # noqa: E501
+                        .format(transform, allowed_values)
                     )
-                self._format = allowed_values[int_format]
+                self._transform = allowed_values[int_transform]
                 return
-            if format not in allowed_values:
+            if transform not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `format` ({0}), must be one of {1}"  # noqa: E501
-                    .format(format, allowed_values)
+                    "Invalid value for `transform` ({0}), must be one of {1}"  # noqa: E501
+                    .format(transform, allowed_values)
                 )
-        self._format = format
-
-    @property
-    def output(self):
-        """Gets the output of this Save.  # noqa: E501
-
-        Output file.  # noqa: E501
-
-        :return: The output of this Save.  # noqa: E501
-        :rtype: OutputFile
-        """
-        return self._output
-
-    @output.setter
-    def output(self, output):
-        """Sets the output of this Save.
-
-        Output file.  # noqa: E501
-
-        :param output: The output of this Save.  # noqa: E501
-        :type: OutputFile
-        """
-        self._output = output
-
-    @property
-    def options(self):
-        """Gets the options of this Save.  # noqa: E501
-
-        Save options.  # noqa: E501
-
-        :return: The options of this Save.  # noqa: E501
-        :rtype: ExportOptions
-        """
-        return self._options
-
-    @options.setter
-    def options(self, options):
-        """Sets the options of this Save.
-
-        Save options.  # noqa: E501
-
-        :param options: The options of this Save.  # noqa: E501
-        :type: ExportOptions
-        """
-        self._options = options
+        self._transform = transform
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -191,7 +159,7 @@ class Save(Task):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, Save):
+        if not isinstance(other, TextFrameFormat):
             return False
 
         return self.__dict__ == other.__dict__

@@ -50,10 +50,6 @@ class OneValueSeries(Series):
         'smooth': 'bool',
         'plot_on_second_axis': 'bool',
         'order': 'int',
-        'number_format_of_y_values': 'str',
-        'number_format_of_x_values': 'str',
-        'number_format_of_values': 'str',
-        'number_format_of_bubble_sizes': 'str',
         'invert_if_negative': 'bool',
         'explosion': 'int',
         'marker': 'SeriesMarker',
@@ -61,7 +57,8 @@ class OneValueSeries(Series):
         'effect_format': 'EffectFormat',
         'line_format': 'LineFormat',
         'data_point_type': 'str',
-        'data_points': 'list[OneValueChartDataPoint]'
+        'data_points': 'list[OneValueChartDataPoint]',
+        'number_format_of_values': 'str'
     }
 
     attribute_map = {
@@ -72,10 +69,6 @@ class OneValueSeries(Series):
         'smooth': 'smooth',
         'plot_on_second_axis': 'plotOnSecondAxis',
         'order': 'order',
-        'number_format_of_y_values': 'numberFormatOfYValues',
-        'number_format_of_x_values': 'numberFormatOfXValues',
-        'number_format_of_values': 'numberFormatOfValues',
-        'number_format_of_bubble_sizes': 'numberFormatOfBubbleSizes',
         'invert_if_negative': 'invertIfNegative',
         'explosion': 'explosion',
         'marker': 'marker',
@@ -83,22 +76,26 @@ class OneValueSeries(Series):
         'effect_format': 'effectFormat',
         'line_format': 'lineFormat',
         'data_point_type': 'dataPointType',
-        'data_points': 'dataPoints'
+        'data_points': 'dataPoints',
+        'number_format_of_values': 'numberFormatOfValues'
     }
 
     type_determiners = {
         'dataPointType': 'OneValue',
     }
 
-    def __init__(self, type=None, name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, number_format_of_y_values=None, number_format_of_x_values=None, number_format_of_values=None, number_format_of_bubble_sizes=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type='OneValue', data_points=None):  # noqa: E501
+    def __init__(self, type=None, name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type='OneValue', data_points=None, number_format_of_values=None):  # noqa: E501
         """OneValueSeries - a model defined in Swagger"""  # noqa: E501
-        super(OneValueSeries, self).__init__(type, name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, number_format_of_y_values, number_format_of_x_values, number_format_of_values, number_format_of_bubble_sizes, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type)
+        super(OneValueSeries, self).__init__(type, name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type)
 
         self._data_points = None
+        self._number_format_of_values = None
         self.data_point_type = 'OneValue'
 
         if data_points is not None:
             self.data_points = data_points
+        if number_format_of_values is not None:
+            self.number_format_of_values = number_format_of_values
 
     @property
     def data_points(self):
@@ -121,6 +118,28 @@ class OneValueSeries(Series):
         :type: list[OneValueChartDataPoint]
         """
         self._data_points = data_points
+
+    @property
+    def number_format_of_values(self):
+        """Gets the number_format_of_values of this OneValueSeries.  # noqa: E501
+
+        The number format for the series values.  # noqa: E501
+
+        :return: The number_format_of_values of this OneValueSeries.  # noqa: E501
+        :rtype: str
+        """
+        return self._number_format_of_values
+
+    @number_format_of_values.setter
+    def number_format_of_values(self, number_format_of_values):
+        """Sets the number_format_of_values of this OneValueSeries.
+
+        The number format for the series values.  # noqa: E501
+
+        :param number_format_of_values: The number_format_of_values of this OneValueSeries.  # noqa: E501
+        :type: str
+        """
+        self._number_format_of_values = number_format_of_values
 
     def to_dict(self):
         """Returns the model properties as a dict"""

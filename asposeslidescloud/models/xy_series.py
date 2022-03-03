@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.xy_series import XYSeries
+from asposeslidescloud.models.series import Series
 
-class ScatterSeries(XYSeries):
+class XYSeries(Series):
 
 
     """
@@ -58,8 +58,7 @@ class ScatterSeries(XYSeries):
         'line_format': 'LineFormat',
         'data_point_type': 'str',
         'number_format_of_y_values': 'str',
-        'number_format_of_x_values': 'str',
-        'data_points': 'list[ScatterChartDataPoint]'
+        'number_format_of_x_values': 'str'
     }
 
     attribute_map = {
@@ -78,45 +77,67 @@ class ScatterSeries(XYSeries):
         'line_format': 'lineFormat',
         'data_point_type': 'dataPointType',
         'number_format_of_y_values': 'numberFormatOfYValues',
-        'number_format_of_x_values': 'numberFormatOfXValues',
-        'data_points': 'dataPoints'
+        'number_format_of_x_values': 'numberFormatOfXValues'
     }
 
     type_determiners = {
-        'dataPointType': 'Scatter',
     }
 
-    def __init__(self, type=None, name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type='Scatter', number_format_of_y_values=None, number_format_of_x_values=None, data_points=None):  # noqa: E501
-        """ScatterSeries - a model defined in Swagger"""  # noqa: E501
-        super(ScatterSeries, self).__init__(type, name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type, number_format_of_y_values, number_format_of_x_values)
+    def __init__(self, type=None, name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type=None, number_format_of_y_values=None, number_format_of_x_values=None):  # noqa: E501
+        """XYSeries - a model defined in Swagger"""  # noqa: E501
+        super(XYSeries, self).__init__(type, name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type)
 
-        self._data_points = None
-        self.data_point_type = 'Scatter'
+        self._number_format_of_y_values = None
+        self._number_format_of_x_values = None
 
-        if data_points is not None:
-            self.data_points = data_points
+        if number_format_of_y_values is not None:
+            self.number_format_of_y_values = number_format_of_y_values
+        if number_format_of_x_values is not None:
+            self.number_format_of_x_values = number_format_of_x_values
 
     @property
-    def data_points(self):
-        """Gets the data_points of this ScatterSeries.  # noqa: E501
+    def number_format_of_y_values(self):
+        """Gets the number_format_of_y_values of this XYSeries.  # noqa: E501
 
-        Gets or sets the values.  # noqa: E501
+        The number format for the series y values.  # noqa: E501
 
-        :return: The data_points of this ScatterSeries.  # noqa: E501
-        :rtype: list[ScatterChartDataPoint]
+        :return: The number_format_of_y_values of this XYSeries.  # noqa: E501
+        :rtype: str
         """
-        return self._data_points
+        return self._number_format_of_y_values
 
-    @data_points.setter
-    def data_points(self, data_points):
-        """Sets the data_points of this ScatterSeries.
+    @number_format_of_y_values.setter
+    def number_format_of_y_values(self, number_format_of_y_values):
+        """Sets the number_format_of_y_values of this XYSeries.
 
-        Gets or sets the values.  # noqa: E501
+        The number format for the series y values.  # noqa: E501
 
-        :param data_points: The data_points of this ScatterSeries.  # noqa: E501
-        :type: list[ScatterChartDataPoint]
+        :param number_format_of_y_values: The number_format_of_y_values of this XYSeries.  # noqa: E501
+        :type: str
         """
-        self._data_points = data_points
+        self._number_format_of_y_values = number_format_of_y_values
+
+    @property
+    def number_format_of_x_values(self):
+        """Gets the number_format_of_x_values of this XYSeries.  # noqa: E501
+
+        The number format for the series x values.  # noqa: E501
+
+        :return: The number_format_of_x_values of this XYSeries.  # noqa: E501
+        :rtype: str
+        """
+        return self._number_format_of_x_values
+
+    @number_format_of_x_values.setter
+    def number_format_of_x_values(self, number_format_of_x_values):
+        """Sets the number_format_of_x_values of this XYSeries.
+
+        The number format for the series x values.  # noqa: E501
+
+        :param number_format_of_x_values: The number_format_of_x_values of this XYSeries.  # noqa: E501
+        :type: str
+        """
+        self._number_format_of_x_values = number_format_of_x_values
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -152,7 +173,7 @@ class ScatterSeries(XYSeries):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ScatterSeries):
+        if not isinstance(other, XYSeries):
             return False
 
         return self.__dict__ == other.__dict__

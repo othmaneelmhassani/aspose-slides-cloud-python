@@ -49,10 +49,6 @@ class Series(object):
         'smooth': 'bool',
         'plot_on_second_axis': 'bool',
         'order': 'int',
-        'number_format_of_y_values': 'str',
-        'number_format_of_x_values': 'str',
-        'number_format_of_values': 'str',
-        'number_format_of_bubble_sizes': 'str',
         'invert_if_negative': 'bool',
         'explosion': 'int',
         'marker': 'SeriesMarker',
@@ -70,10 +66,6 @@ class Series(object):
         'smooth': 'smooth',
         'plot_on_second_axis': 'plotOnSecondAxis',
         'order': 'order',
-        'number_format_of_y_values': 'numberFormatOfYValues',
-        'number_format_of_x_values': 'numberFormatOfXValues',
-        'number_format_of_values': 'numberFormatOfValues',
-        'number_format_of_bubble_sizes': 'numberFormatOfBubbleSizes',
         'invert_if_negative': 'invertIfNegative',
         'explosion': 'explosion',
         'marker': 'marker',
@@ -86,7 +78,7 @@ class Series(object):
     type_determiners = {
     }
 
-    def __init__(self, type=None, name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, number_format_of_y_values=None, number_format_of_x_values=None, number_format_of_values=None, number_format_of_bubble_sizes=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type=None):  # noqa: E501
+    def __init__(self, type=None, name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type=None):  # noqa: E501
         """Series - a model defined in Swagger"""  # noqa: E501
 
         self._type = None
@@ -96,10 +88,6 @@ class Series(object):
         self._smooth = None
         self._plot_on_second_axis = None
         self._order = None
-        self._number_format_of_y_values = None
-        self._number_format_of_x_values = None
-        self._number_format_of_values = None
-        self._number_format_of_bubble_sizes = None
         self._invert_if_negative = None
         self._explosion = None
         self._marker = None
@@ -122,14 +110,6 @@ class Series(object):
             self.plot_on_second_axis = plot_on_second_axis
         if order is not None:
             self.order = order
-        if number_format_of_y_values is not None:
-            self.number_format_of_y_values = number_format_of_y_values
-        if number_format_of_x_values is not None:
-            self.number_format_of_x_values = number_format_of_x_values
-        if number_format_of_values is not None:
-            self.number_format_of_values = number_format_of_values
-        if number_format_of_bubble_sizes is not None:
-            self.number_format_of_bubble_sizes = number_format_of_bubble_sizes
         if invert_if_negative is not None:
             self.invert_if_negative = invert_if_negative
         if explosion is not None:
@@ -314,94 +294,6 @@ class Series(object):
         :type: int
         """
         self._order = order
-
-    @property
-    def number_format_of_y_values(self):
-        """Gets the number_format_of_y_values of this Series.  # noqa: E501
-
-        The number format for the series y values.  # noqa: E501
-
-        :return: The number_format_of_y_values of this Series.  # noqa: E501
-        :rtype: str
-        """
-        return self._number_format_of_y_values
-
-    @number_format_of_y_values.setter
-    def number_format_of_y_values(self, number_format_of_y_values):
-        """Sets the number_format_of_y_values of this Series.
-
-        The number format for the series y values.  # noqa: E501
-
-        :param number_format_of_y_values: The number_format_of_y_values of this Series.  # noqa: E501
-        :type: str
-        """
-        self._number_format_of_y_values = number_format_of_y_values
-
-    @property
-    def number_format_of_x_values(self):
-        """Gets the number_format_of_x_values of this Series.  # noqa: E501
-
-        The number format for the series x values.  # noqa: E501
-
-        :return: The number_format_of_x_values of this Series.  # noqa: E501
-        :rtype: str
-        """
-        return self._number_format_of_x_values
-
-    @number_format_of_x_values.setter
-    def number_format_of_x_values(self, number_format_of_x_values):
-        """Sets the number_format_of_x_values of this Series.
-
-        The number format for the series x values.  # noqa: E501
-
-        :param number_format_of_x_values: The number_format_of_x_values of this Series.  # noqa: E501
-        :type: str
-        """
-        self._number_format_of_x_values = number_format_of_x_values
-
-    @property
-    def number_format_of_values(self):
-        """Gets the number_format_of_values of this Series.  # noqa: E501
-
-        The number format for the series values.  # noqa: E501
-
-        :return: The number_format_of_values of this Series.  # noqa: E501
-        :rtype: str
-        """
-        return self._number_format_of_values
-
-    @number_format_of_values.setter
-    def number_format_of_values(self, number_format_of_values):
-        """Sets the number_format_of_values of this Series.
-
-        The number format for the series values.  # noqa: E501
-
-        :param number_format_of_values: The number_format_of_values of this Series.  # noqa: E501
-        :type: str
-        """
-        self._number_format_of_values = number_format_of_values
-
-    @property
-    def number_format_of_bubble_sizes(self):
-        """Gets the number_format_of_bubble_sizes of this Series.  # noqa: E501
-
-        The number format for the series bubble sizes.  # noqa: E501
-
-        :return: The number_format_of_bubble_sizes of this Series.  # noqa: E501
-        :rtype: str
-        """
-        return self._number_format_of_bubble_sizes
-
-    @number_format_of_bubble_sizes.setter
-    def number_format_of_bubble_sizes(self, number_format_of_bubble_sizes):
-        """Sets the number_format_of_bubble_sizes of this Series.
-
-        The number format for the series bubble sizes.  # noqa: E501
-
-        :param number_format_of_bubble_sizes: The number_format_of_bubble_sizes of this Series.  # noqa: E501
-        :type: str
-        """
-        self._number_format_of_bubble_sizes = number_format_of_bubble_sizes
 
     @property
     def invert_if_negative(self):
