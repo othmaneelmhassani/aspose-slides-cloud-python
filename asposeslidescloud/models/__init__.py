@@ -36,6 +36,7 @@ from asposeslidescloud.models.axis import Axis
 from asposeslidescloud.models.blur_effect import BlurEffect
 from asposeslidescloud.models.camera import Camera
 from asposeslidescloud.models.chart_category import ChartCategory
+from asposeslidescloud.models.chart_lines_format import ChartLinesFormat
 from asposeslidescloud.models.chart_title import ChartTitle
 from asposeslidescloud.models.chart_wall import ChartWall
 from asposeslidescloud.models.common_slide_view_properties import CommonSlideViewProperties
@@ -54,6 +55,7 @@ from asposeslidescloud.models.files_list import FilesList
 from asposeslidescloud.models.files_upload_result import FilesUploadResult
 from asposeslidescloud.models.fill_format import FillFormat
 from asposeslidescloud.models.fill_overlay_effect import FillOverlayEffect
+from asposeslidescloud.models.font_fallback_rule import FontFallbackRule
 from asposeslidescloud.models.font_set import FontSet
 from asposeslidescloud.models.geometry_path import GeometryPath
 from asposeslidescloud.models.geometry_paths import GeometryPaths
@@ -93,8 +95,9 @@ from asposeslidescloud.models.shape_bevel import ShapeBevel
 from asposeslidescloud.models.shape_export_format import ShapeExportFormat
 from asposeslidescloud.models.shape_image_export_options import ShapeImageExportOptions
 from asposeslidescloud.models.shape_thumbnail_bounds import ShapeThumbnailBounds
+from asposeslidescloud.models.shape_type import ShapeType
 from asposeslidescloud.models.shapes_alignment_type import ShapesAlignmentType
-from asposeslidescloud.models.slide_comment import SlideComment
+from asposeslidescloud.models.slide_comment_base import SlideCommentBase
 from asposeslidescloud.models.slide_export_format import SlideExportFormat
 from asposeslidescloud.models.smart_art_node import SmartArtNode
 from asposeslidescloud.models.soft_edge_effect import SoftEdgeEffect
@@ -105,6 +108,7 @@ from asposeslidescloud.models.table_cell import TableCell
 from asposeslidescloud.models.table_column import TableColumn
 from asposeslidescloud.models.table_row import TableRow
 from asposeslidescloud.models.task import Task
+from asposeslidescloud.models.text_bounds import TextBounds
 from asposeslidescloud.models.text_frame_format import TextFrameFormat
 from asposeslidescloud.models.text_item import TextItem
 from asposeslidescloud.models.three_d_format import ThreeDFormat
@@ -191,7 +195,9 @@ from asposeslidescloud.models.shapes import Shapes
 from asposeslidescloud.models.slide import Slide
 from asposeslidescloud.models.slide_animation import SlideAnimation
 from asposeslidescloud.models.slide_background import SlideBackground
+from asposeslidescloud.models.slide_comment import SlideComment
 from asposeslidescloud.models.slide_comments import SlideComments
+from asposeslidescloud.models.slide_modern_comment import SlideModernComment
 from asposeslidescloud.models.slide_properties import SlideProperties
 from asposeslidescloud.models.slides import Slides
 from asposeslidescloud.models.solid_fill import SolidFill

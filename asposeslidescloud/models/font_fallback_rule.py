@@ -30,9 +30,8 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.export_options import ExportOptions
 
-class XamlExportOptions(ExportOptions):
+class FontFallbackRule(object):
 
 
     """
@@ -43,58 +42,97 @@ class XamlExportOptions(ExportOptions):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'default_regular_font': 'str',
-        'height': 'int',
-        'width': 'int',
-        'font_fallback_rules': 'list[FontFallbackRule]',
-        'format': 'str',
-        'export_hidden_slides': 'bool'
+        'range_start_index': 'int',
+        'range_end_index': 'int',
+        'fallback_font_list': 'list[str]'
     }
 
     attribute_map = {
-        'default_regular_font': 'defaultRegularFont',
-        'height': 'height',
-        'width': 'width',
-        'font_fallback_rules': 'fontFallbackRules',
-        'format': 'format',
-        'export_hidden_slides': 'exportHiddenSlides'
+        'range_start_index': 'rangeStartIndex',
+        'range_end_index': 'rangeEndIndex',
+        'fallback_font_list': 'fallbackFontList'
     }
 
     type_determiners = {
-        'format': 'xaml',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='xaml', export_hidden_slides=None):  # noqa: E501
-        """XamlExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(XamlExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
+    def __init__(self, range_start_index=None, range_end_index=None, fallback_font_list=None):  # noqa: E501
+        """FontFallbackRule - a model defined in Swagger"""  # noqa: E501
 
-        self._export_hidden_slides = None
-        self.format = 'xaml'
+        self._range_start_index = None
+        self._range_end_index = None
+        self._fallback_font_list = None
 
-        if export_hidden_slides is not None:
-            self.export_hidden_slides = export_hidden_slides
+        self.range_start_index = range_start_index
+        self.range_end_index = range_end_index
+        if fallback_font_list is not None:
+            self.fallback_font_list = fallback_font_list
 
     @property
-    def export_hidden_slides(self):
-        """Gets the export_hidden_slides of this XamlExportOptions.  # noqa: E501
+    def range_start_index(self):
+        """Gets the range_start_index of this FontFallbackRule.  # noqa: E501
 
-        Export hidden slides  # noqa: E501
+        First index of continuous unicode range.  # noqa: E501
 
-        :return: The export_hidden_slides of this XamlExportOptions.  # noqa: E501
-        :rtype: bool
+        :return: The range_start_index of this FontFallbackRule.  # noqa: E501
+        :rtype: int
         """
-        return self._export_hidden_slides
+        return self._range_start_index
 
-    @export_hidden_slides.setter
-    def export_hidden_slides(self, export_hidden_slides):
-        """Sets the export_hidden_slides of this XamlExportOptions.
+    @range_start_index.setter
+    def range_start_index(self, range_start_index):
+        """Sets the range_start_index of this FontFallbackRule.
 
-        Export hidden slides  # noqa: E501
+        First index of continuous unicode range.  # noqa: E501
 
-        :param export_hidden_slides: The export_hidden_slides of this XamlExportOptions.  # noqa: E501
-        :type: bool
+        :param range_start_index: The range_start_index of this FontFallbackRule.  # noqa: E501
+        :type: int
         """
-        self._export_hidden_slides = export_hidden_slides
+        self._range_start_index = range_start_index
+
+    @property
+    def range_end_index(self):
+        """Gets the range_end_index of this FontFallbackRule.  # noqa: E501
+
+        Last index of continuous unicode range.  # noqa: E501
+
+        :return: The range_end_index of this FontFallbackRule.  # noqa: E501
+        :rtype: int
+        """
+        return self._range_end_index
+
+    @range_end_index.setter
+    def range_end_index(self, range_end_index):
+        """Sets the range_end_index of this FontFallbackRule.
+
+        Last index of continuous unicode range.  # noqa: E501
+
+        :param range_end_index: The range_end_index of this FontFallbackRule.  # noqa: E501
+        :type: int
+        """
+        self._range_end_index = range_end_index
+
+    @property
+    def fallback_font_list(self):
+        """Gets the fallback_font_list of this FontFallbackRule.  # noqa: E501
+
+        List of fallback font links.  # noqa: E501
+
+        :return: The fallback_font_list of this FontFallbackRule.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._fallback_font_list
+
+    @fallback_font_list.setter
+    def fallback_font_list(self, fallback_font_list):
+        """Sets the fallback_font_list of this FontFallbackRule.
+
+        List of fallback font links.  # noqa: E501
+
+        :param fallback_font_list: The fallback_font_list of this FontFallbackRule.  # noqa: E501
+        :type: list[str]
+        """
+        self._fallback_font_list = fallback_font_list
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -130,7 +168,7 @@ class XamlExportOptions(ExportOptions):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, XamlExportOptions):
+        if not isinstance(other, FontFallbackRule):
             return False
 
         return self.__dict__ == other.__dict__

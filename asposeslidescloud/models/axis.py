@@ -77,7 +77,9 @@ class Axis(object):
         'tick_label_rotation_angle': 'float',
         'fill_format': 'FillFormat',
         'effect_format': 'EffectFormat',
-        'line_format': 'LineFormat'
+        'line_format': 'LineFormat',
+        'major_grid_lines_format': 'ChartLinesFormat',
+        'minor_grid_lines_format': 'ChartLinesFormat'
     }
 
     attribute_map = {
@@ -116,13 +118,15 @@ class Axis(object):
         'tick_label_rotation_angle': 'tickLabelRotationAngle',
         'fill_format': 'fillFormat',
         'effect_format': 'effectFormat',
-        'line_format': 'lineFormat'
+        'line_format': 'lineFormat',
+        'major_grid_lines_format': 'majorGridLinesFormat',
+        'minor_grid_lines_format': 'minorGridLinesFormat'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, is_visible=None, has_title=None, position=None, display_unit=None, base_unit_scale=None, is_automatic_major_unit=None, major_unit=None, major_unit_scale=None, major_tick_mark=None, is_automatic_minor_unit=None, minor_unit=None, minor_unit_scale=None, minor_tick_mark=None, is_automatic_max_value=None, max_value=None, is_automatic_min_value=None, min_value=None, is_logarithmic=None, log_base=None, category_axis_type=None, axis_between_categories=None, label_offset=None, is_plot_order_reversed=None, is_number_format_linked_to_source=None, number_format=None, cross_type=None, cross_at=None, is_automatic_tick_marks_spacing=None, tick_marks_spacing=None, is_automatic_tick_label_spacing=None, tick_label_spacing=None, tick_label_position=None, tick_label_rotation_angle=None, fill_format=None, effect_format=None, line_format=None):  # noqa: E501
+    def __init__(self, is_visible=None, has_title=None, position=None, display_unit=None, base_unit_scale=None, is_automatic_major_unit=None, major_unit=None, major_unit_scale=None, major_tick_mark=None, is_automatic_minor_unit=None, minor_unit=None, minor_unit_scale=None, minor_tick_mark=None, is_automatic_max_value=None, max_value=None, is_automatic_min_value=None, min_value=None, is_logarithmic=None, log_base=None, category_axis_type=None, axis_between_categories=None, label_offset=None, is_plot_order_reversed=None, is_number_format_linked_to_source=None, number_format=None, cross_type=None, cross_at=None, is_automatic_tick_marks_spacing=None, tick_marks_spacing=None, is_automatic_tick_label_spacing=None, tick_label_spacing=None, tick_label_position=None, tick_label_rotation_angle=None, fill_format=None, effect_format=None, line_format=None, major_grid_lines_format=None, minor_grid_lines_format=None):  # noqa: E501
         """Axis - a model defined in Swagger"""  # noqa: E501
 
         self._is_visible = None
@@ -161,6 +165,8 @@ class Axis(object):
         self._fill_format = None
         self._effect_format = None
         self._line_format = None
+        self._major_grid_lines_format = None
+        self._minor_grid_lines_format = None
 
         if is_visible is not None:
             self.is_visible = is_visible
@@ -234,6 +240,10 @@ class Axis(object):
             self.effect_format = effect_format
         if line_format is not None:
             self.line_format = line_format
+        if major_grid_lines_format is not None:
+            self.major_grid_lines_format = major_grid_lines_format
+        if minor_grid_lines_format is not None:
+            self.minor_grid_lines_format = minor_grid_lines_format
 
     @property
     def is_visible(self):
@@ -1186,6 +1196,50 @@ class Axis(object):
         :type: LineFormat
         """
         self._line_format = line_format
+
+    @property
+    def major_grid_lines_format(self):
+        """Gets the major_grid_lines_format of this Axis.  # noqa: E501
+
+        Get or sets the format of major grid lines.  # noqa: E501
+
+        :return: The major_grid_lines_format of this Axis.  # noqa: E501
+        :rtype: ChartLinesFormat
+        """
+        return self._major_grid_lines_format
+
+    @major_grid_lines_format.setter
+    def major_grid_lines_format(self, major_grid_lines_format):
+        """Sets the major_grid_lines_format of this Axis.
+
+        Get or sets the format of major grid lines.  # noqa: E501
+
+        :param major_grid_lines_format: The major_grid_lines_format of this Axis.  # noqa: E501
+        :type: ChartLinesFormat
+        """
+        self._major_grid_lines_format = major_grid_lines_format
+
+    @property
+    def minor_grid_lines_format(self):
+        """Gets the minor_grid_lines_format of this Axis.  # noqa: E501
+
+        Get or sets the format of major grid lines.  # noqa: E501
+
+        :return: The minor_grid_lines_format of this Axis.  # noqa: E501
+        :rtype: ChartLinesFormat
+        """
+        return self._minor_grid_lines_format
+
+    @minor_grid_lines_format.setter
+    def minor_grid_lines_format(self, minor_grid_lines_format):
+        """Sets the minor_grid_lines_format of this Axis.
+
+        Get or sets the format of major grid lines.  # noqa: E501
+
+        :param minor_grid_lines_format: The minor_grid_lines_format of this Axis.  # noqa: E501
+        :type: ChartLinesFormat
+        """
+        self._minor_grid_lines_format = minor_grid_lines_format
 
     def to_dict(self):
         """Returns the model properties as a dict"""

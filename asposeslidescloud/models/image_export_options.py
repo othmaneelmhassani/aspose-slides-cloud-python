@@ -46,6 +46,7 @@ class ImageExportOptions(ExportOptions):
         'default_regular_font': 'str',
         'height': 'int',
         'width': 'int',
+        'font_fallback_rules': 'list[FontFallbackRule]',
         'format': 'str',
         'notes_position': 'str',
         'comments_position': 'str',
@@ -57,6 +58,7 @@ class ImageExportOptions(ExportOptions):
         'default_regular_font': 'defaultRegularFont',
         'height': 'height',
         'width': 'width',
+        'font_fallback_rules': 'fontFallbackRules',
         'format': 'format',
         'notes_position': 'notesPosition',
         'comments_position': 'commentsPosition',
@@ -68,9 +70,9 @@ class ImageExportOptions(ExportOptions):
         'format': 'image',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, format='image', notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='image', notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None):  # noqa: E501
         """ImageExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(ImageExportOptions, self).__init__(default_regular_font, height, width, format)
+        super(ImageExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
 
         self._notes_position = None
         self._comments_position = None

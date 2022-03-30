@@ -2090,18 +2090,19 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_comment(self, name, slide_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+    def create_comment(self, name, slide_index, dto, shape_index = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Adds the comment on the slide.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, dto, password, folder, storage, is_async=True)
+        >>> thread = api.(name, slide_index, dto, shape_index, password, folder, storage, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
         :param name Document name.
         :param slide_index Slide index.
         :param dto Comment DTO.
+        :param shape_index Shape index.
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -2111,23 +2112,24 @@ class SlidesApi(ApiBase):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.create_comment_with_http_info(name, slide_index, dto, password, folder, storage, **kwargs)  # noqa: E501
+            return self.create_comment_with_http_info(name, slide_index, dto, shape_index, password, folder, storage, **kwargs)  # noqa: E501
         else:
-            (data) = self.create_comment_with_http_info(name, slide_index, dto, password, folder, storage, **kwargs)  # noqa: E501
+            (data) = self.create_comment_with_http_info(name, slide_index, dto, shape_index, password, folder, storage, **kwargs)  # noqa: E501
             return data
 
-    def create_comment_with_http_info(self, name, slide_index, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+    def create_comment_with_http_info(self, name, slide_index, dto, shape_index = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Adds the comment on the slide.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.create_comment_with_http_info(name, slide_index, dto, password, folder, storage, is_async=True)
+        >>> thread = api.create_comment_with_http_info(name, slide_index, dto, shape_index, password, folder, storage, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
         :param name Document name.
         :param slide_index Slide index.
         :param dto Comment DTO.
+        :param shape_index Shape index.
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -2168,6 +2170,8 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = slide_index  # noqa: E501
 
         query_params = []
+        if shape_index:
+            query_params.append(('shapeIndex', shape_index))  # noqa: E501
         if folder:
             query_params.append(('folder', folder))  # noqa: E501
         if storage:
@@ -2211,18 +2215,19 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_comment_online(self, document, slide_index, dto, password = None, **kwargs):  # noqa: E501
+    def create_comment_online(self, document, slide_index, dto, shape_index = None, password = None, **kwargs):  # noqa: E501
         """Adds the comment on the slide.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(document, slide_index, dto, password, is_async=True)
+        >>> thread = api.(document, slide_index, dto, shape_index, password, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
         :param document Document data.
         :param slide_index Slide index.
         :param dto Comment DTO.
+        :param shape_index Shape index.
         :param password Document password.
         :return: file
                  If the method is called asynchronously,
@@ -2230,23 +2235,24 @@ class SlidesApi(ApiBase):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.create_comment_online_with_http_info(document, slide_index, dto, password, **kwargs)  # noqa: E501
+            return self.create_comment_online_with_http_info(document, slide_index, dto, shape_index, password, **kwargs)  # noqa: E501
         else:
-            (data) = self.create_comment_online_with_http_info(document, slide_index, dto, password, **kwargs)  # noqa: E501
+            (data) = self.create_comment_online_with_http_info(document, slide_index, dto, shape_index, password, **kwargs)  # noqa: E501
             return data
 
-    def create_comment_online_with_http_info(self, document, slide_index, dto, password = None, **kwargs):  # noqa: E501
+    def create_comment_online_with_http_info(self, document, slide_index, dto, shape_index = None, password = None, **kwargs):  # noqa: E501
         """Adds the comment on the slide.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.create_comment_online_with_http_info(document, slide_index, dto, password, is_async=True)
+        >>> thread = api.create_comment_online_with_http_info(document, slide_index, dto, shape_index, password, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
         :param document Document data.
         :param slide_index Slide index.
         :param dto Comment DTO.
+        :param shape_index Shape index.
         :param password Document password.
         :return: file
                  If the method is called asynchronously,
@@ -2284,6 +2290,8 @@ class SlidesApi(ApiBase):
         path_params['slideIndex'] = slide_index  # noqa: E501
 
         query_params = []
+        if shape_index:
+            query_params.append(('shapeIndex', shape_index))  # noqa: E501
 
         header_params = {}
         if password:
@@ -17613,6 +17621,132 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def get_paragraph_rectangle(self, name, slide_index, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: TextBounds
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_paragraph_rectangle_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_paragraph_rectangle_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_paragraph_rectangle_with_http_info(self, name, slide_index, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_paragraph_rectangle_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: TextBounds
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_paragraph_rectangle" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `get_paragraph_rectangle`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_paragraph_rectangle`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_paragraph_rectangle`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_paragraph_rectangle`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/bounds', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='TextBounds',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def get_paragraphs(self, name, slide_index, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Read shape paragraphs info.  # noqa: E501
 
@@ -18092,6 +18226,138 @@ class SlidesApi(ApiBase):
             post_params=form_params,
             files=param_files,
             response_type='Portion',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_portion_rectangle(self, name, slide_index, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: TextBounds
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_portion_rectangle_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_portion_rectangle_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_portion_rectangle_with_http_info(self, name, slide_index, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_portion_rectangle_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: TextBounds
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_portion_rectangle" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `get_portion_rectangle`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_portion_rectangle`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_portion_rectangle`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_portion_rectangle`")  # noqa: E501
+        # verify the required parameter 'portion_index' is set
+        if not portion_index:
+            raise ValueError("Missing the required parameter `portion_index` when calling `get_portion_rectangle`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+        path_params['portionIndex'] = portion_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}/bounds', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='TextBounds',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -19009,12 +19275,12 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_shapes(self, name, slide_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+    def get_shapes(self, name, slide_index, password = None, folder = None, storage = None, shape_type = None, **kwargs):  # noqa: E501
         """Read slide shapes info.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, password, folder, storage, is_async=True)
+        >>> thread = api.(name, slide_index, password, folder, storage, shape_type, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -19023,23 +19289,24 @@ class SlidesApi(ApiBase):
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
+        :param shape_type Shape type.
         :return: Shapes
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.get_shapes_with_http_info(name, slide_index, password, folder, storage, **kwargs)  # noqa: E501
+            return self.get_shapes_with_http_info(name, slide_index, password, folder, storage, shape_type, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_shapes_with_http_info(name, slide_index, password, folder, storage, **kwargs)  # noqa: E501
+            (data) = self.get_shapes_with_http_info(name, slide_index, password, folder, storage, shape_type, **kwargs)  # noqa: E501
             return data
 
-    def get_shapes_with_http_info(self, name, slide_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+    def get_shapes_with_http_info(self, name, slide_index, password = None, folder = None, storage = None, shape_type = None, **kwargs):  # noqa: E501
         """Read slide shapes info.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.get_shapes_with_http_info(name, slide_index, password, folder, storage, is_async=True)
+        >>> thread = api.get_shapes_with_http_info(name, slide_index, password, folder, storage, shape_type, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -19048,6 +19315,7 @@ class SlidesApi(ApiBase):
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
+        :param shape_type Shape type.
         :return: Shapes
                  If the method is called asynchronously,
                  returns the request thread.
@@ -19074,6 +19342,9 @@ class SlidesApi(ApiBase):
         # verify the required parameter 'slide_index' is set
         if not slide_index:
             raise ValueError("Missing the required parameter `slide_index` when calling `get_shapes`")  # noqa: E501
+        # verify the value of parameter 'shape_type' is valid
+        if shape_type and not shape_type.upper() in ShapeType.__dict__:
+            raise ValueError("Invalid value for parameter `shape_type` when calling `get_shapes`")  # noqa: E501
 
         collection_formats = {}
 
@@ -19086,6 +19357,8 @@ class SlidesApi(ApiBase):
             query_params.append(('folder', folder))  # noqa: E501
         if storage:
             query_params.append(('storage', storage))  # noqa: E501
+        if shape_type:
+            query_params.append(('shapeType', shape_type))  # noqa: E501
 
         header_params = {}
         if password:
@@ -22787,7 +23060,7 @@ class SlidesApi(ApiBase):
         auth_settings = ['JWT']  # noqa: E501
 
         return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/highlightRegex', 'PUT',
+            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/highlightRegex', 'POST',
             path_params,
             query_params,
             header_params,
@@ -22929,7 +23202,7 @@ class SlidesApi(ApiBase):
         auth_settings = ['JWT']  # noqa: E501
 
         return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/highlightText', 'PUT',
+            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/highlightText', 'POST',
             path_params,
             query_params,
             header_params,
@@ -23056,7 +23329,7 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def import_from_pdf(self, name, pdf = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+    def import_from_pdf(self, name, pdf, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Create presentation document from pdf or append pdf to an existing presentation.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -23081,7 +23354,7 @@ class SlidesApi(ApiBase):
             (data) = self.import_from_pdf_with_http_info(name, pdf, password, folder, storage, **kwargs)  # noqa: E501
             return data
 
-    def import_from_pdf_with_http_info(self, name, pdf = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+    def import_from_pdf_with_http_info(self, name, pdf, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Create presentation document from pdf or append pdf to an existing presentation.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -23118,6 +23391,9 @@ class SlidesApi(ApiBase):
         # verify the required parameter 'name' is set
         if not name:
             raise ValueError("Missing the required parameter `name` when calling `import_from_pdf`")  # noqa: E501
+        # verify the required parameter 'pdf' is set
+        if not pdf:
+            raise ValueError("Missing the required parameter `pdf` when calling `import_from_pdf`")  # noqa: E501
 
         collection_formats = {}
 

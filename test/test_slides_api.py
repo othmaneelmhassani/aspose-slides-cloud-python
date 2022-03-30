@@ -3039,12 +3039,13 @@ class TestSlidesApi(BaseTest):
         """
         param_name = self.get_test_value('create_comment', 'name', 'str')
         param_slide_index = self.get_test_value('create_comment', 'slide_index', 'int')
-        param_dto = self.get_test_value('create_comment', 'dto', 'SlideComment')
+        param_dto = self.get_test_value('create_comment', 'dto', 'SlideCommentBase')
+        param_shape_index = self.get_test_value('create_comment', 'shape_index', 'int')
         param_password = self.get_test_value('create_comment', 'password', 'str')
         param_folder = self.get_test_value('create_comment', 'folder', 'str')
         param_storage = self.get_test_value('create_comment', 'storage', 'str')
         self.initialize('create_comment', None, None)
-        response = self.api.create_comment(param_name, param_slide_index, param_dto, param_password, param_folder, param_storage)
+        response = self.api.create_comment(param_name, param_slide_index, param_dto, param_shape_index, param_password, param_folder, param_storage)
         self.assertIsNotNone(response)
 
     def test_create_comment_invalid_name(self):
@@ -3052,7 +3053,8 @@ class TestSlidesApi(BaseTest):
         """
         param_name = self.get_test_value('create_comment', 'name', 'str')
         param_slide_index = self.get_test_value('create_comment', 'slide_index', 'int')
-        param_dto = self.get_test_value('create_comment', 'dto', 'SlideComment')
+        param_dto = self.get_test_value('create_comment', 'dto', 'SlideCommentBase')
+        param_shape_index = self.get_test_value('create_comment', 'shape_index', 'int')
         param_password = self.get_test_value('create_comment', 'password', 'str')
         param_folder = self.get_test_value('create_comment', 'folder', 'str')
         param_storage = self.get_test_value('create_comment', 'storage', 'str')
@@ -3060,7 +3062,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('create_comment', 'name', param_name)
         ok = False
         try:
-            self.api.create_comment(param_name, param_slide_index, param_dto, param_password, param_folder, param_storage)
+            self.api.create_comment(param_name, param_slide_index, param_dto, param_shape_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'create_comment', 'name', param_name)
@@ -3074,7 +3076,8 @@ class TestSlidesApi(BaseTest):
         """
         param_name = self.get_test_value('create_comment', 'name', 'str')
         param_slide_index = self.get_test_value('create_comment', 'slide_index', 'int')
-        param_dto = self.get_test_value('create_comment', 'dto', 'SlideComment')
+        param_dto = self.get_test_value('create_comment', 'dto', 'SlideCommentBase')
+        param_shape_index = self.get_test_value('create_comment', 'shape_index', 'int')
         param_password = self.get_test_value('create_comment', 'password', 'str')
         param_folder = self.get_test_value('create_comment', 'folder', 'str')
         param_storage = self.get_test_value('create_comment', 'storage', 'str')
@@ -3082,7 +3085,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('create_comment', 'slide_index', param_slide_index)
         ok = False
         try:
-            self.api.create_comment(param_name, param_slide_index, param_dto, param_password, param_folder, param_storage)
+            self.api.create_comment(param_name, param_slide_index, param_dto, param_shape_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'create_comment', 'slide_index', param_slide_index)
@@ -3096,15 +3099,16 @@ class TestSlidesApi(BaseTest):
         """
         param_name = self.get_test_value('create_comment', 'name', 'str')
         param_slide_index = self.get_test_value('create_comment', 'slide_index', 'int')
-        param_dto = self.get_test_value('create_comment', 'dto', 'SlideComment')
+        param_dto = self.get_test_value('create_comment', 'dto', 'SlideCommentBase')
+        param_shape_index = self.get_test_value('create_comment', 'shape_index', 'int')
         param_password = self.get_test_value('create_comment', 'password', 'str')
         param_folder = self.get_test_value('create_comment', 'folder', 'str')
         param_storage = self.get_test_value('create_comment', 'storage', 'str')
-        param_dto = self.get_invalid_test_value('create_comment', 'dto', param_dto, 'SlideComment')
+        param_dto = self.get_invalid_test_value('create_comment', 'dto', param_dto, 'SlideCommentBase')
         self.initialize('create_comment', 'dto', param_dto)
         ok = False
         try:
-            self.api.create_comment(param_name, param_slide_index, param_dto, param_password, param_folder, param_storage)
+            self.api.create_comment(param_name, param_slide_index, param_dto, param_shape_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'create_comment', 'dto', param_dto)
@@ -3113,12 +3117,36 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('create_comment', 'dto')
 
+    def test_create_comment_invalid_shape_index(self):
+        """Test case for create_comment with invalid shape_index
+        """
+        param_name = self.get_test_value('create_comment', 'name', 'str')
+        param_slide_index = self.get_test_value('create_comment', 'slide_index', 'int')
+        param_dto = self.get_test_value('create_comment', 'dto', 'SlideCommentBase')
+        param_shape_index = self.get_test_value('create_comment', 'shape_index', 'int')
+        param_password = self.get_test_value('create_comment', 'password', 'str')
+        param_folder = self.get_test_value('create_comment', 'folder', 'str')
+        param_storage = self.get_test_value('create_comment', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('create_comment', 'shape_index', param_shape_index, 'int')
+        self.initialize('create_comment', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.create_comment(param_name, param_slide_index, param_dto, param_shape_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'create_comment', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'create_comment', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('create_comment', 'shape_index')
+
     def test_create_comment_invalid_password(self):
         """Test case for create_comment with invalid password
         """
         param_name = self.get_test_value('create_comment', 'name', 'str')
         param_slide_index = self.get_test_value('create_comment', 'slide_index', 'int')
-        param_dto = self.get_test_value('create_comment', 'dto', 'SlideComment')
+        param_dto = self.get_test_value('create_comment', 'dto', 'SlideCommentBase')
+        param_shape_index = self.get_test_value('create_comment', 'shape_index', 'int')
         param_password = self.get_test_value('create_comment', 'password', 'str')
         param_folder = self.get_test_value('create_comment', 'folder', 'str')
         param_storage = self.get_test_value('create_comment', 'storage', 'str')
@@ -3126,7 +3154,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('create_comment', 'password', param_password)
         ok = False
         try:
-            self.api.create_comment(param_name, param_slide_index, param_dto, param_password, param_folder, param_storage)
+            self.api.create_comment(param_name, param_slide_index, param_dto, param_shape_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'create_comment', 'password', param_password)
@@ -3140,7 +3168,8 @@ class TestSlidesApi(BaseTest):
         """
         param_name = self.get_test_value('create_comment', 'name', 'str')
         param_slide_index = self.get_test_value('create_comment', 'slide_index', 'int')
-        param_dto = self.get_test_value('create_comment', 'dto', 'SlideComment')
+        param_dto = self.get_test_value('create_comment', 'dto', 'SlideCommentBase')
+        param_shape_index = self.get_test_value('create_comment', 'shape_index', 'int')
         param_password = self.get_test_value('create_comment', 'password', 'str')
         param_folder = self.get_test_value('create_comment', 'folder', 'str')
         param_storage = self.get_test_value('create_comment', 'storage', 'str')
@@ -3148,7 +3177,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('create_comment', 'folder', param_folder)
         ok = False
         try:
-            self.api.create_comment(param_name, param_slide_index, param_dto, param_password, param_folder, param_storage)
+            self.api.create_comment(param_name, param_slide_index, param_dto, param_shape_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'create_comment', 'folder', param_folder)
@@ -3162,7 +3191,8 @@ class TestSlidesApi(BaseTest):
         """
         param_name = self.get_test_value('create_comment', 'name', 'str')
         param_slide_index = self.get_test_value('create_comment', 'slide_index', 'int')
-        param_dto = self.get_test_value('create_comment', 'dto', 'SlideComment')
+        param_dto = self.get_test_value('create_comment', 'dto', 'SlideCommentBase')
+        param_shape_index = self.get_test_value('create_comment', 'shape_index', 'int')
         param_password = self.get_test_value('create_comment', 'password', 'str')
         param_folder = self.get_test_value('create_comment', 'folder', 'str')
         param_storage = self.get_test_value('create_comment', 'storage', 'str')
@@ -3170,7 +3200,7 @@ class TestSlidesApi(BaseTest):
         self.initialize('create_comment', 'storage', param_storage)
         ok = False
         try:
-            self.api.create_comment(param_name, param_slide_index, param_dto, param_password, param_folder, param_storage)
+            self.api.create_comment(param_name, param_slide_index, param_dto, param_shape_index, param_password, param_folder, param_storage)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'create_comment', 'storage', param_storage)
@@ -3184,10 +3214,11 @@ class TestSlidesApi(BaseTest):
         """
         param_document = self.get_test_value('create_comment_online', 'document', 'file')
         param_slide_index = self.get_test_value('create_comment_online', 'slide_index', 'int')
-        param_dto = self.get_test_value('create_comment_online', 'dto', 'SlideComment')
+        param_dto = self.get_test_value('create_comment_online', 'dto', 'SlideCommentBase')
+        param_shape_index = self.get_test_value('create_comment_online', 'shape_index', 'int')
         param_password = self.get_test_value('create_comment_online', 'password', 'str')
         self.initialize('create_comment_online', None, None)
-        response = self.api.create_comment_online(param_document, param_slide_index, param_dto, param_password)
+        response = self.api.create_comment_online(param_document, param_slide_index, param_dto, param_shape_index, param_password)
         self.assertTrue(isinstance(response, str))
         self.assertTrue(len(response) > 0)
 
@@ -3196,13 +3227,14 @@ class TestSlidesApi(BaseTest):
         """
         param_document = self.get_test_value('create_comment_online', 'document', 'file')
         param_slide_index = self.get_test_value('create_comment_online', 'slide_index', 'int')
-        param_dto = self.get_test_value('create_comment_online', 'dto', 'SlideComment')
+        param_dto = self.get_test_value('create_comment_online', 'dto', 'SlideCommentBase')
+        param_shape_index = self.get_test_value('create_comment_online', 'shape_index', 'int')
         param_password = self.get_test_value('create_comment_online', 'password', 'str')
         param_document = self.get_invalid_test_value('create_comment_online', 'document', param_document, 'file')
         self.initialize('create_comment_online', 'document', param_document)
         ok = False
         try:
-            self.api.create_comment_online(param_document, param_slide_index, param_dto, param_password)
+            self.api.create_comment_online(param_document, param_slide_index, param_dto, param_shape_index, param_password)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'create_comment_online', 'document', param_document)
@@ -3216,13 +3248,14 @@ class TestSlidesApi(BaseTest):
         """
         param_document = self.get_test_value('create_comment_online', 'document', 'file')
         param_slide_index = self.get_test_value('create_comment_online', 'slide_index', 'int')
-        param_dto = self.get_test_value('create_comment_online', 'dto', 'SlideComment')
+        param_dto = self.get_test_value('create_comment_online', 'dto', 'SlideCommentBase')
+        param_shape_index = self.get_test_value('create_comment_online', 'shape_index', 'int')
         param_password = self.get_test_value('create_comment_online', 'password', 'str')
         param_slide_index = self.get_invalid_test_value('create_comment_online', 'slide_index', param_slide_index, 'int')
         self.initialize('create_comment_online', 'slide_index', param_slide_index)
         ok = False
         try:
-            self.api.create_comment_online(param_document, param_slide_index, param_dto, param_password)
+            self.api.create_comment_online(param_document, param_slide_index, param_dto, param_shape_index, param_password)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'create_comment_online', 'slide_index', param_slide_index)
@@ -3236,13 +3269,14 @@ class TestSlidesApi(BaseTest):
         """
         param_document = self.get_test_value('create_comment_online', 'document', 'file')
         param_slide_index = self.get_test_value('create_comment_online', 'slide_index', 'int')
-        param_dto = self.get_test_value('create_comment_online', 'dto', 'SlideComment')
+        param_dto = self.get_test_value('create_comment_online', 'dto', 'SlideCommentBase')
+        param_shape_index = self.get_test_value('create_comment_online', 'shape_index', 'int')
         param_password = self.get_test_value('create_comment_online', 'password', 'str')
-        param_dto = self.get_invalid_test_value('create_comment_online', 'dto', param_dto, 'SlideComment')
+        param_dto = self.get_invalid_test_value('create_comment_online', 'dto', param_dto, 'SlideCommentBase')
         self.initialize('create_comment_online', 'dto', param_dto)
         ok = False
         try:
-            self.api.create_comment_online(param_document, param_slide_index, param_dto, param_password)
+            self.api.create_comment_online(param_document, param_slide_index, param_dto, param_shape_index, param_password)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'create_comment_online', 'dto', param_dto)
@@ -3251,18 +3285,40 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('create_comment_online', 'dto')
 
+    def test_create_comment_online_invalid_shape_index(self):
+        """Test case for create_comment_online with invalid shape_index
+        """
+        param_document = self.get_test_value('create_comment_online', 'document', 'file')
+        param_slide_index = self.get_test_value('create_comment_online', 'slide_index', 'int')
+        param_dto = self.get_test_value('create_comment_online', 'dto', 'SlideCommentBase')
+        param_shape_index = self.get_test_value('create_comment_online', 'shape_index', 'int')
+        param_password = self.get_test_value('create_comment_online', 'password', 'str')
+        param_shape_index = self.get_invalid_test_value('create_comment_online', 'shape_index', param_shape_index, 'int')
+        self.initialize('create_comment_online', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.create_comment_online(param_document, param_slide_index, param_dto, param_shape_index, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'create_comment_online', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'create_comment_online', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('create_comment_online', 'shape_index')
+
     def test_create_comment_online_invalid_password(self):
         """Test case for create_comment_online with invalid password
         """
         param_document = self.get_test_value('create_comment_online', 'document', 'file')
         param_slide_index = self.get_test_value('create_comment_online', 'slide_index', 'int')
-        param_dto = self.get_test_value('create_comment_online', 'dto', 'SlideComment')
+        param_dto = self.get_test_value('create_comment_online', 'dto', 'SlideCommentBase')
+        param_shape_index = self.get_test_value('create_comment_online', 'shape_index', 'int')
         param_password = self.get_test_value('create_comment_online', 'password', 'str')
         param_password = self.get_invalid_test_value('create_comment_online', 'password', param_password, 'str')
         self.initialize('create_comment_online', 'password', param_password)
         ok = False
         try:
-            self.api.create_comment_online(param_document, param_slide_index, param_dto, param_password)
+            self.api.create_comment_online(param_document, param_slide_index, param_dto, param_shape_index, param_password)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'create_comment_online', 'password', param_password)
@@ -23852,6 +23908,181 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('get_paragraph', 'storage')
 
+    def test_get_paragraph_rectangle(self):
+        """Test case for get_paragraph_rectangle
+        """
+        param_name = self.get_test_value('get_paragraph_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_rectangle', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_rectangle', 'storage', 'str')
+        self.initialize('get_paragraph_rectangle', None, None)
+        response = self.api.get_paragraph_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_get_paragraph_rectangle_invalid_name(self):
+        """Test case for get_paragraph_rectangle with invalid name
+        """
+        param_name = self.get_test_value('get_paragraph_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_rectangle', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_rectangle', 'storage', 'str')
+        param_name = self.get_invalid_test_value('get_paragraph_rectangle', 'name', param_name, 'str')
+        self.initialize('get_paragraph_rectangle', 'name', param_name)
+        ok = False
+        try:
+            self.api.get_paragraph_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_paragraph_rectangle', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_paragraph_rectangle', 'name', param_name)
+        if ok:
+            self.assert_no_exception('get_paragraph_rectangle', 'name')
+
+    def test_get_paragraph_rectangle_invalid_slide_index(self):
+        """Test case for get_paragraph_rectangle with invalid slide_index
+        """
+        param_name = self.get_test_value('get_paragraph_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_rectangle', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_rectangle', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('get_paragraph_rectangle', 'slide_index', param_slide_index, 'int')
+        self.initialize('get_paragraph_rectangle', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.get_paragraph_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_paragraph_rectangle', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_paragraph_rectangle', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('get_paragraph_rectangle', 'slide_index')
+
+    def test_get_paragraph_rectangle_invalid_shape_index(self):
+        """Test case for get_paragraph_rectangle with invalid shape_index
+        """
+        param_name = self.get_test_value('get_paragraph_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_rectangle', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_rectangle', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('get_paragraph_rectangle', 'shape_index', param_shape_index, 'int')
+        self.initialize('get_paragraph_rectangle', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.get_paragraph_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_paragraph_rectangle', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_paragraph_rectangle', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('get_paragraph_rectangle', 'shape_index')
+
+    def test_get_paragraph_rectangle_invalid_paragraph_index(self):
+        """Test case for get_paragraph_rectangle with invalid paragraph_index
+        """
+        param_name = self.get_test_value('get_paragraph_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_rectangle', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_rectangle', 'storage', 'str')
+        param_paragraph_index = self.get_invalid_test_value('get_paragraph_rectangle', 'paragraph_index', param_paragraph_index, 'int')
+        self.initialize('get_paragraph_rectangle', 'paragraph_index', param_paragraph_index)
+        ok = False
+        try:
+            self.api.get_paragraph_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_paragraph_rectangle', 'paragraph_index', param_paragraph_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_paragraph_rectangle', 'paragraph_index', param_paragraph_index)
+        if ok:
+            self.assert_no_exception('get_paragraph_rectangle', 'paragraph_index')
+
+    def test_get_paragraph_rectangle_invalid_password(self):
+        """Test case for get_paragraph_rectangle with invalid password
+        """
+        param_name = self.get_test_value('get_paragraph_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_rectangle', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_rectangle', 'storage', 'str')
+        param_password = self.get_invalid_test_value('get_paragraph_rectangle', 'password', param_password, 'str')
+        self.initialize('get_paragraph_rectangle', 'password', param_password)
+        ok = False
+        try:
+            self.api.get_paragraph_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_paragraph_rectangle', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_paragraph_rectangle', 'password', param_password)
+        if ok:
+            self.assert_no_exception('get_paragraph_rectangle', 'password')
+
+    def test_get_paragraph_rectangle_invalid_folder(self):
+        """Test case for get_paragraph_rectangle with invalid folder
+        """
+        param_name = self.get_test_value('get_paragraph_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_rectangle', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_rectangle', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('get_paragraph_rectangle', 'folder', param_folder, 'str')
+        self.initialize('get_paragraph_rectangle', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.get_paragraph_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_paragraph_rectangle', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_paragraph_rectangle', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('get_paragraph_rectangle', 'folder')
+
+    def test_get_paragraph_rectangle_invalid_storage(self):
+        """Test case for get_paragraph_rectangle with invalid storage
+        """
+        param_name = self.get_test_value('get_paragraph_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_rectangle', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_rectangle', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('get_paragraph_rectangle', 'storage', param_storage, 'str')
+        self.initialize('get_paragraph_rectangle', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.get_paragraph_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_paragraph_rectangle', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_paragraph_rectangle', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('get_paragraph_rectangle', 'storage')
+
     def test_get_paragraphs(self):
         """Test case for get_paragraphs
         """
@@ -24465,6 +24696,213 @@ class TestSlidesApi(BaseTest):
             self.assert_value_error(ex, 'get_portion', 'storage', param_storage)
         if ok:
             self.assert_no_exception('get_portion', 'storage')
+
+    def test_get_portion_rectangle(self):
+        """Test case for get_portion_rectangle
+        """
+        param_name = self.get_test_value('get_portion_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_rectangle', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_rectangle', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_rectangle', 'storage', 'str')
+        self.initialize('get_portion_rectangle', None, None)
+        response = self.api.get_portion_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_get_portion_rectangle_invalid_name(self):
+        """Test case for get_portion_rectangle with invalid name
+        """
+        param_name = self.get_test_value('get_portion_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_rectangle', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_rectangle', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_rectangle', 'storage', 'str')
+        param_name = self.get_invalid_test_value('get_portion_rectangle', 'name', param_name, 'str')
+        self.initialize('get_portion_rectangle', 'name', param_name)
+        ok = False
+        try:
+            self.api.get_portion_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_rectangle', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_rectangle', 'name', param_name)
+        if ok:
+            self.assert_no_exception('get_portion_rectangle', 'name')
+
+    def test_get_portion_rectangle_invalid_slide_index(self):
+        """Test case for get_portion_rectangle with invalid slide_index
+        """
+        param_name = self.get_test_value('get_portion_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_rectangle', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_rectangle', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_rectangle', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('get_portion_rectangle', 'slide_index', param_slide_index, 'int')
+        self.initialize('get_portion_rectangle', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.get_portion_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_rectangle', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_rectangle', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('get_portion_rectangle', 'slide_index')
+
+    def test_get_portion_rectangle_invalid_shape_index(self):
+        """Test case for get_portion_rectangle with invalid shape_index
+        """
+        param_name = self.get_test_value('get_portion_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_rectangle', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_rectangle', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_rectangle', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('get_portion_rectangle', 'shape_index', param_shape_index, 'int')
+        self.initialize('get_portion_rectangle', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.get_portion_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_rectangle', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_rectangle', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('get_portion_rectangle', 'shape_index')
+
+    def test_get_portion_rectangle_invalid_paragraph_index(self):
+        """Test case for get_portion_rectangle with invalid paragraph_index
+        """
+        param_name = self.get_test_value('get_portion_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_rectangle', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_rectangle', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_rectangle', 'storage', 'str')
+        param_paragraph_index = self.get_invalid_test_value('get_portion_rectangle', 'paragraph_index', param_paragraph_index, 'int')
+        self.initialize('get_portion_rectangle', 'paragraph_index', param_paragraph_index)
+        ok = False
+        try:
+            self.api.get_portion_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_rectangle', 'paragraph_index', param_paragraph_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_rectangle', 'paragraph_index', param_paragraph_index)
+        if ok:
+            self.assert_no_exception('get_portion_rectangle', 'paragraph_index')
+
+    def test_get_portion_rectangle_invalid_portion_index(self):
+        """Test case for get_portion_rectangle with invalid portion_index
+        """
+        param_name = self.get_test_value('get_portion_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_rectangle', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_rectangle', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_rectangle', 'storage', 'str')
+        param_portion_index = self.get_invalid_test_value('get_portion_rectangle', 'portion_index', param_portion_index, 'int')
+        self.initialize('get_portion_rectangle', 'portion_index', param_portion_index)
+        ok = False
+        try:
+            self.api.get_portion_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_rectangle', 'portion_index', param_portion_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_rectangle', 'portion_index', param_portion_index)
+        if ok:
+            self.assert_no_exception('get_portion_rectangle', 'portion_index')
+
+    def test_get_portion_rectangle_invalid_password(self):
+        """Test case for get_portion_rectangle with invalid password
+        """
+        param_name = self.get_test_value('get_portion_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_rectangle', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_rectangle', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_rectangle', 'storage', 'str')
+        param_password = self.get_invalid_test_value('get_portion_rectangle', 'password', param_password, 'str')
+        self.initialize('get_portion_rectangle', 'password', param_password)
+        ok = False
+        try:
+            self.api.get_portion_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_rectangle', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_rectangle', 'password', param_password)
+        if ok:
+            self.assert_no_exception('get_portion_rectangle', 'password')
+
+    def test_get_portion_rectangle_invalid_folder(self):
+        """Test case for get_portion_rectangle with invalid folder
+        """
+        param_name = self.get_test_value('get_portion_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_rectangle', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_rectangle', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_rectangle', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('get_portion_rectangle', 'folder', param_folder, 'str')
+        self.initialize('get_portion_rectangle', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.get_portion_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_rectangle', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_rectangle', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('get_portion_rectangle', 'folder')
+
+    def test_get_portion_rectangle_invalid_storage(self):
+        """Test case for get_portion_rectangle with invalid storage
+        """
+        param_name = self.get_test_value('get_portion_rectangle', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_rectangle', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_rectangle', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_rectangle', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_rectangle', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_rectangle', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_rectangle', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_rectangle', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('get_portion_rectangle', 'storage', param_storage, 'str')
+        self.initialize('get_portion_rectangle', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.get_portion_rectangle(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_rectangle', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_rectangle', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('get_portion_rectangle', 'storage')
 
     def test_get_portions(self):
         """Test case for get_portions
@@ -25420,8 +25858,9 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('get_shapes', 'password', 'str')
         param_folder = self.get_test_value('get_shapes', 'folder', 'str')
         param_storage = self.get_test_value('get_shapes', 'storage', 'str')
+        param_shape_type = self.get_test_value('get_shapes', 'shape_type', 'str')
         self.initialize('get_shapes', None, None)
-        response = self.api.get_shapes(param_name, param_slide_index, param_password, param_folder, param_storage)
+        response = self.api.get_shapes(param_name, param_slide_index, param_password, param_folder, param_storage, param_shape_type)
         self.assertIsNotNone(response)
 
     def test_get_shapes_invalid_name(self):
@@ -25432,11 +25871,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('get_shapes', 'password', 'str')
         param_folder = self.get_test_value('get_shapes', 'folder', 'str')
         param_storage = self.get_test_value('get_shapes', 'storage', 'str')
+        param_shape_type = self.get_test_value('get_shapes', 'shape_type', 'str')
         param_name = self.get_invalid_test_value('get_shapes', 'name', param_name, 'str')
         self.initialize('get_shapes', 'name', param_name)
         ok = False
         try:
-            self.api.get_shapes(param_name, param_slide_index, param_password, param_folder, param_storage)
+            self.api.get_shapes(param_name, param_slide_index, param_password, param_folder, param_storage, param_shape_type)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_shapes', 'name', param_name)
@@ -25453,11 +25893,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('get_shapes', 'password', 'str')
         param_folder = self.get_test_value('get_shapes', 'folder', 'str')
         param_storage = self.get_test_value('get_shapes', 'storage', 'str')
+        param_shape_type = self.get_test_value('get_shapes', 'shape_type', 'str')
         param_slide_index = self.get_invalid_test_value('get_shapes', 'slide_index', param_slide_index, 'int')
         self.initialize('get_shapes', 'slide_index', param_slide_index)
         ok = False
         try:
-            self.api.get_shapes(param_name, param_slide_index, param_password, param_folder, param_storage)
+            self.api.get_shapes(param_name, param_slide_index, param_password, param_folder, param_storage, param_shape_type)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_shapes', 'slide_index', param_slide_index)
@@ -25474,11 +25915,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('get_shapes', 'password', 'str')
         param_folder = self.get_test_value('get_shapes', 'folder', 'str')
         param_storage = self.get_test_value('get_shapes', 'storage', 'str')
+        param_shape_type = self.get_test_value('get_shapes', 'shape_type', 'str')
         param_password = self.get_invalid_test_value('get_shapes', 'password', param_password, 'str')
         self.initialize('get_shapes', 'password', param_password)
         ok = False
         try:
-            self.api.get_shapes(param_name, param_slide_index, param_password, param_folder, param_storage)
+            self.api.get_shapes(param_name, param_slide_index, param_password, param_folder, param_storage, param_shape_type)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_shapes', 'password', param_password)
@@ -25495,11 +25937,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('get_shapes', 'password', 'str')
         param_folder = self.get_test_value('get_shapes', 'folder', 'str')
         param_storage = self.get_test_value('get_shapes', 'storage', 'str')
+        param_shape_type = self.get_test_value('get_shapes', 'shape_type', 'str')
         param_folder = self.get_invalid_test_value('get_shapes', 'folder', param_folder, 'str')
         self.initialize('get_shapes', 'folder', param_folder)
         ok = False
         try:
-            self.api.get_shapes(param_name, param_slide_index, param_password, param_folder, param_storage)
+            self.api.get_shapes(param_name, param_slide_index, param_password, param_folder, param_storage, param_shape_type)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_shapes', 'folder', param_folder)
@@ -25516,11 +25959,12 @@ class TestSlidesApi(BaseTest):
         param_password = self.get_test_value('get_shapes', 'password', 'str')
         param_folder = self.get_test_value('get_shapes', 'folder', 'str')
         param_storage = self.get_test_value('get_shapes', 'storage', 'str')
+        param_shape_type = self.get_test_value('get_shapes', 'shape_type', 'str')
         param_storage = self.get_invalid_test_value('get_shapes', 'storage', param_storage, 'str')
         self.initialize('get_shapes', 'storage', param_storage)
         ok = False
         try:
-            self.api.get_shapes(param_name, param_slide_index, param_password, param_folder, param_storage)
+            self.api.get_shapes(param_name, param_slide_index, param_password, param_folder, param_storage, param_shape_type)
             ok = True
         except ApiException as ex:
             self.assert_exception(ex, 'get_shapes', 'storage', param_storage)
@@ -25528,6 +25972,28 @@ class TestSlidesApi(BaseTest):
             self.assert_value_error(ex, 'get_shapes', 'storage', param_storage)
         if ok:
             self.assert_no_exception('get_shapes', 'storage')
+
+    def test_get_shapes_invalid_shape_type(self):
+        """Test case for get_shapes with invalid shape_type
+        """
+        param_name = self.get_test_value('get_shapes', 'name', 'str')
+        param_slide_index = self.get_test_value('get_shapes', 'slide_index', 'int')
+        param_password = self.get_test_value('get_shapes', 'password', 'str')
+        param_folder = self.get_test_value('get_shapes', 'folder', 'str')
+        param_storage = self.get_test_value('get_shapes', 'storage', 'str')
+        param_shape_type = self.get_test_value('get_shapes', 'shape_type', 'str')
+        param_shape_type = self.get_invalid_test_value('get_shapes', 'shape_type', param_shape_type, 'str')
+        self.initialize('get_shapes', 'shape_type', param_shape_type)
+        ok = False
+        try:
+            self.api.get_shapes(param_name, param_slide_index, param_password, param_folder, param_storage, param_shape_type)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_shapes', 'shape_type', param_shape_type)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_shapes', 'shape_type', param_shape_type)
+        if ok:
+            self.assert_no_exception('get_shapes', 'shape_type')
 
     def test_get_slide(self):
         """Test case for get_slide

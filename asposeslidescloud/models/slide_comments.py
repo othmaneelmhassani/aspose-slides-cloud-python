@@ -45,7 +45,7 @@ class SlideComments(ResourceBase):
     swagger_types = {
         'self_uri': 'ResourceUri',
         'alternate_links': 'list[ResourceUri]',
-        'list': 'list[SlideComment]'
+        'list': 'list[SlideCommentBase]'
     }
 
     attribute_map = {
@@ -73,7 +73,7 @@ class SlideComments(ResourceBase):
         Slide comment list.  # noqa: E501
 
         :return: The list of this SlideComments.  # noqa: E501
-        :rtype: list[SlideComment]
+        :rtype: list[SlideCommentBase]
         """
         return self._list
 
@@ -84,7 +84,7 @@ class SlideComments(ResourceBase):
         Slide comment list.  # noqa: E501
 
         :param list: The list of this SlideComments.  # noqa: E501
-        :type: list[SlideComment]
+        :type: list[SlideCommentBase]
         """
         self._list = list
 

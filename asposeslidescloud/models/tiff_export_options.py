@@ -46,6 +46,7 @@ class TiffExportOptions(ExportOptions):
         'default_regular_font': 'str',
         'height': 'int',
         'width': 'int',
+        'font_fallback_rules': 'list[FontFallbackRule]',
         'format': 'str',
         'compression': 'str',
         'dpi_x': 'int',
@@ -63,6 +64,7 @@ class TiffExportOptions(ExportOptions):
         'default_regular_font': 'defaultRegularFont',
         'height': 'height',
         'width': 'width',
+        'font_fallback_rules': 'fontFallbackRules',
         'format': 'format',
         'compression': 'compression',
         'dpi_x': 'dpiX',
@@ -80,9 +82,9 @@ class TiffExportOptions(ExportOptions):
         'format': 'tiff',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, format='tiff', compression=None, dpi_x=None, dpi_y=None, show_hidden_slides=None, pixel_format=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None, show_comments_by_no_author=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='tiff', compression=None, dpi_x=None, dpi_y=None, show_hidden_slides=None, pixel_format=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None, show_comments_by_no_author=None):  # noqa: E501
         """TiffExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(TiffExportOptions, self).__init__(default_regular_font, height, width, format)
+        super(TiffExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
 
         self._compression = None
         self._dpi_x = None

@@ -46,6 +46,7 @@ class VideoExportOptions(ExportOptions):
         'default_regular_font': 'str',
         'height': 'int',
         'width': 'int',
+        'font_fallback_rules': 'list[FontFallbackRule]',
         'format': 'str',
         'transition_duration': 'int',
         'video_resolution_type': 'str'
@@ -55,6 +56,7 @@ class VideoExportOptions(ExportOptions):
         'default_regular_font': 'defaultRegularFont',
         'height': 'height',
         'width': 'width',
+        'font_fallback_rules': 'fontFallbackRules',
         'format': 'format',
         'transition_duration': 'transitionDuration',
         'video_resolution_type': 'videoResolutionType'
@@ -64,9 +66,9 @@ class VideoExportOptions(ExportOptions):
         'format': 'mpeg4',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, format='mpeg4', transition_duration=None, video_resolution_type=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='mpeg4', transition_duration=None, video_resolution_type=None):  # noqa: E501
         """VideoExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(VideoExportOptions, self).__init__(default_regular_font, height, width, format)
+        super(VideoExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
 
         self._transition_duration = None
         self._video_resolution_type = None

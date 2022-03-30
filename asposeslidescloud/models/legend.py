@@ -50,7 +50,8 @@ class Legend(object):
         'overlay': 'bool',
         'fill_format': 'FillFormat',
         'effect_format': 'EffectFormat',
-        'line_format': 'LineFormat'
+        'line_format': 'LineFormat',
+        'has_legend': 'bool'
     }
 
     attribute_map = {
@@ -62,13 +63,14 @@ class Legend(object):
         'overlay': 'overlay',
         'fill_format': 'fillFormat',
         'effect_format': 'effectFormat',
-        'line_format': 'lineFormat'
+        'line_format': 'lineFormat',
+        'has_legend': 'hasLegend'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, position=None, x=None, y=None, width=None, height=None, overlay=None, fill_format=None, effect_format=None, line_format=None):  # noqa: E501
+    def __init__(self, position=None, x=None, y=None, width=None, height=None, overlay=None, fill_format=None, effect_format=None, line_format=None, has_legend=None):  # noqa: E501
         """Legend - a model defined in Swagger"""  # noqa: E501
 
         self._position = None
@@ -80,6 +82,7 @@ class Legend(object):
         self._fill_format = None
         self._effect_format = None
         self._line_format = None
+        self._has_legend = None
 
         if position is not None:
             self.position = position
@@ -99,6 +102,8 @@ class Legend(object):
             self.effect_format = effect_format
         if line_format is not None:
             self.line_format = line_format
+        if has_legend is not None:
+            self.has_legend = has_legend
 
     @property
     def position(self):
@@ -313,6 +318,28 @@ class Legend(object):
         :type: LineFormat
         """
         self._line_format = line_format
+
+    @property
+    def has_legend(self):
+        """Gets the has_legend of this Legend.  # noqa: E501
+
+        Get or sets value determines the visibility of legend  # noqa: E501
+
+        :return: The has_legend of this Legend.  # noqa: E501
+        :rtype: bool
+        """
+        return self._has_legend
+
+    @has_legend.setter
+    def has_legend(self, has_legend):
+        """Sets the has_legend of this Legend.
+
+        Get or sets value determines the visibility of legend  # noqa: E501
+
+        :param has_legend: The has_legend of this Legend.  # noqa: E501
+        :type: bool
+        """
+        self._has_legend = has_legend
 
     def to_dict(self):
         """Returns the model properties as a dict"""

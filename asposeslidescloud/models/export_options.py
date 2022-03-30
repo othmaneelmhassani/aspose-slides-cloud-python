@@ -45,6 +45,7 @@ class ExportOptions(object):
         'default_regular_font': 'str',
         'height': 'int',
         'width': 'int',
+        'font_fallback_rules': 'list[FontFallbackRule]',
         'format': 'str'
     }
 
@@ -52,18 +53,20 @@ class ExportOptions(object):
         'default_regular_font': 'defaultRegularFont',
         'height': 'height',
         'width': 'width',
+        'font_fallback_rules': 'fontFallbackRules',
         'format': 'format'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, format=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format=None):  # noqa: E501
         """ExportOptions - a model defined in Swagger"""  # noqa: E501
 
         self._default_regular_font = None
         self._height = None
         self._width = None
+        self._font_fallback_rules = None
         self._format = None
 
         if default_regular_font is not None:
@@ -72,6 +75,8 @@ class ExportOptions(object):
             self.height = height
         if width is not None:
             self.width = width
+        if font_fallback_rules is not None:
+            self.font_fallback_rules = font_fallback_rules
         if format is not None:
             self.format = format
 
@@ -140,6 +145,28 @@ class ExportOptions(object):
         :type: int
         """
         self._width = width
+
+    @property
+    def font_fallback_rules(self):
+        """Gets the font_fallback_rules of this ExportOptions.  # noqa: E501
+
+        Gets of sets list of font fallback rules.  # noqa: E501
+
+        :return: The font_fallback_rules of this ExportOptions.  # noqa: E501
+        :rtype: list[FontFallbackRule]
+        """
+        return self._font_fallback_rules
+
+    @font_fallback_rules.setter
+    def font_fallback_rules(self, font_fallback_rules):
+        """Sets the font_fallback_rules of this ExportOptions.
+
+        Gets of sets list of font fallback rules.  # noqa: E501
+
+        :param font_fallback_rules: The font_fallback_rules of this ExportOptions.  # noqa: E501
+        :type: list[FontFallbackRule]
+        """
+        self._font_fallback_rules = font_fallback_rules
 
     @property
     def format(self):

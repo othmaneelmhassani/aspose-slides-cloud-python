@@ -46,6 +46,7 @@ class GifExportOptions(ExportOptions):
         'default_regular_font': 'str',
         'height': 'int',
         'width': 'int',
+        'font_fallback_rules': 'list[FontFallbackRule]',
         'format': 'str',
         'export_hidden_slides': 'bool',
         'transition_fps': 'int',
@@ -56,6 +57,7 @@ class GifExportOptions(ExportOptions):
         'default_regular_font': 'defaultRegularFont',
         'height': 'height',
         'width': 'width',
+        'font_fallback_rules': 'fontFallbackRules',
         'format': 'format',
         'export_hidden_slides': 'exportHiddenSlides',
         'transition_fps': 'transitionFps',
@@ -66,9 +68,9 @@ class GifExportOptions(ExportOptions):
         'format': 'gif',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, format='gif', export_hidden_slides=None, transition_fps=None, default_delay=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='gif', export_hidden_slides=None, transition_fps=None, default_delay=None):  # noqa: E501
         """GifExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(GifExportOptions, self).__init__(default_regular_font, height, width, format)
+        super(GifExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
 
         self._export_hidden_slides = None
         self._transition_fps = None

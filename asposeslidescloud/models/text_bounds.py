@@ -30,9 +30,8 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.export_options import ExportOptions
 
-class XamlExportOptions(ExportOptions):
+class TextBounds(object):
 
 
     """
@@ -43,58 +42,122 @@ class XamlExportOptions(ExportOptions):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'default_regular_font': 'str',
-        'height': 'int',
-        'width': 'int',
-        'font_fallback_rules': 'list[FontFallbackRule]',
-        'format': 'str',
-        'export_hidden_slides': 'bool'
+        'x': 'float',
+        'y': 'float',
+        'width': 'float',
+        'height': 'float'
     }
 
     attribute_map = {
-        'default_regular_font': 'defaultRegularFont',
-        'height': 'height',
+        'x': 'x',
+        'y': 'y',
         'width': 'width',
-        'font_fallback_rules': 'fontFallbackRules',
-        'format': 'format',
-        'export_hidden_slides': 'exportHiddenSlides'
+        'height': 'height'
     }
 
     type_determiners = {
-        'format': 'xaml',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='xaml', export_hidden_slides=None):  # noqa: E501
-        """XamlExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(XamlExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
+    def __init__(self, x=None, y=None, width=None, height=None):  # noqa: E501
+        """TextBounds - a model defined in Swagger"""  # noqa: E501
 
-        self._export_hidden_slides = None
-        self.format = 'xaml'
+        self._x = None
+        self._y = None
+        self._width = None
+        self._height = None
 
-        if export_hidden_slides is not None:
-            self.export_hidden_slides = export_hidden_slides
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
 
     @property
-    def export_hidden_slides(self):
-        """Gets the export_hidden_slides of this XamlExportOptions.  # noqa: E501
+    def x(self):
+        """Gets the x of this TextBounds.  # noqa: E501
 
-        Export hidden slides  # noqa: E501
+        X coordinate of the text bounds.  # noqa: E501
 
-        :return: The export_hidden_slides of this XamlExportOptions.  # noqa: E501
-        :rtype: bool
+        :return: The x of this TextBounds.  # noqa: E501
+        :rtype: float
         """
-        return self._export_hidden_slides
+        return self._x
 
-    @export_hidden_slides.setter
-    def export_hidden_slides(self, export_hidden_slides):
-        """Sets the export_hidden_slides of this XamlExportOptions.
+    @x.setter
+    def x(self, x):
+        """Sets the x of this TextBounds.
 
-        Export hidden slides  # noqa: E501
+        X coordinate of the text bounds.  # noqa: E501
 
-        :param export_hidden_slides: The export_hidden_slides of this XamlExportOptions.  # noqa: E501
-        :type: bool
+        :param x: The x of this TextBounds.  # noqa: E501
+        :type: float
         """
-        self._export_hidden_slides = export_hidden_slides
+        self._x = x
+
+    @property
+    def y(self):
+        """Gets the y of this TextBounds.  # noqa: E501
+
+        X coordinate of the text bounds.               # noqa: E501
+
+        :return: The y of this TextBounds.  # noqa: E501
+        :rtype: float
+        """
+        return self._y
+
+    @y.setter
+    def y(self, y):
+        """Sets the y of this TextBounds.
+
+        X coordinate of the text bounds.               # noqa: E501
+
+        :param y: The y of this TextBounds.  # noqa: E501
+        :type: float
+        """
+        self._y = y
+
+    @property
+    def width(self):
+        """Gets the width of this TextBounds.  # noqa: E501
+
+        Width of the text bounds.  # noqa: E501
+
+        :return: The width of this TextBounds.  # noqa: E501
+        :rtype: float
+        """
+        return self._width
+
+    @width.setter
+    def width(self, width):
+        """Sets the width of this TextBounds.
+
+        Width of the text bounds.  # noqa: E501
+
+        :param width: The width of this TextBounds.  # noqa: E501
+        :type: float
+        """
+        self._width = width
+
+    @property
+    def height(self):
+        """Gets the height of this TextBounds.  # noqa: E501
+
+        Height of the text bounds.  # noqa: E501
+
+        :return: The height of this TextBounds.  # noqa: E501
+        :rtype: float
+        """
+        return self._height
+
+    @height.setter
+    def height(self, height):
+        """Sets the height of this TextBounds.
+
+        Height of the text bounds.  # noqa: E501
+
+        :param height: The height of this TextBounds.  # noqa: E501
+        :type: float
+        """
+        self._height = height
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -130,7 +193,7 @@ class XamlExportOptions(ExportOptions):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, XamlExportOptions):
+        if not isinstance(other, TextBounds):
             return False
 
         return self.__dict__ == other.__dict__

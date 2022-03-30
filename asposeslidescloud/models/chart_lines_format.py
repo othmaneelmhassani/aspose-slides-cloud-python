@@ -30,9 +30,8 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.export_options import ExportOptions
 
-class XamlExportOptions(ExportOptions):
+class ChartLinesFormat(object):
 
 
     """
@@ -43,58 +42,72 @@ class XamlExportOptions(ExportOptions):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'default_regular_font': 'str',
-        'height': 'int',
-        'width': 'int',
-        'font_fallback_rules': 'list[FontFallbackRule]',
-        'format': 'str',
-        'export_hidden_slides': 'bool'
+        'effect_format': 'EffectFormat',
+        'line_format': 'LineFormat'
     }
 
     attribute_map = {
-        'default_regular_font': 'defaultRegularFont',
-        'height': 'height',
-        'width': 'width',
-        'font_fallback_rules': 'fontFallbackRules',
-        'format': 'format',
-        'export_hidden_slides': 'exportHiddenSlides'
+        'effect_format': 'effectFormat',
+        'line_format': 'lineFormat'
     }
 
     type_determiners = {
-        'format': 'xaml',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='xaml', export_hidden_slides=None):  # noqa: E501
-        """XamlExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(XamlExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
+    def __init__(self, effect_format=None, line_format=None):  # noqa: E501
+        """ChartLinesFormat - a model defined in Swagger"""  # noqa: E501
 
-        self._export_hidden_slides = None
-        self.format = 'xaml'
+        self._effect_format = None
+        self._line_format = None
 
-        if export_hidden_slides is not None:
-            self.export_hidden_slides = export_hidden_slides
+        if effect_format is not None:
+            self.effect_format = effect_format
+        if line_format is not None:
+            self.line_format = line_format
 
     @property
-    def export_hidden_slides(self):
-        """Gets the export_hidden_slides of this XamlExportOptions.  # noqa: E501
+    def effect_format(self):
+        """Gets the effect_format of this ChartLinesFormat.  # noqa: E501
 
-        Export hidden slides  # noqa: E501
+        Get or sets the effect format.  # noqa: E501
 
-        :return: The export_hidden_slides of this XamlExportOptions.  # noqa: E501
-        :rtype: bool
+        :return: The effect_format of this ChartLinesFormat.  # noqa: E501
+        :rtype: EffectFormat
         """
-        return self._export_hidden_slides
+        return self._effect_format
 
-    @export_hidden_slides.setter
-    def export_hidden_slides(self, export_hidden_slides):
-        """Sets the export_hidden_slides of this XamlExportOptions.
+    @effect_format.setter
+    def effect_format(self, effect_format):
+        """Sets the effect_format of this ChartLinesFormat.
 
-        Export hidden slides  # noqa: E501
+        Get or sets the effect format.  # noqa: E501
 
-        :param export_hidden_slides: The export_hidden_slides of this XamlExportOptions.  # noqa: E501
-        :type: bool
+        :param effect_format: The effect_format of this ChartLinesFormat.  # noqa: E501
+        :type: EffectFormat
         """
-        self._export_hidden_slides = export_hidden_slides
+        self._effect_format = effect_format
+
+    @property
+    def line_format(self):
+        """Gets the line_format of this ChartLinesFormat.  # noqa: E501
+
+        Get or sets the line format.  # noqa: E501
+
+        :return: The line_format of this ChartLinesFormat.  # noqa: E501
+        :rtype: LineFormat
+        """
+        return self._line_format
+
+    @line_format.setter
+    def line_format(self, line_format):
+        """Sets the line_format of this ChartLinesFormat.
+
+        Get or sets the line format.  # noqa: E501
+
+        :param line_format: The line_format of this ChartLinesFormat.  # noqa: E501
+        :type: LineFormat
+        """
+        self._line_format = line_format
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -130,7 +143,7 @@ class XamlExportOptions(ExportOptions):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, XamlExportOptions):
+        if not isinstance(other, ChartLinesFormat):
             return False
 
         return self.__dict__ == other.__dict__

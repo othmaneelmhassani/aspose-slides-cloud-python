@@ -30,10 +30,28 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.export_options import ExportOptions
 
-class XamlExportOptions(ExportOptions):
+class ShapeType(object):
 
+    """
+    allowed enum values
+    """
+    SHAPE = "Shape"
+    CHART = "Chart"
+    TABLE = "Table"
+    PICTUREFRAME = "PictureFrame"
+    VIDEOFRAME = "VideoFrame"
+    AUDIOFRAME = "AudioFrame"
+    SMARTART = "SmartArt"
+    OLEOBJECTFRAME = "OleObjectFrame"
+    GROUPSHAPE = "GroupShape"
+    GRAPHICALOBJECT = "GraphicalObject"
+    CONNECTOR = "Connector"
+    SMARTARTSHAPE = "SmartArtShape"
+    ZOOMFRAME = "ZoomFrame"
+    SECTIONZOOMFRAME = "SectionZoomFrame"
+    SUMMARYZOOMFRAME = "SummaryZoomFrame"
+    SUMMARYZOOMSECTION = "SummaryZoomSection"
 
     """
     Attributes:
@@ -43,58 +61,16 @@ class XamlExportOptions(ExportOptions):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'default_regular_font': 'str',
-        'height': 'int',
-        'width': 'int',
-        'font_fallback_rules': 'list[FontFallbackRule]',
-        'format': 'str',
-        'export_hidden_slides': 'bool'
     }
 
     attribute_map = {
-        'default_regular_font': 'defaultRegularFont',
-        'height': 'height',
-        'width': 'width',
-        'font_fallback_rules': 'fontFallbackRules',
-        'format': 'format',
-        'export_hidden_slides': 'exportHiddenSlides'
     }
 
     type_determiners = {
-        'format': 'xaml',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='xaml', export_hidden_slides=None):  # noqa: E501
-        """XamlExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(XamlExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
-
-        self._export_hidden_slides = None
-        self.format = 'xaml'
-
-        if export_hidden_slides is not None:
-            self.export_hidden_slides = export_hidden_slides
-
-    @property
-    def export_hidden_slides(self):
-        """Gets the export_hidden_slides of this XamlExportOptions.  # noqa: E501
-
-        Export hidden slides  # noqa: E501
-
-        :return: The export_hidden_slides of this XamlExportOptions.  # noqa: E501
-        :rtype: bool
-        """
-        return self._export_hidden_slides
-
-    @export_hidden_slides.setter
-    def export_hidden_slides(self, export_hidden_slides):
-        """Sets the export_hidden_slides of this XamlExportOptions.
-
-        Export hidden slides  # noqa: E501
-
-        :param export_hidden_slides: The export_hidden_slides of this XamlExportOptions.  # noqa: E501
-        :type: bool
-        """
-        self._export_hidden_slides = export_hidden_slides
+    def __init__(self):  # noqa: E501
+        """ShapeType - a model defined in Swagger"""  # noqa: E501
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -130,7 +106,7 @@ class XamlExportOptions(ExportOptions):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, XamlExportOptions):
+        if not isinstance(other, ShapeType):
             return False
 
         return self.__dict__ == other.__dict__

@@ -46,6 +46,7 @@ class PdfExportOptions(ExportOptions):
         'default_regular_font': 'str',
         'height': 'int',
         'width': 'int',
+        'font_fallback_rules': 'list[FontFallbackRule]',
         'format': 'str',
         'text_compression': 'str',
         'embed_full_fonts': 'bool',
@@ -72,6 +73,7 @@ class PdfExportOptions(ExportOptions):
         'default_regular_font': 'defaultRegularFont',
         'height': 'height',
         'width': 'width',
+        'font_fallback_rules': 'fontFallbackRules',
         'format': 'format',
         'text_compression': 'textCompression',
         'embed_full_fonts': 'embedFullFonts',
@@ -98,9 +100,9 @@ class PdfExportOptions(ExportOptions):
         'format': 'pdf',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, format='pdf', text_compression=None, embed_full_fonts=None, compliance=None, sufficient_resolution=None, jpeg_quality=None, draw_slides_frame=None, show_hidden_slides=None, save_metafiles_as_png=None, password=None, embed_true_type_fonts_for_ascii=None, additional_common_font_families=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None, show_comments_by_no_author=None, image_transparent_color=None, apply_image_transparent=None, access_permissions=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='pdf', text_compression=None, embed_full_fonts=None, compliance=None, sufficient_resolution=None, jpeg_quality=None, draw_slides_frame=None, show_hidden_slides=None, save_metafiles_as_png=None, password=None, embed_true_type_fonts_for_ascii=None, additional_common_font_families=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None, show_comments_by_no_author=None, image_transparent_color=None, apply_image_transparent=None, access_permissions=None):  # noqa: E501
         """PdfExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(PdfExportOptions, self).__init__(default_regular_font, height, width, format)
+        super(PdfExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
 
         self._text_compression = None
         self._embed_full_fonts = None
