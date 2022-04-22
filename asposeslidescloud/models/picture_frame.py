@@ -54,7 +54,6 @@ class PictureFrame(GeometryShape):
         'x': 'float',
         'y': 'float',
         'z_order_position': 'int',
-        'shapes': 'ResourceUri',
         'fill_format': 'FillFormat',
         'effect_format': 'EffectFormat',
         'three_d_format': 'ThreeDFormat',
@@ -78,7 +77,6 @@ class PictureFrame(GeometryShape):
         'x': 'x',
         'y': 'y',
         'z_order_position': 'zOrderPosition',
-        'shapes': 'shapes',
         'fill_format': 'fillFormat',
         'effect_format': 'effectFormat',
         'three_d_format': 'threeDFormat',
@@ -94,9 +92,9 @@ class PictureFrame(GeometryShape):
         'type': 'PictureFrame',
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='PictureFrame', shape_type=None, picture_fill_format=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='PictureFrame', shape_type=None, picture_fill_format=None):  # noqa: E501
         """PictureFrame - a model defined in Swagger"""  # noqa: E501
-        super(PictureFrame, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, shapes, fill_format, effect_format, three_d_format, line_format, hyperlink_click, hyperlink_mouse_over, type, shape_type)
+        super(PictureFrame, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, fill_format, effect_format, three_d_format, line_format, hyperlink_click, hyperlink_mouse_over, type, shape_type)
 
         self._picture_fill_format = None
         self.type = 'PictureFrame'

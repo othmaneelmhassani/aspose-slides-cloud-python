@@ -44,20 +44,20 @@ class VideoExportOptions(ExportOptions):
     """
     swagger_types = {
         'default_regular_font': 'str',
-        'height': 'int',
-        'width': 'int',
         'font_fallback_rules': 'list[FontFallbackRule]',
         'format': 'str',
+        'slides_transition_duration': 'int',
+        'transition_type': 'str',
         'transition_duration': 'int',
         'video_resolution_type': 'str'
     }
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
-        'height': 'height',
-        'width': 'width',
         'font_fallback_rules': 'fontFallbackRules',
         'format': 'format',
+        'slides_transition_duration': 'slidesTransitionDuration',
+        'transition_type': 'transitionType',
         'transition_duration': 'transitionDuration',
         'video_resolution_type': 'videoResolutionType'
     }
@@ -66,24 +66,90 @@ class VideoExportOptions(ExportOptions):
         'format': 'mpeg4',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='mpeg4', transition_duration=None, video_resolution_type=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, font_fallback_rules=None, format='mpeg4', slides_transition_duration=None, transition_type=None, transition_duration=None, video_resolution_type=None):  # noqa: E501
         """VideoExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(VideoExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
+        super(VideoExportOptions, self).__init__(default_regular_font, font_fallback_rules, format)
 
+        self._slides_transition_duration = None
+        self._transition_type = None
         self._transition_duration = None
         self._video_resolution_type = None
         self.format = 'mpeg4'
 
+        if slides_transition_duration is not None:
+            self.slides_transition_duration = slides_transition_duration
+        if transition_type is not None:
+            self.transition_type = transition_type
         if transition_duration is not None:
             self.transition_duration = transition_duration
         if video_resolution_type is not None:
             self.video_resolution_type = video_resolution_type
 
     @property
+    def slides_transition_duration(self):
+        """Gets the slides_transition_duration of this VideoExportOptions.  # noqa: E501
+
+        Slides transition duration.  # noqa: E501
+
+        :return: The slides_transition_duration of this VideoExportOptions.  # noqa: E501
+        :rtype: int
+        """
+        return self._slides_transition_duration
+
+    @slides_transition_duration.setter
+    def slides_transition_duration(self, slides_transition_duration):
+        """Sets the slides_transition_duration of this VideoExportOptions.
+
+        Slides transition duration.  # noqa: E501
+
+        :param slides_transition_duration: The slides_transition_duration of this VideoExportOptions.  # noqa: E501
+        :type: int
+        """
+        self._slides_transition_duration = slides_transition_duration
+
+    @property
+    def transition_type(self):
+        """Gets the transition_type of this VideoExportOptions.  # noqa: E501
+
+        Video transition type  # noqa: E501
+
+        :return: The transition_type of this VideoExportOptions.  # noqa: E501
+        :rtype: str
+        """
+        return self._transition_type
+
+    @transition_type.setter
+    def transition_type(self, transition_type):
+        """Sets the transition_type of this VideoExportOptions.
+
+        Video transition type  # noqa: E501
+
+        :param transition_type: The transition_type of this VideoExportOptions.  # noqa: E501
+        :type: str
+        """
+        if transition_type is not None:
+            allowed_values = ["None", "Fade", "Distance", "Slidedown", "Slideright", "Slideleft", "Slideup", "Smoothleft", "Smoothright", "Smoothup", "Smoothdown", "Rectcrop", "Circlecrop", "Circleclose", "Circleopen", "Horzclose", "Horzopen", "Vertclose", "Vertopen", "Diagbl", "Diagbr", "Diagtl", "Diagtr", "Hlslice", "Hrslice", "Vuslice", "Vdslice", "Dissolve", "Pixelize", "Radial"]  # noqa: E501
+            if transition_type.isdigit():
+                int_transition_type = int(transition_type)
+                if int_transition_type < 0 or int_transition_type >= len(allowed_values):
+                    raise ValueError(
+                        "Invalid value for `transition_type` ({0}), must be one of {1}"  # noqa: E501
+                        .format(transition_type, allowed_values)
+                    )
+                self._transition_type = allowed_values[int_transition_type]
+                return
+            if transition_type not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `transition_type` ({0}), must be one of {1}"  # noqa: E501
+                    .format(transition_type, allowed_values)
+                )
+        self._transition_type = transition_type
+
+    @property
     def transition_duration(self):
         """Gets the transition_duration of this VideoExportOptions.  # noqa: E501
 
-        Transition duration.  # noqa: E501
+        Duration of transition defined in TransitionType property.  # noqa: E501
 
         :return: The transition_duration of this VideoExportOptions.  # noqa: E501
         :rtype: int
@@ -94,7 +160,7 @@ class VideoExportOptions(ExportOptions):
     def transition_duration(self, transition_duration):
         """Sets the transition_duration of this VideoExportOptions.
 
-        Transition duration.  # noqa: E501
+        Duration of transition defined in TransitionType property.  # noqa: E501
 
         :param transition_duration: The transition_duration of this VideoExportOptions.  # noqa: E501
         :type: int

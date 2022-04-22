@@ -44,8 +44,6 @@ class HtmlExportOptions(ExportOptions):
     """
     swagger_types = {
         'default_regular_font': 'str',
-        'height': 'int',
-        'width': 'int',
         'font_fallback_rules': 'list[FontFallbackRule]',
         'format': 'str',
         'save_as_zip': 'bool',
@@ -64,8 +62,6 @@ class HtmlExportOptions(ExportOptions):
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
-        'height': 'height',
-        'width': 'width',
         'font_fallback_rules': 'fontFallbackRules',
         'format': 'format',
         'save_as_zip': 'saveAsZip',
@@ -86,9 +82,9 @@ class HtmlExportOptions(ExportOptions):
         'format': 'html',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='html', save_as_zip=None, sub_directory_name=None, show_hidden_slides=None, svg_responsive_layout=None, jpeg_quality=None, pictures_compression=None, delete_pictures_cropped_areas=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None, show_comments_by_no_author=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, font_fallback_rules=None, format='html', save_as_zip=None, sub_directory_name=None, show_hidden_slides=None, svg_responsive_layout=None, jpeg_quality=None, pictures_compression=None, delete_pictures_cropped_areas=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None, show_comments_by_no_author=None):  # noqa: E501
         """HtmlExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(HtmlExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
+        super(HtmlExportOptions, self).__init__(default_regular_font, font_fallback_rules, format)
 
         self._save_as_zip = None
         self._sub_directory_name = None

@@ -64,7 +64,8 @@ class Paragraph(ResourceBase):
         'east_asian_line_break': 'str',
         'latin_line_break': 'str',
         'right_to_left': 'str',
-        'portion_list': 'list[Portion]'
+        'portion_list': 'list[Portion]',
+        'default_portion_format': 'PortionFormat'
     }
 
     attribute_map = {
@@ -89,13 +90,14 @@ class Paragraph(ResourceBase):
         'east_asian_line_break': 'eastAsianLineBreak',
         'latin_line_break': 'latinLineBreak',
         'right_to_left': 'rightToLeft',
-        'portion_list': 'portionList'
+        'portion_list': 'portionList',
+        'default_portion_format': 'defaultPortionFormat'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, margin_left=None, margin_right=None, space_before=None, space_after=None, space_within=None, indent=None, alignment=None, font_alignment=None, default_tab_size=None, depth=None, bullet_char=None, bullet_height=None, bullet_type=None, numbered_bullet_start_with=None, numbered_bullet_style=None, hanging_punctuation=None, east_asian_line_break=None, latin_line_break=None, right_to_left=None, portion_list=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, margin_left=None, margin_right=None, space_before=None, space_after=None, space_within=None, indent=None, alignment=None, font_alignment=None, default_tab_size=None, depth=None, bullet_char=None, bullet_height=None, bullet_type=None, numbered_bullet_start_with=None, numbered_bullet_style=None, hanging_punctuation=None, east_asian_line_break=None, latin_line_break=None, right_to_left=None, portion_list=None, default_portion_format=None):  # noqa: E501
         """Paragraph - a model defined in Swagger"""  # noqa: E501
         super(Paragraph, self).__init__(self_uri, alternate_links)
 
@@ -119,6 +121,7 @@ class Paragraph(ResourceBase):
         self._latin_line_break = None
         self._right_to_left = None
         self._portion_list = None
+        self._default_portion_format = None
 
         if margin_left is not None:
             self.margin_left = margin_left
@@ -160,6 +163,8 @@ class Paragraph(ResourceBase):
             self.right_to_left = right_to_left
         if portion_list is not None:
             self.portion_list = portion_list
+        if default_portion_format is not None:
+            self.default_portion_format = default_portion_format
 
     @property
     def margin_left(self):
@@ -728,6 +733,28 @@ class Paragraph(ResourceBase):
         :type: list[Portion]
         """
         self._portion_list = portion_list
+
+    @property
+    def default_portion_format(self):
+        """Gets the default_portion_format of this Paragraph.  # noqa: E501
+
+        Default portion format.  # noqa: E501
+
+        :return: The default_portion_format of this Paragraph.  # noqa: E501
+        :rtype: PortionFormat
+        """
+        return self._default_portion_format
+
+    @default_portion_format.setter
+    def default_portion_format(self, default_portion_format):
+        """Sets the default_portion_format of this Paragraph.
+
+        Default portion format.  # noqa: E501
+
+        :param default_portion_format: The default_portion_format of this Paragraph.  # noqa: E501
+        :type: PortionFormat
+        """
+        self._default_portion_format = default_portion_format
 
     def to_dict(self):
         """Returns the model properties as a dict"""

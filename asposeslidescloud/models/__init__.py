@@ -29,6 +29,7 @@
 from __future__ import absolute_import
 
 # import models into model package
+from asposeslidescloud.models.access_permissions import AccessPermissions
 from asposeslidescloud.models.api_info import ApiInfo
 from asposeslidescloud.models.arrow_head_properties import ArrowHeadProperties
 from asposeslidescloud.models.axes import Axes
@@ -83,6 +84,7 @@ from asposeslidescloud.models.output_file import OutputFile
 from asposeslidescloud.models.path_segment import PathSegment
 from asposeslidescloud.models.pipeline import Pipeline
 from asposeslidescloud.models.plot_area import PlotArea
+from asposeslidescloud.models.portion_format import PortionFormat
 from asposeslidescloud.models.presentation_to_merge import PresentationToMerge
 from asposeslidescloud.models.presentations_merge_request import PresentationsMergeRequest
 from asposeslidescloud.models.preset_shadow_effect import PresetShadowEffect
@@ -136,14 +138,13 @@ from asposeslidescloud.models.font_scheme import FontScheme
 from asposeslidescloud.models.format_scheme import FormatScheme
 from asposeslidescloud.models.fraction_element import FractionElement
 from asposeslidescloud.models.function_element import FunctionElement
-from asposeslidescloud.models.gif_export_options import GifExportOptions
 from asposeslidescloud.models.gradient_fill import GradientFill
 from asposeslidescloud.models.grouping_character_element import GroupingCharacterElement
 from asposeslidescloud.models.header_footer import HeaderFooter
 from asposeslidescloud.models.html5_export_options import Html5ExportOptions
 from asposeslidescloud.models.html_export_options import HtmlExportOptions
 from asposeslidescloud.models.image import Image
-from asposeslidescloud.models.image_export_options import ImageExportOptions
+from asposeslidescloud.models.image_export_options_base import ImageExportOptionsBase
 from asposeslidescloud.models.images import Images
 from asposeslidescloud.models.layout_slide import LayoutSlide
 from asposeslidescloud.models.layout_slides import LayoutSlides
@@ -209,7 +210,6 @@ from asposeslidescloud.models.swf_export_options import SwfExportOptions
 from asposeslidescloud.models.text_element import TextElement
 from asposeslidescloud.models.text_items import TextItems
 from asposeslidescloud.models.theme import Theme
-from asposeslidescloud.models.tiff_export_options import TiffExportOptions
 from asposeslidescloud.models.update_background import UpdateBackground
 from asposeslidescloud.models.update_shape import UpdateShape
 from asposeslidescloud.models.video_export_options import VideoExportOptions
@@ -223,14 +223,17 @@ from asposeslidescloud.models.bubble_series import BubbleSeries
 from asposeslidescloud.models.chart import Chart
 from asposeslidescloud.models.document_replace_result import DocumentReplaceResult
 from asposeslidescloud.models.geometry_shape import GeometryShape
+from asposeslidescloud.models.gif_export_options import GifExportOptions
 from asposeslidescloud.models.graphical_object import GraphicalObject
 from asposeslidescloud.models.group_shape import GroupShape
+from asposeslidescloud.models.image_export_options import ImageExportOptions
 from asposeslidescloud.models.ole_object_frame import OleObjectFrame
 from asposeslidescloud.models.scatter_series import ScatterSeries
 from asposeslidescloud.models.slide_replace_result import SlideReplaceResult
 from asposeslidescloud.models.smart_art import SmartArt
 from asposeslidescloud.models.summary_zoom_frame import SummaryZoomFrame
 from asposeslidescloud.models.table import Table
+from asposeslidescloud.models.tiff_export_options import TiffExportOptions
 from asposeslidescloud.models.waterfall_chart_data_point import WaterfallChartDataPoint
 from asposeslidescloud.models.waterfall_series import WaterfallSeries
 from asposeslidescloud.models.zoom_object import ZoomObject

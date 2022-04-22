@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.export_options import ExportOptions
+from asposeslidescloud.models.image_export_options_base import ImageExportOptionsBase
 
-class ImageExportOptions(ExportOptions):
+class ImageExportOptions(ImageExportOptionsBase):
 
 
     """
@@ -44,10 +44,10 @@ class ImageExportOptions(ExportOptions):
     """
     swagger_types = {
         'default_regular_font': 'str',
-        'height': 'int',
-        'width': 'int',
         'font_fallback_rules': 'list[FontFallbackRule]',
         'format': 'str',
+        'height': 'int',
+        'width': 'int',
         'notes_position': 'str',
         'comments_position': 'str',
         'comments_area_width': 'int',
@@ -56,10 +56,10 @@ class ImageExportOptions(ExportOptions):
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
-        'height': 'height',
-        'width': 'width',
         'font_fallback_rules': 'fontFallbackRules',
         'format': 'format',
+        'height': 'height',
+        'width': 'width',
         'notes_position': 'notesPosition',
         'comments_position': 'commentsPosition',
         'comments_area_width': 'commentsAreaWidth',
@@ -70,9 +70,9 @@ class ImageExportOptions(ExportOptions):
         'format': 'image',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='image', notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, font_fallback_rules=None, format='image', height=None, width=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None):  # noqa: E501
         """ImageExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(ImageExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
+        super(ImageExportOptions, self).__init__(default_regular_font, font_fallback_rules, format, height, width)
 
         self._notes_position = None
         self._comments_position = None

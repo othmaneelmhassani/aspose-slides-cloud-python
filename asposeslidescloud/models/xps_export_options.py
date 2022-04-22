@@ -44,8 +44,6 @@ class XpsExportOptions(ExportOptions):
     """
     swagger_types = {
         'default_regular_font': 'str',
-        'height': 'int',
-        'width': 'int',
         'font_fallback_rules': 'list[FontFallbackRule]',
         'format': 'str',
         'show_hidden_slides': 'bool',
@@ -55,8 +53,6 @@ class XpsExportOptions(ExportOptions):
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
-        'height': 'height',
-        'width': 'width',
         'font_fallback_rules': 'fontFallbackRules',
         'format': 'format',
         'show_hidden_slides': 'showHiddenSlides',
@@ -68,9 +64,9 @@ class XpsExportOptions(ExportOptions):
         'format': 'xps',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='xps', show_hidden_slides=None, save_metafiles_as_png=None, draw_slides_frame=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, font_fallback_rules=None, format='xps', show_hidden_slides=None, save_metafiles_as_png=None, draw_slides_frame=None):  # noqa: E501
         """XpsExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(XpsExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
+        super(XpsExportOptions, self).__init__(default_regular_font, font_fallback_rules, format)
 
         self._show_hidden_slides = None
         self._save_metafiles_as_png = None

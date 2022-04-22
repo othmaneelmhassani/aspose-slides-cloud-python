@@ -57,7 +57,9 @@ class TableCell(object):
         'border_left': 'LineFormat',
         'border_bottom': 'LineFormat',
         'border_diagonal_up': 'LineFormat',
-        'border_diagonal_down': 'LineFormat'
+        'border_diagonal_down': 'LineFormat',
+        'column_index': 'int',
+        'row_index': 'int'
     }
 
     attribute_map = {
@@ -76,13 +78,15 @@ class TableCell(object):
         'border_left': 'borderLeft',
         'border_bottom': 'borderBottom',
         'border_diagonal_up': 'borderDiagonalUp',
-        'border_diagonal_down': 'borderDiagonalDown'
+        'border_diagonal_down': 'borderDiagonalDown',
+        'column_index': 'columnIndex',
+        'row_index': 'rowIndex'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, text=None, row_span=None, col_span=None, margin_top=None, margin_right=None, margin_left=None, margin_bottom=None, text_anchor_type=None, text_vertical_type=None, fill_format=None, border_top=None, border_right=None, border_left=None, border_bottom=None, border_diagonal_up=None, border_diagonal_down=None):  # noqa: E501
+    def __init__(self, text=None, row_span=None, col_span=None, margin_top=None, margin_right=None, margin_left=None, margin_bottom=None, text_anchor_type=None, text_vertical_type=None, fill_format=None, border_top=None, border_right=None, border_left=None, border_bottom=None, border_diagonal_up=None, border_diagonal_down=None, column_index=None, row_index=None):  # noqa: E501
         """TableCell - a model defined in Swagger"""  # noqa: E501
 
         self._text = None
@@ -101,6 +105,8 @@ class TableCell(object):
         self._border_bottom = None
         self._border_diagonal_up = None
         self._border_diagonal_down = None
+        self._column_index = None
+        self._row_index = None
 
         if text is not None:
             self.text = text
@@ -134,6 +140,10 @@ class TableCell(object):
             self.border_diagonal_up = border_diagonal_up
         if border_diagonal_down is not None:
             self.border_diagonal_down = border_diagonal_down
+        if column_index is not None:
+            self.column_index = column_index
+        if row_index is not None:
+            self.row_index = row_index
 
     @property
     def text(self):
@@ -518,6 +528,50 @@ class TableCell(object):
         :type: LineFormat
         """
         self._border_diagonal_down = border_diagonal_down
+
+    @property
+    def column_index(self):
+        """Gets the column_index of this TableCell.  # noqa: E501
+
+        Cell column index  # noqa: E501
+
+        :return: The column_index of this TableCell.  # noqa: E501
+        :rtype: int
+        """
+        return self._column_index
+
+    @column_index.setter
+    def column_index(self, column_index):
+        """Sets the column_index of this TableCell.
+
+        Cell column index  # noqa: E501
+
+        :param column_index: The column_index of this TableCell.  # noqa: E501
+        :type: int
+        """
+        self._column_index = column_index
+
+    @property
+    def row_index(self):
+        """Gets the row_index of this TableCell.  # noqa: E501
+
+        Cell row index  # noqa: E501
+
+        :return: The row_index of this TableCell.  # noqa: E501
+        :rtype: int
+        """
+        return self._row_index
+
+    @row_index.setter
+    def row_index(self, row_index):
+        """Sets the row_index of this TableCell.
+
+        Cell row index  # noqa: E501
+
+        :param row_index: The row_index of this TableCell.  # noqa: E501
+        :type: int
+        """
+        self._row_index = row_index
 
     def to_dict(self):
         """Returns the model properties as a dict"""

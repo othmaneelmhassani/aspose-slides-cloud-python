@@ -44,8 +44,6 @@ class SvgExportOptions(ExportOptions):
     """
     swagger_types = {
         'default_regular_font': 'str',
-        'height': 'int',
-        'width': 'int',
         'font_fallback_rules': 'list[FontFallbackRule]',
         'format': 'str',
         'vectorize_text': 'bool',
@@ -61,8 +59,6 @@ class SvgExportOptions(ExportOptions):
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
-        'height': 'height',
-        'width': 'width',
         'font_fallback_rules': 'fontFallbackRules',
         'format': 'format',
         'vectorize_text': 'vectorizeText',
@@ -80,9 +76,9 @@ class SvgExportOptions(ExportOptions):
         'format': 'svg',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='svg', vectorize_text=None, metafile_rasterization_dpi=None, disable3_d_text=None, disable_gradient_split=None, disable_line_end_cropping=None, jpeg_quality=None, pictures_compression=None, delete_pictures_cropped_areas=None, external_fonts_handling=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, font_fallback_rules=None, format='svg', vectorize_text=None, metafile_rasterization_dpi=None, disable3_d_text=None, disable_gradient_split=None, disable_line_end_cropping=None, jpeg_quality=None, pictures_compression=None, delete_pictures_cropped_areas=None, external_fonts_handling=None):  # noqa: E501
         """SvgExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(SvgExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
+        super(SvgExportOptions, self).__init__(default_regular_font, font_fallback_rules, format)
 
         self._vectorize_text = None
         self._metafile_rasterization_dpi = None

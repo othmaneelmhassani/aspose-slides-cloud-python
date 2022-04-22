@@ -54,7 +54,6 @@ class ShapeBase(ResourceBase):
         'x': 'float',
         'y': 'float',
         'z_order_position': 'int',
-        'shapes': 'ResourceUri',
         'fill_format': 'FillFormat',
         'effect_format': 'EffectFormat',
         'three_d_format': 'ThreeDFormat',
@@ -76,7 +75,6 @@ class ShapeBase(ResourceBase):
         'x': 'x',
         'y': 'y',
         'z_order_position': 'zOrderPosition',
-        'shapes': 'shapes',
         'fill_format': 'fillFormat',
         'effect_format': 'effectFormat',
         'three_d_format': 'threeDFormat',
@@ -89,7 +87,7 @@ class ShapeBase(ResourceBase):
     type_determiners = {
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, shapes=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type=None):  # noqa: E501
         """ShapeBase - a model defined in Swagger"""  # noqa: E501
         super(ShapeBase, self).__init__(self_uri, alternate_links)
 
@@ -102,7 +100,6 @@ class ShapeBase(ResourceBase):
         self._x = None
         self._y = None
         self._z_order_position = None
-        self._shapes = None
         self._fill_format = None
         self._effect_format = None
         self._three_d_format = None
@@ -128,8 +125,6 @@ class ShapeBase(ResourceBase):
         if y is not None:
             self.y = y
         self.z_order_position = z_order_position
-        if shapes is not None:
-            self.shapes = shapes
         if fill_format is not None:
             self.fill_format = fill_format
         if effect_format is not None:
@@ -342,28 +337,6 @@ class ShapeBase(ResourceBase):
         :type: int
         """
         self._z_order_position = z_order_position
-
-    @property
-    def shapes(self):
-        """Gets the shapes of this ShapeBase.  # noqa: E501
-
-        Gets or sets the link to shapes.  # noqa: E501
-
-        :return: The shapes of this ShapeBase.  # noqa: E501
-        :rtype: ResourceUri
-        """
-        return self._shapes
-
-    @shapes.setter
-    def shapes(self, shapes):
-        """Sets the shapes of this ShapeBase.
-
-        Gets or sets the link to shapes.  # noqa: E501
-
-        :param shapes: The shapes of this ShapeBase.  # noqa: E501
-        :type: ResourceUri
-        """
-        self._shapes = shapes
 
     @property
     def fill_format(self):

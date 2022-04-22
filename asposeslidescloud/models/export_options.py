@@ -43,16 +43,12 @@ class ExportOptions(object):
     """
     swagger_types = {
         'default_regular_font': 'str',
-        'height': 'int',
-        'width': 'int',
         'font_fallback_rules': 'list[FontFallbackRule]',
         'format': 'str'
     }
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
-        'height': 'height',
-        'width': 'width',
         'font_fallback_rules': 'fontFallbackRules',
         'format': 'format'
     }
@@ -60,21 +56,15 @@ class ExportOptions(object):
     type_determiners = {
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, font_fallback_rules=None, format=None):  # noqa: E501
         """ExportOptions - a model defined in Swagger"""  # noqa: E501
 
         self._default_regular_font = None
-        self._height = None
-        self._width = None
         self._font_fallback_rules = None
         self._format = None
 
         if default_regular_font is not None:
             self.default_regular_font = default_regular_font
-        if height is not None:
-            self.height = height
-        if width is not None:
-            self.width = width
         if font_fallback_rules is not None:
             self.font_fallback_rules = font_fallback_rules
         if format is not None:
@@ -101,50 +91,6 @@ class ExportOptions(object):
         :type: str
         """
         self._default_regular_font = default_regular_font
-
-    @property
-    def height(self):
-        """Gets the height of this ExportOptions.  # noqa: E501
-
-        Gets or sets the height of slides in the output format, e.g. image size, pdf page size etc.  # noqa: E501
-
-        :return: The height of this ExportOptions.  # noqa: E501
-        :rtype: int
-        """
-        return self._height
-
-    @height.setter
-    def height(self, height):
-        """Sets the height of this ExportOptions.
-
-        Gets or sets the height of slides in the output format, e.g. image size, pdf page size etc.  # noqa: E501
-
-        :param height: The height of this ExportOptions.  # noqa: E501
-        :type: int
-        """
-        self._height = height
-
-    @property
-    def width(self):
-        """Gets the width of this ExportOptions.  # noqa: E501
-
-        Gets or sets the height of slides in the output format, e.g. image size, pdf page size etc.  # noqa: E501
-
-        :return: The width of this ExportOptions.  # noqa: E501
-        :rtype: int
-        """
-        return self._width
-
-    @width.setter
-    def width(self, width):
-        """Sets the width of this ExportOptions.
-
-        Gets or sets the height of slides in the output format, e.g. image size, pdf page size etc.  # noqa: E501
-
-        :param width: The width of this ExportOptions.  # noqa: E501
-        :type: int
-        """
-        self._width = width
 
     @property
     def font_fallback_rules(self):

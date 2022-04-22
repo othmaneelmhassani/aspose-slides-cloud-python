@@ -32,7 +32,7 @@ import six
 
 from asposeslidescloud.models.export_options import ExportOptions
 
-class PptxExportOptions(ExportOptions):
+class ImageExportOptionsBase(ExportOptions):
 
 
     """
@@ -46,67 +46,76 @@ class PptxExportOptions(ExportOptions):
         'default_regular_font': 'str',
         'font_fallback_rules': 'list[FontFallbackRule]',
         'format': 'str',
-        'conformance': 'str'
+        'height': 'int',
+        'width': 'int'
     }
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
         'font_fallback_rules': 'fontFallbackRules',
         'format': 'format',
-        'conformance': 'conformance'
+        'height': 'height',
+        'width': 'width'
     }
 
     type_determiners = {
-        'format': 'pptx',
     }
 
-    def __init__(self, default_regular_font=None, font_fallback_rules=None, format='pptx', conformance=None):  # noqa: E501
-        """PptxExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(PptxExportOptions, self).__init__(default_regular_font, font_fallback_rules, format)
+    def __init__(self, default_regular_font=None, font_fallback_rules=None, format=None, height=None, width=None):  # noqa: E501
+        """ImageExportOptionsBase - a model defined in Swagger"""  # noqa: E501
+        super(ImageExportOptionsBase, self).__init__(default_regular_font, font_fallback_rules, format)
 
-        self._conformance = None
-        self.format = 'pptx'
+        self._height = None
+        self._width = None
 
-        if conformance is not None:
-            self.conformance = conformance
+        if height is not None:
+            self.height = height
+        if width is not None:
+            self.width = width
 
     @property
-    def conformance(self):
-        """Gets the conformance of this PptxExportOptions.  # noqa: E501
+    def height(self):
+        """Gets the height of this ImageExportOptionsBase.  # noqa: E501
 
-        The conformance class to which the PresentationML document conforms. Read/write Conformance.  # noqa: E501
+        Gets or sets the height of slides in the output image format.  # noqa: E501
 
-        :return: The conformance of this PptxExportOptions.  # noqa: E501
-        :rtype: str
+        :return: The height of this ImageExportOptionsBase.  # noqa: E501
+        :rtype: int
         """
-        return self._conformance
+        return self._height
 
-    @conformance.setter
-    def conformance(self, conformance):
-        """Sets the conformance of this PptxExportOptions.
+    @height.setter
+    def height(self, height):
+        """Sets the height of this ImageExportOptionsBase.
 
-        The conformance class to which the PresentationML document conforms. Read/write Conformance.  # noqa: E501
+        Gets or sets the height of slides in the output image format.  # noqa: E501
 
-        :param conformance: The conformance of this PptxExportOptions.  # noqa: E501
-        :type: str
+        :param height: The height of this ImageExportOptionsBase.  # noqa: E501
+        :type: int
         """
-        if conformance is not None:
-            allowed_values = ["Ecma376_2006", "Iso29500_2008_Transitional", "Iso29500_2008_Strict"]  # noqa: E501
-            if conformance.isdigit():
-                int_conformance = int(conformance)
-                if int_conformance < 0 or int_conformance >= len(allowed_values):
-                    raise ValueError(
-                        "Invalid value for `conformance` ({0}), must be one of {1}"  # noqa: E501
-                        .format(conformance, allowed_values)
-                    )
-                self._conformance = allowed_values[int_conformance]
-                return
-            if conformance not in allowed_values:
-                raise ValueError(
-                    "Invalid value for `conformance` ({0}), must be one of {1}"  # noqa: E501
-                    .format(conformance, allowed_values)
-                )
-        self._conformance = conformance
+        self._height = height
+
+    @property
+    def width(self):
+        """Gets the width of this ImageExportOptionsBase.  # noqa: E501
+
+        Gets or sets the height of slides in the output the output image format.  # noqa: E501
+
+        :return: The width of this ImageExportOptionsBase.  # noqa: E501
+        :rtype: int
+        """
+        return self._width
+
+    @width.setter
+    def width(self, width):
+        """Sets the width of this ImageExportOptionsBase.
+
+        Gets or sets the height of slides in the output the output image format.  # noqa: E501
+
+        :param width: The width of this ImageExportOptionsBase.  # noqa: E501
+        :type: int
+        """
+        self._width = width
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -142,7 +151,7 @@ class PptxExportOptions(ExportOptions):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, PptxExportOptions):
+        if not isinstance(other, ImageExportOptionsBase):
             return False
 
         return self.__dict__ == other.__dict__

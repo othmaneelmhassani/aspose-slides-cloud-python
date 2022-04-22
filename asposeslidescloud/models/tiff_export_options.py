@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.export_options import ExportOptions
+from asposeslidescloud.models.image_export_options_base import ImageExportOptionsBase
 
-class TiffExportOptions(ExportOptions):
+class TiffExportOptions(ImageExportOptionsBase):
 
 
     """
@@ -44,10 +44,10 @@ class TiffExportOptions(ExportOptions):
     """
     swagger_types = {
         'default_regular_font': 'str',
-        'height': 'int',
-        'width': 'int',
         'font_fallback_rules': 'list[FontFallbackRule]',
         'format': 'str',
+        'height': 'int',
+        'width': 'int',
         'compression': 'str',
         'dpi_x': 'int',
         'dpi_y': 'int',
@@ -62,10 +62,10 @@ class TiffExportOptions(ExportOptions):
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
-        'height': 'height',
-        'width': 'width',
         'font_fallback_rules': 'fontFallbackRules',
         'format': 'format',
+        'height': 'height',
+        'width': 'width',
         'compression': 'compression',
         'dpi_x': 'dpiX',
         'dpi_y': 'dpiY',
@@ -82,9 +82,9 @@ class TiffExportOptions(ExportOptions):
         'format': 'tiff',
     }
 
-    def __init__(self, default_regular_font=None, height=None, width=None, font_fallback_rules=None, format='tiff', compression=None, dpi_x=None, dpi_y=None, show_hidden_slides=None, pixel_format=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None, show_comments_by_no_author=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, font_fallback_rules=None, format='tiff', height=None, width=None, compression=None, dpi_x=None, dpi_y=None, show_hidden_slides=None, pixel_format=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None, show_comments_by_no_author=None):  # noqa: E501
         """TiffExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(TiffExportOptions, self).__init__(default_regular_font, height, width, font_fallback_rules, format)
+        super(TiffExportOptions, self).__init__(default_regular_font, font_fallback_rules, format, height, width)
 
         self._compression = None
         self._dpi_x = None
