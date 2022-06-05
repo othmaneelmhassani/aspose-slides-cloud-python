@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.data_point import DataPoint
+from asposeslidescloud.models.image_transform_effect import ImageTransformEffect
 
-class OneValueChartDataPoint(DataPoint):
+class TintEffect(ImageTransformEffect):
 
 
     """
@@ -43,72 +43,75 @@ class OneValueChartDataPoint(DataPoint):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'value': 'float',
-        'set_as_total': 'bool'
+        'type': 'str',
+        'hue': 'float',
+        'amount': 'float'
     }
 
     attribute_map = {
-        'value': 'value',
-        'set_as_total': 'setAsTotal'
+        'type': 'type',
+        'hue': 'hue',
+        'amount': 'amount'
     }
 
     type_determiners = {
+        'type': 'Tint',
     }
 
-    def __init__(self, value=None, set_as_total=None):  # noqa: E501
-        """OneValueChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(OneValueChartDataPoint, self).__init__()
+    def __init__(self, type='Tint', hue=None, amount=None):  # noqa: E501
+        """TintEffect - a model defined in Swagger"""  # noqa: E501
+        super(TintEffect, self).__init__(type)
 
-        self._value = None
-        self._set_as_total = None
+        self._hue = None
+        self._amount = None
+        self.type = 'Tint'
 
-        self.value = value
-        if set_as_total is not None:
-            self.set_as_total = set_as_total
+        self.hue = hue
+        self.amount = amount
 
     @property
-    def value(self):
-        """Gets the value of this OneValueChartDataPoint.  # noqa: E501
+    def hue(self):
+        """Gets the hue of this TintEffect.  # noqa: E501
 
-        Value.  # noqa: E501
+        Hue  # noqa: E501
 
-        :return: The value of this OneValueChartDataPoint.  # noqa: E501
+        :return: The hue of this TintEffect.  # noqa: E501
         :rtype: float
         """
-        return self._value
+        return self._hue
 
-    @value.setter
-    def value(self, value):
-        """Sets the value of this OneValueChartDataPoint.
+    @hue.setter
+    def hue(self, hue):
+        """Sets the hue of this TintEffect.
 
-        Value.  # noqa: E501
+        Hue  # noqa: E501
 
-        :param value: The value of this OneValueChartDataPoint.  # noqa: E501
+        :param hue: The hue of this TintEffect.  # noqa: E501
         :type: float
         """
-        self._value = value
+        self._hue = hue
 
     @property
-    def set_as_total(self):
-        """Gets the set_as_total of this OneValueChartDataPoint.  # noqa: E501
+    def amount(self):
+        """Gets the amount of this TintEffect.  # noqa: E501
 
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
+        Amount  # noqa: E501
 
-        :return: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :rtype: bool
+        :return: The amount of this TintEffect.  # noqa: E501
+        :rtype: float
         """
-        return self._set_as_total
+        return self._amount
 
-    @set_as_total.setter
-    def set_as_total(self, set_as_total):
-        """Sets the set_as_total of this OneValueChartDataPoint.
+    @amount.setter
+    def amount(self, amount):
+        """Sets the amount of this TintEffect.
 
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
+        Amount  # noqa: E501
 
-        :param set_as_total: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :type: bool
+        :param amount: The amount of this TintEffect.  # noqa: E501
+        :type: float
         """
-        self._set_as_total = set_as_total
+        self._amount = amount
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -144,7 +147,7 @@ class OneValueChartDataPoint(DataPoint):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, OneValueChartDataPoint):
+        if not isinstance(other, TintEffect):
             return False
 
         return self.__dict__ == other.__dict__

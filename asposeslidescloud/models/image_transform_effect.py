@@ -30,9 +30,8 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.data_point import DataPoint
 
-class OneValueChartDataPoint(DataPoint):
+class ImageTransformEffect(object):
 
 
     """
@@ -43,72 +42,59 @@ class OneValueChartDataPoint(DataPoint):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'value': 'float',
-        'set_as_total': 'bool'
+        'type': 'str'
     }
 
     attribute_map = {
-        'value': 'value',
-        'set_as_total': 'setAsTotal'
+        'type': 'type'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, value=None, set_as_total=None):  # noqa: E501
-        """OneValueChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(OneValueChartDataPoint, self).__init__()
+    def __init__(self, type=None):  # noqa: E501
+        """ImageTransformEffect - a model defined in Swagger"""  # noqa: E501
 
-        self._value = None
-        self._set_as_total = None
+        self._type = None
 
-        self.value = value
-        if set_as_total is not None:
-            self.set_as_total = set_as_total
+        if type is not None:
+            self.type = type
 
     @property
-    def value(self):
-        """Gets the value of this OneValueChartDataPoint.  # noqa: E501
+    def type(self):
+        """Gets the type of this ImageTransformEffect.  # noqa: E501
 
-        Value.  # noqa: E501
 
-        :return: The value of this OneValueChartDataPoint.  # noqa: E501
-        :rtype: float
+        :return: The type of this ImageTransformEffect.  # noqa: E501
+        :rtype: str
         """
-        return self._value
+        return self._type
 
-    @value.setter
-    def value(self, value):
-        """Sets the value of this OneValueChartDataPoint.
+    @type.setter
+    def type(self, type):
+        """Sets the type of this ImageTransformEffect.
 
-        Value.  # noqa: E501
 
-        :param value: The value of this OneValueChartDataPoint.  # noqa: E501
-        :type: float
+        :param type: The type of this ImageTransformEffect.  # noqa: E501
+        :type: str
         """
-        self._value = value
-
-    @property
-    def set_as_total(self):
-        """Gets the set_as_total of this OneValueChartDataPoint.  # noqa: E501
-
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
-
-        :return: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :rtype: bool
-        """
-        return self._set_as_total
-
-    @set_as_total.setter
-    def set_as_total(self, set_as_total):
-        """Sets the set_as_total of this OneValueChartDataPoint.
-
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
-
-        :param set_as_total: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :type: bool
-        """
-        self._set_as_total = set_as_total
+        if type is not None:
+            allowed_values = ["AlphaBiLevel", "AlphaCeiling", "AlphaFloor", "AlphaInverse", "AlphaModulate", "AlphaModulateFixed", "AlphaReplace", "BiLevel", "Blur", "ColorChange", "ColorReplace", "Duotone", "FillOverlay", "GrayScale", "Hsl", "Luminance", "Tint"]  # noqa: E501
+            if type.isdigit():
+                int_type = int(type)
+                if int_type < 0 or int_type >= len(allowed_values):
+                    raise ValueError(
+                        "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                        .format(type, allowed_values)
+                    )
+                self._type = allowed_values[int_type]
+                return
+            if type not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                    .format(type, allowed_values)
+                )
+        self._type = type
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -144,7 +130,7 @@ class OneValueChartDataPoint(DataPoint):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, OneValueChartDataPoint):
+        if not isinstance(other, ImageTransformEffect):
             return False
 
         return self.__dict__ == other.__dict__

@@ -46,7 +46,8 @@ class SmartArtNode(object):
         'shapes': 'ResourceUri',
         'is_assistant': 'bool',
         'text': 'str',
-        'org_chart_layout': 'str'
+        'org_chart_layout': 'str',
+        'paragraphs': 'ResourceUri'
     }
 
     attribute_map = {
@@ -54,13 +55,14 @@ class SmartArtNode(object):
         'shapes': 'shapes',
         'is_assistant': 'isAssistant',
         'text': 'text',
-        'org_chart_layout': 'orgChartLayout'
+        'org_chart_layout': 'orgChartLayout',
+        'paragraphs': 'paragraphs'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, nodes=None, shapes=None, is_assistant=None, text=None, org_chart_layout=None):  # noqa: E501
+    def __init__(self, nodes=None, shapes=None, is_assistant=None, text=None, org_chart_layout=None, paragraphs=None):  # noqa: E501
         """SmartArtNode - a model defined in Swagger"""  # noqa: E501
 
         self._nodes = None
@@ -68,6 +70,7 @@ class SmartArtNode(object):
         self._is_assistant = None
         self._text = None
         self._org_chart_layout = None
+        self._paragraphs = None
 
         if nodes is not None:
             self.nodes = nodes
@@ -77,6 +80,8 @@ class SmartArtNode(object):
         if text is not None:
             self.text = text
         self.org_chart_layout = org_chart_layout
+        if paragraphs is not None:
+            self.paragraphs = paragraphs
 
     @property
     def nodes(self):
@@ -203,6 +208,28 @@ class SmartArtNode(object):
                     .format(org_chart_layout, allowed_values)
                 )
         self._org_chart_layout = org_chart_layout
+
+    @property
+    def paragraphs(self):
+        """Gets the paragraphs of this SmartArtNode.  # noqa: E501
+
+        Get or sets list to paragraphs list  # noqa: E501
+
+        :return: The paragraphs of this SmartArtNode.  # noqa: E501
+        :rtype: ResourceUri
+        """
+        return self._paragraphs
+
+    @paragraphs.setter
+    def paragraphs(self, paragraphs):
+        """Sets the paragraphs of this SmartArtNode.
+
+        Get or sets list to paragraphs list  # noqa: E501
+
+        :param paragraphs: The paragraphs of this SmartArtNode.  # noqa: E501
+        :type: ResourceUri
+        """
+        self._paragraphs = paragraphs
 
     def to_dict(self):
         """Returns the model properties as a dict"""

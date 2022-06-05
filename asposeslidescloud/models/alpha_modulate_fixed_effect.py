@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.data_point import DataPoint
+from asposeslidescloud.models.image_transform_effect import ImageTransformEffect
 
-class OneValueChartDataPoint(DataPoint):
+class AlphaModulateFixedEffect(ImageTransformEffect):
 
 
     """
@@ -43,72 +43,49 @@ class OneValueChartDataPoint(DataPoint):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'value': 'float',
-        'set_as_total': 'bool'
+        'type': 'str',
+        'amount': 'float'
     }
 
     attribute_map = {
-        'value': 'value',
-        'set_as_total': 'setAsTotal'
+        'type': 'type',
+        'amount': 'amount'
     }
 
     type_determiners = {
+        'type': 'AlphaModulateFixed',
     }
 
-    def __init__(self, value=None, set_as_total=None):  # noqa: E501
-        """OneValueChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(OneValueChartDataPoint, self).__init__()
+    def __init__(self, type='AlphaModulateFixed', amount=None):  # noqa: E501
+        """AlphaModulateFixedEffect - a model defined in Swagger"""  # noqa: E501
+        super(AlphaModulateFixedEffect, self).__init__(type)
 
-        self._value = None
-        self._set_as_total = None
+        self._amount = None
+        self.type = 'AlphaModulateFixed'
 
-        self.value = value
-        if set_as_total is not None:
-            self.set_as_total = set_as_total
+        self.amount = amount
 
     @property
-    def value(self):
-        """Gets the value of this OneValueChartDataPoint.  # noqa: E501
+    def amount(self):
+        """Gets the amount of this AlphaModulateFixedEffect.  # noqa: E501
 
-        Value.  # noqa: E501
+        Returns an amount of effect in percents.      # noqa: E501
 
-        :return: The value of this OneValueChartDataPoint.  # noqa: E501
+        :return: The amount of this AlphaModulateFixedEffect.  # noqa: E501
         :rtype: float
         """
-        return self._value
+        return self._amount
 
-    @value.setter
-    def value(self, value):
-        """Sets the value of this OneValueChartDataPoint.
+    @amount.setter
+    def amount(self, amount):
+        """Sets the amount of this AlphaModulateFixedEffect.
 
-        Value.  # noqa: E501
+        Returns an amount of effect in percents.      # noqa: E501
 
-        :param value: The value of this OneValueChartDataPoint.  # noqa: E501
+        :param amount: The amount of this AlphaModulateFixedEffect.  # noqa: E501
         :type: float
         """
-        self._value = value
-
-    @property
-    def set_as_total(self):
-        """Gets the set_as_total of this OneValueChartDataPoint.  # noqa: E501
-
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
-
-        :return: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :rtype: bool
-        """
-        return self._set_as_total
-
-    @set_as_total.setter
-    def set_as_total(self, set_as_total):
-        """Sets the set_as_total of this OneValueChartDataPoint.
-
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
-
-        :param set_as_total: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :type: bool
-        """
-        self._set_as_total = set_as_total
+        self._amount = amount
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -144,7 +121,7 @@ class OneValueChartDataPoint(DataPoint):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, OneValueChartDataPoint):
+        if not isinstance(other, AlphaModulateFixedEffect):
             return False
 
         return self.__dict__ == other.__dict__

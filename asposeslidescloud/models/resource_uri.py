@@ -45,26 +45,32 @@ class ResourceUri(object):
         'href': 'str',
         'relation': 'str',
         'link_type': 'str',
-        'title': 'str'
+        'title': 'str',
+        'slide_index': 'int',
+        'shape_index': 'int'
     }
 
     attribute_map = {
         'href': 'href',
         'relation': 'relation',
         'link_type': 'linkType',
-        'title': 'title'
+        'title': 'title',
+        'slide_index': 'slideIndex',
+        'shape_index': 'shapeIndex'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, href=None, relation=None, link_type=None, title=None):  # noqa: E501
+    def __init__(self, href=None, relation=None, link_type=None, title=None, slide_index=None, shape_index=None):  # noqa: E501
         """ResourceUri - a model defined in Swagger"""  # noqa: E501
 
         self._href = None
         self._relation = None
         self._link_type = None
         self._title = None
+        self._slide_index = None
+        self._shape_index = None
 
         if href is not None:
             self.href = href
@@ -74,6 +80,10 @@ class ResourceUri(object):
             self.link_type = link_type
         if title is not None:
             self.title = title
+        if slide_index is not None:
+            self.slide_index = slide_index
+        if shape_index is not None:
+            self.shape_index = shape_index
 
     @property
     def href(self):
@@ -162,6 +172,50 @@ class ResourceUri(object):
         :type: str
         """
         self._title = title
+
+    @property
+    def slide_index(self):
+        """Gets the slide_index of this ResourceUri.  # noqa: E501
+
+        Resource slide index.  # noqa: E501
+
+        :return: The slide_index of this ResourceUri.  # noqa: E501
+        :rtype: int
+        """
+        return self._slide_index
+
+    @slide_index.setter
+    def slide_index(self, slide_index):
+        """Sets the slide_index of this ResourceUri.
+
+        Resource slide index.  # noqa: E501
+
+        :param slide_index: The slide_index of this ResourceUri.  # noqa: E501
+        :type: int
+        """
+        self._slide_index = slide_index
+
+    @property
+    def shape_index(self):
+        """Gets the shape_index of this ResourceUri.  # noqa: E501
+
+        Resource shape index.  # noqa: E501
+
+        :return: The shape_index of this ResourceUri.  # noqa: E501
+        :rtype: int
+        """
+        return self._shape_index
+
+    @shape_index.setter
+    def shape_index(self, shape_index):
+        """Sets the shape_index of this ResourceUri.
+
+        Resource shape index.  # noqa: E501
+
+        :param shape_index: The shape_index of this ResourceUri.  # noqa: E501
+        :type: int
+        """
+        self._shape_index = shape_index
 
     def to_dict(self):
         """Returns the model properties as a dict"""

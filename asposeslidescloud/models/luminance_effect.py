@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.data_point import DataPoint
+from asposeslidescloud.models.image_transform_effect import ImageTransformEffect
 
-class OneValueChartDataPoint(DataPoint):
+class LuminanceEffect(ImageTransformEffect):
 
 
     """
@@ -43,72 +43,75 @@ class OneValueChartDataPoint(DataPoint):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'value': 'float',
-        'set_as_total': 'bool'
+        'type': 'str',
+        'brightness': 'float',
+        'contrast': 'float'
     }
 
     attribute_map = {
-        'value': 'value',
-        'set_as_total': 'setAsTotal'
+        'type': 'type',
+        'brightness': 'brightness',
+        'contrast': 'contrast'
     }
 
     type_determiners = {
+        'type': 'Luminance',
     }
 
-    def __init__(self, value=None, set_as_total=None):  # noqa: E501
-        """OneValueChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(OneValueChartDataPoint, self).__init__()
+    def __init__(self, type='Luminance', brightness=None, contrast=None):  # noqa: E501
+        """LuminanceEffect - a model defined in Swagger"""  # noqa: E501
+        super(LuminanceEffect, self).__init__(type)
 
-        self._value = None
-        self._set_as_total = None
+        self._brightness = None
+        self._contrast = None
+        self.type = 'Luminance'
 
-        self.value = value
-        if set_as_total is not None:
-            self.set_as_total = set_as_total
+        self.brightness = brightness
+        self.contrast = contrast
 
     @property
-    def value(self):
-        """Gets the value of this OneValueChartDataPoint.  # noqa: E501
+    def brightness(self):
+        """Gets the brightness of this LuminanceEffect.  # noqa: E501
 
-        Value.  # noqa: E501
+        Brightness  # noqa: E501
 
-        :return: The value of this OneValueChartDataPoint.  # noqa: E501
+        :return: The brightness of this LuminanceEffect.  # noqa: E501
         :rtype: float
         """
-        return self._value
+        return self._brightness
 
-    @value.setter
-    def value(self, value):
-        """Sets the value of this OneValueChartDataPoint.
+    @brightness.setter
+    def brightness(self, brightness):
+        """Sets the brightness of this LuminanceEffect.
 
-        Value.  # noqa: E501
+        Brightness  # noqa: E501
 
-        :param value: The value of this OneValueChartDataPoint.  # noqa: E501
+        :param brightness: The brightness of this LuminanceEffect.  # noqa: E501
         :type: float
         """
-        self._value = value
+        self._brightness = brightness
 
     @property
-    def set_as_total(self):
-        """Gets the set_as_total of this OneValueChartDataPoint.  # noqa: E501
+    def contrast(self):
+        """Gets the contrast of this LuminanceEffect.  # noqa: E501
 
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
+        Contrast  # noqa: E501
 
-        :return: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :rtype: bool
+        :return: The contrast of this LuminanceEffect.  # noqa: E501
+        :rtype: float
         """
-        return self._set_as_total
+        return self._contrast
 
-    @set_as_total.setter
-    def set_as_total(self, set_as_total):
-        """Sets the set_as_total of this OneValueChartDataPoint.
+    @contrast.setter
+    def contrast(self, contrast):
+        """Sets the contrast of this LuminanceEffect.
 
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
+        Contrast  # noqa: E501
 
-        :param set_as_total: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :type: bool
+        :param contrast: The contrast of this LuminanceEffect.  # noqa: E501
+        :type: float
         """
-        self._set_as_total = set_as_total
+        self._contrast = contrast
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -144,7 +147,7 @@ class OneValueChartDataPoint(DataPoint):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, OneValueChartDataPoint):
+        if not isinstance(other, LuminanceEffect):
             return False
 
         return self.__dict__ == other.__dict__

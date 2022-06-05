@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.data_point import DataPoint
+from asposeslidescloud.models.image_transform_effect import ImageTransformEffect
 
-class OneValueChartDataPoint(DataPoint):
+class DuotoneEffect(ImageTransformEffect):
 
 
     """
@@ -43,72 +43,77 @@ class OneValueChartDataPoint(DataPoint):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'value': 'float',
-        'set_as_total': 'bool'
+        'type': 'str',
+        'color1': 'str',
+        'color2': 'str'
     }
 
     attribute_map = {
-        'value': 'value',
-        'set_as_total': 'setAsTotal'
+        'type': 'type',
+        'color1': 'color1',
+        'color2': 'color2'
     }
 
     type_determiners = {
+        'type': 'Duotone',
     }
 
-    def __init__(self, value=None, set_as_total=None):  # noqa: E501
-        """OneValueChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(OneValueChartDataPoint, self).__init__()
+    def __init__(self, type='Duotone', color1=None, color2=None):  # noqa: E501
+        """DuotoneEffect - a model defined in Swagger"""  # noqa: E501
+        super(DuotoneEffect, self).__init__(type)
 
-        self._value = None
-        self._set_as_total = None
+        self._color1 = None
+        self._color2 = None
+        self.type = 'Duotone'
 
-        self.value = value
-        if set_as_total is not None:
-            self.set_as_total = set_as_total
-
-    @property
-    def value(self):
-        """Gets the value of this OneValueChartDataPoint.  # noqa: E501
-
-        Value.  # noqa: E501
-
-        :return: The value of this OneValueChartDataPoint.  # noqa: E501
-        :rtype: float
-        """
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        """Sets the value of this OneValueChartDataPoint.
-
-        Value.  # noqa: E501
-
-        :param value: The value of this OneValueChartDataPoint.  # noqa: E501
-        :type: float
-        """
-        self._value = value
+        if color1 is not None:
+            self.color1 = color1
+        if color2 is not None:
+            self.color2 = color2
 
     @property
-    def set_as_total(self):
-        """Gets the set_as_total of this OneValueChartDataPoint.  # noqa: E501
+    def color1(self):
+        """Gets the color1 of this DuotoneEffect.  # noqa: E501
 
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
+        Returns target color format for dark pixels.  # noqa: E501
 
-        :return: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :rtype: bool
+        :return: The color1 of this DuotoneEffect.  # noqa: E501
+        :rtype: str
         """
-        return self._set_as_total
+        return self._color1
 
-    @set_as_total.setter
-    def set_as_total(self, set_as_total):
-        """Sets the set_as_total of this OneValueChartDataPoint.
+    @color1.setter
+    def color1(self, color1):
+        """Sets the color1 of this DuotoneEffect.
 
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
+        Returns target color format for dark pixels.  # noqa: E501
 
-        :param set_as_total: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :type: bool
+        :param color1: The color1 of this DuotoneEffect.  # noqa: E501
+        :type: str
         """
-        self._set_as_total = set_as_total
+        self._color1 = color1
+
+    @property
+    def color2(self):
+        """Gets the color2 of this DuotoneEffect.  # noqa: E501
+
+        Returns target color format for light pixels.  # noqa: E501
+
+        :return: The color2 of this DuotoneEffect.  # noqa: E501
+        :rtype: str
+        """
+        return self._color2
+
+    @color2.setter
+    def color2(self, color2):
+        """Sets the color2 of this DuotoneEffect.
+
+        Returns target color format for light pixels.  # noqa: E501
+
+        :param color2: The color2 of this DuotoneEffect.  # noqa: E501
+        :type: str
+        """
+        self._color2 = color2
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -144,7 +149,7 @@ class OneValueChartDataPoint(DataPoint):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, OneValueChartDataPoint):
+        if not isinstance(other, DuotoneEffect):
             return False
 
         return self.__dict__ == other.__dict__

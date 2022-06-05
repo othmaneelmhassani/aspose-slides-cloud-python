@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.data_point import DataPoint
+from asposeslidescloud.models.image_transform_effect import ImageTransformEffect
 
-class OneValueChartDataPoint(DataPoint):
+class ColorChangeEffect(ImageTransformEffect):
 
 
     """
@@ -43,72 +43,77 @@ class OneValueChartDataPoint(DataPoint):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'value': 'float',
-        'set_as_total': 'bool'
+        'type': 'str',
+        'from_color': 'str',
+        'to_color': 'str'
     }
 
     attribute_map = {
-        'value': 'value',
-        'set_as_total': 'setAsTotal'
+        'type': 'type',
+        'from_color': 'fromColor',
+        'to_color': 'toColor'
     }
 
     type_determiners = {
+        'type': 'ColorChange',
     }
 
-    def __init__(self, value=None, set_as_total=None):  # noqa: E501
-        """OneValueChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(OneValueChartDataPoint, self).__init__()
+    def __init__(self, type='ColorChange', from_color=None, to_color=None):  # noqa: E501
+        """ColorChangeEffect - a model defined in Swagger"""  # noqa: E501
+        super(ColorChangeEffect, self).__init__(type)
 
-        self._value = None
-        self._set_as_total = None
+        self._from_color = None
+        self._to_color = None
+        self.type = 'ColorChange'
 
-        self.value = value
-        if set_as_total is not None:
-            self.set_as_total = set_as_total
-
-    @property
-    def value(self):
-        """Gets the value of this OneValueChartDataPoint.  # noqa: E501
-
-        Value.  # noqa: E501
-
-        :return: The value of this OneValueChartDataPoint.  # noqa: E501
-        :rtype: float
-        """
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        """Sets the value of this OneValueChartDataPoint.
-
-        Value.  # noqa: E501
-
-        :param value: The value of this OneValueChartDataPoint.  # noqa: E501
-        :type: float
-        """
-        self._value = value
+        if from_color is not None:
+            self.from_color = from_color
+        if to_color is not None:
+            self.to_color = to_color
 
     @property
-    def set_as_total(self):
-        """Gets the set_as_total of this OneValueChartDataPoint.  # noqa: E501
+    def from_color(self):
+        """Gets the from_color of this ColorChangeEffect.  # noqa: E501
 
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
+        Color which will be replaced.  # noqa: E501
 
-        :return: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :rtype: bool
+        :return: The from_color of this ColorChangeEffect.  # noqa: E501
+        :rtype: str
         """
-        return self._set_as_total
+        return self._from_color
 
-    @set_as_total.setter
-    def set_as_total(self, set_as_total):
-        """Sets the set_as_total of this OneValueChartDataPoint.
+    @from_color.setter
+    def from_color(self, from_color):
+        """Sets the from_color of this ColorChangeEffect.
 
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
+        Color which will be replaced.  # noqa: E501
 
-        :param set_as_total: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :type: bool
+        :param from_color: The from_color of this ColorChangeEffect.  # noqa: E501
+        :type: str
         """
-        self._set_as_total = set_as_total
+        self._from_color = from_color
+
+    @property
+    def to_color(self):
+        """Gets the to_color of this ColorChangeEffect.  # noqa: E501
+
+        Color which will replace.  # noqa: E501
+
+        :return: The to_color of this ColorChangeEffect.  # noqa: E501
+        :rtype: str
+        """
+        return self._to_color
+
+    @to_color.setter
+    def to_color(self, to_color):
+        """Sets the to_color of this ColorChangeEffect.
+
+        Color which will replace.  # noqa: E501
+
+        :param to_color: The to_color of this ColorChangeEffect.  # noqa: E501
+        :type: str
+        """
+        self._to_color = to_color
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -144,7 +149,7 @@ class OneValueChartDataPoint(DataPoint):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, OneValueChartDataPoint):
+        if not isinstance(other, ColorChangeEffect):
             return False
 
         return self.__dict__ == other.__dict__

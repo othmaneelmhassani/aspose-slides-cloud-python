@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.data_point import DataPoint
+from asposeslidescloud.models.image_transform_effect import ImageTransformEffect
 
-class OneValueChartDataPoint(DataPoint):
+class AlphaReplaceEffect(ImageTransformEffect):
 
 
     """
@@ -43,72 +43,49 @@ class OneValueChartDataPoint(DataPoint):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'value': 'float',
-        'set_as_total': 'bool'
+        'type': 'str',
+        'alpha': 'float'
     }
 
     attribute_map = {
-        'value': 'value',
-        'set_as_total': 'setAsTotal'
+        'type': 'type',
+        'alpha': 'alpha'
     }
 
     type_determiners = {
+        'type': 'AlphaReplace',
     }
 
-    def __init__(self, value=None, set_as_total=None):  # noqa: E501
-        """OneValueChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(OneValueChartDataPoint, self).__init__()
+    def __init__(self, type='AlphaReplace', alpha=None):  # noqa: E501
+        """AlphaReplaceEffect - a model defined in Swagger"""  # noqa: E501
+        super(AlphaReplaceEffect, self).__init__(type)
 
-        self._value = None
-        self._set_as_total = None
+        self._alpha = None
+        self.type = 'AlphaReplace'
 
-        self.value = value
-        if set_as_total is not None:
-            self.set_as_total = set_as_total
+        self.alpha = alpha
 
     @property
-    def value(self):
-        """Gets the value of this OneValueChartDataPoint.  # noqa: E501
+    def alpha(self):
+        """Gets the alpha of this AlphaReplaceEffect.  # noqa: E501
 
-        Value.  # noqa: E501
+        The new opacity value.  # noqa: E501
 
-        :return: The value of this OneValueChartDataPoint.  # noqa: E501
+        :return: The alpha of this AlphaReplaceEffect.  # noqa: E501
         :rtype: float
         """
-        return self._value
+        return self._alpha
 
-    @value.setter
-    def value(self, value):
-        """Sets the value of this OneValueChartDataPoint.
+    @alpha.setter
+    def alpha(self, alpha):
+        """Sets the alpha of this AlphaReplaceEffect.
 
-        Value.  # noqa: E501
+        The new opacity value.  # noqa: E501
 
-        :param value: The value of this OneValueChartDataPoint.  # noqa: E501
+        :param alpha: The alpha of this AlphaReplaceEffect.  # noqa: E501
         :type: float
         """
-        self._value = value
-
-    @property
-    def set_as_total(self):
-        """Gets the set_as_total of this OneValueChartDataPoint.  # noqa: E501
-
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
-
-        :return: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :rtype: bool
-        """
-        return self._set_as_total
-
-    @set_as_total.setter
-    def set_as_total(self, set_as_total):
-        """Sets the set_as_total of this OneValueChartDataPoint.
-
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
-
-        :param set_as_total: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :type: bool
-        """
-        self._set_as_total = set_as_total
+        self._alpha = alpha
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -144,7 +121,7 @@ class OneValueChartDataPoint(DataPoint):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, OneValueChartDataPoint):
+        if not isinstance(other, AlphaReplaceEffect):
             return False
 
         return self.__dict__ == other.__dict__

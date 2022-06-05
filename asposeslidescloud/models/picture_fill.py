@@ -52,7 +52,8 @@ class PictureFill(FillFormat):
         'image': 'ResourceUri',
         'base64_data': 'str',
         'svg_data': 'str',
-        'picture_fill_mode': 'str'
+        'picture_fill_mode': 'str',
+        'image_transform_list': 'list[ImageTransformEffect]'
     }
 
     attribute_map = {
@@ -65,14 +66,15 @@ class PictureFill(FillFormat):
         'image': 'image',
         'base64_data': 'base64Data',
         'svg_data': 'svgData',
-        'picture_fill_mode': 'pictureFillMode'
+        'picture_fill_mode': 'pictureFillMode',
+        'image_transform_list': 'imageTransformList'
     }
 
     type_determiners = {
         'type': 'Picture',
     }
 
-    def __init__(self, type='Picture', crop_bottom=None, crop_left=None, crop_right=None, crop_top=None, dpi=None, image=None, base64_data=None, svg_data=None, picture_fill_mode=None):  # noqa: E501
+    def __init__(self, type='Picture', crop_bottom=None, crop_left=None, crop_right=None, crop_top=None, dpi=None, image=None, base64_data=None, svg_data=None, picture_fill_mode=None, image_transform_list=None):  # noqa: E501
         """PictureFill - a model defined in Swagger"""  # noqa: E501
         super(PictureFill, self).__init__(type)
 
@@ -85,6 +87,7 @@ class PictureFill(FillFormat):
         self._base64_data = None
         self._svg_data = None
         self._picture_fill_mode = None
+        self._image_transform_list = None
         self.type = 'Picture'
 
         self.crop_bottom = crop_bottom
@@ -99,6 +102,8 @@ class PictureFill(FillFormat):
         if svg_data is not None:
             self.svg_data = svg_data
         self.picture_fill_mode = picture_fill_mode
+        if image_transform_list is not None:
+            self.image_transform_list = image_transform_list
 
     @property
     def crop_bottom(self):
@@ -313,6 +318,28 @@ class PictureFill(FillFormat):
                     .format(picture_fill_mode, allowed_values)
                 )
         self._picture_fill_mode = picture_fill_mode
+
+    @property
+    def image_transform_list(self):
+        """Gets the image_transform_list of this PictureFill.  # noqa: E501
+
+        Image transform effects.  # noqa: E501
+
+        :return: The image_transform_list of this PictureFill.  # noqa: E501
+        :rtype: list[ImageTransformEffect]
+        """
+        return self._image_transform_list
+
+    @image_transform_list.setter
+    def image_transform_list(self, image_transform_list):
+        """Sets the image_transform_list of this PictureFill.
+
+        Image transform effects.  # noqa: E501
+
+        :param image_transform_list: The image_transform_list of this PictureFill.  # noqa: E501
+        :type: list[ImageTransformEffect]
+        """
+        self._image_transform_list = image_transform_list
 
     def to_dict(self):
         """Returns the model properties as a dict"""

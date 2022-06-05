@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.one_value_chart_data_point import OneValueChartDataPoint
+from asposeslidescloud.models.image_transform_effect import ImageTransformEffect
 
-class WaterfallChartDataPoint(OneValueChartDataPoint):
+class BlurImageEffect(ImageTransformEffect):
 
 
     """
@@ -43,48 +43,75 @@ class WaterfallChartDataPoint(OneValueChartDataPoint):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'value': 'float',
-        'set_as_total': 'bool'
+        'type': 'str',
+        'radius': 'float',
+        'grow': 'bool'
     }
 
     attribute_map = {
-        'value': 'value',
-        'set_as_total': 'setAsTotal'
+        'type': 'type',
+        'radius': 'radius',
+        'grow': 'grow'
     }
 
     type_determiners = {
+        'type': 'Blur',
     }
 
-    def __init__(self, value=None, set_as_total=None):  # noqa: E501
-        """WaterfallChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(WaterfallChartDataPoint, self).__init__(value)
+    def __init__(self, type='Blur', radius=None, grow=None):  # noqa: E501
+        """BlurImageEffect - a model defined in Swagger"""  # noqa: E501
+        super(BlurImageEffect, self).__init__(type)
 
-        self._set_as_total = None
+        self._radius = None
+        self._grow = None
+        self.type = 'Blur'
 
-        if set_as_total is not None:
-            self.set_as_total = set_as_total
+        self.radius = radius
+        self.grow = grow
 
     @property
-    def set_as_total(self):
-        """Gets the set_as_total of this WaterfallChartDataPoint.  # noqa: E501
+    def radius(self):
+        """Gets the radius of this BlurImageEffect.  # noqa: E501
 
-        Value.  # noqa: E501
+        Returns or sets blur radius.  # noqa: E501
 
-        :return: The set_as_total of this WaterfallChartDataPoint.  # noqa: E501
+        :return: The radius of this BlurImageEffect.  # noqa: E501
+        :rtype: float
+        """
+        return self._radius
+
+    @radius.setter
+    def radius(self, radius):
+        """Sets the radius of this BlurImageEffect.
+
+        Returns or sets blur radius.  # noqa: E501
+
+        :param radius: The radius of this BlurImageEffect.  # noqa: E501
+        :type: float
+        """
+        self._radius = radius
+
+    @property
+    def grow(self):
+        """Gets the grow of this BlurImageEffect.  # noqa: E501
+
+        Determines whether the bounds of the object should be grown as a result of the blurring. True indicates the bounds are grown while false indicates that they are not.  # noqa: E501
+
+        :return: The grow of this BlurImageEffect.  # noqa: E501
         :rtype: bool
         """
-        return self._set_as_total
+        return self._grow
 
-    @set_as_total.setter
-    def set_as_total(self, set_as_total):
-        """Sets the set_as_total of this WaterfallChartDataPoint.
+    @grow.setter
+    def grow(self, grow):
+        """Sets the grow of this BlurImageEffect.
 
-        Value.  # noqa: E501
+        Determines whether the bounds of the object should be grown as a result of the blurring. True indicates the bounds are grown while false indicates that they are not.  # noqa: E501
 
-        :param set_as_total: The set_as_total of this WaterfallChartDataPoint.  # noqa: E501
+        :param grow: The grow of this BlurImageEffect.  # noqa: E501
         :type: bool
         """
-        self._set_as_total = set_as_total
+        self._grow = grow
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -120,7 +147,7 @@ class WaterfallChartDataPoint(OneValueChartDataPoint):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, WaterfallChartDataPoint):
+        if not isinstance(other, BlurImageEffect):
             return False
 
         return self.__dict__ == other.__dict__

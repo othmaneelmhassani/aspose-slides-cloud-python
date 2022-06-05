@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.one_value_series import OneValueSeries
+from asposeslidescloud.models.image_transform_effect import ImageTransformEffect
 
-class WaterfallSeries(OneValueSeries):
+class FillOverlayImageEffect(ImageTransformEffect):
 
 
     """
@@ -44,79 +44,91 @@ class WaterfallSeries(OneValueSeries):
     """
     swagger_types = {
         'type': 'str',
-        'name': 'str',
-        'is_color_varied': 'bool',
-        'inverted_solid_fill_color': 'str',
-        'smooth': 'bool',
-        'plot_on_second_axis': 'bool',
-        'order': 'int',
-        'invert_if_negative': 'bool',
-        'explosion': 'int',
-        'marker': 'SeriesMarker',
-        'fill_format': 'FillFormat',
-        'effect_format': 'EffectFormat',
-        'line_format': 'LineFormat',
-        'data_point_type': 'str',
-        'data_points': 'list[OneValueChartDataPoint]',
-        'number_format_of_values': 'str',
-        'show_connector_lines': 'bool'
+        'blend': 'str',
+        'fill_format': 'FillFormat'
     }
 
     attribute_map = {
         'type': 'type',
-        'name': 'name',
-        'is_color_varied': 'isColorVaried',
-        'inverted_solid_fill_color': 'invertedSolidFillColor',
-        'smooth': 'smooth',
-        'plot_on_second_axis': 'plotOnSecondAxis',
-        'order': 'order',
-        'invert_if_negative': 'invertIfNegative',
-        'explosion': 'explosion',
-        'marker': 'marker',
-        'fill_format': 'fillFormat',
-        'effect_format': 'effectFormat',
-        'line_format': 'lineFormat',
-        'data_point_type': 'dataPointType',
-        'data_points': 'dataPoints',
-        'number_format_of_values': 'numberFormatOfValues',
-        'show_connector_lines': 'showConnectorLines'
+        'blend': 'blend',
+        'fill_format': 'fillFormat'
     }
 
     type_determiners = {
-        'dataPointType': 'OneValue',
+        'type': 'FillOverlay',
     }
 
-    def __init__(self, type=None, name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type='OneValue', data_points=None, number_format_of_values=None, show_connector_lines=None):  # noqa: E501
-        """WaterfallSeries - a model defined in Swagger"""  # noqa: E501
-        super(WaterfallSeries, self).__init__(type, name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type, data_points, number_format_of_values)
+    def __init__(self, type='FillOverlay', blend=None, fill_format=None):  # noqa: E501
+        """FillOverlayImageEffect - a model defined in Swagger"""  # noqa: E501
+        super(FillOverlayImageEffect, self).__init__(type)
 
-        self._show_connector_lines = None
-        self.data_point_type = 'OneValue'
+        self._blend = None
+        self._fill_format = None
+        self.type = 'FillOverlay'
 
-        if show_connector_lines is not None:
-            self.show_connector_lines = show_connector_lines
+        self.blend = blend
+        if fill_format is not None:
+            self.fill_format = fill_format
 
     @property
-    def show_connector_lines(self):
-        """Gets the show_connector_lines of this WaterfallSeries.  # noqa: E501
+    def blend(self):
+        """Gets the blend of this FillOverlayImageEffect.  # noqa: E501
 
-        True if inner points are shown.  # noqa: E501
+        FillBlendMode.  # noqa: E501
 
-        :return: The show_connector_lines of this WaterfallSeries.  # noqa: E501
-        :rtype: bool
+        :return: The blend of this FillOverlayImageEffect.  # noqa: E501
+        :rtype: str
         """
-        return self._show_connector_lines
+        return self._blend
 
-    @show_connector_lines.setter
-    def show_connector_lines(self, show_connector_lines):
-        """Sets the show_connector_lines of this WaterfallSeries.
+    @blend.setter
+    def blend(self, blend):
+        """Sets the blend of this FillOverlayImageEffect.
 
-        True if inner points are shown.  # noqa: E501
+        FillBlendMode.  # noqa: E501
 
-        :param show_connector_lines: The show_connector_lines of this WaterfallSeries.  # noqa: E501
-        :type: bool
+        :param blend: The blend of this FillOverlayImageEffect.  # noqa: E501
+        :type: str
         """
-        self._show_connector_lines = show_connector_lines
+        if blend is not None:
+            allowed_values = ["Darken", "Lighten", "Multiply", "Overlay", "Screen"]  # noqa: E501
+            if blend.isdigit():
+                int_blend = int(blend)
+                if int_blend < 0 or int_blend >= len(allowed_values):
+                    raise ValueError(
+                        "Invalid value for `blend` ({0}), must be one of {1}"  # noqa: E501
+                        .format(blend, allowed_values)
+                    )
+                self._blend = allowed_values[int_blend]
+                return
+            if blend not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `blend` ({0}), must be one of {1}"  # noqa: E501
+                    .format(blend, allowed_values)
+                )
+        self._blend = blend
+
+    @property
+    def fill_format(self):
+        """Gets the fill_format of this FillOverlayImageEffect.  # noqa: E501
+
+        Fill format.  # noqa: E501
+
+        :return: The fill_format of this FillOverlayImageEffect.  # noqa: E501
+        :rtype: FillFormat
+        """
+        return self._fill_format
+
+    @fill_format.setter
+    def fill_format(self, fill_format):
+        """Sets the fill_format of this FillOverlayImageEffect.
+
+        Fill format.  # noqa: E501
+
+        :param fill_format: The fill_format of this FillOverlayImageEffect.  # noqa: E501
+        :type: FillFormat
+        """
+        self._fill_format = fill_format
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -152,7 +164,7 @@ class WaterfallSeries(OneValueSeries):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, WaterfallSeries):
+        if not isinstance(other, FillOverlayImageEffect):
             return False
 
         return self.__dict__ == other.__dict__

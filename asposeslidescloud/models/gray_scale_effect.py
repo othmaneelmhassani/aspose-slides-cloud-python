@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.data_point import DataPoint
+from asposeslidescloud.models.image_transform_effect import ImageTransformEffect
 
-class OneValueChartDataPoint(DataPoint):
+class GrayScaleEffect(ImageTransformEffect):
 
 
     """
@@ -43,72 +43,21 @@ class OneValueChartDataPoint(DataPoint):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'value': 'float',
-        'set_as_total': 'bool'
+        'type': 'str'
     }
 
     attribute_map = {
-        'value': 'value',
-        'set_as_total': 'setAsTotal'
+        'type': 'type'
     }
 
     type_determiners = {
+        'type': 'GrayScale',
     }
 
-    def __init__(self, value=None, set_as_total=None):  # noqa: E501
-        """OneValueChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(OneValueChartDataPoint, self).__init__()
-
-        self._value = None
-        self._set_as_total = None
-
-        self.value = value
-        if set_as_total is not None:
-            self.set_as_total = set_as_total
-
-    @property
-    def value(self):
-        """Gets the value of this OneValueChartDataPoint.  # noqa: E501
-
-        Value.  # noqa: E501
-
-        :return: The value of this OneValueChartDataPoint.  # noqa: E501
-        :rtype: float
-        """
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        """Sets the value of this OneValueChartDataPoint.
-
-        Value.  # noqa: E501
-
-        :param value: The value of this OneValueChartDataPoint.  # noqa: E501
-        :type: float
-        """
-        self._value = value
-
-    @property
-    def set_as_total(self):
-        """Gets the set_as_total of this OneValueChartDataPoint.  # noqa: E501
-
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
-
-        :return: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :rtype: bool
-        """
-        return self._set_as_total
-
-    @set_as_total.setter
-    def set_as_total(self, set_as_total):
-        """Sets the set_as_total of this OneValueChartDataPoint.
-
-        SetAsTotal. Applied to Waterfall data points only.  # noqa: E501
-
-        :param set_as_total: The set_as_total of this OneValueChartDataPoint.  # noqa: E501
-        :type: bool
-        """
-        self._set_as_total = set_as_total
+    def __init__(self, type='GrayScale'):  # noqa: E501
+        """GrayScaleEffect - a model defined in Swagger"""  # noqa: E501
+        super(GrayScaleEffect, self).__init__(type)
+        self.type = 'GrayScale'
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -144,7 +93,7 @@ class OneValueChartDataPoint(DataPoint):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, OneValueChartDataPoint):
+        if not isinstance(other, GrayScaleEffect):
             return False
 
         return self.__dict__ == other.__dict__

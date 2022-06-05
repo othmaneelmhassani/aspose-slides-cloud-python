@@ -68,7 +68,8 @@ class VideoFrame(GeometryShape):
         'play_mode': 'str',
         'rewind_video': 'bool',
         'volume': 'str',
-        'base64_data': 'str'
+        'base64_data': 'str',
+        'picture_fill_format': 'PictureFill'
     }
 
     attribute_map = {
@@ -97,14 +98,15 @@ class VideoFrame(GeometryShape):
         'play_mode': 'playMode',
         'rewind_video': 'rewindVideo',
         'volume': 'volume',
-        'base64_data': 'base64Data'
+        'base64_data': 'base64Data',
+        'picture_fill_format': 'pictureFillFormat'
     }
 
     type_determiners = {
         'type': 'VideoFrame',
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='VideoFrame', shape_type=None, full_screen_mode=None, hide_at_showing=None, play_loop_mode=None, play_mode=None, rewind_video=None, volume=None, base64_data=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='VideoFrame', shape_type=None, full_screen_mode=None, hide_at_showing=None, play_loop_mode=None, play_mode=None, rewind_video=None, volume=None, base64_data=None, picture_fill_format=None):  # noqa: E501
         """VideoFrame - a model defined in Swagger"""  # noqa: E501
         super(VideoFrame, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, fill_format, effect_format, three_d_format, line_format, hyperlink_click, hyperlink_mouse_over, type, shape_type)
 
@@ -115,6 +117,7 @@ class VideoFrame(GeometryShape):
         self._rewind_video = None
         self._volume = None
         self._base64_data = None
+        self._picture_fill_format = None
         self.type = 'VideoFrame'
 
         if full_screen_mode is not None:
@@ -131,6 +134,8 @@ class VideoFrame(GeometryShape):
             self.volume = volume
         if base64_data is not None:
             self.base64_data = base64_data
+        if picture_fill_format is not None:
+            self.picture_fill_format = picture_fill_format
 
     @property
     def full_screen_mode(self):
@@ -317,6 +322,28 @@ class VideoFrame(GeometryShape):
         :type: str
         """
         self._base64_data = base64_data
+
+    @property
+    def picture_fill_format(self):
+        """Gets the picture_fill_format of this VideoFrame.  # noqa: E501
+
+        Picture fill format.  # noqa: E501
+
+        :return: The picture_fill_format of this VideoFrame.  # noqa: E501
+        :rtype: PictureFill
+        """
+        return self._picture_fill_format
+
+    @picture_fill_format.setter
+    def picture_fill_format(self, picture_fill_format):
+        """Sets the picture_fill_format of this VideoFrame.
+
+        Picture fill format.  # noqa: E501
+
+        :param picture_fill_format: The picture_fill_format of this VideoFrame.  # noqa: E501
+        :type: PictureFill
+        """
+        self._picture_fill_format = picture_fill_format
 
     def to_dict(self):
         """Returns the model properties as a dict"""
