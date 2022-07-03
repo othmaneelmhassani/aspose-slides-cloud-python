@@ -44,27 +44,32 @@ class OneValueChartDataPoint(DataPoint):
     """
     swagger_types = {
         'value': 'float',
-        'set_as_total': 'bool'
+        'set_as_total': 'bool',
+        'invert_if_negative': 'bool'
     }
 
     attribute_map = {
         'value': 'value',
-        'set_as_total': 'setAsTotal'
+        'set_as_total': 'setAsTotal',
+        'invert_if_negative': 'invertIfNegative'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, value=None, set_as_total=None):  # noqa: E501
+    def __init__(self, value=None, set_as_total=None, invert_if_negative=None):  # noqa: E501
         """OneValueChartDataPoint - a model defined in Swagger"""  # noqa: E501
         super(OneValueChartDataPoint, self).__init__()
 
         self._value = None
         self._set_as_total = None
+        self._invert_if_negative = None
 
         self.value = value
         if set_as_total is not None:
             self.set_as_total = set_as_total
+        if invert_if_negative is not None:
+            self.invert_if_negative = invert_if_negative
 
     @property
     def value(self):
@@ -109,6 +114,28 @@ class OneValueChartDataPoint(DataPoint):
         :type: bool
         """
         self._set_as_total = set_as_total
+
+    @property
+    def invert_if_negative(self):
+        """Gets the invert_if_negative of this OneValueChartDataPoint.  # noqa: E501
+
+        True if the data point shall invert its colors if the value is negative. Applies to bar, column and bubble series.  # noqa: E501
+
+        :return: The invert_if_negative of this OneValueChartDataPoint.  # noqa: E501
+        :rtype: bool
+        """
+        return self._invert_if_negative
+
+    @invert_if_negative.setter
+    def invert_if_negative(self, invert_if_negative):
+        """Sets the invert_if_negative of this OneValueChartDataPoint.
+
+        True if the data point shall invert its colors if the value is negative. Applies to bar, column and bubble series.  # noqa: E501
+
+        :param invert_if_negative: The invert_if_negative of this OneValueChartDataPoint.  # noqa: E501
+        :type: bool
+        """
+        self._invert_if_negative = invert_if_negative
 
     def to_dict(self):
         """Returns the model properties as a dict"""

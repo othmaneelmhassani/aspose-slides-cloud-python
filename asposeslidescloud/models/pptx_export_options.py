@@ -91,7 +91,7 @@ class PptxExportOptions(ExportOptions):
         :type: str
         """
         if conformance is not None:
-            allowed_values = ["Ecma376_2006", "Iso29500_2008_Transitional", "Iso29500_2008_Strict"]  # noqa: E501
+            allowed_values = ["Ecma376", "Iso29500Transitional", "Iso29500Strict"]  # noqa: E501
             if conformance.isdigit():
                 int_conformance = int(conformance)
                 if int_conformance < 0 or int_conformance >= len(allowed_values):

@@ -1,3 +1,4 @@
+
 from __future__ import absolute_import
 
 from asposeslidescloud import Portion, SolidFill
@@ -237,3 +238,27 @@ class TestPortions(BaseTest):
         self.assertGreater(response.y, 0)
         self.assertGreater(response.width, 0)
         self.assertGreater(response.height, 0)
+
+    def test_get_portion_effective(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
+                                      constant.FOLDER_NAME + "/" + constant.FILE_NAME)
+        slide_index = 6
+        shape_index = 2
+        paragraph_index = 1
+        portion_index = 1
+        response = BaseTest.slides_api.get_portion_effective(constant.FILE_NAME, slide_index, shape_index, paragraph_index,
+                                                   portion_index, constant.PASSWORD, constant.FOLDER_NAME)
+        self.assertEqual(18, response.font_height)
+
+    def test_get_sub_shape_portion(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
+                                      constant.FOLDER_NAME + "/" + constant.FILE_NAME)
+        slide_index = 6
+        shape_index = 1
+        paragraph_index = 1
+        portion_index = 1
+        shape_path = "3/shapes"
+        response = BaseTest.slides_api.get_subshape_portion_effective(constant.FILE_NAME, slide_index, shape_path,
+                                                                      shape_index, paragraph_index, portion_index,
+                                                                      constant.PASSWORD, constant.FOLDER_NAME)
+        self.assertEqual(18, response.font_height)

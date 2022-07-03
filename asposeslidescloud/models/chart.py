@@ -71,7 +71,9 @@ class Chart(ShapeBase):
         'floor': 'ChartWall',
         'legend': 'Legend',
         'axes': 'Axes',
-        'plot_area': 'PlotArea'
+        'plot_area': 'PlotArea',
+        'has_rounded_corners': 'bool',
+        'series_groups': 'list[ChartSeriesGroup]'
     }
 
     attribute_map = {
@@ -103,14 +105,16 @@ class Chart(ShapeBase):
         'floor': 'floor',
         'legend': 'legend',
         'axes': 'axes',
-        'plot_area': 'plotArea'
+        'plot_area': 'plotArea',
+        'has_rounded_corners': 'hasRoundedCorners',
+        'series_groups': 'seriesGroups'
     }
 
     type_determiners = {
         'type': 'Chart',
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='Chart', chart_type=None, show_data_labels_over_maximum=None, series=None, categories=None, title=None, back_wall=None, side_wall=None, floor=None, legend=None, axes=None, plot_area=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='Chart', chart_type=None, show_data_labels_over_maximum=None, series=None, categories=None, title=None, back_wall=None, side_wall=None, floor=None, legend=None, axes=None, plot_area=None, has_rounded_corners=None, series_groups=None):  # noqa: E501
         """Chart - a model defined in Swagger"""  # noqa: E501
         super(Chart, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, fill_format, effect_format, three_d_format, line_format, hyperlink_click, hyperlink_mouse_over, type)
 
@@ -125,6 +129,8 @@ class Chart(ShapeBase):
         self._legend = None
         self._axes = None
         self._plot_area = None
+        self._has_rounded_corners = None
+        self._series_groups = None
         self.type = 'Chart'
 
         self.chart_type = chart_type
@@ -148,6 +154,10 @@ class Chart(ShapeBase):
             self.axes = axes
         if plot_area is not None:
             self.plot_area = plot_area
+        if has_rounded_corners is not None:
+            self.has_rounded_corners = has_rounded_corners
+        if series_groups is not None:
+            self.series_groups = series_groups
 
     @property
     def chart_type(self):
@@ -406,6 +416,50 @@ class Chart(ShapeBase):
         :type: PlotArea
         """
         self._plot_area = plot_area
+
+    @property
+    def has_rounded_corners(self):
+        """Gets the has_rounded_corners of this Chart.  # noqa: E501
+
+        Specifies the chart area shall have rounded corners.  # noqa: E501
+
+        :return: The has_rounded_corners of this Chart.  # noqa: E501
+        :rtype: bool
+        """
+        return self._has_rounded_corners
+
+    @has_rounded_corners.setter
+    def has_rounded_corners(self, has_rounded_corners):
+        """Sets the has_rounded_corners of this Chart.
+
+        Specifies the chart area shall have rounded corners.  # noqa: E501
+
+        :param has_rounded_corners: The has_rounded_corners of this Chart.  # noqa: E501
+        :type: bool
+        """
+        self._has_rounded_corners = has_rounded_corners
+
+    @property
+    def series_groups(self):
+        """Gets the series_groups of this Chart.  # noqa: E501
+
+        Gets groups of series.   # noqa: E501
+
+        :return: The series_groups of this Chart.  # noqa: E501
+        :rtype: list[ChartSeriesGroup]
+        """
+        return self._series_groups
+
+    @series_groups.setter
+    def series_groups(self, series_groups):
+        """Sets the series_groups of this Chart.
+
+        Gets groups of series.   # noqa: E501
+
+        :param series_groups: The series_groups of this Chart.  # noqa: E501
+        :type: list[ChartSeriesGroup]
+        """
+        self._series_groups = series_groups
 
     def to_dict(self):
         """Returns the model properties as a dict"""

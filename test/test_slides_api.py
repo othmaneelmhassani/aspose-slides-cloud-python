@@ -23908,6 +23908,181 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('get_paragraph', 'storage')
 
+    def test_get_paragraph_effective(self):
+        """Test case for get_paragraph_effective
+        """
+        param_name = self.get_test_value('get_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_effective', 'storage', 'str')
+        self.initialize('get_paragraph_effective', None, None)
+        response = self.api.get_paragraph_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_get_paragraph_effective_invalid_name(self):
+        """Test case for get_paragraph_effective with invalid name
+        """
+        param_name = self.get_test_value('get_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_effective', 'storage', 'str')
+        param_name = self.get_invalid_test_value('get_paragraph_effective', 'name', param_name, 'str')
+        self.initialize('get_paragraph_effective', 'name', param_name)
+        ok = False
+        try:
+            self.api.get_paragraph_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_paragraph_effective', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_paragraph_effective', 'name', param_name)
+        if ok:
+            self.assert_no_exception('get_paragraph_effective', 'name')
+
+    def test_get_paragraph_effective_invalid_slide_index(self):
+        """Test case for get_paragraph_effective with invalid slide_index
+        """
+        param_name = self.get_test_value('get_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_effective', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('get_paragraph_effective', 'slide_index', param_slide_index, 'int')
+        self.initialize('get_paragraph_effective', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.get_paragraph_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_paragraph_effective', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_paragraph_effective', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('get_paragraph_effective', 'slide_index')
+
+    def test_get_paragraph_effective_invalid_shape_index(self):
+        """Test case for get_paragraph_effective with invalid shape_index
+        """
+        param_name = self.get_test_value('get_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_effective', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('get_paragraph_effective', 'shape_index', param_shape_index, 'int')
+        self.initialize('get_paragraph_effective', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.get_paragraph_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_paragraph_effective', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_paragraph_effective', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('get_paragraph_effective', 'shape_index')
+
+    def test_get_paragraph_effective_invalid_paragraph_index(self):
+        """Test case for get_paragraph_effective with invalid paragraph_index
+        """
+        param_name = self.get_test_value('get_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_effective', 'storage', 'str')
+        param_paragraph_index = self.get_invalid_test_value('get_paragraph_effective', 'paragraph_index', param_paragraph_index, 'int')
+        self.initialize('get_paragraph_effective', 'paragraph_index', param_paragraph_index)
+        ok = False
+        try:
+            self.api.get_paragraph_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_paragraph_effective', 'paragraph_index', param_paragraph_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_paragraph_effective', 'paragraph_index', param_paragraph_index)
+        if ok:
+            self.assert_no_exception('get_paragraph_effective', 'paragraph_index')
+
+    def test_get_paragraph_effective_invalid_password(self):
+        """Test case for get_paragraph_effective with invalid password
+        """
+        param_name = self.get_test_value('get_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_effective', 'storage', 'str')
+        param_password = self.get_invalid_test_value('get_paragraph_effective', 'password', param_password, 'str')
+        self.initialize('get_paragraph_effective', 'password', param_password)
+        ok = False
+        try:
+            self.api.get_paragraph_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_paragraph_effective', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_paragraph_effective', 'password', param_password)
+        if ok:
+            self.assert_no_exception('get_paragraph_effective', 'password')
+
+    def test_get_paragraph_effective_invalid_folder(self):
+        """Test case for get_paragraph_effective with invalid folder
+        """
+        param_name = self.get_test_value('get_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_effective', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('get_paragraph_effective', 'folder', param_folder, 'str')
+        self.initialize('get_paragraph_effective', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.get_paragraph_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_paragraph_effective', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_paragraph_effective', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('get_paragraph_effective', 'folder')
+
+    def test_get_paragraph_effective_invalid_storage(self):
+        """Test case for get_paragraph_effective with invalid storage
+        """
+        param_name = self.get_test_value('get_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_paragraph_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_paragraph_effective', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('get_paragraph_effective', 'storage', param_storage, 'str')
+        self.initialize('get_paragraph_effective', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.get_paragraph_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_paragraph_effective', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_paragraph_effective', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('get_paragraph_effective', 'storage')
+
     def test_get_paragraph_rectangle(self):
         """Test case for get_paragraph_rectangle
         """
@@ -24696,6 +24871,213 @@ class TestSlidesApi(BaseTest):
             self.assert_value_error(ex, 'get_portion', 'storage', param_storage)
         if ok:
             self.assert_no_exception('get_portion', 'storage')
+
+    def test_get_portion_effective(self):
+        """Test case for get_portion_effective
+        """
+        param_name = self.get_test_value('get_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_effective', 'storage', 'str')
+        self.initialize('get_portion_effective', None, None)
+        response = self.api.get_portion_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_get_portion_effective_invalid_name(self):
+        """Test case for get_portion_effective with invalid name
+        """
+        param_name = self.get_test_value('get_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_effective', 'storage', 'str')
+        param_name = self.get_invalid_test_value('get_portion_effective', 'name', param_name, 'str')
+        self.initialize('get_portion_effective', 'name', param_name)
+        ok = False
+        try:
+            self.api.get_portion_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_effective', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_effective', 'name', param_name)
+        if ok:
+            self.assert_no_exception('get_portion_effective', 'name')
+
+    def test_get_portion_effective_invalid_slide_index(self):
+        """Test case for get_portion_effective with invalid slide_index
+        """
+        param_name = self.get_test_value('get_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_effective', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('get_portion_effective', 'slide_index', param_slide_index, 'int')
+        self.initialize('get_portion_effective', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.get_portion_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_effective', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_effective', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('get_portion_effective', 'slide_index')
+
+    def test_get_portion_effective_invalid_shape_index(self):
+        """Test case for get_portion_effective with invalid shape_index
+        """
+        param_name = self.get_test_value('get_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_effective', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('get_portion_effective', 'shape_index', param_shape_index, 'int')
+        self.initialize('get_portion_effective', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.get_portion_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_effective', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_effective', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('get_portion_effective', 'shape_index')
+
+    def test_get_portion_effective_invalid_paragraph_index(self):
+        """Test case for get_portion_effective with invalid paragraph_index
+        """
+        param_name = self.get_test_value('get_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_effective', 'storage', 'str')
+        param_paragraph_index = self.get_invalid_test_value('get_portion_effective', 'paragraph_index', param_paragraph_index, 'int')
+        self.initialize('get_portion_effective', 'paragraph_index', param_paragraph_index)
+        ok = False
+        try:
+            self.api.get_portion_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_effective', 'paragraph_index', param_paragraph_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_effective', 'paragraph_index', param_paragraph_index)
+        if ok:
+            self.assert_no_exception('get_portion_effective', 'paragraph_index')
+
+    def test_get_portion_effective_invalid_portion_index(self):
+        """Test case for get_portion_effective with invalid portion_index
+        """
+        param_name = self.get_test_value('get_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_effective', 'storage', 'str')
+        param_portion_index = self.get_invalid_test_value('get_portion_effective', 'portion_index', param_portion_index, 'int')
+        self.initialize('get_portion_effective', 'portion_index', param_portion_index)
+        ok = False
+        try:
+            self.api.get_portion_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_effective', 'portion_index', param_portion_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_effective', 'portion_index', param_portion_index)
+        if ok:
+            self.assert_no_exception('get_portion_effective', 'portion_index')
+
+    def test_get_portion_effective_invalid_password(self):
+        """Test case for get_portion_effective with invalid password
+        """
+        param_name = self.get_test_value('get_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_effective', 'storage', 'str')
+        param_password = self.get_invalid_test_value('get_portion_effective', 'password', param_password, 'str')
+        self.initialize('get_portion_effective', 'password', param_password)
+        ok = False
+        try:
+            self.api.get_portion_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_effective', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_effective', 'password', param_password)
+        if ok:
+            self.assert_no_exception('get_portion_effective', 'password')
+
+    def test_get_portion_effective_invalid_folder(self):
+        """Test case for get_portion_effective with invalid folder
+        """
+        param_name = self.get_test_value('get_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_effective', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('get_portion_effective', 'folder', param_folder, 'str')
+        self.initialize('get_portion_effective', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.get_portion_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_effective', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_effective', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('get_portion_effective', 'folder')
+
+    def test_get_portion_effective_invalid_storage(self):
+        """Test case for get_portion_effective with invalid storage
+        """
+        param_name = self.get_test_value('get_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_portion_effective', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('get_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_portion_effective', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('get_portion_effective', 'storage', param_storage, 'str')
+        self.initialize('get_portion_effective', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.get_portion_effective(param_name, param_slide_index, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_portion_effective', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_portion_effective', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('get_portion_effective', 'storage')
 
     def test_get_portion_rectangle(self):
         """Test case for get_portion_rectangle
@@ -29877,6 +30259,213 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('get_subshape_paragraph', 'storage')
 
+    def test_get_subshape_paragraph_effective(self):
+        """Test case for get_subshape_paragraph_effective
+        """
+        param_name = self.get_test_value('get_subshape_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_paragraph_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_paragraph_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_subshape_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_paragraph_effective', 'storage', 'str')
+        self.initialize('get_subshape_paragraph_effective', None, None)
+        response = self.api.get_subshape_paragraph_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_get_subshape_paragraph_effective_invalid_name(self):
+        """Test case for get_subshape_paragraph_effective with invalid name
+        """
+        param_name = self.get_test_value('get_subshape_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_paragraph_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_paragraph_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_subshape_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_paragraph_effective', 'storage', 'str')
+        param_name = self.get_invalid_test_value('get_subshape_paragraph_effective', 'name', param_name, 'str')
+        self.initialize('get_subshape_paragraph_effective', 'name', param_name)
+        ok = False
+        try:
+            self.api.get_subshape_paragraph_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_paragraph_effective', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_paragraph_effective', 'name', param_name)
+        if ok:
+            self.assert_no_exception('get_subshape_paragraph_effective', 'name')
+
+    def test_get_subshape_paragraph_effective_invalid_slide_index(self):
+        """Test case for get_subshape_paragraph_effective with invalid slide_index
+        """
+        param_name = self.get_test_value('get_subshape_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_paragraph_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_paragraph_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_subshape_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_paragraph_effective', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('get_subshape_paragraph_effective', 'slide_index', param_slide_index, 'int')
+        self.initialize('get_subshape_paragraph_effective', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.get_subshape_paragraph_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_paragraph_effective', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_paragraph_effective', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('get_subshape_paragraph_effective', 'slide_index')
+
+    def test_get_subshape_paragraph_effective_invalid_path(self):
+        """Test case for get_subshape_paragraph_effective with invalid path
+        """
+        param_name = self.get_test_value('get_subshape_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_paragraph_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_paragraph_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_subshape_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_paragraph_effective', 'storage', 'str')
+        param_path = self.get_invalid_test_value('get_subshape_paragraph_effective', 'path', param_path, 'str')
+        self.initialize('get_subshape_paragraph_effective', 'path', param_path)
+        ok = False
+        try:
+            self.api.get_subshape_paragraph_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_paragraph_effective', 'path', param_path)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_paragraph_effective', 'path', param_path)
+        if ok:
+            self.assert_no_exception('get_subshape_paragraph_effective', 'path')
+
+    def test_get_subshape_paragraph_effective_invalid_shape_index(self):
+        """Test case for get_subshape_paragraph_effective with invalid shape_index
+        """
+        param_name = self.get_test_value('get_subshape_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_paragraph_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_paragraph_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_subshape_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_paragraph_effective', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('get_subshape_paragraph_effective', 'shape_index', param_shape_index, 'int')
+        self.initialize('get_subshape_paragraph_effective', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.get_subshape_paragraph_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_paragraph_effective', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_paragraph_effective', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('get_subshape_paragraph_effective', 'shape_index')
+
+    def test_get_subshape_paragraph_effective_invalid_paragraph_index(self):
+        """Test case for get_subshape_paragraph_effective with invalid paragraph_index
+        """
+        param_name = self.get_test_value('get_subshape_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_paragraph_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_paragraph_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_subshape_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_paragraph_effective', 'storage', 'str')
+        param_paragraph_index = self.get_invalid_test_value('get_subshape_paragraph_effective', 'paragraph_index', param_paragraph_index, 'int')
+        self.initialize('get_subshape_paragraph_effective', 'paragraph_index', param_paragraph_index)
+        ok = False
+        try:
+            self.api.get_subshape_paragraph_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_paragraph_effective', 'paragraph_index', param_paragraph_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_paragraph_effective', 'paragraph_index', param_paragraph_index)
+        if ok:
+            self.assert_no_exception('get_subshape_paragraph_effective', 'paragraph_index')
+
+    def test_get_subshape_paragraph_effective_invalid_password(self):
+        """Test case for get_subshape_paragraph_effective with invalid password
+        """
+        param_name = self.get_test_value('get_subshape_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_paragraph_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_paragraph_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_subshape_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_paragraph_effective', 'storage', 'str')
+        param_password = self.get_invalid_test_value('get_subshape_paragraph_effective', 'password', param_password, 'str')
+        self.initialize('get_subshape_paragraph_effective', 'password', param_password)
+        ok = False
+        try:
+            self.api.get_subshape_paragraph_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_paragraph_effective', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_paragraph_effective', 'password', param_password)
+        if ok:
+            self.assert_no_exception('get_subshape_paragraph_effective', 'password')
+
+    def test_get_subshape_paragraph_effective_invalid_folder(self):
+        """Test case for get_subshape_paragraph_effective with invalid folder
+        """
+        param_name = self.get_test_value('get_subshape_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_paragraph_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_paragraph_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_subshape_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_paragraph_effective', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('get_subshape_paragraph_effective', 'folder', param_folder, 'str')
+        self.initialize('get_subshape_paragraph_effective', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.get_subshape_paragraph_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_paragraph_effective', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_paragraph_effective', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('get_subshape_paragraph_effective', 'folder')
+
+    def test_get_subshape_paragraph_effective_invalid_storage(self):
+        """Test case for get_subshape_paragraph_effective with invalid storage
+        """
+        param_name = self.get_test_value('get_subshape_paragraph_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_paragraph_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_paragraph_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_paragraph_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_paragraph_effective', 'paragraph_index', 'int')
+        param_password = self.get_test_value('get_subshape_paragraph_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_paragraph_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_paragraph_effective', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('get_subshape_paragraph_effective', 'storage', param_storage, 'str')
+        self.initialize('get_subshape_paragraph_effective', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.get_subshape_paragraph_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_paragraph_effective', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_paragraph_effective', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('get_subshape_paragraph_effective', 'storage')
+
     def test_get_subshape_paragraphs(self):
         """Test case for get_subshape_paragraphs
         """
@@ -30292,6 +30881,247 @@ class TestSlidesApi(BaseTest):
             self.assert_value_error(ex, 'get_subshape_portion', 'storage', param_storage)
         if ok:
             self.assert_no_exception('get_subshape_portion', 'storage')
+
+    def test_get_subshape_portion_effective(self):
+        """Test case for get_subshape_portion_effective
+        """
+        param_name = self.get_test_value('get_subshape_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_portion_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_portion_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_subshape_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_subshape_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_portion_effective', 'storage', 'str')
+        self.initialize('get_subshape_portion_effective', None, None)
+        response = self.api.get_subshape_portion_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_get_subshape_portion_effective_invalid_name(self):
+        """Test case for get_subshape_portion_effective with invalid name
+        """
+        param_name = self.get_test_value('get_subshape_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_portion_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_portion_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_subshape_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_subshape_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_portion_effective', 'storage', 'str')
+        param_name = self.get_invalid_test_value('get_subshape_portion_effective', 'name', param_name, 'str')
+        self.initialize('get_subshape_portion_effective', 'name', param_name)
+        ok = False
+        try:
+            self.api.get_subshape_portion_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_portion_effective', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_portion_effective', 'name', param_name)
+        if ok:
+            self.assert_no_exception('get_subshape_portion_effective', 'name')
+
+    def test_get_subshape_portion_effective_invalid_slide_index(self):
+        """Test case for get_subshape_portion_effective with invalid slide_index
+        """
+        param_name = self.get_test_value('get_subshape_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_portion_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_portion_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_subshape_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_subshape_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_portion_effective', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('get_subshape_portion_effective', 'slide_index', param_slide_index, 'int')
+        self.initialize('get_subshape_portion_effective', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.get_subshape_portion_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_portion_effective', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_portion_effective', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('get_subshape_portion_effective', 'slide_index')
+
+    def test_get_subshape_portion_effective_invalid_path(self):
+        """Test case for get_subshape_portion_effective with invalid path
+        """
+        param_name = self.get_test_value('get_subshape_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_portion_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_portion_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_subshape_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_subshape_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_portion_effective', 'storage', 'str')
+        param_path = self.get_invalid_test_value('get_subshape_portion_effective', 'path', param_path, 'str')
+        self.initialize('get_subshape_portion_effective', 'path', param_path)
+        ok = False
+        try:
+            self.api.get_subshape_portion_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_portion_effective', 'path', param_path)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_portion_effective', 'path', param_path)
+        if ok:
+            self.assert_no_exception('get_subshape_portion_effective', 'path')
+
+    def test_get_subshape_portion_effective_invalid_shape_index(self):
+        """Test case for get_subshape_portion_effective with invalid shape_index
+        """
+        param_name = self.get_test_value('get_subshape_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_portion_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_portion_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_subshape_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_subshape_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_portion_effective', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('get_subshape_portion_effective', 'shape_index', param_shape_index, 'int')
+        self.initialize('get_subshape_portion_effective', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.get_subshape_portion_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_portion_effective', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_portion_effective', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('get_subshape_portion_effective', 'shape_index')
+
+    def test_get_subshape_portion_effective_invalid_paragraph_index(self):
+        """Test case for get_subshape_portion_effective with invalid paragraph_index
+        """
+        param_name = self.get_test_value('get_subshape_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_portion_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_portion_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_subshape_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_subshape_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_portion_effective', 'storage', 'str')
+        param_paragraph_index = self.get_invalid_test_value('get_subshape_portion_effective', 'paragraph_index', param_paragraph_index, 'int')
+        self.initialize('get_subshape_portion_effective', 'paragraph_index', param_paragraph_index)
+        ok = False
+        try:
+            self.api.get_subshape_portion_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_portion_effective', 'paragraph_index', param_paragraph_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_portion_effective', 'paragraph_index', param_paragraph_index)
+        if ok:
+            self.assert_no_exception('get_subshape_portion_effective', 'paragraph_index')
+
+    def test_get_subshape_portion_effective_invalid_portion_index(self):
+        """Test case for get_subshape_portion_effective with invalid portion_index
+        """
+        param_name = self.get_test_value('get_subshape_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_portion_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_portion_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_subshape_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_subshape_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_portion_effective', 'storage', 'str')
+        param_portion_index = self.get_invalid_test_value('get_subshape_portion_effective', 'portion_index', param_portion_index, 'int')
+        self.initialize('get_subshape_portion_effective', 'portion_index', param_portion_index)
+        ok = False
+        try:
+            self.api.get_subshape_portion_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_portion_effective', 'portion_index', param_portion_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_portion_effective', 'portion_index', param_portion_index)
+        if ok:
+            self.assert_no_exception('get_subshape_portion_effective', 'portion_index')
+
+    def test_get_subshape_portion_effective_invalid_password(self):
+        """Test case for get_subshape_portion_effective with invalid password
+        """
+        param_name = self.get_test_value('get_subshape_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_portion_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_portion_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_subshape_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_subshape_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_portion_effective', 'storage', 'str')
+        param_password = self.get_invalid_test_value('get_subshape_portion_effective', 'password', param_password, 'str')
+        self.initialize('get_subshape_portion_effective', 'password', param_password)
+        ok = False
+        try:
+            self.api.get_subshape_portion_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_portion_effective', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_portion_effective', 'password', param_password)
+        if ok:
+            self.assert_no_exception('get_subshape_portion_effective', 'password')
+
+    def test_get_subshape_portion_effective_invalid_folder(self):
+        """Test case for get_subshape_portion_effective with invalid folder
+        """
+        param_name = self.get_test_value('get_subshape_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_portion_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_portion_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_subshape_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_subshape_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_portion_effective', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('get_subshape_portion_effective', 'folder', param_folder, 'str')
+        self.initialize('get_subshape_portion_effective', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.get_subshape_portion_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_portion_effective', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_portion_effective', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('get_subshape_portion_effective', 'folder')
+
+    def test_get_subshape_portion_effective_invalid_storage(self):
+        """Test case for get_subshape_portion_effective with invalid storage
+        """
+        param_name = self.get_test_value('get_subshape_portion_effective', 'name', 'str')
+        param_slide_index = self.get_test_value('get_subshape_portion_effective', 'slide_index', 'int')
+        param_path = self.get_test_value('get_subshape_portion_effective', 'path', 'str')
+        param_shape_index = self.get_test_value('get_subshape_portion_effective', 'shape_index', 'int')
+        param_paragraph_index = self.get_test_value('get_subshape_portion_effective', 'paragraph_index', 'int')
+        param_portion_index = self.get_test_value('get_subshape_portion_effective', 'portion_index', 'int')
+        param_password = self.get_test_value('get_subshape_portion_effective', 'password', 'str')
+        param_folder = self.get_test_value('get_subshape_portion_effective', 'folder', 'str')
+        param_storage = self.get_test_value('get_subshape_portion_effective', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('get_subshape_portion_effective', 'storage', param_storage, 'str')
+        self.initialize('get_subshape_portion_effective', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.get_subshape_portion_effective(param_name, param_slide_index, param_path, param_shape_index, param_paragraph_index, param_portion_index, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_subshape_portion_effective', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_subshape_portion_effective', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('get_subshape_portion_effective', 'storage')
 
     def test_get_subshape_portions(self):
         """Test case for get_subshape_portions
@@ -40740,6 +41570,213 @@ class TestSlidesApi(BaseTest):
             self.assert_value_error(ex, 'update_chart_series', 'storage', param_storage)
         if ok:
             self.assert_no_exception('update_chart_series', 'storage')
+
+    def test_update_chart_series_group(self):
+        """Test case for update_chart_series_group
+        """
+        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
+        self.initialize('update_chart_series_group', None, None)
+        response = self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_update_chart_series_group_invalid_name(self):
+        """Test case for update_chart_series_group with invalid name
+        """
+        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
+        param_name = self.get_invalid_test_value('update_chart_series_group', 'name', param_name, 'str')
+        self.initialize('update_chart_series_group', 'name', param_name)
+        ok = False
+        try:
+            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'update_chart_series_group', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'update_chart_series_group', 'name', param_name)
+        if ok:
+            self.assert_no_exception('update_chart_series_group', 'name')
+
+    def test_update_chart_series_group_invalid_slide_index(self):
+        """Test case for update_chart_series_group with invalid slide_index
+        """
+        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('update_chart_series_group', 'slide_index', param_slide_index, 'int')
+        self.initialize('update_chart_series_group', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'update_chart_series_group', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'update_chart_series_group', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('update_chart_series_group', 'slide_index')
+
+    def test_update_chart_series_group_invalid_shape_index(self):
+        """Test case for update_chart_series_group with invalid shape_index
+        """
+        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('update_chart_series_group', 'shape_index', param_shape_index, 'int')
+        self.initialize('update_chart_series_group', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'update_chart_series_group', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'update_chart_series_group', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('update_chart_series_group', 'shape_index')
+
+    def test_update_chart_series_group_invalid_series_group_index(self):
+        """Test case for update_chart_series_group with invalid series_group_index
+        """
+        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
+        param_series_group_index = self.get_invalid_test_value('update_chart_series_group', 'series_group_index', param_series_group_index, 'int')
+        self.initialize('update_chart_series_group', 'series_group_index', param_series_group_index)
+        ok = False
+        try:
+            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'update_chart_series_group', 'series_group_index', param_series_group_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'update_chart_series_group', 'series_group_index', param_series_group_index)
+        if ok:
+            self.assert_no_exception('update_chart_series_group', 'series_group_index')
+
+    def test_update_chart_series_group_invalid_series_group(self):
+        """Test case for update_chart_series_group with invalid series_group
+        """
+        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
+        param_series_group = self.get_invalid_test_value('update_chart_series_group', 'series_group', param_series_group, 'ChartSeriesGroup')
+        self.initialize('update_chart_series_group', 'series_group', param_series_group)
+        ok = False
+        try:
+            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'update_chart_series_group', 'series_group', param_series_group)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'update_chart_series_group', 'series_group', param_series_group)
+        if ok:
+            self.assert_no_exception('update_chart_series_group', 'series_group')
+
+    def test_update_chart_series_group_invalid_password(self):
+        """Test case for update_chart_series_group with invalid password
+        """
+        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
+        param_password = self.get_invalid_test_value('update_chart_series_group', 'password', param_password, 'str')
+        self.initialize('update_chart_series_group', 'password', param_password)
+        ok = False
+        try:
+            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'update_chart_series_group', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'update_chart_series_group', 'password', param_password)
+        if ok:
+            self.assert_no_exception('update_chart_series_group', 'password')
+
+    def test_update_chart_series_group_invalid_folder(self):
+        """Test case for update_chart_series_group with invalid folder
+        """
+        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('update_chart_series_group', 'folder', param_folder, 'str')
+        self.initialize('update_chart_series_group', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'update_chart_series_group', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'update_chart_series_group', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('update_chart_series_group', 'folder')
+
+    def test_update_chart_series_group_invalid_storage(self):
+        """Test case for update_chart_series_group with invalid storage
+        """
+        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('update_chart_series_group', 'storage', param_storage, 'str')
+        self.initialize('update_chart_series_group', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'update_chart_series_group', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'update_chart_series_group', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('update_chart_series_group', 'storage')
 
     def test_update_layout_slide(self):
         """Test case for update_layout_slide

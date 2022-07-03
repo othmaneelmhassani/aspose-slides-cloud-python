@@ -1,3 +1,4 @@
+
 from __future__ import absolute_import
 
 from asposeslidescloud import OneValueSeries, Chart, OneValueChartDataPoint, ChartCategory, Axis, ChartLinesFormat, \
@@ -5,6 +6,7 @@ from asposeslidescloud import OneValueSeries, Chart, OneValueChartDataPoint, Cha
 from asposeslidescloud.rest import ApiException
 from test.base_test import BaseTest
 import asposeslidescloud
+
 
 class TestChart(BaseTest):
     def setUp(self):
@@ -380,3 +382,14 @@ class TestChart(BaseTest):
         self.assertEqual("Solid", chart.axes.horizontal_axis.minor_grid_lines_format.line_format.fill_format.type)
         self.assertEqual("Gradient", chart.axes.vertical_axis.major_grid_lines_format.line_format.fill_format.type)
         self.assertEqual("NoFill", chart.axes.vertical_axis.minor_grid_lines_format.line_format.fill_format.type)
+
+    def test_chart_series_groups(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        chart = BaseTest.slides_api.get_shape(file_name, 3, 1, "password", folder_name)
+        self.assertEqual(1, len(chart.series_groups))
+        chart.series_groups[0].overlap = 10
+        chart = BaseTest.slides_api.update_chart_series_group(file_name, 3, 1, 1, chart.series_groups[0], "password",
+                                                              folder_name)
+        self.assertEqual(10, chart.series_groups[0].overlap)

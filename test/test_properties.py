@@ -1,3 +1,4 @@
+
 from __future__ import absolute_import
 
 import os
@@ -174,3 +175,15 @@ class TestProperties(BaseTest):
         self.assertEqual("False", response.show_comments)
         self.assertEqual(50, response.slide_view_properties.scale)
 
+    def test_protection_check(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        password = "password"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        protection_properties = BaseTest.slides_api.get_protection_properties(file_name, None, folder_name)
+        self.assertEqual(True, protection_properties.is_encrypted)
+        self.assertEqual(None, protection_properties.read_password)
+
+        protection_properties = BaseTest.slides_api.get_protection_properties(file_name, password, folder_name)
+        self.assertEqual(True, protection_properties.is_encrypted)
+        self.assertNotEqual(None, protection_properties.read_password)

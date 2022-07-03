@@ -45,10 +45,10 @@ class FormatScheme(ResourceBase):
     swagger_types = {
         'self_uri': 'ResourceUri',
         'alternate_links': 'list[ResourceUri]',
-        'background_styles': 'list[ResourceUri]',
-        'effect_styles': 'list[ResourceUri]',
-        'fill_styles': 'list[ResourceUri]',
-        'line_styles': 'list[ResourceUri]'
+        'background_styles': 'list[FillFormat]',
+        'effect_styles': 'list[EffectFormat]',
+        'fill_styles': 'list[FillFormat]',
+        'line_styles': 'list[LineFormat]'
     }
 
     attribute_map = {
@@ -85,10 +85,10 @@ class FormatScheme(ResourceBase):
     def background_styles(self):
         """Gets the background_styles of this FormatScheme.  # noqa: E501
 
-        Background style links.  # noqa: E501
+        Background styles.  # noqa: E501
 
         :return: The background_styles of this FormatScheme.  # noqa: E501
-        :rtype: list[ResourceUri]
+        :rtype: list[FillFormat]
         """
         return self._background_styles
 
@@ -96,10 +96,10 @@ class FormatScheme(ResourceBase):
     def background_styles(self, background_styles):
         """Sets the background_styles of this FormatScheme.
 
-        Background style links.  # noqa: E501
+        Background styles.  # noqa: E501
 
         :param background_styles: The background_styles of this FormatScheme.  # noqa: E501
-        :type: list[ResourceUri]
+        :type: list[FillFormat]
         """
         self._background_styles = background_styles
 
@@ -107,10 +107,10 @@ class FormatScheme(ResourceBase):
     def effect_styles(self):
         """Gets the effect_styles of this FormatScheme.  # noqa: E501
 
-        Effect style links.  # noqa: E501
+        Effect styles.  # noqa: E501
 
         :return: The effect_styles of this FormatScheme.  # noqa: E501
-        :rtype: list[ResourceUri]
+        :rtype: list[EffectFormat]
         """
         return self._effect_styles
 
@@ -118,10 +118,10 @@ class FormatScheme(ResourceBase):
     def effect_styles(self, effect_styles):
         """Sets the effect_styles of this FormatScheme.
 
-        Effect style links.  # noqa: E501
+        Effect styles.  # noqa: E501
 
         :param effect_styles: The effect_styles of this FormatScheme.  # noqa: E501
-        :type: list[ResourceUri]
+        :type: list[EffectFormat]
         """
         self._effect_styles = effect_styles
 
@@ -129,10 +129,10 @@ class FormatScheme(ResourceBase):
     def fill_styles(self):
         """Gets the fill_styles of this FormatScheme.  # noqa: E501
 
-        Fill style links.  # noqa: E501
+        Fill styles.  # noqa: E501
 
         :return: The fill_styles of this FormatScheme.  # noqa: E501
-        :rtype: list[ResourceUri]
+        :rtype: list[FillFormat]
         """
         return self._fill_styles
 
@@ -140,10 +140,10 @@ class FormatScheme(ResourceBase):
     def fill_styles(self, fill_styles):
         """Sets the fill_styles of this FormatScheme.
 
-        Fill style links.  # noqa: E501
+        Fill styles.  # noqa: E501
 
         :param fill_styles: The fill_styles of this FormatScheme.  # noqa: E501
-        :type: list[ResourceUri]
+        :type: list[FillFormat]
         """
         self._fill_styles = fill_styles
 
@@ -151,10 +151,10 @@ class FormatScheme(ResourceBase):
     def line_styles(self):
         """Gets the line_styles of this FormatScheme.  # noqa: E501
 
-        Line style links.  # noqa: E501
+        Line style.  # noqa: E501
 
         :return: The line_styles of this FormatScheme.  # noqa: E501
-        :rtype: list[ResourceUri]
+        :rtype: list[LineFormat]
         """
         return self._line_styles
 
@@ -162,10 +162,10 @@ class FormatScheme(ResourceBase):
     def line_styles(self, line_styles):
         """Sets the line_styles of this FormatScheme.
 
-        Line style links.  # noqa: E501
+        Line style.  # noqa: E501
 
         :param line_styles: The line_styles of this FormatScheme.  # noqa: E501
-        :type: list[ResourceUri]
+        :type: list[LineFormat]
         """
         self._line_styles = line_styles
 

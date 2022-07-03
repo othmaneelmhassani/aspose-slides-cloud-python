@@ -14784,8 +14784,8 @@ class SlidesApi(ApiBase):
         :param slide_index Slide index.
         :param format Output file format.
         :param options Export options.
-        :param width Output file width; 0 to not adjust the size. Default is 0.
-        :param height Output file height; 0 to not adjust the size. Default is 0.
+        :param width The width of the slide representation in the output format; 0 to not adjust the size. Default is 0.
+        :param height The height of the slide representation in the output format; 0 to not adjust the size. Default is 0.
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -14814,8 +14814,8 @@ class SlidesApi(ApiBase):
         :param slide_index Slide index.
         :param format Output file format.
         :param options Export options.
-        :param width Output file width; 0 to not adjust the size. Default is 0.
-        :param height Output file height; 0 to not adjust the size. Default is 0.
+        :param width The width of the slide representation in the output format; 0 to not adjust the size. Default is 0.
+        :param height The height of the slide representation in the output format; 0 to not adjust the size. Default is 0.
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -14922,8 +14922,8 @@ class SlidesApi(ApiBase):
         :param document Document data.
         :param slide_index Slide index.
         :param format Output file format.
-        :param width Output file width; 0 to not adjust the size. Default is 0.
-        :param height Output file height; 0 to not adjust the size. Default is 0.
+        :param width The width of the slide representation in the output format; 0 to not adjust the size. Default is 0.
+        :param height The height of the slide representation in the output format; 0 to not adjust the size. Default is 0.
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Storage folder containing custom fonts to be used with the document.
@@ -14951,8 +14951,8 @@ class SlidesApi(ApiBase):
         :param document Document data.
         :param slide_index Slide index.
         :param format Output file format.
-        :param width Output file width; 0 to not adjust the size. Default is 0.
-        :param height Output file height; 0 to not adjust the size. Default is 0.
+        :param width The width of the slide representation in the output format; 0 to not adjust the size. Default is 0.
+        :param height The height of the slide representation in the output format; 0 to not adjust the size. Default is 0.
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Storage folder containing custom fonts to be used with the document.
@@ -17621,6 +17621,132 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def get_paragraph_effective(self, name, slide_index, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read effective paragraph info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_paragraph_effective_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_paragraph_effective_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_paragraph_effective_with_http_info(self, name, slide_index, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read effective paragraph info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_paragraph_effective_with_http_info(name, slide_index, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_paragraph_effective" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `get_paragraph_effective`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_paragraph_effective`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_paragraph_effective`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_paragraph_effective`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/effective', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Paragraph',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def get_paragraph_rectangle(self, name, slide_index, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Return coordinates of rect that bounds paragraph. The rect includes all the lines of text in paragraph, including empty ones.  # noqa: E501
 
@@ -18219,6 +18345,138 @@ class SlidesApi(ApiBase):
 
         return self.api_client.call_api(
             '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Portion',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_portion_effective(self, name, slide_index, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read effective portion info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_portion_effective_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_portion_effective_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_portion_effective_with_http_info(self, name, slide_index, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read effective portion info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_portion_effective_with_http_info(name, slide_index, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_portion_effective" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `get_portion_effective`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_portion_effective`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_portion_effective`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_portion_effective`")  # noqa: E501
+        # verify the required parameter 'portion_index' is set
+        if not portion_index:
+            raise ValueError("Missing the required parameter `portion_index` when calling `get_portion_effective`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+        path_params['portionIndex'] = portion_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}/effective', 'GET',
             path_params,
             query_params,
             header_params,
@@ -22195,6 +22453,138 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def get_subshape_paragraph_effective(self, name, slide_index, path, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read effective paragraph info (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, path, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_subshape_paragraph_effective_with_http_info(name, slide_index, path, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_subshape_paragraph_effective_with_http_info(name, slide_index, path, shape_index, paragraph_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_subshape_paragraph_effective_with_http_info(self, name, slide_index, path, shape_index, paragraph_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read effective paragraph info (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_subshape_paragraph_effective_with_http_info(name, slide_index, path, shape_index, paragraph_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Paragraph
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_subshape_paragraph_effective" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `get_subshape_paragraph_effective`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_subshape_paragraph_effective`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `path` when calling `get_subshape_paragraph_effective`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_subshape_paragraph_effective`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_subshape_paragraph_effective`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/effective', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Paragraph',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def get_subshape_paragraphs(self, name, slide_index, path, shape_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Read shape paragraphs info (for smart art and group shapes).  # noqa: E501
 
@@ -22445,6 +22835,144 @@ class SlidesApi(ApiBase):
 
         return self.api_client.call_api(
             '/slides/{name}/slides/{slideIndex}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Portion',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_subshape_portion_effective(self, name, slide_index, path, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read effective portion info (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, path, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_subshape_portion_effective_with_http_info(name, slide_index, path, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_subshape_portion_effective_with_http_info(name, slide_index, path, shape_index, paragraph_index, portion_index, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_subshape_portion_effective_with_http_info(self, name, slide_index, path, shape_index, paragraph_index, portion_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Read effective portion info (for smart art and group shapes).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_subshape_portion_effective_with_http_info(name, slide_index, path, shape_index, paragraph_index, portion_index, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param path Shape path.
+        :param shape_index Shape index.
+        :param paragraph_index Paragraph index.
+        :param portion_index Portion index.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Portion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_subshape_portion_effective" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `get_subshape_portion_effective`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `get_subshape_portion_effective`")  # noqa: E501
+        # verify the required parameter 'path' is set
+        if not path:
+            raise ValueError("Missing the required parameter `path` when calling `get_subshape_portion_effective`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `shape_index` when calling `get_subshape_portion_effective`")  # noqa: E501
+        # verify the required parameter 'paragraph_index' is set
+        if not paragraph_index:
+            raise ValueError("Missing the required parameter `paragraph_index` when calling `get_subshape_portion_effective`")  # noqa: E501
+        # verify the required parameter 'portion_index' is set
+        if not portion_index:
+            raise ValueError("Missing the required parameter `portion_index` when calling `get_subshape_portion_effective`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['path'] = path  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['paragraphIndex'] = paragraph_index  # noqa: E501
+        path_params['portionIndex'] = portion_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/shapes/{path}/{shapeIndex}/paragraphs/{paragraphIndex}/portions/{portionIndex}/effective', 'GET',
             path_params,
             query_params,
             header_params,
@@ -26001,8 +26529,8 @@ class SlidesApi(ApiBase):
         :param format Output file format.
         :param out_path Path to upload the output file to.
         :param options Export options.
-        :param width Output file width; 0 to not adjust the size. Default is 0.
-        :param height Output file height; 0 to not adjust the size. Default is 0.
+        :param width The width of the slide representation in the output format; 0 to not adjust the size. Default is 0.
+        :param height The height of the slide representation in the output format; 0 to not adjust the size. Default is 0.
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -26032,8 +26560,8 @@ class SlidesApi(ApiBase):
         :param format Output file format.
         :param out_path Path to upload the output file to.
         :param options Export options.
-        :param width Output file width; 0 to not adjust the size. Default is 0.
-        :param height Output file height; 0 to not adjust the size. Default is 0.
+        :param width The width of the slide representation in the output format; 0 to not adjust the size. Default is 0.
+        :param height The height of the slide representation in the output format; 0 to not adjust the size. Default is 0.
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -26146,8 +26674,8 @@ class SlidesApi(ApiBase):
         :param slide_index Slide index.
         :param format Output file format.
         :param out_path Path to save result.
-        :param width Output file width; 0 to not adjust the size. Default is 0.
-        :param height Output file height; 0 to not adjust the size. Default is 0.
+        :param width The width of the slide representation in the output format; 0 to not adjust the size. Default is 0.
+        :param height The height of the slide representation in the output format; 0 to not adjust the size. Default is 0.
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Storage folder containing custom fonts to be used with the document.
@@ -26176,8 +26704,8 @@ class SlidesApi(ApiBase):
         :param slide_index Slide index.
         :param format Output file format.
         :param out_path Path to save result.
-        :param width Output file width; 0 to not adjust the size. Default is 0.
-        :param height Output file height; 0 to not adjust the size. Default is 0.
+        :param width The width of the slide representation in the output format; 0 to not adjust the size. Default is 0.
+        :param height The height of the slide representation in the output format; 0 to not adjust the size. Default is 0.
         :param password Document password.
         :param storage Document storage.
         :param fonts_folder Storage folder containing custom fonts to be used with the document.
@@ -29726,6 +30254,139 @@ class SlidesApi(ApiBase):
 
         return self.api_client.call_api(
             '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/series/{seriesIndex}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Chart',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_chart_series_group(self, name, slide_index, shape_index, series_group_index, series_group, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Update a series group in a chart.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, shape_index, series_group_index, series_group, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index (must be a chart).
+        :param series_group_index Series group index.
+        :param series_group Series group DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Chart
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.update_chart_series_group_with_http_info(name, slide_index, shape_index, series_group_index, series_group, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_chart_series_group_with_http_info(name, slide_index, shape_index, series_group_index, series_group, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def update_chart_series_group_with_http_info(self, name, slide_index, shape_index, series_group_index, series_group, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Update a series group in a chart.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.update_chart_series_group_with_http_info(name, slide_index, shape_index, series_group_index, series_group, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index (must be a chart).
+        :param series_group_index Series group index.
+        :param series_group Series group DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Chart
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_chart_series_group" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `update_chart_series_group`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `update_chart_series_group`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `shape_index` when calling `update_chart_series_group`")  # noqa: E501
+        # verify the required parameter 'series_group_index' is set
+        if not series_group_index:
+            raise ValueError("Missing the required parameter `series_group_index` when calling `update_chart_series_group`")  # noqa: E501
+        # verify the required parameter 'series_group' is set
+        if not series_group:
+            raise ValueError("Missing the required parameter `series_group` when calling `update_chart_series_group`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['seriesGroupIndex'] = series_group_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if series_group:
+            body_params = series_group
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/seriesGroup/{seriesGroupIndex}', 'PUT',
             path_params,
             query_params,
             header_params,
