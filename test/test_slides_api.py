@@ -17778,6 +17778,191 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('delete_unused_layout_slides_online', 'password')
 
+    def test_delete_unused_master_slides(self):
+        """Test case for delete_unused_master_slides
+        """
+        param_name = self.get_test_value('delete_unused_master_slides', 'name', 'str')
+        param_ignore_preserve_field = self.get_test_value('delete_unused_master_slides', 'ignore_preserve_field', 'bool')
+        param_password = self.get_test_value('delete_unused_master_slides', 'password', 'str')
+        param_folder = self.get_test_value('delete_unused_master_slides', 'folder', 'str')
+        param_storage = self.get_test_value('delete_unused_master_slides', 'storage', 'str')
+        self.initialize('delete_unused_master_slides', None, None)
+        response = self.api.delete_unused_master_slides(param_name, param_ignore_preserve_field, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_delete_unused_master_slides_invalid_name(self):
+        """Test case for delete_unused_master_slides with invalid name
+        """
+        param_name = self.get_test_value('delete_unused_master_slides', 'name', 'str')
+        param_ignore_preserve_field = self.get_test_value('delete_unused_master_slides', 'ignore_preserve_field', 'bool')
+        param_password = self.get_test_value('delete_unused_master_slides', 'password', 'str')
+        param_folder = self.get_test_value('delete_unused_master_slides', 'folder', 'str')
+        param_storage = self.get_test_value('delete_unused_master_slides', 'storage', 'str')
+        param_name = self.get_invalid_test_value('delete_unused_master_slides', 'name', param_name, 'str')
+        self.initialize('delete_unused_master_slides', 'name', param_name)
+        ok = False
+        try:
+            self.api.delete_unused_master_slides(param_name, param_ignore_preserve_field, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_unused_master_slides', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_unused_master_slides', 'name', param_name)
+        if ok:
+            self.assert_no_exception('delete_unused_master_slides', 'name')
+
+    def test_delete_unused_master_slides_invalid_ignore_preserve_field(self):
+        """Test case for delete_unused_master_slides with invalid ignore_preserve_field
+        """
+        param_name = self.get_test_value('delete_unused_master_slides', 'name', 'str')
+        param_ignore_preserve_field = self.get_test_value('delete_unused_master_slides', 'ignore_preserve_field', 'bool')
+        param_password = self.get_test_value('delete_unused_master_slides', 'password', 'str')
+        param_folder = self.get_test_value('delete_unused_master_slides', 'folder', 'str')
+        param_storage = self.get_test_value('delete_unused_master_slides', 'storage', 'str')
+        param_ignore_preserve_field = self.get_invalid_test_value('delete_unused_master_slides', 'ignore_preserve_field', param_ignore_preserve_field, 'bool')
+        self.initialize('delete_unused_master_slides', 'ignore_preserve_field', param_ignore_preserve_field)
+        ok = False
+        try:
+            self.api.delete_unused_master_slides(param_name, param_ignore_preserve_field, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_unused_master_slides', 'ignore_preserve_field', param_ignore_preserve_field)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_unused_master_slides', 'ignore_preserve_field', param_ignore_preserve_field)
+        if ok:
+            self.assert_no_exception('delete_unused_master_slides', 'ignore_preserve_field')
+
+    def test_delete_unused_master_slides_invalid_password(self):
+        """Test case for delete_unused_master_slides with invalid password
+        """
+        param_name = self.get_test_value('delete_unused_master_slides', 'name', 'str')
+        param_ignore_preserve_field = self.get_test_value('delete_unused_master_slides', 'ignore_preserve_field', 'bool')
+        param_password = self.get_test_value('delete_unused_master_slides', 'password', 'str')
+        param_folder = self.get_test_value('delete_unused_master_slides', 'folder', 'str')
+        param_storage = self.get_test_value('delete_unused_master_slides', 'storage', 'str')
+        param_password = self.get_invalid_test_value('delete_unused_master_slides', 'password', param_password, 'str')
+        self.initialize('delete_unused_master_slides', 'password', param_password)
+        ok = False
+        try:
+            self.api.delete_unused_master_slides(param_name, param_ignore_preserve_field, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_unused_master_slides', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_unused_master_slides', 'password', param_password)
+        if ok:
+            self.assert_no_exception('delete_unused_master_slides', 'password')
+
+    def test_delete_unused_master_slides_invalid_folder(self):
+        """Test case for delete_unused_master_slides with invalid folder
+        """
+        param_name = self.get_test_value('delete_unused_master_slides', 'name', 'str')
+        param_ignore_preserve_field = self.get_test_value('delete_unused_master_slides', 'ignore_preserve_field', 'bool')
+        param_password = self.get_test_value('delete_unused_master_slides', 'password', 'str')
+        param_folder = self.get_test_value('delete_unused_master_slides', 'folder', 'str')
+        param_storage = self.get_test_value('delete_unused_master_slides', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('delete_unused_master_slides', 'folder', param_folder, 'str')
+        self.initialize('delete_unused_master_slides', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.delete_unused_master_slides(param_name, param_ignore_preserve_field, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_unused_master_slides', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_unused_master_slides', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('delete_unused_master_slides', 'folder')
+
+    def test_delete_unused_master_slides_invalid_storage(self):
+        """Test case for delete_unused_master_slides with invalid storage
+        """
+        param_name = self.get_test_value('delete_unused_master_slides', 'name', 'str')
+        param_ignore_preserve_field = self.get_test_value('delete_unused_master_slides', 'ignore_preserve_field', 'bool')
+        param_password = self.get_test_value('delete_unused_master_slides', 'password', 'str')
+        param_folder = self.get_test_value('delete_unused_master_slides', 'folder', 'str')
+        param_storage = self.get_test_value('delete_unused_master_slides', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('delete_unused_master_slides', 'storage', param_storage, 'str')
+        self.initialize('delete_unused_master_slides', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.delete_unused_master_slides(param_name, param_ignore_preserve_field, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_unused_master_slides', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_unused_master_slides', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('delete_unused_master_slides', 'storage')
+
+    def test_delete_unused_master_slides_online(self):
+        """Test case for delete_unused_master_slides_online
+        """
+        param_document = self.get_test_value('delete_unused_master_slides_online', 'document', 'file')
+        param_ignore_preserve_field = self.get_test_value('delete_unused_master_slides_online', 'ignore_preserve_field', 'bool')
+        param_password = self.get_test_value('delete_unused_master_slides_online', 'password', 'str')
+        self.initialize('delete_unused_master_slides_online', None, None)
+        response = self.api.delete_unused_master_slides_online(param_document, param_ignore_preserve_field, param_password)
+        self.assertTrue(isinstance(response, str))
+        self.assertTrue(len(response) > 0)
+
+    def test_delete_unused_master_slides_online_invalid_document(self):
+        """Test case for delete_unused_master_slides_online with invalid document
+        """
+        param_document = self.get_test_value('delete_unused_master_slides_online', 'document', 'file')
+        param_ignore_preserve_field = self.get_test_value('delete_unused_master_slides_online', 'ignore_preserve_field', 'bool')
+        param_password = self.get_test_value('delete_unused_master_slides_online', 'password', 'str')
+        param_document = self.get_invalid_test_value('delete_unused_master_slides_online', 'document', param_document, 'file')
+        self.initialize('delete_unused_master_slides_online', 'document', param_document)
+        ok = False
+        try:
+            self.api.delete_unused_master_slides_online(param_document, param_ignore_preserve_field, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_unused_master_slides_online', 'document', param_document)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_unused_master_slides_online', 'document', param_document)
+        if ok:
+            self.assert_no_exception('delete_unused_master_slides_online', 'document')
+
+    def test_delete_unused_master_slides_online_invalid_ignore_preserve_field(self):
+        """Test case for delete_unused_master_slides_online with invalid ignore_preserve_field
+        """
+        param_document = self.get_test_value('delete_unused_master_slides_online', 'document', 'file')
+        param_ignore_preserve_field = self.get_test_value('delete_unused_master_slides_online', 'ignore_preserve_field', 'bool')
+        param_password = self.get_test_value('delete_unused_master_slides_online', 'password', 'str')
+        param_ignore_preserve_field = self.get_invalid_test_value('delete_unused_master_slides_online', 'ignore_preserve_field', param_ignore_preserve_field, 'bool')
+        self.initialize('delete_unused_master_slides_online', 'ignore_preserve_field', param_ignore_preserve_field)
+        ok = False
+        try:
+            self.api.delete_unused_master_slides_online(param_document, param_ignore_preserve_field, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_unused_master_slides_online', 'ignore_preserve_field', param_ignore_preserve_field)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_unused_master_slides_online', 'ignore_preserve_field', param_ignore_preserve_field)
+        if ok:
+            self.assert_no_exception('delete_unused_master_slides_online', 'ignore_preserve_field')
+
+    def test_delete_unused_master_slides_online_invalid_password(self):
+        """Test case for delete_unused_master_slides_online with invalid password
+        """
+        param_document = self.get_test_value('delete_unused_master_slides_online', 'document', 'file')
+        param_ignore_preserve_field = self.get_test_value('delete_unused_master_slides_online', 'ignore_preserve_field', 'bool')
+        param_password = self.get_test_value('delete_unused_master_slides_online', 'password', 'str')
+        param_password = self.get_invalid_test_value('delete_unused_master_slides_online', 'password', param_password, 'str')
+        self.initialize('delete_unused_master_slides_online', 'password', param_password)
+        ok = False
+        try:
+            self.api.delete_unused_master_slides_online(param_document, param_ignore_preserve_field, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_unused_master_slides_online', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_unused_master_slides_online', 'password', param_password)
+        if ok:
+            self.assert_no_exception('delete_unused_master_slides_online', 'password')
+
     def test_delete_watermark(self):
         """Test case for delete_watermark
         """
@@ -38080,6 +38265,802 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('set_background_color', 'storage')
 
+    def test_set_chart_axis(self):
+        """Test case for set_chart_axis
+        """
+        param_name = self.get_test_value('set_chart_axis', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_axis', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_axis', 'shape_index', 'int')
+        param_axis_type = self.get_test_value('set_chart_axis', 'axis_type', 'str')
+        param_axis = self.get_test_value('set_chart_axis', 'axis', 'Axis')
+        param_password = self.get_test_value('set_chart_axis', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_axis', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_axis', 'storage', 'str')
+        self.initialize('set_chart_axis', None, None)
+        response = self.api.set_chart_axis(param_name, param_slide_index, param_shape_index, param_axis_type, param_axis, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_set_chart_axis_invalid_name(self):
+        """Test case for set_chart_axis with invalid name
+        """
+        param_name = self.get_test_value('set_chart_axis', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_axis', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_axis', 'shape_index', 'int')
+        param_axis_type = self.get_test_value('set_chart_axis', 'axis_type', 'str')
+        param_axis = self.get_test_value('set_chart_axis', 'axis', 'Axis')
+        param_password = self.get_test_value('set_chart_axis', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_axis', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_axis', 'storage', 'str')
+        param_name = self.get_invalid_test_value('set_chart_axis', 'name', param_name, 'str')
+        self.initialize('set_chart_axis', 'name', param_name)
+        ok = False
+        try:
+            self.api.set_chart_axis(param_name, param_slide_index, param_shape_index, param_axis_type, param_axis, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_axis', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_axis', 'name', param_name)
+        if ok:
+            self.assert_no_exception('set_chart_axis', 'name')
+
+    def test_set_chart_axis_invalid_slide_index(self):
+        """Test case for set_chart_axis with invalid slide_index
+        """
+        param_name = self.get_test_value('set_chart_axis', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_axis', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_axis', 'shape_index', 'int')
+        param_axis_type = self.get_test_value('set_chart_axis', 'axis_type', 'str')
+        param_axis = self.get_test_value('set_chart_axis', 'axis', 'Axis')
+        param_password = self.get_test_value('set_chart_axis', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_axis', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_axis', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('set_chart_axis', 'slide_index', param_slide_index, 'int')
+        self.initialize('set_chart_axis', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.set_chart_axis(param_name, param_slide_index, param_shape_index, param_axis_type, param_axis, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_axis', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_axis', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('set_chart_axis', 'slide_index')
+
+    def test_set_chart_axis_invalid_shape_index(self):
+        """Test case for set_chart_axis with invalid shape_index
+        """
+        param_name = self.get_test_value('set_chart_axis', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_axis', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_axis', 'shape_index', 'int')
+        param_axis_type = self.get_test_value('set_chart_axis', 'axis_type', 'str')
+        param_axis = self.get_test_value('set_chart_axis', 'axis', 'Axis')
+        param_password = self.get_test_value('set_chart_axis', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_axis', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_axis', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('set_chart_axis', 'shape_index', param_shape_index, 'int')
+        self.initialize('set_chart_axis', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.set_chart_axis(param_name, param_slide_index, param_shape_index, param_axis_type, param_axis, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_axis', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_axis', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('set_chart_axis', 'shape_index')
+
+    def test_set_chart_axis_invalid_axis_type(self):
+        """Test case for set_chart_axis with invalid axis_type
+        """
+        param_name = self.get_test_value('set_chart_axis', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_axis', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_axis', 'shape_index', 'int')
+        param_axis_type = self.get_test_value('set_chart_axis', 'axis_type', 'str')
+        param_axis = self.get_test_value('set_chart_axis', 'axis', 'Axis')
+        param_password = self.get_test_value('set_chart_axis', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_axis', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_axis', 'storage', 'str')
+        param_axis_type = self.get_invalid_test_value('set_chart_axis', 'axis_type', param_axis_type, 'str')
+        self.initialize('set_chart_axis', 'axis_type', param_axis_type)
+        ok = False
+        try:
+            self.api.set_chart_axis(param_name, param_slide_index, param_shape_index, param_axis_type, param_axis, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_axis', 'axis_type', param_axis_type)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_axis', 'axis_type', param_axis_type)
+        if ok:
+            self.assert_no_exception('set_chart_axis', 'axis_type')
+
+    def test_set_chart_axis_invalid_axis(self):
+        """Test case for set_chart_axis with invalid axis
+        """
+        param_name = self.get_test_value('set_chart_axis', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_axis', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_axis', 'shape_index', 'int')
+        param_axis_type = self.get_test_value('set_chart_axis', 'axis_type', 'str')
+        param_axis = self.get_test_value('set_chart_axis', 'axis', 'Axis')
+        param_password = self.get_test_value('set_chart_axis', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_axis', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_axis', 'storage', 'str')
+        param_axis = self.get_invalid_test_value('set_chart_axis', 'axis', param_axis, 'Axis')
+        self.initialize('set_chart_axis', 'axis', param_axis)
+        ok = False
+        try:
+            self.api.set_chart_axis(param_name, param_slide_index, param_shape_index, param_axis_type, param_axis, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_axis', 'axis', param_axis)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_axis', 'axis', param_axis)
+        if ok:
+            self.assert_no_exception('set_chart_axis', 'axis')
+
+    def test_set_chart_axis_invalid_password(self):
+        """Test case for set_chart_axis with invalid password
+        """
+        param_name = self.get_test_value('set_chart_axis', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_axis', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_axis', 'shape_index', 'int')
+        param_axis_type = self.get_test_value('set_chart_axis', 'axis_type', 'str')
+        param_axis = self.get_test_value('set_chart_axis', 'axis', 'Axis')
+        param_password = self.get_test_value('set_chart_axis', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_axis', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_axis', 'storage', 'str')
+        param_password = self.get_invalid_test_value('set_chart_axis', 'password', param_password, 'str')
+        self.initialize('set_chart_axis', 'password', param_password)
+        ok = False
+        try:
+            self.api.set_chart_axis(param_name, param_slide_index, param_shape_index, param_axis_type, param_axis, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_axis', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_axis', 'password', param_password)
+        if ok:
+            self.assert_no_exception('set_chart_axis', 'password')
+
+    def test_set_chart_axis_invalid_folder(self):
+        """Test case for set_chart_axis with invalid folder
+        """
+        param_name = self.get_test_value('set_chart_axis', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_axis', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_axis', 'shape_index', 'int')
+        param_axis_type = self.get_test_value('set_chart_axis', 'axis_type', 'str')
+        param_axis = self.get_test_value('set_chart_axis', 'axis', 'Axis')
+        param_password = self.get_test_value('set_chart_axis', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_axis', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_axis', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('set_chart_axis', 'folder', param_folder, 'str')
+        self.initialize('set_chart_axis', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.set_chart_axis(param_name, param_slide_index, param_shape_index, param_axis_type, param_axis, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_axis', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_axis', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('set_chart_axis', 'folder')
+
+    def test_set_chart_axis_invalid_storage(self):
+        """Test case for set_chart_axis with invalid storage
+        """
+        param_name = self.get_test_value('set_chart_axis', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_axis', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_axis', 'shape_index', 'int')
+        param_axis_type = self.get_test_value('set_chart_axis', 'axis_type', 'str')
+        param_axis = self.get_test_value('set_chart_axis', 'axis', 'Axis')
+        param_password = self.get_test_value('set_chart_axis', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_axis', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_axis', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('set_chart_axis', 'storage', param_storage, 'str')
+        self.initialize('set_chart_axis', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.set_chart_axis(param_name, param_slide_index, param_shape_index, param_axis_type, param_axis, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_axis', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_axis', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('set_chart_axis', 'storage')
+
+    def test_set_chart_legend(self):
+        """Test case for set_chart_legend
+        """
+        param_name = self.get_test_value('set_chart_legend', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_legend', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_legend', 'shape_index', 'int')
+        param_legend = self.get_test_value('set_chart_legend', 'legend', 'Legend')
+        param_password = self.get_test_value('set_chart_legend', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_legend', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_legend', 'storage', 'str')
+        self.initialize('set_chart_legend', None, None)
+        response = self.api.set_chart_legend(param_name, param_slide_index, param_shape_index, param_legend, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_set_chart_legend_invalid_name(self):
+        """Test case for set_chart_legend with invalid name
+        """
+        param_name = self.get_test_value('set_chart_legend', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_legend', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_legend', 'shape_index', 'int')
+        param_legend = self.get_test_value('set_chart_legend', 'legend', 'Legend')
+        param_password = self.get_test_value('set_chart_legend', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_legend', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_legend', 'storage', 'str')
+        param_name = self.get_invalid_test_value('set_chart_legend', 'name', param_name, 'str')
+        self.initialize('set_chart_legend', 'name', param_name)
+        ok = False
+        try:
+            self.api.set_chart_legend(param_name, param_slide_index, param_shape_index, param_legend, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_legend', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_legend', 'name', param_name)
+        if ok:
+            self.assert_no_exception('set_chart_legend', 'name')
+
+    def test_set_chart_legend_invalid_slide_index(self):
+        """Test case for set_chart_legend with invalid slide_index
+        """
+        param_name = self.get_test_value('set_chart_legend', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_legend', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_legend', 'shape_index', 'int')
+        param_legend = self.get_test_value('set_chart_legend', 'legend', 'Legend')
+        param_password = self.get_test_value('set_chart_legend', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_legend', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_legend', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('set_chart_legend', 'slide_index', param_slide_index, 'int')
+        self.initialize('set_chart_legend', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.set_chart_legend(param_name, param_slide_index, param_shape_index, param_legend, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_legend', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_legend', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('set_chart_legend', 'slide_index')
+
+    def test_set_chart_legend_invalid_shape_index(self):
+        """Test case for set_chart_legend with invalid shape_index
+        """
+        param_name = self.get_test_value('set_chart_legend', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_legend', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_legend', 'shape_index', 'int')
+        param_legend = self.get_test_value('set_chart_legend', 'legend', 'Legend')
+        param_password = self.get_test_value('set_chart_legend', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_legend', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_legend', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('set_chart_legend', 'shape_index', param_shape_index, 'int')
+        self.initialize('set_chart_legend', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.set_chart_legend(param_name, param_slide_index, param_shape_index, param_legend, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_legend', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_legend', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('set_chart_legend', 'shape_index')
+
+    def test_set_chart_legend_invalid_legend(self):
+        """Test case for set_chart_legend with invalid legend
+        """
+        param_name = self.get_test_value('set_chart_legend', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_legend', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_legend', 'shape_index', 'int')
+        param_legend = self.get_test_value('set_chart_legend', 'legend', 'Legend')
+        param_password = self.get_test_value('set_chart_legend', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_legend', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_legend', 'storage', 'str')
+        param_legend = self.get_invalid_test_value('set_chart_legend', 'legend', param_legend, 'Legend')
+        self.initialize('set_chart_legend', 'legend', param_legend)
+        ok = False
+        try:
+            self.api.set_chart_legend(param_name, param_slide_index, param_shape_index, param_legend, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_legend', 'legend', param_legend)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_legend', 'legend', param_legend)
+        if ok:
+            self.assert_no_exception('set_chart_legend', 'legend')
+
+    def test_set_chart_legend_invalid_password(self):
+        """Test case for set_chart_legend with invalid password
+        """
+        param_name = self.get_test_value('set_chart_legend', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_legend', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_legend', 'shape_index', 'int')
+        param_legend = self.get_test_value('set_chart_legend', 'legend', 'Legend')
+        param_password = self.get_test_value('set_chart_legend', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_legend', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_legend', 'storage', 'str')
+        param_password = self.get_invalid_test_value('set_chart_legend', 'password', param_password, 'str')
+        self.initialize('set_chart_legend', 'password', param_password)
+        ok = False
+        try:
+            self.api.set_chart_legend(param_name, param_slide_index, param_shape_index, param_legend, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_legend', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_legend', 'password', param_password)
+        if ok:
+            self.assert_no_exception('set_chart_legend', 'password')
+
+    def test_set_chart_legend_invalid_folder(self):
+        """Test case for set_chart_legend with invalid folder
+        """
+        param_name = self.get_test_value('set_chart_legend', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_legend', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_legend', 'shape_index', 'int')
+        param_legend = self.get_test_value('set_chart_legend', 'legend', 'Legend')
+        param_password = self.get_test_value('set_chart_legend', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_legend', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_legend', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('set_chart_legend', 'folder', param_folder, 'str')
+        self.initialize('set_chart_legend', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.set_chart_legend(param_name, param_slide_index, param_shape_index, param_legend, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_legend', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_legend', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('set_chart_legend', 'folder')
+
+    def test_set_chart_legend_invalid_storage(self):
+        """Test case for set_chart_legend with invalid storage
+        """
+        param_name = self.get_test_value('set_chart_legend', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_legend', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_legend', 'shape_index', 'int')
+        param_legend = self.get_test_value('set_chart_legend', 'legend', 'Legend')
+        param_password = self.get_test_value('set_chart_legend', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_legend', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_legend', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('set_chart_legend', 'storage', param_storage, 'str')
+        self.initialize('set_chart_legend', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.set_chart_legend(param_name, param_slide_index, param_shape_index, param_legend, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_legend', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_legend', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('set_chart_legend', 'storage')
+
+    def test_set_chart_series_group(self):
+        """Test case for set_chart_series_group
+        """
+        param_name = self.get_test_value('set_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('set_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('set_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_series_group', 'storage', 'str')
+        self.initialize('set_chart_series_group', None, None)
+        response = self.api.set_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_set_chart_series_group_invalid_name(self):
+        """Test case for set_chart_series_group with invalid name
+        """
+        param_name = self.get_test_value('set_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('set_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('set_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_series_group', 'storage', 'str')
+        param_name = self.get_invalid_test_value('set_chart_series_group', 'name', param_name, 'str')
+        self.initialize('set_chart_series_group', 'name', param_name)
+        ok = False
+        try:
+            self.api.set_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_series_group', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_series_group', 'name', param_name)
+        if ok:
+            self.assert_no_exception('set_chart_series_group', 'name')
+
+    def test_set_chart_series_group_invalid_slide_index(self):
+        """Test case for set_chart_series_group with invalid slide_index
+        """
+        param_name = self.get_test_value('set_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('set_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('set_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_series_group', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('set_chart_series_group', 'slide_index', param_slide_index, 'int')
+        self.initialize('set_chart_series_group', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.set_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_series_group', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_series_group', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('set_chart_series_group', 'slide_index')
+
+    def test_set_chart_series_group_invalid_shape_index(self):
+        """Test case for set_chart_series_group with invalid shape_index
+        """
+        param_name = self.get_test_value('set_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('set_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('set_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_series_group', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('set_chart_series_group', 'shape_index', param_shape_index, 'int')
+        self.initialize('set_chart_series_group', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.set_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_series_group', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_series_group', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('set_chart_series_group', 'shape_index')
+
+    def test_set_chart_series_group_invalid_series_group_index(self):
+        """Test case for set_chart_series_group with invalid series_group_index
+        """
+        param_name = self.get_test_value('set_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('set_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('set_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_series_group', 'storage', 'str')
+        param_series_group_index = self.get_invalid_test_value('set_chart_series_group', 'series_group_index', param_series_group_index, 'int')
+        self.initialize('set_chart_series_group', 'series_group_index', param_series_group_index)
+        ok = False
+        try:
+            self.api.set_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_series_group', 'series_group_index', param_series_group_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_series_group', 'series_group_index', param_series_group_index)
+        if ok:
+            self.assert_no_exception('set_chart_series_group', 'series_group_index')
+
+    def test_set_chart_series_group_invalid_series_group(self):
+        """Test case for set_chart_series_group with invalid series_group
+        """
+        param_name = self.get_test_value('set_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('set_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('set_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_series_group', 'storage', 'str')
+        param_series_group = self.get_invalid_test_value('set_chart_series_group', 'series_group', param_series_group, 'ChartSeriesGroup')
+        self.initialize('set_chart_series_group', 'series_group', param_series_group)
+        ok = False
+        try:
+            self.api.set_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_series_group', 'series_group', param_series_group)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_series_group', 'series_group', param_series_group)
+        if ok:
+            self.assert_no_exception('set_chart_series_group', 'series_group')
+
+    def test_set_chart_series_group_invalid_password(self):
+        """Test case for set_chart_series_group with invalid password
+        """
+        param_name = self.get_test_value('set_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('set_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('set_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_series_group', 'storage', 'str')
+        param_password = self.get_invalid_test_value('set_chart_series_group', 'password', param_password, 'str')
+        self.initialize('set_chart_series_group', 'password', param_password)
+        ok = False
+        try:
+            self.api.set_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_series_group', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_series_group', 'password', param_password)
+        if ok:
+            self.assert_no_exception('set_chart_series_group', 'password')
+
+    def test_set_chart_series_group_invalid_folder(self):
+        """Test case for set_chart_series_group with invalid folder
+        """
+        param_name = self.get_test_value('set_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('set_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('set_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_series_group', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('set_chart_series_group', 'folder', param_folder, 'str')
+        self.initialize('set_chart_series_group', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.set_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_series_group', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_series_group', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('set_chart_series_group', 'folder')
+
+    def test_set_chart_series_group_invalid_storage(self):
+        """Test case for set_chart_series_group with invalid storage
+        """
+        param_name = self.get_test_value('set_chart_series_group', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_series_group', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_series_group', 'shape_index', 'int')
+        param_series_group_index = self.get_test_value('set_chart_series_group', 'series_group_index', 'int')
+        param_series_group = self.get_test_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup')
+        param_password = self.get_test_value('set_chart_series_group', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_series_group', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_series_group', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('set_chart_series_group', 'storage', param_storage, 'str')
+        self.initialize('set_chart_series_group', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.set_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_series_group', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_series_group', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('set_chart_series_group', 'storage')
+
+    def test_set_chart_wall(self):
+        """Test case for set_chart_wall
+        """
+        param_name = self.get_test_value('set_chart_wall', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_wall', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_wall', 'shape_index', 'int')
+        param_chart_wall_type = self.get_test_value('set_chart_wall', 'chart_wall_type', 'str')
+        param_chart_wall = self.get_test_value('set_chart_wall', 'chart_wall', 'ChartWall')
+        param_password = self.get_test_value('set_chart_wall', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_wall', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_wall', 'storage', 'str')
+        self.initialize('set_chart_wall', None, None)
+        response = self.api.set_chart_wall(param_name, param_slide_index, param_shape_index, param_chart_wall_type, param_chart_wall, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_set_chart_wall_invalid_name(self):
+        """Test case for set_chart_wall with invalid name
+        """
+        param_name = self.get_test_value('set_chart_wall', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_wall', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_wall', 'shape_index', 'int')
+        param_chart_wall_type = self.get_test_value('set_chart_wall', 'chart_wall_type', 'str')
+        param_chart_wall = self.get_test_value('set_chart_wall', 'chart_wall', 'ChartWall')
+        param_password = self.get_test_value('set_chart_wall', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_wall', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_wall', 'storage', 'str')
+        param_name = self.get_invalid_test_value('set_chart_wall', 'name', param_name, 'str')
+        self.initialize('set_chart_wall', 'name', param_name)
+        ok = False
+        try:
+            self.api.set_chart_wall(param_name, param_slide_index, param_shape_index, param_chart_wall_type, param_chart_wall, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_wall', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_wall', 'name', param_name)
+        if ok:
+            self.assert_no_exception('set_chart_wall', 'name')
+
+    def test_set_chart_wall_invalid_slide_index(self):
+        """Test case for set_chart_wall with invalid slide_index
+        """
+        param_name = self.get_test_value('set_chart_wall', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_wall', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_wall', 'shape_index', 'int')
+        param_chart_wall_type = self.get_test_value('set_chart_wall', 'chart_wall_type', 'str')
+        param_chart_wall = self.get_test_value('set_chart_wall', 'chart_wall', 'ChartWall')
+        param_password = self.get_test_value('set_chart_wall', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_wall', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_wall', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('set_chart_wall', 'slide_index', param_slide_index, 'int')
+        self.initialize('set_chart_wall', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.set_chart_wall(param_name, param_slide_index, param_shape_index, param_chart_wall_type, param_chart_wall, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_wall', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_wall', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('set_chart_wall', 'slide_index')
+
+    def test_set_chart_wall_invalid_shape_index(self):
+        """Test case for set_chart_wall with invalid shape_index
+        """
+        param_name = self.get_test_value('set_chart_wall', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_wall', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_wall', 'shape_index', 'int')
+        param_chart_wall_type = self.get_test_value('set_chart_wall', 'chart_wall_type', 'str')
+        param_chart_wall = self.get_test_value('set_chart_wall', 'chart_wall', 'ChartWall')
+        param_password = self.get_test_value('set_chart_wall', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_wall', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_wall', 'storage', 'str')
+        param_shape_index = self.get_invalid_test_value('set_chart_wall', 'shape_index', param_shape_index, 'int')
+        self.initialize('set_chart_wall', 'shape_index', param_shape_index)
+        ok = False
+        try:
+            self.api.set_chart_wall(param_name, param_slide_index, param_shape_index, param_chart_wall_type, param_chart_wall, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_wall', 'shape_index', param_shape_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_wall', 'shape_index', param_shape_index)
+        if ok:
+            self.assert_no_exception('set_chart_wall', 'shape_index')
+
+    def test_set_chart_wall_invalid_chart_wall_type(self):
+        """Test case for set_chart_wall with invalid chart_wall_type
+        """
+        param_name = self.get_test_value('set_chart_wall', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_wall', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_wall', 'shape_index', 'int')
+        param_chart_wall_type = self.get_test_value('set_chart_wall', 'chart_wall_type', 'str')
+        param_chart_wall = self.get_test_value('set_chart_wall', 'chart_wall', 'ChartWall')
+        param_password = self.get_test_value('set_chart_wall', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_wall', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_wall', 'storage', 'str')
+        param_chart_wall_type = self.get_invalid_test_value('set_chart_wall', 'chart_wall_type', param_chart_wall_type, 'str')
+        self.initialize('set_chart_wall', 'chart_wall_type', param_chart_wall_type)
+        ok = False
+        try:
+            self.api.set_chart_wall(param_name, param_slide_index, param_shape_index, param_chart_wall_type, param_chart_wall, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_wall', 'chart_wall_type', param_chart_wall_type)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_wall', 'chart_wall_type', param_chart_wall_type)
+        if ok:
+            self.assert_no_exception('set_chart_wall', 'chart_wall_type')
+
+    def test_set_chart_wall_invalid_chart_wall(self):
+        """Test case for set_chart_wall with invalid chart_wall
+        """
+        param_name = self.get_test_value('set_chart_wall', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_wall', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_wall', 'shape_index', 'int')
+        param_chart_wall_type = self.get_test_value('set_chart_wall', 'chart_wall_type', 'str')
+        param_chart_wall = self.get_test_value('set_chart_wall', 'chart_wall', 'ChartWall')
+        param_password = self.get_test_value('set_chart_wall', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_wall', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_wall', 'storage', 'str')
+        param_chart_wall = self.get_invalid_test_value('set_chart_wall', 'chart_wall', param_chart_wall, 'ChartWall')
+        self.initialize('set_chart_wall', 'chart_wall', param_chart_wall)
+        ok = False
+        try:
+            self.api.set_chart_wall(param_name, param_slide_index, param_shape_index, param_chart_wall_type, param_chart_wall, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_wall', 'chart_wall', param_chart_wall)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_wall', 'chart_wall', param_chart_wall)
+        if ok:
+            self.assert_no_exception('set_chart_wall', 'chart_wall')
+
+    def test_set_chart_wall_invalid_password(self):
+        """Test case for set_chart_wall with invalid password
+        """
+        param_name = self.get_test_value('set_chart_wall', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_wall', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_wall', 'shape_index', 'int')
+        param_chart_wall_type = self.get_test_value('set_chart_wall', 'chart_wall_type', 'str')
+        param_chart_wall = self.get_test_value('set_chart_wall', 'chart_wall', 'ChartWall')
+        param_password = self.get_test_value('set_chart_wall', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_wall', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_wall', 'storage', 'str')
+        param_password = self.get_invalid_test_value('set_chart_wall', 'password', param_password, 'str')
+        self.initialize('set_chart_wall', 'password', param_password)
+        ok = False
+        try:
+            self.api.set_chart_wall(param_name, param_slide_index, param_shape_index, param_chart_wall_type, param_chart_wall, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_wall', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_wall', 'password', param_password)
+        if ok:
+            self.assert_no_exception('set_chart_wall', 'password')
+
+    def test_set_chart_wall_invalid_folder(self):
+        """Test case for set_chart_wall with invalid folder
+        """
+        param_name = self.get_test_value('set_chart_wall', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_wall', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_wall', 'shape_index', 'int')
+        param_chart_wall_type = self.get_test_value('set_chart_wall', 'chart_wall_type', 'str')
+        param_chart_wall = self.get_test_value('set_chart_wall', 'chart_wall', 'ChartWall')
+        param_password = self.get_test_value('set_chart_wall', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_wall', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_wall', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('set_chart_wall', 'folder', param_folder, 'str')
+        self.initialize('set_chart_wall', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.set_chart_wall(param_name, param_slide_index, param_shape_index, param_chart_wall_type, param_chart_wall, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_wall', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_wall', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('set_chart_wall', 'folder')
+
+    def test_set_chart_wall_invalid_storage(self):
+        """Test case for set_chart_wall with invalid storage
+        """
+        param_name = self.get_test_value('set_chart_wall', 'name', 'str')
+        param_slide_index = self.get_test_value('set_chart_wall', 'slide_index', 'int')
+        param_shape_index = self.get_test_value('set_chart_wall', 'shape_index', 'int')
+        param_chart_wall_type = self.get_test_value('set_chart_wall', 'chart_wall_type', 'str')
+        param_chart_wall = self.get_test_value('set_chart_wall', 'chart_wall', 'ChartWall')
+        param_password = self.get_test_value('set_chart_wall', 'password', 'str')
+        param_folder = self.get_test_value('set_chart_wall', 'folder', 'str')
+        param_storage = self.get_test_value('set_chart_wall', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('set_chart_wall', 'storage', param_storage, 'str')
+        self.initialize('set_chart_wall', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.set_chart_wall(param_name, param_slide_index, param_shape_index, param_chart_wall_type, param_chart_wall, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_chart_wall', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_chart_wall', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('set_chart_wall', 'storage')
+
     def test_set_document_properties(self):
         """Test case for set_document_properties
         """
@@ -41570,213 +42551,6 @@ class TestSlidesApi(BaseTest):
             self.assert_value_error(ex, 'update_chart_series', 'storage', param_storage)
         if ok:
             self.assert_no_exception('update_chart_series', 'storage')
-
-    def test_update_chart_series_group(self):
-        """Test case for update_chart_series_group
-        """
-        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
-        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
-        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
-        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
-        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
-        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
-        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
-        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
-        self.initialize('update_chart_series_group', None, None)
-        response = self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
-        self.assertIsNotNone(response)
-
-    def test_update_chart_series_group_invalid_name(self):
-        """Test case for update_chart_series_group with invalid name
-        """
-        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
-        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
-        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
-        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
-        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
-        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
-        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
-        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
-        param_name = self.get_invalid_test_value('update_chart_series_group', 'name', param_name, 'str')
-        self.initialize('update_chart_series_group', 'name', param_name)
-        ok = False
-        try:
-            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
-            ok = True
-        except ApiException as ex:
-            self.assert_exception(ex, 'update_chart_series_group', 'name', param_name)
-        except ValueError as ex:
-            self.assert_value_error(ex, 'update_chart_series_group', 'name', param_name)
-        if ok:
-            self.assert_no_exception('update_chart_series_group', 'name')
-
-    def test_update_chart_series_group_invalid_slide_index(self):
-        """Test case for update_chart_series_group with invalid slide_index
-        """
-        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
-        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
-        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
-        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
-        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
-        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
-        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
-        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
-        param_slide_index = self.get_invalid_test_value('update_chart_series_group', 'slide_index', param_slide_index, 'int')
-        self.initialize('update_chart_series_group', 'slide_index', param_slide_index)
-        ok = False
-        try:
-            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
-            ok = True
-        except ApiException as ex:
-            self.assert_exception(ex, 'update_chart_series_group', 'slide_index', param_slide_index)
-        except ValueError as ex:
-            self.assert_value_error(ex, 'update_chart_series_group', 'slide_index', param_slide_index)
-        if ok:
-            self.assert_no_exception('update_chart_series_group', 'slide_index')
-
-    def test_update_chart_series_group_invalid_shape_index(self):
-        """Test case for update_chart_series_group with invalid shape_index
-        """
-        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
-        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
-        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
-        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
-        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
-        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
-        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
-        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
-        param_shape_index = self.get_invalid_test_value('update_chart_series_group', 'shape_index', param_shape_index, 'int')
-        self.initialize('update_chart_series_group', 'shape_index', param_shape_index)
-        ok = False
-        try:
-            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
-            ok = True
-        except ApiException as ex:
-            self.assert_exception(ex, 'update_chart_series_group', 'shape_index', param_shape_index)
-        except ValueError as ex:
-            self.assert_value_error(ex, 'update_chart_series_group', 'shape_index', param_shape_index)
-        if ok:
-            self.assert_no_exception('update_chart_series_group', 'shape_index')
-
-    def test_update_chart_series_group_invalid_series_group_index(self):
-        """Test case for update_chart_series_group with invalid series_group_index
-        """
-        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
-        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
-        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
-        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
-        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
-        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
-        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
-        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
-        param_series_group_index = self.get_invalid_test_value('update_chart_series_group', 'series_group_index', param_series_group_index, 'int')
-        self.initialize('update_chart_series_group', 'series_group_index', param_series_group_index)
-        ok = False
-        try:
-            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
-            ok = True
-        except ApiException as ex:
-            self.assert_exception(ex, 'update_chart_series_group', 'series_group_index', param_series_group_index)
-        except ValueError as ex:
-            self.assert_value_error(ex, 'update_chart_series_group', 'series_group_index', param_series_group_index)
-        if ok:
-            self.assert_no_exception('update_chart_series_group', 'series_group_index')
-
-    def test_update_chart_series_group_invalid_series_group(self):
-        """Test case for update_chart_series_group with invalid series_group
-        """
-        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
-        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
-        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
-        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
-        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
-        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
-        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
-        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
-        param_series_group = self.get_invalid_test_value('update_chart_series_group', 'series_group', param_series_group, 'ChartSeriesGroup')
-        self.initialize('update_chart_series_group', 'series_group', param_series_group)
-        ok = False
-        try:
-            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
-            ok = True
-        except ApiException as ex:
-            self.assert_exception(ex, 'update_chart_series_group', 'series_group', param_series_group)
-        except ValueError as ex:
-            self.assert_value_error(ex, 'update_chart_series_group', 'series_group', param_series_group)
-        if ok:
-            self.assert_no_exception('update_chart_series_group', 'series_group')
-
-    def test_update_chart_series_group_invalid_password(self):
-        """Test case for update_chart_series_group with invalid password
-        """
-        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
-        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
-        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
-        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
-        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
-        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
-        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
-        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
-        param_password = self.get_invalid_test_value('update_chart_series_group', 'password', param_password, 'str')
-        self.initialize('update_chart_series_group', 'password', param_password)
-        ok = False
-        try:
-            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
-            ok = True
-        except ApiException as ex:
-            self.assert_exception(ex, 'update_chart_series_group', 'password', param_password)
-        except ValueError as ex:
-            self.assert_value_error(ex, 'update_chart_series_group', 'password', param_password)
-        if ok:
-            self.assert_no_exception('update_chart_series_group', 'password')
-
-    def test_update_chart_series_group_invalid_folder(self):
-        """Test case for update_chart_series_group with invalid folder
-        """
-        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
-        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
-        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
-        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
-        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
-        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
-        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
-        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
-        param_folder = self.get_invalid_test_value('update_chart_series_group', 'folder', param_folder, 'str')
-        self.initialize('update_chart_series_group', 'folder', param_folder)
-        ok = False
-        try:
-            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
-            ok = True
-        except ApiException as ex:
-            self.assert_exception(ex, 'update_chart_series_group', 'folder', param_folder)
-        except ValueError as ex:
-            self.assert_value_error(ex, 'update_chart_series_group', 'folder', param_folder)
-        if ok:
-            self.assert_no_exception('update_chart_series_group', 'folder')
-
-    def test_update_chart_series_group_invalid_storage(self):
-        """Test case for update_chart_series_group with invalid storage
-        """
-        param_name = self.get_test_value('update_chart_series_group', 'name', 'str')
-        param_slide_index = self.get_test_value('update_chart_series_group', 'slide_index', 'int')
-        param_shape_index = self.get_test_value('update_chart_series_group', 'shape_index', 'int')
-        param_series_group_index = self.get_test_value('update_chart_series_group', 'series_group_index', 'int')
-        param_series_group = self.get_test_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup')
-        param_password = self.get_test_value('update_chart_series_group', 'password', 'str')
-        param_folder = self.get_test_value('update_chart_series_group', 'folder', 'str')
-        param_storage = self.get_test_value('update_chart_series_group', 'storage', 'str')
-        param_storage = self.get_invalid_test_value('update_chart_series_group', 'storage', param_storage, 'str')
-        self.initialize('update_chart_series_group', 'storage', param_storage)
-        ok = False
-        try:
-            self.api.update_chart_series_group(param_name, param_slide_index, param_shape_index, param_series_group_index, param_series_group, param_password, param_folder, param_storage)
-            ok = True
-        except ApiException as ex:
-            self.assert_exception(ex, 'update_chart_series_group', 'storage', param_storage)
-        except ValueError as ex:
-            self.assert_value_error(ex, 'update_chart_series_group', 'storage', param_storage)
-        if ok:
-            self.assert_no_exception('update_chart_series_group', 'storage')
 
     def test_update_layout_slide(self):
         """Test case for update_layout_slide

@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 from asposeslidescloud import SlideAnimation, Effect, Portion, Paragraph, Shape
+from test import constant
 from test.base_test import BaseTest
 import asposeslidescloud
 
@@ -168,3 +169,17 @@ class TestMasterSlides(BaseTest):
 
         BaseTest.slides_api.delete_special_slide_animation(file_name, slide_index, 'masterSlide', password, folder_name)
         self.assertEqual(0, len(animation.main_sequence))
+
+    def test_master_slide_delete_unused(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME, constant.FOLDER_NAME + "/" + constant.FILE_NAME)
+
+        result = BaseTest.slides_api.delete_unused_master_slides(constant.FILE_NAME, True, constant.PASSWORD,
+                                                                 constant.FOLDER_NAME)
+        self.assertEqual(1, len(result.slide_list))
+
+    def test_master_slide_delete_unused_online(self):
+        with open(constant.LOCAL_TEST_DATA_FOLDER + "/" + constant.FILE_NAME, 'rb') as f:
+            file = f.read()
+
+        result = BaseTest.slides_api.delete_unused_master_slides_online(file, True, constant.PASSWORD)
+        self.assertIsNotNone(result)

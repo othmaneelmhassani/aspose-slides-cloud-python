@@ -2,8 +2,9 @@
 from __future__ import absolute_import
 
 from asposeslidescloud import OneValueSeries, Chart, OneValueChartDataPoint, ChartCategory, Axis, ChartLinesFormat, \
-    LineFormat, NoFill, SolidFill, GradientFill, GradientFillStop, Axes
+    LineFormat, NoFill, SolidFill, GradientFill, GradientFillStop, Axes, Legend, ChartWall
 from asposeslidescloud.rest import ApiException
+from test import constant
 from test.base_test import BaseTest
 import asposeslidescloud
 
@@ -390,6 +391,45 @@ class TestChart(BaseTest):
         chart = BaseTest.slides_api.get_shape(file_name, 3, 1, "password", folder_name)
         self.assertEqual(1, len(chart.series_groups))
         chart.series_groups[0].overlap = 10
-        chart = BaseTest.slides_api.update_chart_series_group(file_name, 3, 1, 1, chart.series_groups[0], "password",
+        chart = BaseTest.slides_api.set_chart_series_group(file_name, 3, 1, 1, chart.series_groups[0], "password",
                                                               folder_name)
         self.assertEqual(10, chart.series_groups[0].overlap)
+
+    def test_set_chart_legend(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME, constant.FOLDER_NAME + "/" +
+                                      constant.FILE_NAME)
+        legend = Legend()
+        legend.overlay = True
+        fill_format = SolidFill()
+        fill_format.color = constant.COLOR
+        legend.fill_format = fill_format
+        response = BaseTest.slides_api.set_chart_legend(constant.FILE_NAME, 3, 1, legend, constant.PASSWORD,
+                                                        constant.FOLDER_NAME)
+        self.assertTrue(response.overlay)
+        self.assertEqual('Solid', response.fill_format.type)
+
+    def test_set_chart_axis(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME, constant.FOLDER_NAME + "/" +
+                                      constant.FILE_NAME)
+        axis = Axis()
+        axis.has_title = True
+        axis.is_automatic_max_value = False
+        axis.max_value = 10
+        response = BaseTest.slides_api.set_chart_axis(constant.FILE_NAME, 3, 1, "VerticalAxis", axis, constant.PASSWORD,
+                                                        constant.FOLDER_NAME)
+        self.assertTrue(axis.has_title)
+        self.assertFalse(axis.is_automatic_max_value)
+        self.assertEqual(axis.max_value, response.max_value)
+
+
+    def test_set_chart_wall(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME, constant.FOLDER_NAME + "/" +
+                                      constant.FILE_NAME)
+        wall = ChartWall()
+        fill_format = SolidFill()
+        fill_format.color = constant.COLOR
+        wall.fill_format = fill_format
+
+        response = BaseTest.slides_api.set_chart_wall(constant.FILE_NAME, 8, 2, "Backwall", wall, constant.PASSWORD,
+                                                        constant.FOLDER_NAME)
+        self.assertEqual('Solid', response.fill_format.type)

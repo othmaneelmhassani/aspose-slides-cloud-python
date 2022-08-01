@@ -12728,6 +12728,223 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def delete_unused_master_slides(self, name, ignore_preserve_field = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Removes unused master slides.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, ignore_preserve_field, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param ignore_preserve_field Determines, whether this method should remove unused master even if its             preserve property is set to true.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: MasterSlides
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_unused_master_slides_with_http_info(name, ignore_preserve_field, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_unused_master_slides_with_http_info(name, ignore_preserve_field, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_unused_master_slides_with_http_info(self, name, ignore_preserve_field = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Removes unused master slides.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_unused_master_slides_with_http_info(name, ignore_preserve_field, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param ignore_preserve_field Determines, whether this method should remove unused master even if its             preserve property is set to true.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: MasterSlides
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_unused_master_slides" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `delete_unused_master_slides`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+
+        query_params = []
+        if ignore_preserve_field:
+            query_params.append(('ignorePreserveField', ignore_preserve_field))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/masterSlides', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='MasterSlides',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_unused_master_slides_online(self, document, ignore_preserve_field = None, password = None, **kwargs):  # noqa: E501
+        """Removes unused master slides.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(document, ignore_preserve_field, password, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data
+        :param ignore_preserve_field Determines, whether this method should remove unused master even if its             preserve property is set to true.
+        :param password Document password.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_unused_master_slides_online_with_http_info(document, ignore_preserve_field, password, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_unused_master_slides_online_with_http_info(document, ignore_preserve_field, password, **kwargs)  # noqa: E501
+            return data
+
+    def delete_unused_master_slides_online_with_http_info(self, document, ignore_preserve_field = None, password = None, **kwargs):  # noqa: E501
+        """Removes unused master slides.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_unused_master_slides_online_with_http_info(document, ignore_preserve_field, password, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data
+        :param ignore_preserve_field Determines, whether this method should remove unused master even if its             preserve property is set to true.
+        :param password Document password.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_unused_master_slides_online" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'document' is set
+        if not document:
+            raise ValueError("Missing the required parameter `document` when calling `delete_unused_master_slides_online`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if ignore_preserve_field:
+            query_params.append(('ignorePreserveField', ignore_preserve_field))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+        if document:
+            param_files['document'] = document  # noqa: E501
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['multipart/form-data'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/masterSlides/delete', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='file',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def delete_watermark(self, name, shape_name = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Removes shapes with name \&quot;watermark\&quot; from the presentation.  # noqa: E501
 
@@ -27674,6 +27891,538 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def set_chart_axis(self, name, slide_index, shape_index, axis_type, axis, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Set chart axis.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, shape_index, axis_type, axis, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param axis_type Axis type. Horizontal, Vertical, SecondaryHorizontal or SecondaryVertical.
+        :param axis Axis DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Axis
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.set_chart_axis_with_http_info(name, slide_index, shape_index, axis_type, axis, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.set_chart_axis_with_http_info(name, slide_index, shape_index, axis_type, axis, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def set_chart_axis_with_http_info(self, name, slide_index, shape_index, axis_type, axis, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Set chart axis.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.set_chart_axis_with_http_info(name, slide_index, shape_index, axis_type, axis, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param axis_type Axis type. Horizontal, Vertical, SecondaryHorizontal or SecondaryVertical.
+        :param axis Axis DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Axis
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method set_chart_axis" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `set_chart_axis`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `set_chart_axis`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `shape_index` when calling `set_chart_axis`")  # noqa: E501
+        # verify the required parameter 'axis_type' is set
+        if not axis_type:
+            raise ValueError("Missing the required parameter `axis_type` when calling `set_chart_axis`")  # noqa: E501
+        # verify the value of parameter 'axis_type' is valid
+        if not axis_type.upper() in AxisType.__dict__:
+            raise ValueError("Invalid value for parameter `axis_type` when calling `set_chart_axis`")  # noqa: E501
+        # verify the required parameter 'axis' is set
+        if not axis:
+            raise ValueError("Missing the required parameter `axis` when calling `set_chart_axis`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['axisType'] = axis_type  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if axis:
+            body_params = axis
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/{axisType}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Axis',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def set_chart_legend(self, name, slide_index, shape_index, legend, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Set chart axis.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, shape_index, legend, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param legend Chart legend DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Legend
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.set_chart_legend_with_http_info(name, slide_index, shape_index, legend, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.set_chart_legend_with_http_info(name, slide_index, shape_index, legend, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def set_chart_legend_with_http_info(self, name, slide_index, shape_index, legend, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Set chart axis.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.set_chart_legend_with_http_info(name, slide_index, shape_index, legend, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param legend Chart legend DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Legend
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method set_chart_legend" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `set_chart_legend`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `set_chart_legend`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `shape_index` when calling `set_chart_legend`")  # noqa: E501
+        # verify the required parameter 'legend' is set
+        if not legend:
+            raise ValueError("Missing the required parameter `legend` when calling `set_chart_legend`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if legend:
+            body_params = legend
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/legend', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Legend',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def set_chart_series_group(self, name, slide_index, shape_index, series_group_index, series_group, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Set a series group in a chart.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, shape_index, series_group_index, series_group, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index (must be a chart).
+        :param series_group_index Series group index.
+        :param series_group Series group DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Chart
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.set_chart_series_group_with_http_info(name, slide_index, shape_index, series_group_index, series_group, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.set_chart_series_group_with_http_info(name, slide_index, shape_index, series_group_index, series_group, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def set_chart_series_group_with_http_info(self, name, slide_index, shape_index, series_group_index, series_group, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Set a series group in a chart.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.set_chart_series_group_with_http_info(name, slide_index, shape_index, series_group_index, series_group, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index (must be a chart).
+        :param series_group_index Series group index.
+        :param series_group Series group DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: Chart
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method set_chart_series_group" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `set_chart_series_group`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `set_chart_series_group`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `shape_index` when calling `set_chart_series_group`")  # noqa: E501
+        # verify the required parameter 'series_group_index' is set
+        if not series_group_index:
+            raise ValueError("Missing the required parameter `series_group_index` when calling `set_chart_series_group`")  # noqa: E501
+        # verify the required parameter 'series_group' is set
+        if not series_group:
+            raise ValueError("Missing the required parameter `series_group` when calling `set_chart_series_group`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['seriesGroupIndex'] = series_group_index  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if series_group:
+            body_params = series_group
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/seriesGroup/{seriesGroupIndex}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Chart',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def set_chart_wall(self, name, slide_index, shape_index, chart_wall_type, chart_wall, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Set 3D chart wall.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, shape_index, chart_wall_type, chart_wall, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param chart_wall_type Chart wall type: floor, sideWall or backWall.
+        :param chart_wall Chart wall DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: ChartWall
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.set_chart_wall_with_http_info(name, slide_index, shape_index, chart_wall_type, chart_wall, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.set_chart_wall_with_http_info(name, slide_index, shape_index, chart_wall_type, chart_wall, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def set_chart_wall_with_http_info(self, name, slide_index, shape_index, chart_wall_type, chart_wall, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Set 3D chart wall.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.set_chart_wall_with_http_info(name, slide_index, shape_index, chart_wall_type, chart_wall, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param shape_index Shape index.
+        :param chart_wall_type Chart wall type: floor, sideWall or backWall.
+        :param chart_wall Chart wall DTO.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: ChartWall
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method set_chart_wall" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `set_chart_wall`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `set_chart_wall`")  # noqa: E501
+        # verify the required parameter 'shape_index' is set
+        if not shape_index:
+            raise ValueError("Missing the required parameter `shape_index` when calling `set_chart_wall`")  # noqa: E501
+        # verify the required parameter 'chart_wall_type' is set
+        if not chart_wall_type:
+            raise ValueError("Missing the required parameter `chart_wall_type` when calling `set_chart_wall`")  # noqa: E501
+        # verify the value of parameter 'chart_wall_type' is valid
+        if not chart_wall_type.upper() in ChartWallType.__dict__:
+            raise ValueError("Invalid value for parameter `chart_wall_type` when calling `set_chart_wall`")  # noqa: E501
+        # verify the required parameter 'chart_wall' is set
+        if not chart_wall:
+            raise ValueError("Missing the required parameter `chart_wall` when calling `set_chart_wall`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['shapeIndex'] = shape_index  # noqa: E501
+        path_params['chartWallType'] = chart_wall_type  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+        if chart_wall:
+            body_params = chart_wall
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/{chartWallType}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='ChartWall',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def set_document_properties(self, name, properties, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Set document properties.  # noqa: E501
 
@@ -30254,139 +31003,6 @@ class SlidesApi(ApiBase):
 
         return self.api_client.call_api(
             '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/series/{seriesIndex}', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=param_files,
-            response_type='Chart',  # noqa: E501
-            auth_settings=auth_settings,
-            is_async=params.get('is_async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def update_chart_series_group(self, name, slide_index, shape_index, series_group_index, series_group, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Update a series group in a chart.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, shape_index, series_group_index, series_group, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index (must be a chart).
-        :param series_group_index Series group index.
-        :param series_group Series group DTO.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Chart
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('is_async'):
-            return self.update_chart_series_group_with_http_info(name, slide_index, shape_index, series_group_index, series_group, password, folder, storage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.update_chart_series_group_with_http_info(name, slide_index, shape_index, series_group_index, series_group, password, folder, storage, **kwargs)  # noqa: E501
-            return data
-
-    def update_chart_series_group_with_http_info(self, name, slide_index, shape_index, series_group_index, series_group, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Update a series group in a chart.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.update_chart_series_group_with_http_info(name, slide_index, shape_index, series_group_index, series_group, password, folder, storage, is_async=True)
-        >>> result = thread.get()
-
-        :param is_async bool
-        :param name Document name.
-        :param slide_index Slide index.
-        :param shape_index Shape index (must be a chart).
-        :param series_group_index Series group index.
-        :param series_group Series group DTO.
-        :param password Document password.
-        :param folder Document folder.
-        :param storage Document storage.
-        :return: Chart
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('is_async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_chart_series_group" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'name' is set
-        if not name:
-            raise ValueError("Missing the required parameter `name` when calling `update_chart_series_group`")  # noqa: E501
-        # verify the required parameter 'slide_index' is set
-        if not slide_index:
-            raise ValueError("Missing the required parameter `slide_index` when calling `update_chart_series_group`")  # noqa: E501
-        # verify the required parameter 'shape_index' is set
-        if not shape_index:
-            raise ValueError("Missing the required parameter `shape_index` when calling `update_chart_series_group`")  # noqa: E501
-        # verify the required parameter 'series_group_index' is set
-        if not series_group_index:
-            raise ValueError("Missing the required parameter `series_group_index` when calling `update_chart_series_group`")  # noqa: E501
-        # verify the required parameter 'series_group' is set
-        if not series_group:
-            raise ValueError("Missing the required parameter `series_group` when calling `update_chart_series_group`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        path_params['name'] = name  # noqa: E501
-        path_params['slideIndex'] = slide_index  # noqa: E501
-        path_params['shapeIndex'] = shape_index  # noqa: E501
-        path_params['seriesGroupIndex'] = series_group_index  # noqa: E501
-
-        query_params = []
-        if folder:
-            query_params.append(('folder', folder))  # noqa: E501
-        if storage:
-            query_params.append(('storage', storage))  # noqa: E501
-
-        header_params = {}
-        if password:
-            header_params['password'] = password  # noqa: E501
-
-        form_params = []
-        param_files = {}
-
-        body_params = None
-        if series_group:
-            body_params = series_group
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['JWT']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/seriesGroup/{seriesGroupIndex}', 'PUT',
             path_params,
             query_params,
             header_params,

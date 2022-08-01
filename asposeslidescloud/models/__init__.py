@@ -34,6 +34,7 @@ from asposeslidescloud.models.api_info import ApiInfo
 from asposeslidescloud.models.arrow_head_properties import ArrowHeadProperties
 from asposeslidescloud.models.axes import Axes
 from asposeslidescloud.models.axis import Axis
+from asposeslidescloud.models.axis_type import AxisType
 from asposeslidescloud.models.blur_effect import BlurEffect
 from asposeslidescloud.models.camera import Camera
 from asposeslidescloud.models.chart_category import ChartCategory
@@ -41,6 +42,7 @@ from asposeslidescloud.models.chart_lines_format import ChartLinesFormat
 from asposeslidescloud.models.chart_series_group import ChartSeriesGroup
 from asposeslidescloud.models.chart_title import ChartTitle
 from asposeslidescloud.models.chart_wall import ChartWall
+from asposeslidescloud.models.chart_wall_type import ChartWallType
 from asposeslidescloud.models.common_slide_view_properties import CommonSlideViewProperties
 from asposeslidescloud.models.custom_dash_pattern import CustomDashPattern
 from asposeslidescloud.models.data_point import DataPoint

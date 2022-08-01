@@ -91,3 +91,19 @@ class TestMerge(BaseTest):
         presentation2.path = folder_name + "/" + file_name2
         request.presentations = [ presentation1, presentation2 ]
         BaseTest.slides_api.merge_online(files, request)
+
+    def test_merge_ordered_url(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME, constant.FOLDER_NAME + "/" +
+                                      constant.FILE_NAME)
+        request = OrderedMergeRequest()
+        presentation1 = PresentationToMerge()
+        presentation1.path = constant.FOLDER_NAME + "/" + constant.FILE_NAME
+        presentation1.password = "password"
+        presentation1.source = "Storage"
+        presentation1.slides = [1, 2]
+        presentation2 = PresentationToMerge()
+        presentation2.path = "https://drive.google.com/uc?export=download&id=1ycMzd7e--Ro9H8eH2GL5fPP7-2HjX4My"
+        presentation2.slides = [1]
+        presentation2.source = 'Url'
+        request.presentations = [presentation1, presentation2]
+        BaseTest.slides_api.merge_online(None, request)

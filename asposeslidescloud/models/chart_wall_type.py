@@ -31,34 +31,14 @@ import re  # noqa: F401
 import six
 
 
-class NotesSlideExportFormat(object):
+class ChartWallType(object):
 
     """
     allowed enum values
     """
-    JPEG = "Jpeg"
-    PNG = "Png"
-    GIF = "Gif"
-    BMP = "Bmp"
-    TIFF = "Tiff"
-    HTML = "Html"
-    PDF = "Pdf"
-    XPS = "Xps"
-    PPTX = "Pptx"
-    ODP = "Odp"
-    OTP = "Otp"
-    PPT = "Ppt"
-    PPS = "Pps"
-    PPSX = "Ppsx"
-    PPTM = "Pptm"
-    PPSM = "Ppsm"
-    POTX = "Potx"
-    POT = "Pot"
-    POTM = "Potm"
-    SVG = "Svg"
-    FODP = "Fodp"
-    XAML = "Xaml"
-    HTML5 = "Html5"
+    FLOOR = "Floor"
+    SIDEWALL = "SideWall"
+    BACKWALL = "BackWall"
 
     """
     Attributes:
@@ -77,7 +57,7 @@ class NotesSlideExportFormat(object):
     }
 
     def __init__(self):  # noqa: E501
-        """NotesSlideExportFormat - a model defined in Swagger"""  # noqa: E501
+        """ChartWallType - a model defined in Swagger"""  # noqa: E501
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -113,7 +93,7 @@ class NotesSlideExportFormat(object):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, NotesSlideExportFormat):
+        if not isinstance(other, ChartWallType):
             return False
 
         return self.__dict__ == other.__dict__

@@ -132,7 +132,7 @@ class SaveSlide(Task):
         :type: str
         """
         if format is not None:
-            allowed_values = ["Jpeg", "Png", "Gif", "Bmp", "Tiff", "Html", "Pdf", "Xps", "Pptx", "Odp", "Otp", "Ppt", "Pps", "Ppsx", "Pptm", "Ppsm", "Potx", "Pot", "Potm", "Svg", "Fodp", "Xaml"]  # noqa: E501
+            allowed_values = ["Jpeg", "Png", "Gif", "Bmp", "Tiff", "Html", "Pdf", "Xps", "Pptx", "Odp", "Otp", "Ppt", "Pps", "Ppsx", "Pptm", "Ppsm", "Potx", "Pot", "Potm", "Svg", "Fodp", "Xaml", "Html5"]  # noqa: E501
             if format.isdigit():
                 int_format = int(format)
                 if int_format < 0 or int_format >= len(allowed_values):

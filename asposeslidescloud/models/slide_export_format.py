@@ -58,6 +58,7 @@ class SlideExportFormat(object):
     SVG = "Svg"
     FODP = "Fodp"
     XAML = "Xaml"
+    HTML5 = "Html5"
 
     """
     Attributes:

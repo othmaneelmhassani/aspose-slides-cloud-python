@@ -162,7 +162,7 @@ class PresentationToMerge(object):
         :type: str
         """
         if source is not None:
-            allowed_values = ["Storage", "Request"]  # noqa: E501
+            allowed_values = ["Storage", "Request", "Url"]  # noqa: E501
             if source.isdigit():
                 int_source = int(source)
                 if int_source < 0 or int_source >= len(allowed_values):
