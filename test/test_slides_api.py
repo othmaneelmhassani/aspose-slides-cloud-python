@@ -10504,6 +10504,191 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('delete_document_property', 'storage')
 
+    def test_delete_embedded_font(self):
+        """Test case for delete_embedded_font
+        """
+        param_name = self.get_test_value('delete_embedded_font', 'name', 'str')
+        param_font_name = self.get_test_value('delete_embedded_font', 'font_name', 'str')
+        param_password = self.get_test_value('delete_embedded_font', 'password', 'str')
+        param_folder = self.get_test_value('delete_embedded_font', 'folder', 'str')
+        param_storage = self.get_test_value('delete_embedded_font', 'storage', 'str')
+        self.initialize('delete_embedded_font', None, None)
+        response = self.api.delete_embedded_font(param_name, param_font_name, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_delete_embedded_font_invalid_name(self):
+        """Test case for delete_embedded_font with invalid name
+        """
+        param_name = self.get_test_value('delete_embedded_font', 'name', 'str')
+        param_font_name = self.get_test_value('delete_embedded_font', 'font_name', 'str')
+        param_password = self.get_test_value('delete_embedded_font', 'password', 'str')
+        param_folder = self.get_test_value('delete_embedded_font', 'folder', 'str')
+        param_storage = self.get_test_value('delete_embedded_font', 'storage', 'str')
+        param_name = self.get_invalid_test_value('delete_embedded_font', 'name', param_name, 'str')
+        self.initialize('delete_embedded_font', 'name', param_name)
+        ok = False
+        try:
+            self.api.delete_embedded_font(param_name, param_font_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_embedded_font', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_embedded_font', 'name', param_name)
+        if ok:
+            self.assert_no_exception('delete_embedded_font', 'name')
+
+    def test_delete_embedded_font_invalid_font_name(self):
+        """Test case for delete_embedded_font with invalid font_name
+        """
+        param_name = self.get_test_value('delete_embedded_font', 'name', 'str')
+        param_font_name = self.get_test_value('delete_embedded_font', 'font_name', 'str')
+        param_password = self.get_test_value('delete_embedded_font', 'password', 'str')
+        param_folder = self.get_test_value('delete_embedded_font', 'folder', 'str')
+        param_storage = self.get_test_value('delete_embedded_font', 'storage', 'str')
+        param_font_name = self.get_invalid_test_value('delete_embedded_font', 'font_name', param_font_name, 'str')
+        self.initialize('delete_embedded_font', 'font_name', param_font_name)
+        ok = False
+        try:
+            self.api.delete_embedded_font(param_name, param_font_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_embedded_font', 'font_name', param_font_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_embedded_font', 'font_name', param_font_name)
+        if ok:
+            self.assert_no_exception('delete_embedded_font', 'font_name')
+
+    def test_delete_embedded_font_invalid_password(self):
+        """Test case for delete_embedded_font with invalid password
+        """
+        param_name = self.get_test_value('delete_embedded_font', 'name', 'str')
+        param_font_name = self.get_test_value('delete_embedded_font', 'font_name', 'str')
+        param_password = self.get_test_value('delete_embedded_font', 'password', 'str')
+        param_folder = self.get_test_value('delete_embedded_font', 'folder', 'str')
+        param_storage = self.get_test_value('delete_embedded_font', 'storage', 'str')
+        param_password = self.get_invalid_test_value('delete_embedded_font', 'password', param_password, 'str')
+        self.initialize('delete_embedded_font', 'password', param_password)
+        ok = False
+        try:
+            self.api.delete_embedded_font(param_name, param_font_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_embedded_font', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_embedded_font', 'password', param_password)
+        if ok:
+            self.assert_no_exception('delete_embedded_font', 'password')
+
+    def test_delete_embedded_font_invalid_folder(self):
+        """Test case for delete_embedded_font with invalid folder
+        """
+        param_name = self.get_test_value('delete_embedded_font', 'name', 'str')
+        param_font_name = self.get_test_value('delete_embedded_font', 'font_name', 'str')
+        param_password = self.get_test_value('delete_embedded_font', 'password', 'str')
+        param_folder = self.get_test_value('delete_embedded_font', 'folder', 'str')
+        param_storage = self.get_test_value('delete_embedded_font', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('delete_embedded_font', 'folder', param_folder, 'str')
+        self.initialize('delete_embedded_font', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.delete_embedded_font(param_name, param_font_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_embedded_font', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_embedded_font', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('delete_embedded_font', 'folder')
+
+    def test_delete_embedded_font_invalid_storage(self):
+        """Test case for delete_embedded_font with invalid storage
+        """
+        param_name = self.get_test_value('delete_embedded_font', 'name', 'str')
+        param_font_name = self.get_test_value('delete_embedded_font', 'font_name', 'str')
+        param_password = self.get_test_value('delete_embedded_font', 'password', 'str')
+        param_folder = self.get_test_value('delete_embedded_font', 'folder', 'str')
+        param_storage = self.get_test_value('delete_embedded_font', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('delete_embedded_font', 'storage', param_storage, 'str')
+        self.initialize('delete_embedded_font', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.delete_embedded_font(param_name, param_font_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_embedded_font', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_embedded_font', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('delete_embedded_font', 'storage')
+
+    def test_delete_embedded_font_online(self):
+        """Test case for delete_embedded_font_online
+        """
+        param_document = self.get_test_value('delete_embedded_font_online', 'document', 'file')
+        param_font_name = self.get_test_value('delete_embedded_font_online', 'font_name', 'str')
+        param_password = self.get_test_value('delete_embedded_font_online', 'password', 'str')
+        self.initialize('delete_embedded_font_online', None, None)
+        response = self.api.delete_embedded_font_online(param_document, param_font_name, param_password)
+        self.assertTrue(isinstance(response, str))
+        self.assertTrue(len(response) > 0)
+
+    def test_delete_embedded_font_online_invalid_document(self):
+        """Test case for delete_embedded_font_online with invalid document
+        """
+        param_document = self.get_test_value('delete_embedded_font_online', 'document', 'file')
+        param_font_name = self.get_test_value('delete_embedded_font_online', 'font_name', 'str')
+        param_password = self.get_test_value('delete_embedded_font_online', 'password', 'str')
+        param_document = self.get_invalid_test_value('delete_embedded_font_online', 'document', param_document, 'file')
+        self.initialize('delete_embedded_font_online', 'document', param_document)
+        ok = False
+        try:
+            self.api.delete_embedded_font_online(param_document, param_font_name, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_embedded_font_online', 'document', param_document)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_embedded_font_online', 'document', param_document)
+        if ok:
+            self.assert_no_exception('delete_embedded_font_online', 'document')
+
+    def test_delete_embedded_font_online_invalid_font_name(self):
+        """Test case for delete_embedded_font_online with invalid font_name
+        """
+        param_document = self.get_test_value('delete_embedded_font_online', 'document', 'file')
+        param_font_name = self.get_test_value('delete_embedded_font_online', 'font_name', 'str')
+        param_password = self.get_test_value('delete_embedded_font_online', 'password', 'str')
+        param_font_name = self.get_invalid_test_value('delete_embedded_font_online', 'font_name', param_font_name, 'str')
+        self.initialize('delete_embedded_font_online', 'font_name', param_font_name)
+        ok = False
+        try:
+            self.api.delete_embedded_font_online(param_document, param_font_name, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_embedded_font_online', 'font_name', param_font_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_embedded_font_online', 'font_name', param_font_name)
+        if ok:
+            self.assert_no_exception('delete_embedded_font_online', 'font_name')
+
+    def test_delete_embedded_font_online_invalid_password(self):
+        """Test case for delete_embedded_font_online with invalid password
+        """
+        param_document = self.get_test_value('delete_embedded_font_online', 'document', 'file')
+        param_font_name = self.get_test_value('delete_embedded_font_online', 'font_name', 'str')
+        param_password = self.get_test_value('delete_embedded_font_online', 'password', 'str')
+        param_password = self.get_invalid_test_value('delete_embedded_font_online', 'password', param_password, 'str')
+        self.initialize('delete_embedded_font_online', 'password', param_password)
+        ok = False
+        try:
+            self.api.delete_embedded_font_online(param_document, param_font_name, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'delete_embedded_font_online', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'delete_embedded_font_online', 'password', param_password)
+        if ok:
+            self.assert_no_exception('delete_embedded_font_online', 'password')
+
     def test_delete_file(self):
         """Test case for delete_file
         """
@@ -23084,6 +23269,142 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('get_font_scheme', 'storage')
 
+    def test_get_fonts(self):
+        """Test case for get_fonts
+        """
+        param_name = self.get_test_value('get_fonts', 'name', 'str')
+        param_password = self.get_test_value('get_fonts', 'password', 'str')
+        param_folder = self.get_test_value('get_fonts', 'folder', 'str')
+        param_storage = self.get_test_value('get_fonts', 'storage', 'str')
+        self.initialize('get_fonts', None, None)
+        response = self.api.get_fonts(param_name, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_get_fonts_invalid_name(self):
+        """Test case for get_fonts with invalid name
+        """
+        param_name = self.get_test_value('get_fonts', 'name', 'str')
+        param_password = self.get_test_value('get_fonts', 'password', 'str')
+        param_folder = self.get_test_value('get_fonts', 'folder', 'str')
+        param_storage = self.get_test_value('get_fonts', 'storage', 'str')
+        param_name = self.get_invalid_test_value('get_fonts', 'name', param_name, 'str')
+        self.initialize('get_fonts', 'name', param_name)
+        ok = False
+        try:
+            self.api.get_fonts(param_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_fonts', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_fonts', 'name', param_name)
+        if ok:
+            self.assert_no_exception('get_fonts', 'name')
+
+    def test_get_fonts_invalid_password(self):
+        """Test case for get_fonts with invalid password
+        """
+        param_name = self.get_test_value('get_fonts', 'name', 'str')
+        param_password = self.get_test_value('get_fonts', 'password', 'str')
+        param_folder = self.get_test_value('get_fonts', 'folder', 'str')
+        param_storage = self.get_test_value('get_fonts', 'storage', 'str')
+        param_password = self.get_invalid_test_value('get_fonts', 'password', param_password, 'str')
+        self.initialize('get_fonts', 'password', param_password)
+        ok = False
+        try:
+            self.api.get_fonts(param_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_fonts', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_fonts', 'password', param_password)
+        if ok:
+            self.assert_no_exception('get_fonts', 'password')
+
+    def test_get_fonts_invalid_folder(self):
+        """Test case for get_fonts with invalid folder
+        """
+        param_name = self.get_test_value('get_fonts', 'name', 'str')
+        param_password = self.get_test_value('get_fonts', 'password', 'str')
+        param_folder = self.get_test_value('get_fonts', 'folder', 'str')
+        param_storage = self.get_test_value('get_fonts', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('get_fonts', 'folder', param_folder, 'str')
+        self.initialize('get_fonts', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.get_fonts(param_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_fonts', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_fonts', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('get_fonts', 'folder')
+
+    def test_get_fonts_invalid_storage(self):
+        """Test case for get_fonts with invalid storage
+        """
+        param_name = self.get_test_value('get_fonts', 'name', 'str')
+        param_password = self.get_test_value('get_fonts', 'password', 'str')
+        param_folder = self.get_test_value('get_fonts', 'folder', 'str')
+        param_storage = self.get_test_value('get_fonts', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('get_fonts', 'storage', param_storage, 'str')
+        self.initialize('get_fonts', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.get_fonts(param_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_fonts', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_fonts', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('get_fonts', 'storage')
+
+    def test_get_fonts_online(self):
+        """Test case for get_fonts_online
+        """
+        param_document = self.get_test_value('get_fonts_online', 'document', 'file')
+        param_password = self.get_test_value('get_fonts_online', 'password', 'str')
+        self.initialize('get_fonts_online', None, None)
+        response = self.api.get_fonts_online(param_document, param_password)
+        self.assertIsNotNone(response)
+
+    def test_get_fonts_online_invalid_document(self):
+        """Test case for get_fonts_online with invalid document
+        """
+        param_document = self.get_test_value('get_fonts_online', 'document', 'file')
+        param_password = self.get_test_value('get_fonts_online', 'password', 'str')
+        param_document = self.get_invalid_test_value('get_fonts_online', 'document', param_document, 'file')
+        self.initialize('get_fonts_online', 'document', param_document)
+        ok = False
+        try:
+            self.api.get_fonts_online(param_document, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_fonts_online', 'document', param_document)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_fonts_online', 'document', param_document)
+        if ok:
+            self.assert_no_exception('get_fonts_online', 'document')
+
+    def test_get_fonts_online_invalid_password(self):
+        """Test case for get_fonts_online with invalid password
+        """
+        param_document = self.get_test_value('get_fonts_online', 'document', 'file')
+        param_password = self.get_test_value('get_fonts_online', 'password', 'str')
+        param_password = self.get_invalid_test_value('get_fonts_online', 'password', param_password, 'str')
+        self.initialize('get_fonts_online', 'password', param_password)
+        ok = False
+        try:
+            self.api.get_fonts_online(param_document, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'get_fonts_online', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'get_fonts_online', 'password', param_password)
+        if ok:
+            self.assert_no_exception('get_fonts_online', 'password')
+
     def test_get_format_scheme(self):
         """Test case for get_format_scheme
         """
@@ -32656,6 +32977,321 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('import_from_pdf', 'storage')
 
+    def test_import_shapes_from_svg(self):
+        """Test case for import_shapes_from_svg
+        """
+        param_name = self.get_test_value('import_shapes_from_svg', 'name', 'str')
+        param_slide_index = self.get_test_value('import_shapes_from_svg', 'slide_index', 'int')
+        param_image = self.get_test_value('import_shapes_from_svg', 'image', 'file')
+        param_x = self.get_test_value('import_shapes_from_svg', 'x', 'int')
+        param_y = self.get_test_value('import_shapes_from_svg', 'y', 'int')
+        param_width = self.get_test_value('import_shapes_from_svg', 'width', 'int')
+        param_height = self.get_test_value('import_shapes_from_svg', 'height', 'int')
+        param_shapes = self.get_test_value('import_shapes_from_svg', 'shapes', 'list[int]')
+        param_password = self.get_test_value('import_shapes_from_svg', 'password', 'str')
+        param_folder = self.get_test_value('import_shapes_from_svg', 'folder', 'str')
+        param_storage = self.get_test_value('import_shapes_from_svg', 'storage', 'str')
+        self.initialize('import_shapes_from_svg', None, None)
+        response = self.api.import_shapes_from_svg(param_name, param_slide_index, param_image, param_x, param_y, param_width, param_height, param_shapes, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_import_shapes_from_svg_invalid_name(self):
+        """Test case for import_shapes_from_svg with invalid name
+        """
+        param_name = self.get_test_value('import_shapes_from_svg', 'name', 'str')
+        param_slide_index = self.get_test_value('import_shapes_from_svg', 'slide_index', 'int')
+        param_image = self.get_test_value('import_shapes_from_svg', 'image', 'file')
+        param_x = self.get_test_value('import_shapes_from_svg', 'x', 'int')
+        param_y = self.get_test_value('import_shapes_from_svg', 'y', 'int')
+        param_width = self.get_test_value('import_shapes_from_svg', 'width', 'int')
+        param_height = self.get_test_value('import_shapes_from_svg', 'height', 'int')
+        param_shapes = self.get_test_value('import_shapes_from_svg', 'shapes', 'list[int]')
+        param_password = self.get_test_value('import_shapes_from_svg', 'password', 'str')
+        param_folder = self.get_test_value('import_shapes_from_svg', 'folder', 'str')
+        param_storage = self.get_test_value('import_shapes_from_svg', 'storage', 'str')
+        param_name = self.get_invalid_test_value('import_shapes_from_svg', 'name', param_name, 'str')
+        self.initialize('import_shapes_from_svg', 'name', param_name)
+        ok = False
+        try:
+            self.api.import_shapes_from_svg(param_name, param_slide_index, param_image, param_x, param_y, param_width, param_height, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'import_shapes_from_svg', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'import_shapes_from_svg', 'name', param_name)
+        if ok:
+            self.assert_no_exception('import_shapes_from_svg', 'name')
+
+    def test_import_shapes_from_svg_invalid_slide_index(self):
+        """Test case for import_shapes_from_svg with invalid slide_index
+        """
+        param_name = self.get_test_value('import_shapes_from_svg', 'name', 'str')
+        param_slide_index = self.get_test_value('import_shapes_from_svg', 'slide_index', 'int')
+        param_image = self.get_test_value('import_shapes_from_svg', 'image', 'file')
+        param_x = self.get_test_value('import_shapes_from_svg', 'x', 'int')
+        param_y = self.get_test_value('import_shapes_from_svg', 'y', 'int')
+        param_width = self.get_test_value('import_shapes_from_svg', 'width', 'int')
+        param_height = self.get_test_value('import_shapes_from_svg', 'height', 'int')
+        param_shapes = self.get_test_value('import_shapes_from_svg', 'shapes', 'list[int]')
+        param_password = self.get_test_value('import_shapes_from_svg', 'password', 'str')
+        param_folder = self.get_test_value('import_shapes_from_svg', 'folder', 'str')
+        param_storage = self.get_test_value('import_shapes_from_svg', 'storage', 'str')
+        param_slide_index = self.get_invalid_test_value('import_shapes_from_svg', 'slide_index', param_slide_index, 'int')
+        self.initialize('import_shapes_from_svg', 'slide_index', param_slide_index)
+        ok = False
+        try:
+            self.api.import_shapes_from_svg(param_name, param_slide_index, param_image, param_x, param_y, param_width, param_height, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'import_shapes_from_svg', 'slide_index', param_slide_index)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'import_shapes_from_svg', 'slide_index', param_slide_index)
+        if ok:
+            self.assert_no_exception('import_shapes_from_svg', 'slide_index')
+
+    def test_import_shapes_from_svg_invalid_image(self):
+        """Test case for import_shapes_from_svg with invalid image
+        """
+        param_name = self.get_test_value('import_shapes_from_svg', 'name', 'str')
+        param_slide_index = self.get_test_value('import_shapes_from_svg', 'slide_index', 'int')
+        param_image = self.get_test_value('import_shapes_from_svg', 'image', 'file')
+        param_x = self.get_test_value('import_shapes_from_svg', 'x', 'int')
+        param_y = self.get_test_value('import_shapes_from_svg', 'y', 'int')
+        param_width = self.get_test_value('import_shapes_from_svg', 'width', 'int')
+        param_height = self.get_test_value('import_shapes_from_svg', 'height', 'int')
+        param_shapes = self.get_test_value('import_shapes_from_svg', 'shapes', 'list[int]')
+        param_password = self.get_test_value('import_shapes_from_svg', 'password', 'str')
+        param_folder = self.get_test_value('import_shapes_from_svg', 'folder', 'str')
+        param_storage = self.get_test_value('import_shapes_from_svg', 'storage', 'str')
+        param_image = self.get_invalid_test_value('import_shapes_from_svg', 'image', param_image, 'file')
+        self.initialize('import_shapes_from_svg', 'image', param_image)
+        ok = False
+        try:
+            self.api.import_shapes_from_svg(param_name, param_slide_index, param_image, param_x, param_y, param_width, param_height, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'import_shapes_from_svg', 'image', param_image)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'import_shapes_from_svg', 'image', param_image)
+        if ok:
+            self.assert_no_exception('import_shapes_from_svg', 'image')
+
+    def test_import_shapes_from_svg_invalid_x(self):
+        """Test case for import_shapes_from_svg with invalid x
+        """
+        param_name = self.get_test_value('import_shapes_from_svg', 'name', 'str')
+        param_slide_index = self.get_test_value('import_shapes_from_svg', 'slide_index', 'int')
+        param_image = self.get_test_value('import_shapes_from_svg', 'image', 'file')
+        param_x = self.get_test_value('import_shapes_from_svg', 'x', 'int')
+        param_y = self.get_test_value('import_shapes_from_svg', 'y', 'int')
+        param_width = self.get_test_value('import_shapes_from_svg', 'width', 'int')
+        param_height = self.get_test_value('import_shapes_from_svg', 'height', 'int')
+        param_shapes = self.get_test_value('import_shapes_from_svg', 'shapes', 'list[int]')
+        param_password = self.get_test_value('import_shapes_from_svg', 'password', 'str')
+        param_folder = self.get_test_value('import_shapes_from_svg', 'folder', 'str')
+        param_storage = self.get_test_value('import_shapes_from_svg', 'storage', 'str')
+        param_x = self.get_invalid_test_value('import_shapes_from_svg', 'x', param_x, 'int')
+        self.initialize('import_shapes_from_svg', 'x', param_x)
+        ok = False
+        try:
+            self.api.import_shapes_from_svg(param_name, param_slide_index, param_image, param_x, param_y, param_width, param_height, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'import_shapes_from_svg', 'x', param_x)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'import_shapes_from_svg', 'x', param_x)
+        if ok:
+            self.assert_no_exception('import_shapes_from_svg', 'x')
+
+    def test_import_shapes_from_svg_invalid_y(self):
+        """Test case for import_shapes_from_svg with invalid y
+        """
+        param_name = self.get_test_value('import_shapes_from_svg', 'name', 'str')
+        param_slide_index = self.get_test_value('import_shapes_from_svg', 'slide_index', 'int')
+        param_image = self.get_test_value('import_shapes_from_svg', 'image', 'file')
+        param_x = self.get_test_value('import_shapes_from_svg', 'x', 'int')
+        param_y = self.get_test_value('import_shapes_from_svg', 'y', 'int')
+        param_width = self.get_test_value('import_shapes_from_svg', 'width', 'int')
+        param_height = self.get_test_value('import_shapes_from_svg', 'height', 'int')
+        param_shapes = self.get_test_value('import_shapes_from_svg', 'shapes', 'list[int]')
+        param_password = self.get_test_value('import_shapes_from_svg', 'password', 'str')
+        param_folder = self.get_test_value('import_shapes_from_svg', 'folder', 'str')
+        param_storage = self.get_test_value('import_shapes_from_svg', 'storage', 'str')
+        param_y = self.get_invalid_test_value('import_shapes_from_svg', 'y', param_y, 'int')
+        self.initialize('import_shapes_from_svg', 'y', param_y)
+        ok = False
+        try:
+            self.api.import_shapes_from_svg(param_name, param_slide_index, param_image, param_x, param_y, param_width, param_height, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'import_shapes_from_svg', 'y', param_y)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'import_shapes_from_svg', 'y', param_y)
+        if ok:
+            self.assert_no_exception('import_shapes_from_svg', 'y')
+
+    def test_import_shapes_from_svg_invalid_width(self):
+        """Test case for import_shapes_from_svg with invalid width
+        """
+        param_name = self.get_test_value('import_shapes_from_svg', 'name', 'str')
+        param_slide_index = self.get_test_value('import_shapes_from_svg', 'slide_index', 'int')
+        param_image = self.get_test_value('import_shapes_from_svg', 'image', 'file')
+        param_x = self.get_test_value('import_shapes_from_svg', 'x', 'int')
+        param_y = self.get_test_value('import_shapes_from_svg', 'y', 'int')
+        param_width = self.get_test_value('import_shapes_from_svg', 'width', 'int')
+        param_height = self.get_test_value('import_shapes_from_svg', 'height', 'int')
+        param_shapes = self.get_test_value('import_shapes_from_svg', 'shapes', 'list[int]')
+        param_password = self.get_test_value('import_shapes_from_svg', 'password', 'str')
+        param_folder = self.get_test_value('import_shapes_from_svg', 'folder', 'str')
+        param_storage = self.get_test_value('import_shapes_from_svg', 'storage', 'str')
+        param_width = self.get_invalid_test_value('import_shapes_from_svg', 'width', param_width, 'int')
+        self.initialize('import_shapes_from_svg', 'width', param_width)
+        ok = False
+        try:
+            self.api.import_shapes_from_svg(param_name, param_slide_index, param_image, param_x, param_y, param_width, param_height, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'import_shapes_from_svg', 'width', param_width)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'import_shapes_from_svg', 'width', param_width)
+        if ok:
+            self.assert_no_exception('import_shapes_from_svg', 'width')
+
+    def test_import_shapes_from_svg_invalid_height(self):
+        """Test case for import_shapes_from_svg with invalid height
+        """
+        param_name = self.get_test_value('import_shapes_from_svg', 'name', 'str')
+        param_slide_index = self.get_test_value('import_shapes_from_svg', 'slide_index', 'int')
+        param_image = self.get_test_value('import_shapes_from_svg', 'image', 'file')
+        param_x = self.get_test_value('import_shapes_from_svg', 'x', 'int')
+        param_y = self.get_test_value('import_shapes_from_svg', 'y', 'int')
+        param_width = self.get_test_value('import_shapes_from_svg', 'width', 'int')
+        param_height = self.get_test_value('import_shapes_from_svg', 'height', 'int')
+        param_shapes = self.get_test_value('import_shapes_from_svg', 'shapes', 'list[int]')
+        param_password = self.get_test_value('import_shapes_from_svg', 'password', 'str')
+        param_folder = self.get_test_value('import_shapes_from_svg', 'folder', 'str')
+        param_storage = self.get_test_value('import_shapes_from_svg', 'storage', 'str')
+        param_height = self.get_invalid_test_value('import_shapes_from_svg', 'height', param_height, 'int')
+        self.initialize('import_shapes_from_svg', 'height', param_height)
+        ok = False
+        try:
+            self.api.import_shapes_from_svg(param_name, param_slide_index, param_image, param_x, param_y, param_width, param_height, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'import_shapes_from_svg', 'height', param_height)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'import_shapes_from_svg', 'height', param_height)
+        if ok:
+            self.assert_no_exception('import_shapes_from_svg', 'height')
+
+    def test_import_shapes_from_svg_invalid_shapes(self):
+        """Test case for import_shapes_from_svg with invalid shapes
+        """
+        param_name = self.get_test_value('import_shapes_from_svg', 'name', 'str')
+        param_slide_index = self.get_test_value('import_shapes_from_svg', 'slide_index', 'int')
+        param_image = self.get_test_value('import_shapes_from_svg', 'image', 'file')
+        param_x = self.get_test_value('import_shapes_from_svg', 'x', 'int')
+        param_y = self.get_test_value('import_shapes_from_svg', 'y', 'int')
+        param_width = self.get_test_value('import_shapes_from_svg', 'width', 'int')
+        param_height = self.get_test_value('import_shapes_from_svg', 'height', 'int')
+        param_shapes = self.get_test_value('import_shapes_from_svg', 'shapes', 'list[int]')
+        param_password = self.get_test_value('import_shapes_from_svg', 'password', 'str')
+        param_folder = self.get_test_value('import_shapes_from_svg', 'folder', 'str')
+        param_storage = self.get_test_value('import_shapes_from_svg', 'storage', 'str')
+        param_shapes = self.get_invalid_test_value('import_shapes_from_svg', 'shapes', param_shapes, 'list[int]')
+        self.initialize('import_shapes_from_svg', 'shapes', param_shapes)
+        ok = False
+        try:
+            self.api.import_shapes_from_svg(param_name, param_slide_index, param_image, param_x, param_y, param_width, param_height, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'import_shapes_from_svg', 'shapes', param_shapes)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'import_shapes_from_svg', 'shapes', param_shapes)
+        if ok:
+            self.assert_no_exception('import_shapes_from_svg', 'shapes')
+
+    def test_import_shapes_from_svg_invalid_password(self):
+        """Test case for import_shapes_from_svg with invalid password
+        """
+        param_name = self.get_test_value('import_shapes_from_svg', 'name', 'str')
+        param_slide_index = self.get_test_value('import_shapes_from_svg', 'slide_index', 'int')
+        param_image = self.get_test_value('import_shapes_from_svg', 'image', 'file')
+        param_x = self.get_test_value('import_shapes_from_svg', 'x', 'int')
+        param_y = self.get_test_value('import_shapes_from_svg', 'y', 'int')
+        param_width = self.get_test_value('import_shapes_from_svg', 'width', 'int')
+        param_height = self.get_test_value('import_shapes_from_svg', 'height', 'int')
+        param_shapes = self.get_test_value('import_shapes_from_svg', 'shapes', 'list[int]')
+        param_password = self.get_test_value('import_shapes_from_svg', 'password', 'str')
+        param_folder = self.get_test_value('import_shapes_from_svg', 'folder', 'str')
+        param_storage = self.get_test_value('import_shapes_from_svg', 'storage', 'str')
+        param_password = self.get_invalid_test_value('import_shapes_from_svg', 'password', param_password, 'str')
+        self.initialize('import_shapes_from_svg', 'password', param_password)
+        ok = False
+        try:
+            self.api.import_shapes_from_svg(param_name, param_slide_index, param_image, param_x, param_y, param_width, param_height, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'import_shapes_from_svg', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'import_shapes_from_svg', 'password', param_password)
+        if ok:
+            self.assert_no_exception('import_shapes_from_svg', 'password')
+
+    def test_import_shapes_from_svg_invalid_folder(self):
+        """Test case for import_shapes_from_svg with invalid folder
+        """
+        param_name = self.get_test_value('import_shapes_from_svg', 'name', 'str')
+        param_slide_index = self.get_test_value('import_shapes_from_svg', 'slide_index', 'int')
+        param_image = self.get_test_value('import_shapes_from_svg', 'image', 'file')
+        param_x = self.get_test_value('import_shapes_from_svg', 'x', 'int')
+        param_y = self.get_test_value('import_shapes_from_svg', 'y', 'int')
+        param_width = self.get_test_value('import_shapes_from_svg', 'width', 'int')
+        param_height = self.get_test_value('import_shapes_from_svg', 'height', 'int')
+        param_shapes = self.get_test_value('import_shapes_from_svg', 'shapes', 'list[int]')
+        param_password = self.get_test_value('import_shapes_from_svg', 'password', 'str')
+        param_folder = self.get_test_value('import_shapes_from_svg', 'folder', 'str')
+        param_storage = self.get_test_value('import_shapes_from_svg', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('import_shapes_from_svg', 'folder', param_folder, 'str')
+        self.initialize('import_shapes_from_svg', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.import_shapes_from_svg(param_name, param_slide_index, param_image, param_x, param_y, param_width, param_height, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'import_shapes_from_svg', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'import_shapes_from_svg', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('import_shapes_from_svg', 'folder')
+
+    def test_import_shapes_from_svg_invalid_storage(self):
+        """Test case for import_shapes_from_svg with invalid storage
+        """
+        param_name = self.get_test_value('import_shapes_from_svg', 'name', 'str')
+        param_slide_index = self.get_test_value('import_shapes_from_svg', 'slide_index', 'int')
+        param_image = self.get_test_value('import_shapes_from_svg', 'image', 'file')
+        param_x = self.get_test_value('import_shapes_from_svg', 'x', 'int')
+        param_y = self.get_test_value('import_shapes_from_svg', 'y', 'int')
+        param_width = self.get_test_value('import_shapes_from_svg', 'width', 'int')
+        param_height = self.get_test_value('import_shapes_from_svg', 'height', 'int')
+        param_shapes = self.get_test_value('import_shapes_from_svg', 'shapes', 'list[int]')
+        param_password = self.get_test_value('import_shapes_from_svg', 'password', 'str')
+        param_folder = self.get_test_value('import_shapes_from_svg', 'folder', 'str')
+        param_storage = self.get_test_value('import_shapes_from_svg', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('import_shapes_from_svg', 'storage', param_storage, 'str')
+        self.initialize('import_shapes_from_svg', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.import_shapes_from_svg(param_name, param_slide_index, param_image, param_x, param_y, param_width, param_height, param_shapes, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'import_shapes_from_svg', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'import_shapes_from_svg', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('import_shapes_from_svg', 'storage')
+
     def test_merge(self):
         """Test case for merge
         """
@@ -39322,6 +39958,243 @@ class TestSlidesApi(BaseTest):
             self.assert_value_error(ex, 'set_document_property', 'storage', param_storage)
         if ok:
             self.assert_no_exception('set_document_property', 'storage')
+
+    def test_set_embedded_font(self):
+        """Test case for set_embedded_font
+        """
+        param_name = self.get_test_value('set_embedded_font', 'name', 'str')
+        param_font_name = self.get_test_value('set_embedded_font', 'font_name', 'str')
+        param_only_used = self.get_test_value('set_embedded_font', 'only_used', 'bool')
+        param_password = self.get_test_value('set_embedded_font', 'password', 'str')
+        param_folder = self.get_test_value('set_embedded_font', 'folder', 'str')
+        param_storage = self.get_test_value('set_embedded_font', 'storage', 'str')
+        self.initialize('set_embedded_font', None, None)
+        response = self.api.set_embedded_font(param_name, param_font_name, param_only_used, param_password, param_folder, param_storage)
+        self.assertIsNotNone(response)
+
+    def test_set_embedded_font_invalid_name(self):
+        """Test case for set_embedded_font with invalid name
+        """
+        param_name = self.get_test_value('set_embedded_font', 'name', 'str')
+        param_font_name = self.get_test_value('set_embedded_font', 'font_name', 'str')
+        param_only_used = self.get_test_value('set_embedded_font', 'only_used', 'bool')
+        param_password = self.get_test_value('set_embedded_font', 'password', 'str')
+        param_folder = self.get_test_value('set_embedded_font', 'folder', 'str')
+        param_storage = self.get_test_value('set_embedded_font', 'storage', 'str')
+        param_name = self.get_invalid_test_value('set_embedded_font', 'name', param_name, 'str')
+        self.initialize('set_embedded_font', 'name', param_name)
+        ok = False
+        try:
+            self.api.set_embedded_font(param_name, param_font_name, param_only_used, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_embedded_font', 'name', param_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_embedded_font', 'name', param_name)
+        if ok:
+            self.assert_no_exception('set_embedded_font', 'name')
+
+    def test_set_embedded_font_invalid_font_name(self):
+        """Test case for set_embedded_font with invalid font_name
+        """
+        param_name = self.get_test_value('set_embedded_font', 'name', 'str')
+        param_font_name = self.get_test_value('set_embedded_font', 'font_name', 'str')
+        param_only_used = self.get_test_value('set_embedded_font', 'only_used', 'bool')
+        param_password = self.get_test_value('set_embedded_font', 'password', 'str')
+        param_folder = self.get_test_value('set_embedded_font', 'folder', 'str')
+        param_storage = self.get_test_value('set_embedded_font', 'storage', 'str')
+        param_font_name = self.get_invalid_test_value('set_embedded_font', 'font_name', param_font_name, 'str')
+        self.initialize('set_embedded_font', 'font_name', param_font_name)
+        ok = False
+        try:
+            self.api.set_embedded_font(param_name, param_font_name, param_only_used, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_embedded_font', 'font_name', param_font_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_embedded_font', 'font_name', param_font_name)
+        if ok:
+            self.assert_no_exception('set_embedded_font', 'font_name')
+
+    def test_set_embedded_font_invalid_only_used(self):
+        """Test case for set_embedded_font with invalid only_used
+        """
+        param_name = self.get_test_value('set_embedded_font', 'name', 'str')
+        param_font_name = self.get_test_value('set_embedded_font', 'font_name', 'str')
+        param_only_used = self.get_test_value('set_embedded_font', 'only_used', 'bool')
+        param_password = self.get_test_value('set_embedded_font', 'password', 'str')
+        param_folder = self.get_test_value('set_embedded_font', 'folder', 'str')
+        param_storage = self.get_test_value('set_embedded_font', 'storage', 'str')
+        param_only_used = self.get_invalid_test_value('set_embedded_font', 'only_used', param_only_used, 'bool')
+        self.initialize('set_embedded_font', 'only_used', param_only_used)
+        ok = False
+        try:
+            self.api.set_embedded_font(param_name, param_font_name, param_only_used, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_embedded_font', 'only_used', param_only_used)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_embedded_font', 'only_used', param_only_used)
+        if ok:
+            self.assert_no_exception('set_embedded_font', 'only_used')
+
+    def test_set_embedded_font_invalid_password(self):
+        """Test case for set_embedded_font with invalid password
+        """
+        param_name = self.get_test_value('set_embedded_font', 'name', 'str')
+        param_font_name = self.get_test_value('set_embedded_font', 'font_name', 'str')
+        param_only_used = self.get_test_value('set_embedded_font', 'only_used', 'bool')
+        param_password = self.get_test_value('set_embedded_font', 'password', 'str')
+        param_folder = self.get_test_value('set_embedded_font', 'folder', 'str')
+        param_storage = self.get_test_value('set_embedded_font', 'storage', 'str')
+        param_password = self.get_invalid_test_value('set_embedded_font', 'password', param_password, 'str')
+        self.initialize('set_embedded_font', 'password', param_password)
+        ok = False
+        try:
+            self.api.set_embedded_font(param_name, param_font_name, param_only_used, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_embedded_font', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_embedded_font', 'password', param_password)
+        if ok:
+            self.assert_no_exception('set_embedded_font', 'password')
+
+    def test_set_embedded_font_invalid_folder(self):
+        """Test case for set_embedded_font with invalid folder
+        """
+        param_name = self.get_test_value('set_embedded_font', 'name', 'str')
+        param_font_name = self.get_test_value('set_embedded_font', 'font_name', 'str')
+        param_only_used = self.get_test_value('set_embedded_font', 'only_used', 'bool')
+        param_password = self.get_test_value('set_embedded_font', 'password', 'str')
+        param_folder = self.get_test_value('set_embedded_font', 'folder', 'str')
+        param_storage = self.get_test_value('set_embedded_font', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('set_embedded_font', 'folder', param_folder, 'str')
+        self.initialize('set_embedded_font', 'folder', param_folder)
+        ok = False
+        try:
+            self.api.set_embedded_font(param_name, param_font_name, param_only_used, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_embedded_font', 'folder', param_folder)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_embedded_font', 'folder', param_folder)
+        if ok:
+            self.assert_no_exception('set_embedded_font', 'folder')
+
+    def test_set_embedded_font_invalid_storage(self):
+        """Test case for set_embedded_font with invalid storage
+        """
+        param_name = self.get_test_value('set_embedded_font', 'name', 'str')
+        param_font_name = self.get_test_value('set_embedded_font', 'font_name', 'str')
+        param_only_used = self.get_test_value('set_embedded_font', 'only_used', 'bool')
+        param_password = self.get_test_value('set_embedded_font', 'password', 'str')
+        param_folder = self.get_test_value('set_embedded_font', 'folder', 'str')
+        param_storage = self.get_test_value('set_embedded_font', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('set_embedded_font', 'storage', param_storage, 'str')
+        self.initialize('set_embedded_font', 'storage', param_storage)
+        ok = False
+        try:
+            self.api.set_embedded_font(param_name, param_font_name, param_only_used, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_embedded_font', 'storage', param_storage)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_embedded_font', 'storage', param_storage)
+        if ok:
+            self.assert_no_exception('set_embedded_font', 'storage')
+
+    def test_set_embedded_font_online(self):
+        """Test case for set_embedded_font_online
+        """
+        param_document = self.get_test_value('set_embedded_font_online', 'document', 'file')
+        param_font_name = self.get_test_value('set_embedded_font_online', 'font_name', 'str')
+        param_only_used = self.get_test_value('set_embedded_font_online', 'only_used', 'bool')
+        param_password = self.get_test_value('set_embedded_font_online', 'password', 'str')
+        self.initialize('set_embedded_font_online', None, None)
+        response = self.api.set_embedded_font_online(param_document, param_font_name, param_only_used, param_password)
+        self.assertTrue(isinstance(response, str))
+        self.assertTrue(len(response) > 0)
+
+    def test_set_embedded_font_online_invalid_document(self):
+        """Test case for set_embedded_font_online with invalid document
+        """
+        param_document = self.get_test_value('set_embedded_font_online', 'document', 'file')
+        param_font_name = self.get_test_value('set_embedded_font_online', 'font_name', 'str')
+        param_only_used = self.get_test_value('set_embedded_font_online', 'only_used', 'bool')
+        param_password = self.get_test_value('set_embedded_font_online', 'password', 'str')
+        param_document = self.get_invalid_test_value('set_embedded_font_online', 'document', param_document, 'file')
+        self.initialize('set_embedded_font_online', 'document', param_document)
+        ok = False
+        try:
+            self.api.set_embedded_font_online(param_document, param_font_name, param_only_used, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_embedded_font_online', 'document', param_document)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_embedded_font_online', 'document', param_document)
+        if ok:
+            self.assert_no_exception('set_embedded_font_online', 'document')
+
+    def test_set_embedded_font_online_invalid_font_name(self):
+        """Test case for set_embedded_font_online with invalid font_name
+        """
+        param_document = self.get_test_value('set_embedded_font_online', 'document', 'file')
+        param_font_name = self.get_test_value('set_embedded_font_online', 'font_name', 'str')
+        param_only_used = self.get_test_value('set_embedded_font_online', 'only_used', 'bool')
+        param_password = self.get_test_value('set_embedded_font_online', 'password', 'str')
+        param_font_name = self.get_invalid_test_value('set_embedded_font_online', 'font_name', param_font_name, 'str')
+        self.initialize('set_embedded_font_online', 'font_name', param_font_name)
+        ok = False
+        try:
+            self.api.set_embedded_font_online(param_document, param_font_name, param_only_used, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_embedded_font_online', 'font_name', param_font_name)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_embedded_font_online', 'font_name', param_font_name)
+        if ok:
+            self.assert_no_exception('set_embedded_font_online', 'font_name')
+
+    def test_set_embedded_font_online_invalid_only_used(self):
+        """Test case for set_embedded_font_online with invalid only_used
+        """
+        param_document = self.get_test_value('set_embedded_font_online', 'document', 'file')
+        param_font_name = self.get_test_value('set_embedded_font_online', 'font_name', 'str')
+        param_only_used = self.get_test_value('set_embedded_font_online', 'only_used', 'bool')
+        param_password = self.get_test_value('set_embedded_font_online', 'password', 'str')
+        param_only_used = self.get_invalid_test_value('set_embedded_font_online', 'only_used', param_only_used, 'bool')
+        self.initialize('set_embedded_font_online', 'only_used', param_only_used)
+        ok = False
+        try:
+            self.api.set_embedded_font_online(param_document, param_font_name, param_only_used, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_embedded_font_online', 'only_used', param_only_used)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_embedded_font_online', 'only_used', param_only_used)
+        if ok:
+            self.assert_no_exception('set_embedded_font_online', 'only_used')
+
+    def test_set_embedded_font_online_invalid_password(self):
+        """Test case for set_embedded_font_online with invalid password
+        """
+        param_document = self.get_test_value('set_embedded_font_online', 'document', 'file')
+        param_font_name = self.get_test_value('set_embedded_font_online', 'font_name', 'str')
+        param_only_used = self.get_test_value('set_embedded_font_online', 'only_used', 'bool')
+        param_password = self.get_test_value('set_embedded_font_online', 'password', 'str')
+        param_password = self.get_invalid_test_value('set_embedded_font_online', 'password', param_password, 'str')
+        self.initialize('set_embedded_font_online', 'password', param_password)
+        ok = False
+        try:
+            self.api.set_embedded_font_online(param_document, param_font_name, param_only_used, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'set_embedded_font_online', 'password', param_password)
+        except ValueError as ex:
+            self.assert_value_error(ex, 'set_embedded_font_online', 'password', param_password)
+        if ok:
+            self.assert_no_exception('set_embedded_font_online', 'password')
 
     def test_set_notes_slide_header_footer(self):
         """Test case for set_notes_slide_header_footer

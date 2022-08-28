@@ -108,8 +108,11 @@ class BaseTest(unittest.TestCase):
             bin_file_name = self.file_name
             if function_name == 'import_from_pdf':
                 bin_file_name = 'test.pdf'
-            if field_name == 'image':
-                bin_file_name = 'watermark.png'
+            elif field_name == 'image':
+                if function_name == 'import_shapes_from_svg':
+                    bin_file_name = 'shapes.svg'
+                else:
+                    bin_file_name = 'watermark.png'
             with open(self.test_data_path + "/" + bin_file_name, "rb") as bf:
                 return bf.read()
         if field_type == 'dict' and field_name == 'files':

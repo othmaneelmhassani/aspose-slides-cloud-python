@@ -223,14 +223,14 @@ class TestPortions(BaseTest):
                                                                constant.FOLDER_NAME)
         self.assertEqual(1, len(response.items))
 
-    def get_get_portion_rect(self):
+    def test_get_portion_rect(self):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
         shape_index = 2
         paragraph_index = 1
         portion_index = 1
-        response = BaseTest.slides_api.ge_portion_rectangle(constant.FILE_NAME, slide_index, shape_index,
+        response = BaseTest.slides_api.get_portion_rectangle(constant.FILE_NAME, slide_index, shape_index,
                                                             paragraph_index, portion_index, constant.PASSWORD,
                                                             constant.FOLDER_NAME)
         self.assertIsNotNone(response)
@@ -250,7 +250,7 @@ class TestPortions(BaseTest):
                                                    portion_index, constant.PASSWORD, constant.FOLDER_NAME)
         self.assertEqual(18, response.font_height)
 
-    def test_get_sub_shape_portion(self):
+    def test_get_sub_shape_portion_effective(self):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6

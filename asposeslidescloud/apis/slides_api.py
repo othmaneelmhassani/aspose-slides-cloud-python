@@ -7340,6 +7340,227 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def delete_embedded_font(self, name, font_name, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Removes specified embedded font and returns presentation fonts info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, font_name, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param font_name Font name.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: FontsData
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_embedded_font_with_http_info(name, font_name, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_embedded_font_with_http_info(name, font_name, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_embedded_font_with_http_info(self, name, font_name, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Removes specified embedded font and returns presentation fonts info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_embedded_font_with_http_info(name, font_name, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param font_name Font name.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: FontsData
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_embedded_font" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `delete_embedded_font`")  # noqa: E501
+        # verify the required parameter 'font_name' is set
+        if not font_name:
+            raise ValueError("Missing the required parameter `font_name` when calling `delete_embedded_font`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['fontName'] = font_name  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/fonts/embedded/{fontName}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='FontsData',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_embedded_font_online(self, document, font_name, password = None, **kwargs):  # noqa: E501
+        """Removes specified embedded font and returns presentation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(document, font_name, password, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data.
+        :param font_name Document name.
+        :param password Document password.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_embedded_font_online_with_http_info(document, font_name, password, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_embedded_font_online_with_http_info(document, font_name, password, **kwargs)  # noqa: E501
+            return data
+
+    def delete_embedded_font_online_with_http_info(self, document, font_name, password = None, **kwargs):  # noqa: E501
+        """Removes specified embedded font and returns presentation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_embedded_font_online_with_http_info(document, font_name, password, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data.
+        :param font_name Document name.
+        :param password Document password.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_embedded_font_online" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'document' is set
+        if not document:
+            raise ValueError("Missing the required parameter `document` when calling `delete_embedded_font_online`")  # noqa: E501
+        # verify the required parameter 'font_name' is set
+        if not font_name:
+            raise ValueError("Missing the required parameter `font_name` when calling `delete_embedded_font_online`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['fontName'] = font_name  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+        if document:
+            param_files['document'] = document  # noqa: E501
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['multipart/form-data'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/fonts/embedded/{fontName}/delete', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='file',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def delete_file(self, path, storage_name = None, version_id = None, **kwargs):  # noqa: E501
         """Delete file  # noqa: E501
 
@@ -16819,6 +17040,215 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def get_fonts(self, name, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Returns presentation fonts info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: FontsData
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_fonts_with_http_info(name, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_fonts_with_http_info(name, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def get_fonts_with_http_info(self, name, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Returns presentation fonts info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_fonts_with_http_info(name, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: FontsData
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_fonts" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `get_fonts`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/fonts', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='FontsData',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_fonts_online(self, document, password = None, **kwargs):  # noqa: E501
+        """Returns presentation fonts info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(document, password, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data.
+        :param password Document password.
+        :return: FontsData
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.get_fonts_online_with_http_info(document, password, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_fonts_online_with_http_info(document, password, **kwargs)  # noqa: E501
+            return data
+
+    def get_fonts_online_with_http_info(self, document, password = None, **kwargs):  # noqa: E501
+        """Returns presentation fonts info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.get_fonts_online_with_http_info(document, password, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data.
+        :param password Document password.
+        :return: FontsData
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_fonts_online" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'document' is set
+        if not document:
+            raise ValueError("Missing the required parameter `document` when calling `get_fonts_online`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+        if document:
+            param_files['document'] = document  # noqa: E501
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/fonts', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='FontsData',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def get_format_scheme(self, name, slide_index, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Read slide theme format scheme info.  # noqa: E501
 
@@ -24189,6 +24619,145 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def import_shapes_from_svg(self, name, slide_index, image = None, x = None, y = None, width = None, height = None, shapes = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Imports shapes from SVG file.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, image, x, y, width, height, shapes, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param image SVG image data.
+        :param x The X coordinate of the imported group of shapes (0 is default if not specified).
+        :param y The Y coordinate of the imported group of shapes (0 is default if not specified).
+        :param width The width of the imported group of shapes (default is SVG image width).
+        :param height The height of the imported group of shapes (default is SVG image width).
+        :param shapes Indexes of shapes to import. All shapes are imported if not specified.
+        :param password Document password.
+        :param folder Presentation folder.
+        :param storage Presentation storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.import_shapes_from_svg_with_http_info(name, slide_index, image, x, y, width, height, shapes, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.import_shapes_from_svg_with_http_info(name, slide_index, image, x, y, width, height, shapes, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def import_shapes_from_svg_with_http_info(self, name, slide_index, image = None, x = None, y = None, width = None, height = None, shapes = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Imports shapes from SVG file.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.import_shapes_from_svg_with_http_info(name, slide_index, image, x, y, width, height, shapes, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param image SVG image data.
+        :param x The X coordinate of the imported group of shapes (0 is default if not specified).
+        :param y The Y coordinate of the imported group of shapes (0 is default if not specified).
+        :param width The width of the imported group of shapes (default is SVG image width).
+        :param height The height of the imported group of shapes (default is SVG image width).
+        :param shapes Indexes of shapes to import. All shapes are imported if not specified.
+        :param password Document password.
+        :param folder Presentation folder.
+        :param storage Presentation storage.
+        :return: Shapes
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method import_shapes_from_svg" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `import_shapes_from_svg`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `import_shapes_from_svg`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+
+        query_params = []
+        if x:
+            query_params.append(('x', x))  # noqa: E501
+        if y:
+            query_params.append(('y', y))  # noqa: E501
+        if width:
+            query_params.append(('width', width))  # noqa: E501
+        if height:
+            query_params.append(('height', height))  # noqa: E501
+        if shapes:
+            query_params.append(('shapes', shapes))  # noqa: E501
+            collection_formats['shapes'] = ''  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+        if image:
+            param_files['image'] = image  # noqa: E501
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/shapes/fromSvg', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='Shapes',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def merge(self, name, request, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Merge the presentation with other presentations specified in the request parameter.  # noqa: E501
 
@@ -28652,6 +29221,235 @@ class SlidesApi(ApiBase):
             post_params=form_params,
             files=param_files,
             response_type='DocumentProperty',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def set_embedded_font(self, name, font_name, only_used = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Embeds specified font and returns presentation fonts info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, font_name, only_used, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param font_name Document name.
+        :param only_used Only used characters will be embedded.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: FontsData
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.set_embedded_font_with_http_info(name, font_name, only_used, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.set_embedded_font_with_http_info(name, font_name, only_used, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def set_embedded_font_with_http_info(self, name, font_name, only_used = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Embeds specified font and returns presentation fonts info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.set_embedded_font_with_http_info(name, font_name, only_used, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param font_name Document name.
+        :param only_used Only used characters will be embedded.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: FontsData
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method set_embedded_font" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `set_embedded_font`")  # noqa: E501
+        # verify the required parameter 'font_name' is set
+        if not font_name:
+            raise ValueError("Missing the required parameter `font_name` when calling `set_embedded_font`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['fontName'] = font_name  # noqa: E501
+
+        query_params = []
+        if only_used:
+            query_params.append(('onlyUsed', only_used))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/fonts/embedded/{fontName}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='FontsData',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def set_embedded_font_online(self, document, font_name, only_used = None, password = None, **kwargs):  # noqa: E501
+        """Embeds specified font and returns presentation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(document, font_name, only_used, password, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data.
+        :param font_name Font name.
+        :param only_used Only used characters will be embedded.
+        :param password Document password.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.set_embedded_font_online_with_http_info(document, font_name, only_used, password, **kwargs)  # noqa: E501
+        else:
+            (data) = self.set_embedded_font_online_with_http_info(document, font_name, only_used, password, **kwargs)  # noqa: E501
+            return data
+
+    def set_embedded_font_online_with_http_info(self, document, font_name, only_used = None, password = None, **kwargs):  # noqa: E501
+        """Embeds specified font and returns presentation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.set_embedded_font_online_with_http_info(document, font_name, only_used, password, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data.
+        :param font_name Font name.
+        :param only_used Only used characters will be embedded.
+        :param password Document password.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method set_embedded_font_online" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'document' is set
+        if not document:
+            raise ValueError("Missing the required parameter `document` when calling `set_embedded_font_online`")  # noqa: E501
+        # verify the required parameter 'font_name' is set
+        if not font_name:
+            raise ValueError("Missing the required parameter `font_name` when calling `set_embedded_font_online`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['fontName'] = font_name  # noqa: E501
+
+        query_params = []
+        if only_used:
+            query_params.append(('onlyUsed', only_used))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+        if document:
+            param_files['document'] = document  # noqa: E501
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['multipart/form-data'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/fonts/embedded/{fontName}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='file',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),

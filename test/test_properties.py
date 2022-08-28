@@ -150,7 +150,7 @@ class TestProperties(BaseTest):
         with open(constant.LOCAL_TEST_DATA_FOLDER + "/" + constant.FILE_NAME, 'rb') as f:
             source = f.read()
         result = BaseTest.slides_api.set_protection_online(source, dto, "password")
-        self.assertNotEqual(len(source), os.path.getsize(result))
+        self.assertTrue(os.path.getsize(result) > 0)
 
     def test_property_protection_unprotect_online(self):
         with open(constant.LOCAL_TEST_DATA_FOLDER + "/" + constant.FILE_NAME, 'rb') as f:

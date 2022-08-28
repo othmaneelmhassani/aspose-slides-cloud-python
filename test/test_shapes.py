@@ -546,3 +546,12 @@ class TestShapes(BaseTest):
         shapes = BaseTest.slides_api.get_subshapes(constant.FILE_NAME, slide_index, "1/shapes", constant.PASSWORD,
                                                 constant.FOLDER_NAME)
         self.assertEqual(3, len(shapes.shapes_links))
+    def test_import_shapes_from_svg(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
+                                      constant.FOLDER_NAME + "/" + constant.FILE_NAME)
+        slide_index = 5
+        with open(constant.LOCAL_TEST_DATA_FOLDER + "/" + "shapes.svg", 'rb') as f:
+            source = f.read()
+        response = BaseTest.slides_api.import_shapes_from_svg(constant.FILE_NAME, slide_index, source, 50, 50, 300, 300,
+                                                              [1, 3, 5], constant.PASSWORD, constant.FOLDER_NAME)
+        self.assertEqual(3, len(response.shapes_links))
