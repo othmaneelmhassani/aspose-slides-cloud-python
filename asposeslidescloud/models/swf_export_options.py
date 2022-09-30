@@ -45,6 +45,7 @@ class SwfExportOptions(ExportOptions):
     swagger_types = {
         'default_regular_font': 'str',
         'font_fallback_rules': 'list[FontFallbackRule]',
+        'font_subst_rules': 'list[FontSubstRule]',
         'format': 'str',
         'show_hidden_slides': 'bool',
         'compressed': 'bool',
@@ -71,6 +72,7 @@ class SwfExportOptions(ExportOptions):
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
         'font_fallback_rules': 'fontFallbackRules',
+        'font_subst_rules': 'fontSubstRules',
         'format': 'format',
         'show_hidden_slides': 'showHiddenSlides',
         'compressed': 'compressed',
@@ -98,9 +100,9 @@ class SwfExportOptions(ExportOptions):
         'format': 'swf',
     }
 
-    def __init__(self, default_regular_font=None, font_fallback_rules=None, format='swf', show_hidden_slides=None, compressed=None, viewer_included=None, show_page_border=None, show_full_screen=None, show_page_stepper=None, show_search=None, show_top_pane=None, show_bottom_pane=None, show_left_pane=None, start_open_left_pane=None, enable_context_menu=None, logo_image=None, logo_link=None, jpeg_quality=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None, show_comments_by_no_author=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, font_fallback_rules=None, font_subst_rules=None, format='swf', show_hidden_slides=None, compressed=None, viewer_included=None, show_page_border=None, show_full_screen=None, show_page_stepper=None, show_search=None, show_top_pane=None, show_bottom_pane=None, show_left_pane=None, start_open_left_pane=None, enable_context_menu=None, logo_image=None, logo_link=None, jpeg_quality=None, notes_position=None, comments_position=None, comments_area_width=None, comments_area_color=None, show_comments_by_no_author=None):  # noqa: E501
         """SwfExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(SwfExportOptions, self).__init__(default_regular_font, font_fallback_rules, format)
+        super(SwfExportOptions, self).__init__(default_regular_font, font_fallback_rules, font_subst_rules, format)
 
         self._show_hidden_slides = None
         self._compressed = None

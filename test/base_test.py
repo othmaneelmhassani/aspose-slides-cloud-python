@@ -29,6 +29,7 @@ from __future__ import absolute_import
 
 import json
 import os
+import re
 import unittest
 import asposeslidescloud
 from asposeslidescloud import models
@@ -72,7 +73,7 @@ class BaseTest(unittest.TestCase):
 
             BaseTest.slides_api = asposeslidescloud.apis.slides_api.SlidesApi(self.configuration)  # noqa: E501
 
-    def initialize(self, function_name, invalid_parameter_name, invalid_parameter_value):
+    def initialize(self, function_name, invalid_parameter_name, invalid_parameter_value, invalid_parameter_type):
         if not BaseTest.is_initialized:
             version = ''
             try:
@@ -85,15 +86,15 @@ class BaseTest(unittest.TestCase):
                 for file_name in os.listdir('TestData'):
                     with open(os.path.join('TestData', file_name), 'rb') as f:
                         file = f.read()
-                    BaseTest.slides_api.upload_file(file, "TempTests/" + file_name)
+                    BaseTest.slides_api.upload_file("TempTests/" + file_name, file)
                 BaseTest.slides_api.upload_file(BaseTest.expected_test_data_version, "TempTests/version.txt")
             BaseTest.is_initialized = True
         files = dict()
-        for rule in self.get_rules(BaseTest.test_rules['Files'], function_name, invalid_parameter_name):
-            actual_name = self.untemplatize(rule['File'], invalid_parameter_value)
+        for rule in self.get_rules(BaseTest.test_rules['Files'], function_name, invalid_parameter_name, invalid_parameter_type):
+            actual_name = self.untemplatize(rule['File'], invalid_parameter_name, invalid_parameter_value)
             path = "TempSlidesSDK"
             if 'Folder' in rule:
-                path = self.untemplatize(rule['Folder'], invalid_parameter_value)
+                path = self.untemplatize(rule['Folder'], invalid_parameter_name, invalid_parameter_value)
             path = path + "/" + actual_name
             files[path] = rule
             rule['ActualName'] = actual_name
@@ -104,51 +105,29 @@ class BaseTest(unittest.TestCase):
                 BaseTest.slides_api.delete_file(path)
 
     def get_test_value(self, function_name, field_name, field_type):
-        if field_type == 'Stream' or field_type == 'file':
-            bin_file_name = self.file_name
-            if function_name == 'import_from_pdf':
-                bin_file_name = 'test.pdf'
-            elif field_name == 'image':
-                if function_name == 'import_shapes_from_svg':
-                    bin_file_name = 'shapes.svg'
-                else:
-                    bin_file_name = 'watermark.png'
-            with open(self.test_data_path + "/" + bin_file_name, "rb") as bf:
-                return bf.read()
-        if field_type == 'dict' and field_name == 'files':
-            files = {}
-            with open("TestData/test.pptx", 'rb') as f:
-                files["file1"] = ("test.pptx", f.read())
-            with open("TestData/test-unprotected.pptx", 'rb') as f:
-                files["file2"] = ("test-unprotected.pptx", f.read())
-            return files
-        value = "test" + field_name
-        for rule in self.get_rules(BaseTest.test_rules['Values'], function_name, field_name):
+        value = None
+        for rule in self.get_rules(BaseTest.test_rules['Values'], function_name, field_name, field_type):
             if 'Value' in rule:
-                rule_value = rule['Value']
-                if 'Type' in rule:
-                    rule_class = getattr(models, rule['Type'])
-                    field_class = getattr(models, field_type)
-                    if rule_class and field_class and issubclass(rule_class, field_class):
-                        api_client = ApiClient(Configuration())
-                        value = api_client.deserialize_model(rule_value, rule['Type'])
-                else:
-                    value = rule_value
-        return value
+                value = rule['Value']
+        if hasattr(models, field_type):
+            class_type = getattr(models, field_type)
+            if 'Type' in rule and hasattr(models, rule['Type']):
+                class_type = getattr(models, rule['Type'])
+            api_client = ApiClient(Configuration())
+            return api_client.deserialize_model(value, class_type)
+        return self.untemplatize(value, field_name, None)
 
     def get_invalid_test_value(self, function_name, field_name, field_value, field_type):
-        if field_type == 'Stream' or field_type == 'file':
-            return None
         invalid_value = None
-        for rule in self.get_rules(BaseTest.test_rules['Values'], function_name, field_name):
+        for rule in self.get_rules(BaseTest.test_rules['Values'], function_name, field_name, field_type):
             if 'InvalidValue' in rule:
                 invalid_value = rule['InvalidValue']
-        return self.untemplatize(invalid_value, field_value)
+        return self.untemplatize(invalid_value, field_name, field_value)
 
-    def assert_exception(self, ex, function_name, field_name, field_value):
+    def assert_exception(self, ex, function_name, field_name, field_value, field_type):
         code = 0
         message = "Unexpeceted message"
-        for rule in self.get_rules(BaseTest.test_rules['Results'], function_name, field_name):
+        for rule in self.get_rules(BaseTest.test_rules['Results'], function_name, field_name, field_type):
             if 'Code' in rule:
                 code = rule['Code']
             if 'Message' in rule:
@@ -157,48 +136,100 @@ class BaseTest(unittest.TestCase):
         exbody = ex.body
         if not isinstance(exbody, str):
             exbody = ex.body.decode("utf-8")
-        self.assertTrue(self.untemplatize(message, field_value) in exbody)
+        self.assertTrue(self.untemplatize(message, field_name, field_value) in exbody)
 
-    def assert_value_error(self, ex, function_name, field_name, field_value):
+    def assert_value_error(self, ex, function_name, field_name, field_value, field_type):
         code = 0
         message = "Unexpeceted message"
-        for rule in self.get_rules(BaseTest.test_rules['Results'], function_name, field_name):
+        for rule in self.get_rules(BaseTest.test_rules['Results'], function_name, field_name, field_type):
             if 'Code' in rule:
                 code = rule['Code']
             if 'Message' in rule:
                 message = rule['Message']
         self.assertEqual(code, 400)
-        self.assertTrue(self.untemplatize(message, field_value) in str(ex))
+        self.assertTrue(self.untemplatize(message, field_name, field_value) in str(ex))
 
-    def assert_no_exception(self, function_name, field_name):
+    def assert_no_exception(self, function_name, field_name, field_type):
         failed = True
-        for rule in self.get_rules(BaseTest.test_rules['OKToNotFail'], function_name, field_name):
+        for rule in self.get_rules(BaseTest.test_rules['OKToNotFail'], function_name, field_name, field_type):
             failed = False
         if failed:
             self.fail("Must have failed")
     
-    def get_rules(self, rules, function_name, field_name):
+    def get_rules(self, rules, function_name, field_name, field_type):
         filtered_rules = []
+        if function_name:
+            function_name = function_name.replace('_', '')
+        if field_name:
+            field_name = field_name.replace('_', '')
         for rule in rules:
-            if self.applies(rule, function_name, field_name):
+            if self.applies(rule, function_name, field_name, field_type):
                 filtered_rules.append(rule)
         return filtered_rules
 
-    def applies(self, rule, function_name, field_name):
-        return (not ('Method' in rule) \
-                or (function_name != None and rule['Method'].lower() == function_name.replace('_', '').lower())) \
+    def applies(self, rule, function_name, field_name, field_type):
+        return self.appliesValue(rule, 'Method', function_name) \
             and (not ('Invalid' in rule) or ((field_name != None) == rule['Invalid'])) \
-            and (not ('Parameter' in rule) or (field_name != None and rule['Parameter'].lower() == field_name.replace('_', '').lower())) \
+            and self.appliesValue(rule, 'Parameter', field_name) \
+            and self.appliesType(rule, field_type) \
             and (not ('Language' in rule) or rule['Language'].lower() == "python")
 
-    def untemplatize(self, template, value):
+    def appliesValue(self, rule, key, value):
+        if not (key in rule):
+            return True
+        rule_value = rule[key]
+        if value == None:
+            return False
+        if rule_value.startswith("/") and rule_value.endswith("/"):
+            return re.search(rule_value[1:-1], value, re.IGNORECASE)
+        return rule_value.lower() == value.replace('_', '').lower()
+
+    def appliesType(self, rule, field_type):
+        if not ('Type' in rule):
+            return True
+        rule_type = rule['Type']
+        if rule_type == 'bool':
+            return field_type == 'bool'
+        if rule_type == 'number':
+            return field_type == 'int'
+        if rule_type == 'int':
+            return field_type == 'int'
+        if rule_type == "int[]":
+            return field_type == "list[int]"
+        if rule_type == "stream":
+            return field_type == "file"
+        if rule_type == "stream[]":
+            return field_type == "dict"
+        if rule_type == "model":
+            return hasattr(models, field_type)
+        if hasattr(models, rule_type):
+            if not hasattr(models, field_type):
+                return False
+            return issubclass(getattr(models, rule_type), getattr(models, field_type))
+        return False
+
+    def untemplatize(self, template, name, value):
         if template == None and value != None and isinstance(value, str):
             return value
-        if template != None and isinstance(template, str):
-            if value == None:
-                return template.replace("%v", "")
-            elif not isinstance(value, str):
-                return template.replace("%v", str(value))
-            else:
-                return template.replace("%v", value)
+        if template == None or not isinstance(template, str):
+            return template
+        template = self.replace_str(template, "%n", name)
+        template = self.replace_str(template, "%v", value)
+        if template.startswith('@'):
+            template = template[1:]
+            if template.startswith('(') and template.endswith(')'):
+                files = []
+                for file_name in template[1:-1].split(','):
+                    with open(self.test_data_path + "/" + file_name, "rb") as bf:
+                        files.append(bf.read())
+                return files
+            with open(self.test_data_path + "/" + template, "rb") as bf:
+                return bf.read()
         return template
+
+    def replace_str(self, template, pattern, value):
+        if value == None:
+            return template.replace(pattern, "")
+        if not isinstance(value, str):
+            return template.replace(pattern, str(value))
+        return template.replace(pattern, value)

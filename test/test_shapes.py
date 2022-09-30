@@ -546,6 +546,7 @@ class TestShapes(BaseTest):
         shapes = BaseTest.slides_api.get_subshapes(constant.FILE_NAME, slide_index, "1/shapes", constant.PASSWORD,
                                                 constant.FOLDER_NAME)
         self.assertEqual(3, len(shapes.shapes_links))
+
     def test_import_shapes_from_svg(self):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
@@ -553,5 +554,63 @@ class TestShapes(BaseTest):
         with open(constant.LOCAL_TEST_DATA_FOLDER + "/" + "shapes.svg", 'rb') as f:
             source = f.read()
         response = BaseTest.slides_api.import_shapes_from_svg(constant.FILE_NAME, slide_index, source, 50, 50, 300, 300,
-                                                              [1, 3, 5], constant.PASSWORD, constant.FOLDER_NAME)
+                                                              [1, 3, 5], False, constant.PASSWORD, constant.FOLDER_NAME)
         self.assertEqual(3, len(response.shapes_links))
+
+    def test_create_smart_art_node(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
+                                      constant.FOLDER_NAME + "/" + constant.FILE_NAME)
+        slide_index = 7
+        smart_art_index = 1
+        new_node_text = "New root node"
+        response = BaseTest.slides_api.create_smart_art_node(constant.FILE_NAME, slide_index, smart_art_index, "",
+                                                             new_node_text, "", constant.PASSWORD, constant.FOLDER_NAME)
+        self.assertEqual(2, len(response.nodes))
+        self.assertEqual(new_node_text, response.nodes[1].text)
+
+    def test_create_smart_art_sub_node(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
+                                      constant.FOLDER_NAME + "/" + constant.FILE_NAME)
+        slide_index = 7
+        smart_art_index = 1
+        sub_node_path = "1"
+        new_sub_node_text = "New sub-node"
+        position = 1
+        response = BaseTest.slides_api.create_smart_art_node(constant.FILE_NAME, slide_index, smart_art_index, sub_node_path,
+                                                             new_sub_node_text, position, constant.PASSWORD,
+                                                             constant.FOLDER_NAME)
+        self.assertEqual(5, len(response.nodes[0].nodes))
+        self.assertEqual(new_sub_node_text, response.nodes[0].nodes[0].text)
+
+    def test_create_smart_art_sub_sub_node(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
+                                      constant.FOLDER_NAME + "/" + constant.FILE_NAME)
+        slide_index = 7
+        smart_art_index = 1
+        sub_sub_node_path = "1/nodes/1"
+        new_sub_node_text = "New sub-sub-node"
+        response = BaseTest.slides_api.create_smart_art_node(constant.FILE_NAME, slide_index, smart_art_index, sub_sub_node_path,
+                                                             new_sub_node_text, "", constant.PASSWORD, constant.FOLDER_NAME)
+        self.assertEqual(1, len(response.nodes[0].nodes[0].nodes))
+        self.assertEqual(new_sub_node_text, response.nodes[0].nodes[0].nodes[0].text)
+
+    def test_delete_smart_art_node(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
+                                      constant.FOLDER_NAME + "/" + constant.FILE_NAME)
+        slide_index = 7
+        smart_art_index = 2
+        node_index = 1
+        response = BaseTest.slides_api.delete_smart_art_node(constant.FILE_NAME, slide_index, smart_art_index, node_index,
+                                                            "", constant.PASSWORD, constant.FOLDER_NAME)
+        self.assertEqual(2, len(response.nodes))
+
+    def test_delete_smart_art_sub_node(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
+                                      constant.FOLDER_NAME + "/" + constant.FILE_NAME)
+        slide_index = 7
+        smart_art_index = 1
+        node_index = 1
+        sub_node_path = "2"
+        response = BaseTest.slides_api.delete_smart_art_node(constant.FILE_NAME, slide_index, smart_art_index, node_index,
+                                                            sub_node_path, constant.PASSWORD, constant.FOLDER_NAME)
+        self.assertEqual(3, len(response.nodes[0].nodes))

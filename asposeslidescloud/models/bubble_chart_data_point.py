@@ -43,12 +43,20 @@ class BubbleChartDataPoint(ScatterChartDataPoint):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'fill_format': 'FillFormat',
+        'effect_format': 'EffectFormat',
+        'three_d_format': 'ThreeDFormat',
+        'line_format': 'LineFormat',
         'x_value': 'float',
         'y_value': 'float',
         'bubble_size': 'float'
     }
 
     attribute_map = {
+        'fill_format': 'fillFormat',
+        'effect_format': 'effectFormat',
+        'three_d_format': 'threeDFormat',
+        'line_format': 'lineFormat',
         'x_value': 'xValue',
         'y_value': 'yValue',
         'bubble_size': 'bubbleSize'
@@ -57,9 +65,9 @@ class BubbleChartDataPoint(ScatterChartDataPoint):
     type_determiners = {
     }
 
-    def __init__(self, x_value=None, y_value=None, bubble_size=None):  # noqa: E501
+    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None, x_value=None, y_value=None, bubble_size=None):  # noqa: E501
         """BubbleChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(BubbleChartDataPoint, self).__init__(x_value, y_value)
+        super(BubbleChartDataPoint, self).__init__(fill_format, effect_format, three_d_format, line_format, x_value, y_value)
 
         self._bubble_size = None
 

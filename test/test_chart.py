@@ -2,7 +2,7 @@
 from __future__ import absolute_import
 
 from asposeslidescloud import OneValueSeries, Chart, OneValueChartDataPoint, ChartCategory, Axis, ChartLinesFormat, \
-    LineFormat, NoFill, SolidFill, GradientFill, GradientFillStop, Axes, Legend, ChartWall
+    LineFormat, NoFill, SolidFill, GradientFill, GradientFillStop, Axes, Legend, ChartWall, EffectFormat, BlurEffect
 from asposeslidescloud.rest import ApiException
 from test import constant
 from test.base_test import BaseTest
@@ -433,3 +433,31 @@ class TestChart(BaseTest):
         response = BaseTest.slides_api.set_chart_wall(constant.FILE_NAME, 8, 2, "Backwall", wall, constant.PASSWORD,
                                                         constant.FOLDER_NAME)
         self.assertEqual('Solid', response.fill_format.type)
+
+    def test_update_data_point_format(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME, constant.FOLDER_NAME + "/" +
+                                      constant.FILE_NAME)
+        slide_index = 8
+        shape_index = 2
+        data_point_index = 2
+        series_index = 2
+        dto = OneValueChartDataPoint()
+        dto.value = 40
+        fill_format = SolidFill()
+        fill_format.color = constant.COLOR
+        line_format = LineFormat()
+        line_fill_format = SolidFill()
+        line_fill_format.color = constant.COLOR
+        line_format.fill_format = line_fill_format
+        effect_format = EffectFormat()
+        effect_format.blur = BlurEffect()
+        dto.fill_format = fill_format
+        dto.line_format = line_format
+        dto.effect_format = effect_format
+
+        chart = BaseTest.slides_api.update_chart_data_point(constant.FILE_NAME, slide_index, shape_index, series_index,
+                                                            data_point_index, dto, constant.PASSWORD, constant.FOLDER_NAME)
+        data_point = chart.series[series_index - 1].data_points[data_point_index - 1]
+        self.assertEqual(data_point.fill_format.type, "Solid")
+        self.assertEqual(data_point.line_format.fill_format.type, "Solid")
+

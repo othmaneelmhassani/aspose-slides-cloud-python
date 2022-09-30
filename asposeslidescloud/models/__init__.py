@@ -62,6 +62,7 @@ from asposeslidescloud.models.fill_overlay_effect import FillOverlayEffect
 from asposeslidescloud.models.font_data import FontData
 from asposeslidescloud.models.font_fallback_rule import FontFallbackRule
 from asposeslidescloud.models.font_set import FontSet
+from asposeslidescloud.models.font_subst_rule import FontSubstRule
 from asposeslidescloud.models.fonts_data import FontsData
 from asposeslidescloud.models.geometry_path import GeometryPath
 from asposeslidescloud.models.geometry_paths import GeometryPaths

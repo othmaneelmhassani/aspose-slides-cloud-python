@@ -45,6 +45,7 @@ class Html5ExportOptions(ExportOptions):
     swagger_types = {
         'default_regular_font': 'str',
         'font_fallback_rules': 'list[FontFallbackRule]',
+        'font_subst_rules': 'list[FontSubstRule]',
         'format': 'str',
         'animate_transitions': 'bool',
         'animate_shapes': 'bool'
@@ -53,6 +54,7 @@ class Html5ExportOptions(ExportOptions):
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
         'font_fallback_rules': 'fontFallbackRules',
+        'font_subst_rules': 'fontSubstRules',
         'format': 'format',
         'animate_transitions': 'animateTransitions',
         'animate_shapes': 'animateShapes'
@@ -62,9 +64,9 @@ class Html5ExportOptions(ExportOptions):
         'format': 'html5',
     }
 
-    def __init__(self, default_regular_font=None, font_fallback_rules=None, format='html5', animate_transitions=None, animate_shapes=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, font_fallback_rules=None, font_subst_rules=None, format='html5', animate_transitions=None, animate_shapes=None):  # noqa: E501
         """Html5ExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(Html5ExportOptions, self).__init__(default_regular_font, font_fallback_rules, format)
+        super(Html5ExportOptions, self).__init__(default_regular_font, font_fallback_rules, font_subst_rules, format)
 
         self._animate_transitions = None
         self._animate_shapes = None

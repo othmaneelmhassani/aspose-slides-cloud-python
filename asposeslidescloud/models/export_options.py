@@ -44,29 +44,34 @@ class ExportOptions(object):
     swagger_types = {
         'default_regular_font': 'str',
         'font_fallback_rules': 'list[FontFallbackRule]',
+        'font_subst_rules': 'list[FontSubstRule]',
         'format': 'str'
     }
 
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
         'font_fallback_rules': 'fontFallbackRules',
+        'font_subst_rules': 'fontSubstRules',
         'format': 'format'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, default_regular_font=None, font_fallback_rules=None, format=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, font_fallback_rules=None, font_subst_rules=None, format=None):  # noqa: E501
         """ExportOptions - a model defined in Swagger"""  # noqa: E501
 
         self._default_regular_font = None
         self._font_fallback_rules = None
+        self._font_subst_rules = None
         self._format = None
 
         if default_regular_font is not None:
             self.default_regular_font = default_regular_font
         if font_fallback_rules is not None:
             self.font_fallback_rules = font_fallback_rules
+        if font_subst_rules is not None:
+            self.font_subst_rules = font_subst_rules
         if format is not None:
             self.format = format
 
@@ -113,6 +118,28 @@ class ExportOptions(object):
         :type: list[FontFallbackRule]
         """
         self._font_fallback_rules = font_fallback_rules
+
+    @property
+    def font_subst_rules(self):
+        """Gets the font_subst_rules of this ExportOptions.  # noqa: E501
+
+        Gets of sets list of font substitution rules.  # noqa: E501
+
+        :return: The font_subst_rules of this ExportOptions.  # noqa: E501
+        :rtype: list[FontSubstRule]
+        """
+        return self._font_subst_rules
+
+    @font_subst_rules.setter
+    def font_subst_rules(self, font_subst_rules):
+        """Sets the font_subst_rules of this ExportOptions.
+
+        Gets of sets list of font substitution rules.  # noqa: E501
+
+        :param font_subst_rules: The font_subst_rules of this ExportOptions.  # noqa: E501
+        :type: list[FontSubstRule]
+        """
+        self._font_subst_rules = font_subst_rules
 
     @property
     def format(self):

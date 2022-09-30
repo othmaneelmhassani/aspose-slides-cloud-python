@@ -43,12 +43,20 @@ class OneValueChartDataPoint(DataPoint):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'fill_format': 'FillFormat',
+        'effect_format': 'EffectFormat',
+        'three_d_format': 'ThreeDFormat',
+        'line_format': 'LineFormat',
         'value': 'float',
         'set_as_total': 'bool',
         'invert_if_negative': 'bool'
     }
 
     attribute_map = {
+        'fill_format': 'fillFormat',
+        'effect_format': 'effectFormat',
+        'three_d_format': 'threeDFormat',
+        'line_format': 'lineFormat',
         'value': 'value',
         'set_as_total': 'setAsTotal',
         'invert_if_negative': 'invertIfNegative'
@@ -57,9 +65,9 @@ class OneValueChartDataPoint(DataPoint):
     type_determiners = {
     }
 
-    def __init__(self, value=None, set_as_total=None, invert_if_negative=None):  # noqa: E501
+    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None, value=None, set_as_total=None, invert_if_negative=None):  # noqa: E501
         """OneValueChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(OneValueChartDataPoint, self).__init__()
+        super(OneValueChartDataPoint, self).__init__(fill_format, effect_format, three_d_format, line_format)
 
         self._value = None
         self._set_as_total = None

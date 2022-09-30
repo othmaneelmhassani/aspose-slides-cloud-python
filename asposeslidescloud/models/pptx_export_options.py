@@ -45,6 +45,7 @@ class PptxExportOptions(ExportOptions):
     swagger_types = {
         'default_regular_font': 'str',
         'font_fallback_rules': 'list[FontFallbackRule]',
+        'font_subst_rules': 'list[FontSubstRule]',
         'format': 'str',
         'conformance': 'str'
     }
@@ -52,6 +53,7 @@ class PptxExportOptions(ExportOptions):
     attribute_map = {
         'default_regular_font': 'defaultRegularFont',
         'font_fallback_rules': 'fontFallbackRules',
+        'font_subst_rules': 'fontSubstRules',
         'format': 'format',
         'conformance': 'conformance'
     }
@@ -60,9 +62,9 @@ class PptxExportOptions(ExportOptions):
         'format': 'pptx',
     }
 
-    def __init__(self, default_regular_font=None, font_fallback_rules=None, format='pptx', conformance=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, font_fallback_rules=None, font_subst_rules=None, format='pptx', conformance=None):  # noqa: E501
         """PptxExportOptions - a model defined in Swagger"""  # noqa: E501
-        super(PptxExportOptions, self).__init__(default_regular_font, font_fallback_rules, format)
+        super(PptxExportOptions, self).__init__(default_regular_font, font_fallback_rules, font_subst_rules, format)
 
         self._conformance = None
         self.format = 'pptx'

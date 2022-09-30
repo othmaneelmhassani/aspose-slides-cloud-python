@@ -30,9 +30,8 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.data_point import DataPoint
 
-class ScatterChartDataPoint(DataPoint):
+class FontSubstRule(object):
 
 
     """
@@ -43,79 +42,99 @@ class ScatterChartDataPoint(DataPoint):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'fill_format': 'FillFormat',
-        'effect_format': 'EffectFormat',
-        'three_d_format': 'ThreeDFormat',
-        'line_format': 'LineFormat',
-        'x_value': 'float',
-        'y_value': 'float'
+        'source_font': 'str',
+        'target_font': 'str',
+        'not_found_only': 'bool'
     }
 
     attribute_map = {
-        'fill_format': 'fillFormat',
-        'effect_format': 'effectFormat',
-        'three_d_format': 'threeDFormat',
-        'line_format': 'lineFormat',
-        'x_value': 'xValue',
-        'y_value': 'yValue'
+        'source_font': 'sourceFont',
+        'target_font': 'targetFont',
+        'not_found_only': 'notFoundOnly'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None, x_value=None, y_value=None):  # noqa: E501
-        """ScatterChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(ScatterChartDataPoint, self).__init__(fill_format, effect_format, three_d_format, line_format)
+    def __init__(self, source_font=None, target_font=None, not_found_only=None):  # noqa: E501
+        """FontSubstRule - a model defined in Swagger"""  # noqa: E501
 
-        self._x_value = None
-        self._y_value = None
+        self._source_font = None
+        self._target_font = None
+        self._not_found_only = None
 
-        self.x_value = x_value
-        self.y_value = y_value
-
-    @property
-    def x_value(self):
-        """Gets the x_value of this ScatterChartDataPoint.  # noqa: E501
-
-        X-value  # noqa: E501
-
-        :return: The x_value of this ScatterChartDataPoint.  # noqa: E501
-        :rtype: float
-        """
-        return self._x_value
-
-    @x_value.setter
-    def x_value(self, x_value):
-        """Sets the x_value of this ScatterChartDataPoint.
-
-        X-value  # noqa: E501
-
-        :param x_value: The x_value of this ScatterChartDataPoint.  # noqa: E501
-        :type: float
-        """
-        self._x_value = x_value
+        if source_font is not None:
+            self.source_font = source_font
+        if target_font is not None:
+            self.target_font = target_font
+        if not_found_only is not None:
+            self.not_found_only = not_found_only
 
     @property
-    def y_value(self):
-        """Gets the y_value of this ScatterChartDataPoint.  # noqa: E501
+    def source_font(self):
+        """Gets the source_font of this FontSubstRule.  # noqa: E501
 
-        Y-value  # noqa: E501
+        Font to substitute.  # noqa: E501
 
-        :return: The y_value of this ScatterChartDataPoint.  # noqa: E501
-        :rtype: float
+        :return: The source_font of this FontSubstRule.  # noqa: E501
+        :rtype: str
         """
-        return self._y_value
+        return self._source_font
 
-    @y_value.setter
-    def y_value(self, y_value):
-        """Sets the y_value of this ScatterChartDataPoint.
+    @source_font.setter
+    def source_font(self, source_font):
+        """Sets the source_font of this FontSubstRule.
 
-        Y-value  # noqa: E501
+        Font to substitute.  # noqa: E501
 
-        :param y_value: The y_value of this ScatterChartDataPoint.  # noqa: E501
-        :type: float
+        :param source_font: The source_font of this FontSubstRule.  # noqa: E501
+        :type: str
         """
-        self._y_value = y_value
+        self._source_font = source_font
+
+    @property
+    def target_font(self):
+        """Gets the target_font of this FontSubstRule.  # noqa: E501
+
+        Substitution font.  # noqa: E501
+
+        :return: The target_font of this FontSubstRule.  # noqa: E501
+        :rtype: str
+        """
+        return self._target_font
+
+    @target_font.setter
+    def target_font(self, target_font):
+        """Sets the target_font of this FontSubstRule.
+
+        Substitution font.  # noqa: E501
+
+        :param target_font: The target_font of this FontSubstRule.  # noqa: E501
+        :type: str
+        """
+        self._target_font = target_font
+
+    @property
+    def not_found_only(self):
+        """Gets the not_found_only of this FontSubstRule.  # noqa: E501
+
+        Substitute when font is not found. Default: true.  # noqa: E501
+
+        :return: The not_found_only of this FontSubstRule.  # noqa: E501
+        :rtype: bool
+        """
+        return self._not_found_only
+
+    @not_found_only.setter
+    def not_found_only(self, not_found_only):
+        """Sets the not_found_only of this FontSubstRule.
+
+        Substitute when font is not found. Default: true.  # noqa: E501
+
+        :param not_found_only: The not_found_only of this FontSubstRule.  # noqa: E501
+        :type: bool
+        """
+        self._not_found_only = not_found_only
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -151,7 +170,7 @@ class ScatterChartDataPoint(DataPoint):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ScatterChartDataPoint):
+        if not isinstance(other, FontSubstRule):
             return False
 
         return self.__dict__ == other.__dict__

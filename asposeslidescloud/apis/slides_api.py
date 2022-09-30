@@ -3778,6 +3778,138 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def create_smart_art_node(self, name, slide_index, smart_art_index, sub_node = None, text = None, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Add SmartArt node  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, smart_art_index, sub_node, text, position, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param smart_art_index Index of the object on the slide among the same type of objects.
+        :param sub_node Sub-node path (e.g. \"3\", \"3/nodes/2).
+        :param text Node text.
+        :param position Position to insert a new node.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SmartArt
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.create_smart_art_node_with_http_info(name, slide_index, smart_art_index, sub_node, text, position, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_smart_art_node_with_http_info(name, slide_index, smart_art_index, sub_node, text, position, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def create_smart_art_node_with_http_info(self, name, slide_index, smart_art_index, sub_node = None, text = None, position = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Add SmartArt node  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.create_smart_art_node_with_http_info(name, slide_index, smart_art_index, sub_node, text, position, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param smart_art_index Index of the object on the slide among the same type of objects.
+        :param sub_node Sub-node path (e.g. \"3\", \"3/nodes/2).
+        :param text Node text.
+        :param position Position to insert a new node.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SmartArt
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_smart_art_node" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `create_smart_art_node`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `create_smart_art_node`")  # noqa: E501
+        # verify the required parameter 'smart_art_index' is set
+        if not smart_art_index:
+            raise ValueError("Missing the required parameter `smart_art_index` when calling `create_smart_art_node`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['smartArtIndex'] = smart_art_index  # noqa: E501
+
+        query_params = []
+        if sub_node:
+            query_params.append(('subNode', sub_node))  # noqa: E501
+        if text:
+            query_params.append(('text', text))  # noqa: E501
+        if position:
+            query_params.append(('position', position))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/SmartArts/{smartArtIndex}/nodes', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SmartArt',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def create_special_slide_animation_effect(self, name, slide_index, slide_type, effect, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Add an effect to special slide (master, layout, notes) animation.  # noqa: E501
 
@@ -7464,7 +7596,7 @@ class SlidesApi(ApiBase):
 
         :param is_async bool
         :param document Document data.
-        :param font_name Document name.
+        :param font_name Font name.
         :param password Document password.
         :return: file
                  If the method is called asynchronously,
@@ -7487,7 +7619,7 @@ class SlidesApi(ApiBase):
 
         :param is_async bool
         :param document Document data.
-        :param font_name Document name.
+        :param font_name Font name.
         :param password Document password.
         :return: file
                  If the method is called asynchronously,
@@ -9532,6 +9664,136 @@ class SlidesApi(ApiBase):
             post_params=form_params,
             files=param_files,
             response_type='Slides',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_smart_art_node(self, name, slide_index, smart_art_index, node_index, sub_node = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Delete SmartArt node  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, slide_index, smart_art_index, node_index, sub_node, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param smart_art_index Index of the object on the slide among the same type of objects.
+        :param node_index Root level node index.
+        :param sub_node Sub-node path (e.g. \"3\", \"3/nodes/2).
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SmartArt
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.delete_smart_art_node_with_http_info(name, slide_index, smart_art_index, node_index, sub_node, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_smart_art_node_with_http_info(name, slide_index, smart_art_index, node_index, sub_node, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def delete_smart_art_node_with_http_info(self, name, slide_index, smart_art_index, node_index, sub_node = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Delete SmartArt node  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.delete_smart_art_node_with_http_info(name, slide_index, smart_art_index, node_index, sub_node, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param slide_index Slide index.
+        :param smart_art_index Index of the object on the slide among the same type of objects.
+        :param node_index Root level node index.
+        :param sub_node Sub-node path (e.g. \"3\", \"3/nodes/2).
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: SmartArt
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_smart_art_node" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `delete_smart_art_node`")  # noqa: E501
+        # verify the required parameter 'slide_index' is set
+        if not slide_index:
+            raise ValueError("Missing the required parameter `slide_index` when calling `delete_smart_art_node`")  # noqa: E501
+        # verify the required parameter 'smart_art_index' is set
+        if not smart_art_index:
+            raise ValueError("Missing the required parameter `smart_art_index` when calling `delete_smart_art_node`")  # noqa: E501
+        # verify the required parameter 'node_index' is set
+        if not node_index:
+            raise ValueError("Missing the required parameter `node_index` when calling `delete_smart_art_node`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['slideIndex'] = slide_index  # noqa: E501
+        path_params['smartArtIndex'] = smart_art_index  # noqa: E501
+        path_params['nodeIndex'] = node_index  # noqa: E501
+
+        query_params = []
+        if sub_node:
+            query_params.append(('subNode', sub_node))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/slides/{slideIndex}/SmartArts/{smartArtIndex}/nodes/{nodeIndex}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='SmartArt',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -14395,8 +14657,8 @@ class SlidesApi(ApiBase):
         :param name Document name.
         :param slide_index Slide index.
         :param format Output file format.
-        :param width Output file width.
-        :param height Output file height.
+        :param width The width of the slide representation in the output format.
+        :param height The height of the slide representation in the output format
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -14424,8 +14686,8 @@ class SlidesApi(ApiBase):
         :param name Document name.
         :param slide_index Slide index.
         :param format Output file format.
-        :param width Output file width.
-        :param height Output file height.
+        :param width The width of the slide representation in the output format.
+        :param height The height of the slide representation in the output format
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
@@ -14530,8 +14792,8 @@ class SlidesApi(ApiBase):
         :param document Document data.
         :param slide_index Slide index.
         :param format Output file format.
-        :param width Output file width.
-        :param height Output file height.
+        :param width The width of the slide representation in the output format.
+        :param height The height of the slide representation in the output format.
         :param password Document password.
         :param fonts_folder Storage folder containing custom fonts to be used with the document.
         :return: file
@@ -14557,8 +14819,8 @@ class SlidesApi(ApiBase):
         :param document Document data.
         :param slide_index Slide index.
         :param format Output file format.
-        :param width Output file width.
-        :param height Output file height.
+        :param width The width of the slide representation in the output format.
+        :param height The height of the slide representation in the output format.
         :param password Document password.
         :param fonts_folder Storage folder containing custom fonts to be used with the document.
         :return: file
@@ -24619,12 +24881,12 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def import_shapes_from_svg(self, name, slide_index, image = None, x = None, y = None, width = None, height = None, shapes = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+    def import_shapes_from_svg(self, name, slide_index, image = None, x = None, y = None, width = None, height = None, shapes = None, group = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Imports shapes from SVG file.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, slide_index, image, x, y, width, height, shapes, password, folder, storage, is_async=True)
+        >>> thread = api.(name, slide_index, image, x, y, width, height, shapes, group, password, folder, storage, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -24636,6 +24898,7 @@ class SlidesApi(ApiBase):
         :param width The width of the imported group of shapes (default is SVG image width).
         :param height The height of the imported group of shapes (default is SVG image width).
         :param shapes Indexes of shapes to import. All shapes are imported if not specified.
+        :param group If true, the set of shapes will be imported as a one group shape.
         :param password Document password.
         :param folder Presentation folder.
         :param storage Presentation storage.
@@ -24645,17 +24908,17 @@ class SlidesApi(ApiBase):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.import_shapes_from_svg_with_http_info(name, slide_index, image, x, y, width, height, shapes, password, folder, storage, **kwargs)  # noqa: E501
+            return self.import_shapes_from_svg_with_http_info(name, slide_index, image, x, y, width, height, shapes, group, password, folder, storage, **kwargs)  # noqa: E501
         else:
-            (data) = self.import_shapes_from_svg_with_http_info(name, slide_index, image, x, y, width, height, shapes, password, folder, storage, **kwargs)  # noqa: E501
+            (data) = self.import_shapes_from_svg_with_http_info(name, slide_index, image, x, y, width, height, shapes, group, password, folder, storage, **kwargs)  # noqa: E501
             return data
 
-    def import_shapes_from_svg_with_http_info(self, name, slide_index, image = None, x = None, y = None, width = None, height = None, shapes = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+    def import_shapes_from_svg_with_http_info(self, name, slide_index, image = None, x = None, y = None, width = None, height = None, shapes = None, group = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
         """Imports shapes from SVG file.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.import_shapes_from_svg_with_http_info(name, slide_index, image, x, y, width, height, shapes, password, folder, storage, is_async=True)
+        >>> thread = api.import_shapes_from_svg_with_http_info(name, slide_index, image, x, y, width, height, shapes, group, password, folder, storage, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -24667,6 +24930,7 @@ class SlidesApi(ApiBase):
         :param width The width of the imported group of shapes (default is SVG image width).
         :param height The height of the imported group of shapes (default is SVG image width).
         :param shapes Indexes of shapes to import. All shapes are imported if not specified.
+        :param group If true, the set of shapes will be imported as a one group shape.
         :param password Document password.
         :param folder Presentation folder.
         :param storage Presentation storage.
@@ -24715,6 +24979,8 @@ class SlidesApi(ApiBase):
         if shapes:
             query_params.append(('shapes', shapes))  # noqa: E501
             collection_formats['shapes'] = ''  # noqa: E501
+        if group:
+            query_params.append(('group', group))  # noqa: E501
         if folder:
             query_params.append(('folder', folder))  # noqa: E501
         if storage:
@@ -26201,6 +26467,255 @@ class SlidesApi(ApiBase):
             post_params=form_params,
             files=param_files,
             response_type='Slides',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def replace_font(self, name, source_font, target_font, embed = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+        """Replaces specified font and returns presentation fonts info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, source_font, target_font, embed, password, folder, storage, fonts_folder, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param source_font Source font name.
+        :param target_font Target font name.
+        :param embed Embed target font.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :param fonts_folder Custom fonts folder.
+        :return: FontsData
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.replace_font_with_http_info(name, source_font, target_font, embed, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
+        else:
+            (data) = self.replace_font_with_http_info(name, source_font, target_font, embed, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
+            return data
+
+    def replace_font_with_http_info(self, name, source_font, target_font, embed = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
+        """Replaces specified font and returns presentation fonts info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.replace_font_with_http_info(name, source_font, target_font, embed, password, folder, storage, fonts_folder, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param source_font Source font name.
+        :param target_font Target font name.
+        :param embed Embed target font.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :param fonts_folder Custom fonts folder.
+        :return: FontsData
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method replace_font" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `replace_font`")  # noqa: E501
+        # verify the required parameter 'source_font' is set
+        if not source_font:
+            raise ValueError("Missing the required parameter `source_font` when calling `replace_font`")  # noqa: E501
+        # verify the required parameter 'target_font' is set
+        if not target_font:
+            raise ValueError("Missing the required parameter `target_font` when calling `replace_font`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+        path_params['sourceFont'] = source_font  # noqa: E501
+        path_params['targetFont'] = target_font  # noqa: E501
+
+        query_params = []
+        if embed:
+            query_params.append(('embed', embed))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+        if fonts_folder:
+            query_params.append(('fontsFolder', fonts_folder))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/fonts/{sourceFont}/replace/{targetFont}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='FontsData',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def replace_font_online(self, document, source_font, target_font, embed = None, password = None, fonts_folder = None, **kwargs):  # noqa: E501
+        """Replaces specified font and returns presentation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(document, source_font, target_font, embed, password, fonts_folder, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data.
+        :param source_font Source font name.
+        :param target_font Target font name.
+        :param embed Embed target font.
+        :param password Document password.
+        :param fonts_folder Custom fonts folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.replace_font_online_with_http_info(document, source_font, target_font, embed, password, fonts_folder, **kwargs)  # noqa: E501
+        else:
+            (data) = self.replace_font_online_with_http_info(document, source_font, target_font, embed, password, fonts_folder, **kwargs)  # noqa: E501
+            return data
+
+    def replace_font_online_with_http_info(self, document, source_font, target_font, embed = None, password = None, fonts_folder = None, **kwargs):  # noqa: E501
+        """Replaces specified font and returns presentation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.replace_font_online_with_http_info(document, source_font, target_font, embed, password, fonts_folder, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data.
+        :param source_font Source font name.
+        :param target_font Target font name.
+        :param embed Embed target font.
+        :param password Document password.
+        :param fonts_folder Custom fonts folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method replace_font_online" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'document' is set
+        if not document:
+            raise ValueError("Missing the required parameter `document` when calling `replace_font_online`")  # noqa: E501
+        # verify the required parameter 'source_font' is set
+        if not source_font:
+            raise ValueError("Missing the required parameter `source_font` when calling `replace_font_online`")  # noqa: E501
+        # verify the required parameter 'target_font' is set
+        if not target_font:
+            raise ValueError("Missing the required parameter `target_font` when calling `replace_font_online`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['sourceFont'] = source_font  # noqa: E501
+        path_params['targetFont'] = target_font  # noqa: E501
+
+        query_params = []
+        if embed:
+            query_params.append(('embed', embed))  # noqa: E501
+        if fonts_folder:
+            query_params.append(('fontsFolder', fonts_folder))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+        if document:
+            param_files['document'] = document  # noqa: E501
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['multipart/form-data'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/fonts/{sourceFont}/replace/{targetFont}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='file',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -29228,47 +29743,49 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def set_embedded_font(self, name, font_name, only_used = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+    def set_embedded_font(self, name, font_name, only_used = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
         """Embeds specified font and returns presentation fonts info.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(name, font_name, only_used, password, folder, storage, is_async=True)
+        >>> thread = api.(name, font_name, only_used, password, folder, storage, fonts_folder, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
         :param name Document name.
-        :param font_name Document name.
+        :param font_name Font name.
         :param only_used Only used characters will be embedded.
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
+        :param fonts_folder Custom fonts folder.
         :return: FontsData
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.set_embedded_font_with_http_info(name, font_name, only_used, password, folder, storage, **kwargs)  # noqa: E501
+            return self.set_embedded_font_with_http_info(name, font_name, only_used, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
         else:
-            (data) = self.set_embedded_font_with_http_info(name, font_name, only_used, password, folder, storage, **kwargs)  # noqa: E501
+            (data) = self.set_embedded_font_with_http_info(name, font_name, only_used, password, folder, storage, fonts_folder, **kwargs)  # noqa: E501
             return data
 
-    def set_embedded_font_with_http_info(self, name, font_name, only_used = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+    def set_embedded_font_with_http_info(self, name, font_name, only_used = None, password = None, folder = None, storage = None, fonts_folder = None, **kwargs):  # noqa: E501
         """Embeds specified font and returns presentation fonts info.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.set_embedded_font_with_http_info(name, font_name, only_used, password, folder, storage, is_async=True)
+        >>> thread = api.set_embedded_font_with_http_info(name, font_name, only_used, password, folder, storage, fonts_folder, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
         :param name Document name.
-        :param font_name Document name.
+        :param font_name Font name.
         :param only_used Only used characters will be embedded.
         :param password Document password.
         :param folder Document folder.
         :param storage Document storage.
+        :param fonts_folder Custom fonts folder.
         :return: FontsData
                  If the method is called asynchronously,
                  returns the request thread.
@@ -29309,6 +29826,8 @@ class SlidesApi(ApiBase):
             query_params.append(('folder', folder))  # noqa: E501
         if storage:
             query_params.append(('storage', storage))  # noqa: E501
+        if fonts_folder:
+            query_params.append(('fontsFolder', fonts_folder))  # noqa: E501
 
         header_params = {}
         if password:
@@ -29346,17 +29865,136 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def set_embedded_font_online(self, document, font_name, only_used = None, password = None, **kwargs):  # noqa: E501
-        """Embeds specified font and returns presentation.  # noqa: E501
+    def set_embedded_font_from_request(self, font, name, only_used = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Embeds font from request and returns presentation fonts info.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.(document, font_name, only_used, password, is_async=True)
+        >>> thread = api.(font, name, only_used, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param font Font data.
+        :param name Document name.
+        :param only_used Only used characters will be embedded.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: FontsData
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.set_embedded_font_from_request_with_http_info(font, name, only_used, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.set_embedded_font_from_request_with_http_info(font, name, only_used, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def set_embedded_font_from_request_with_http_info(self, font, name, only_used = None, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Embeds font from request and returns presentation fonts info.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.set_embedded_font_from_request_with_http_info(font, name, only_used, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param font Font data.
+        :param name Document name.
+        :param only_used Only used characters will be embedded.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: FontsData
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method set_embedded_font_from_request" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'font' is set
+        if not font:
+            raise ValueError("Missing the required parameter `font` when calling `set_embedded_font_from_request`")  # noqa: E501
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `set_embedded_font_from_request`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+
+        query_params = []
+        if only_used:
+            query_params.append(('onlyUsed', only_used))  # noqa: E501
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+        if font:
+            param_files['font'] = font  # noqa: E501
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/fonts/embedded', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='FontsData',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def set_embedded_font_from_request_online(self, document, font, only_used = None, password = None, **kwargs):  # noqa: E501
+        """Embeds font from request and returns presentation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(document, font, only_used, password, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
         :param document Document data.
-        :param font_name Font name.
+        :param font Font data.
         :param only_used Only used characters will be embedded.
         :param password Document password.
         :return: file
@@ -29365,17 +30003,105 @@ class SlidesApi(ApiBase):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('is_async'):
-            return self.set_embedded_font_online_with_http_info(document, font_name, only_used, password, **kwargs)  # noqa: E501
+            return self.set_embedded_font_from_request_online_with_http_info(document, font, only_used, password, **kwargs)  # noqa: E501
         else:
-            (data) = self.set_embedded_font_online_with_http_info(document, font_name, only_used, password, **kwargs)  # noqa: E501
+            (data) = self.set_embedded_font_from_request_online_with_http_info(document, font, only_used, password, **kwargs)  # noqa: E501
             return data
 
-    def set_embedded_font_online_with_http_info(self, document, font_name, only_used = None, password = None, **kwargs):  # noqa: E501
+    def set_embedded_font_from_request_online_with_http_info(self, document, font, only_used = None, password = None, **kwargs):  # noqa: E501
+        """Embeds font from request and returns presentation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.set_embedded_font_from_request_online_with_http_info(document, font, only_used, password, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data.
+        :param font Font data.
+        :param only_used Only used characters will be embedded.
+        :param password Document password.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method set_embedded_font_from_request_online" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'document' is set
+        if not document:
+            raise ValueError("Missing the required parameter `document` when calling `set_embedded_font_from_request_online`")  # noqa: E501
+        # verify the required parameter 'font' is set
+        if not font:
+            raise ValueError("Missing the required parameter `font` when calling `set_embedded_font_from_request_online`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if only_used:
+            query_params.append(('onlyUsed', only_used))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+        if document:
+            param_files['document'] = document  # noqa: E501
+        if font:
+            param_files['font'] = font  # noqa: E501
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['multipart/form-data'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/fonts/embedded', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='file',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def set_embedded_font_online(self, document, font_name, only_used = None, password = None, fonts_folder = None, **kwargs):  # noqa: E501
         """Embeds specified font and returns presentation.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
-        >>> thread = api.set_embedded_font_online_with_http_info(document, font_name, only_used, password, is_async=True)
+        >>> thread = api.(document, font_name, only_used, password, fonts_folder, is_async=True)
         >>> result = thread.get()
 
         :param is_async bool
@@ -29383,6 +30109,32 @@ class SlidesApi(ApiBase):
         :param font_name Font name.
         :param only_used Only used characters will be embedded.
         :param password Document password.
+        :param fonts_folder Custom fonts folder.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.set_embedded_font_online_with_http_info(document, font_name, only_used, password, fonts_folder, **kwargs)  # noqa: E501
+        else:
+            (data) = self.set_embedded_font_online_with_http_info(document, font_name, only_used, password, fonts_folder, **kwargs)  # noqa: E501
+            return data
+
+    def set_embedded_font_online_with_http_info(self, document, font_name, only_used = None, password = None, fonts_folder = None, **kwargs):  # noqa: E501
+        """Embeds specified font and returns presentation.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.set_embedded_font_online_with_http_info(document, font_name, only_used, password, fonts_folder, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data.
+        :param font_name Font name.
+        :param only_used Only used characters will be embedded.
+        :param password Document password.
+        :param fonts_folder Custom fonts folder.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -29418,6 +30170,8 @@ class SlidesApi(ApiBase):
         query_params = []
         if only_used:
             query_params.append(('onlyUsed', only_used))  # noqa: E501
+        if fonts_folder:
+            query_params.append(('fontsFolder', fonts_folder))  # noqa: E501
 
         header_params = {}
         if password:
