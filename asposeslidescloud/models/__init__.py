@@ -223,6 +223,7 @@ from asposeslidescloud.models.slide_comment import SlideComment
 from asposeslidescloud.models.slide_comments import SlideComments
 from asposeslidescloud.models.slide_modern_comment import SlideModernComment
 from asposeslidescloud.models.slide_properties import SlideProperties
+from asposeslidescloud.models.slide_show_properties import SlideShowProperties
 from asposeslidescloud.models.slides import Slides
 from asposeslidescloud.models.solid_fill import SolidFill
 from asposeslidescloud.models.split_document_result import SplitDocumentResult

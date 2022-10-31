@@ -20,7 +20,7 @@ class TestShapes(BaseTest):
         pass
 
     def test_base_shape(self):
-        self.initialize('get_slide_shape', None, None)
+        self.initialize('get_slide_shape', None, None, None)
         result = self.api.get_shape(constant.FILE_NAME, 1, 1, constant.PASSWORD, constant.FOLDER_NAME)
         self.assertEqual("1", result.text)
 
@@ -44,9 +44,9 @@ class TestShapes(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 1
-        shape_path = "4/shapes"
-        shapes = BaseTest.slides_api.get_subshapes(constant.FILE_NAME, slide_index, shape_path, constant.PASSWORD,
-                                                   constant.FOLDER_NAME, None)
+        sub_shape = "4"
+        shapes = BaseTest.slides_api.get_shapes(constant.FILE_NAME, slide_index, constant.PASSWORD,
+                                                   constant.FOLDER_NAME, None, None, sub_shape)
         self.assertEqual(2, len(shapes.shapes_links))
 
     def test_get_shape(self):
@@ -62,10 +62,10 @@ class TestShapes(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 1
-        shape_path = "4/shapes"
-        shape_index = 1
-        shape = BaseTest.slides_api.get_subshape(constant.FILE_NAME, slide_index, shape_path, shape_index,
-                                                 constant.PASSWORD, constant.FOLDER_NAME)
+        sub_shape = "1"
+        shape_index = 4
+        shape = BaseTest.slides_api.get_shape(constant.FILE_NAME, slide_index, shape_index,
+                                                 constant.PASSWORD, constant.FOLDER_NAME, None, sub_shape)
         self.assertEqual("Shape", shape.type)
 
     def test_shape_add(self):
@@ -209,10 +209,10 @@ class TestShapes(BaseTest):
         fill_format.color = "#FFFFFF00"
         portion.fill_format = fill_format
 
-        target_node_path = "1/nodes/1/nodes"
+        target_node_path = "1/nodes/2"
         slide_index = 7
-        response = BaseTest.slides_api.update_subshape_portion(constant.FILE_NAME, slide_index, target_node_path, 2, 1,
-                                                               1, portion, constant.PASSWORD, constant.FOLDER_NAME)
+        response = BaseTest.slides_api.update_portion(constant.FILE_NAME, slide_index, 1, 1, 1, portion, constant.PASSWORD,
+                                                      constant.FOLDER_NAME, None, target_node_path)
         self.assertIsNotNone(response)
         self.assertEqual(response.text, portion.text)
         self.assertEqual(response.font_height, portion.font_height)
@@ -378,22 +378,22 @@ class TestShapes(BaseTest):
         file_name = "test.pptx"
         password = "password"
         slide_index = 1
-        path = "4/shapes"
-        shape1_index = 1
-        shape2_index = 2
+        shape_index = 4
+        sub_shape1 = 1
+        sub_shape2 = 2
         BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
-        shape11 = BaseTest.slides_api.get_subshape(file_name, slide_index, path, shape1_index, password, folder_name)
-        shape12 = BaseTest.slides_api.get_subshape(file_name, slide_index, path, shape2_index, password, folder_name)
+        shape11 = BaseTest.slides_api.get_shape(file_name, slide_index, shape_index, password, folder_name, None, sub_shape1)
+        shape12 = BaseTest.slides_api.get_shape(file_name, slide_index, shape_index, password, folder_name, None, sub_shape2)
         self.assertNotEqual(shape11.x, shape12.x)
         self.assertNotEqual(shape11.y, shape12.y)
-        BaseTest.slides_api.align_subshapes(file_name, slide_index, path, "AlignTop", None, None, password, folder_name)
-        shape21 = BaseTest.slides_api.get_subshape(file_name, slide_index, path, shape1_index, password, folder_name)
-        shape22 = BaseTest.slides_api.get_subshape(file_name, slide_index, path, shape2_index, password, folder_name)
+        BaseTest.slides_api.align_shapes(file_name, slide_index, "AlignTop", None, None, password, folder_name, None, "4")
+        shape21 = BaseTest.slides_api.get_shape(file_name, slide_index, shape_index, password, folder_name, None, sub_shape1)
+        shape22 = BaseTest.slides_api.get_shape(file_name, slide_index, shape_index, password, folder_name, None, sub_shape2)
         self.assertNotEqual(shape21.x, shape22.x)
         self.assertLess(abs(shape21.y - shape22.y), 1)
-        BaseTest.slides_api.align_subshapes(file_name, slide_index, path, "AlignLeft", True, [1, 2], password, folder_name)
-        shape31 = BaseTest.slides_api.get_subshape(file_name, slide_index, path, shape1_index, password, folder_name)
-        shape32 = BaseTest.slides_api.get_subshape(file_name, slide_index, path, shape2_index, password, folder_name)
+        BaseTest.slides_api.align_shapes(file_name, slide_index, "AlignLeft", True, [1, 2], password, folder_name, None, "4")
+        shape31 = BaseTest.slides_api.get_shape(file_name, slide_index, shape_index, password, folder_name, None, sub_shape1)
+        shape32 = BaseTest.slides_api.get_shape(file_name, slide_index, shape_index, password, folder_name, None, sub_shape2)
         self.assertLess(abs(shape31.x - shape32.x), 1)
         self.assertLess(abs(shape31.x), 1)
         self.assertLess(abs(shape31.y - shape32.y), 1)
@@ -533,18 +533,18 @@ class TestShapes(BaseTest):
         shape3.width = 50
         shape3.height = 50
 
-        BaseTest.slides_api.create_subshape(constant.FILE_NAME, slide_index, "1/shapes", shape1, None, None,
-                                            constant.PASSWORD, constant.FOLDER_NAME)
-        BaseTest.slides_api.create_subshape(constant.FILE_NAME, slide_index, "1/shapes", shape2, None, None,
-                                            constant.PASSWORD, constant.FOLDER_NAME)
-        BaseTest.slides_api.create_subshape(constant.FILE_NAME, slide_index, "1/shapes", shape3, None, None,
-                                            constant.PASSWORD, constant.FOLDER_NAME)
+        BaseTest.slides_api.create_shape(constant.FILE_NAME, slide_index, shape1, None, None,
+                                            constant.PASSWORD, constant.FOLDER_NAME, None, "1")
+        BaseTest.slides_api.create_shape(constant.FILE_NAME, slide_index, shape2, None, None,
+                                            constant.PASSWORD, constant.FOLDER_NAME, None, "1")
+        BaseTest.slides_api.create_shape(constant.FILE_NAME, slide_index, shape3, None, None,
+                                            constant.PASSWORD, constant.FOLDER_NAME, None, "1")
 
         shapes = BaseTest.slides_api.get_shapes(constant.FILE_NAME, slide_index, constant.PASSWORD,
                                                 constant.FOLDER_NAME)
         self.assertEqual(1, len(shapes.shapes_links))
-        shapes = BaseTest.slides_api.get_subshapes(constant.FILE_NAME, slide_index, "1/shapes", constant.PASSWORD,
-                                                constant.FOLDER_NAME)
+        shapes = BaseTest.slides_api.get_shapes(constant.FILE_NAME, slide_index, constant.PASSWORD,
+                                                constant.FOLDER_NAME, None, None, "1")
         self.assertEqual(3, len(shapes.shapes_links))
 
     def test_import_shapes_from_svg(self):

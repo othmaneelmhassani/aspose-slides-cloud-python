@@ -141,11 +141,11 @@ class RESTClientObject(object):
                 timeout = urllib3.Timeout(connect=_request_timeout[0], read=_request_timeout[1])
 
         part_count = 0
-        if not body is None:
-            part_count = 1
         if files:
+            if not body is None:
+                part_count = 1
             part_count = part_count + len(files)
-        if part_count > 1:
+        if part_count > 0:
             headers['Content-Type'] = 'multipart/form-data'
         if 'Content-Type' not in headers:
             headers['Content-Type'] = 'application/json'
@@ -174,7 +174,7 @@ class RESTClientObject(object):
                                                   preload_content=_preload_content,
                                                   timeout=timeout,
                                                   headers=headers)
-                elif part_count > 1:
+                elif part_count > 0:
                     del headers['Content-Type']
                     file_params = {}
                     if not body is None:
@@ -213,16 +213,6 @@ class RESTClientObject(object):
                                               preload_content=_preload_content,
                                               timeout=timeout,
                                               headers=headers)
-                elif part_count == 1:
-                    del headers['Content-Type']
-
-                    for file_key in files:
-                        request_body = files[file_key]
-                    r = self.pool_manager.request(method, url,
-                                          body=request_body,
-                                          preload_content=_preload_content,
-                                          timeout=timeout,
-                                          headers=headers)
                 else:
                     del headers['Content-Type']
                     r = self.pool_manager.request(method, url,

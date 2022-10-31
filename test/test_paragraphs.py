@@ -37,21 +37,22 @@ class TestParagraphs(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
-        shape_index = 1
         paragraph_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.get_subshape_paragraph(constant.FILE_NAME, slide_index, shape_path, shape_index,
-                                                              paragraph_index, constant.PASSWORD, constant.FOLDER_NAME)
+        shape_index = 3
+        sub_shape = "1"
+        response = BaseTest.slides_api.get_paragraph(constant.FILE_NAME, slide_index, shape_index,
+                                                              paragraph_index, constant.PASSWORD, constant.FOLDER_NAME,
+                                                              None, sub_shape)
         self.assertEqual(2, len(response.portion_list))
 
     def test_get_sub_shape_paragraphs(self):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
-        shape_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.get_subshape_paragraphs(constant.FILE_NAME, slide_index, shape_path,
-                                                               shape_index, constant.PASSWORD, constant.FOLDER_NAME)
+        shape_index = 3
+        sub_shape = "1"
+        response = BaseTest.slides_api.get_paragraphs(constant.FILE_NAME, slide_index, shape_index,
+                                                               constant.PASSWORD, constant.FOLDER_NAME, None, sub_shape)
         self.assertEqual(2, len(response.paragraph_links))
 
     def test_create_paragraph(self):
@@ -92,11 +93,11 @@ class TestParagraphs(BaseTest):
         dto.margin_right = 2
         dto.alignment = "Center"
         slide_index = 6
-        shape_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.create_subshape_paragraph(constant.FILE_NAME, slide_index, shape_path,
+        shape_index = 3
+        sub_shape = "1"
+        response = BaseTest.slides_api.create_paragraph(constant.FILE_NAME, slide_index,
                                                                  shape_index, dto, None, constant.PASSWORD,
-                                                                 constant.FOLDER_NAME)
+                                                                 constant.FOLDER_NAME, None, sub_shape)
         self.assertEqual(dto.margin_left, response.margin_left)
         self.assertEqual(dto.margin_right, response.margin_right)
         self.assertEqual(dto.alignment, response.alignment)
@@ -125,12 +126,11 @@ class TestParagraphs(BaseTest):
         dto.margin_right = 2
         dto.alignment = "Center"
         slide_index = 6
-        shape_index = 1
+        shape_index = 3
+        sub_shape = "1"
         paragraph_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.update_subshape_paragraph(constant.FILE_NAME, slide_index, shape_path,
-                                                                 shape_index, paragraph_index, dto,
-                                                                 constant.PASSWORD, constant.FOLDER_NAME)
+        response = BaseTest.slides_api.update_paragraph(constant.FILE_NAME, slide_index, shape_index, paragraph_index,
+                                                        dto, constant.PASSWORD, constant.FOLDER_NAME, None, sub_shape)
         self.assertEqual(dto.margin_left, response.margin_left)
         self.assertEqual(dto.margin_right, response.margin_right)
         self.assertEqual(dto.alignment, response.alignment)
@@ -157,22 +157,22 @@ class TestParagraphs(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
-        shape_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.delete_subshape_paragraphs(constant.FILE_NAME, slide_index, shape_path,
+        shape_index = 3
+        sub_shape = "1"
+        response = BaseTest.slides_api.delete_paragraphs(constant.FILE_NAME, slide_index,
                                                                   shape_index, None, constant.PASSWORD,
-                                                                  constant.FOLDER_NAME)
+                                                                  constant.FOLDER_NAME, None, sub_shape)
         self.assertEqual(0, len(response.paragraph_links))
 
     def test_delete_sub_shape_paragraphs_indexes(self):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
-        shape_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.delete_subshape_paragraphs(constant.FILE_NAME, slide_index, shape_path,
+        shape_index = 3
+        sub_shape = "1"
+        response = BaseTest.slides_api.delete_paragraphs(constant.FILE_NAME, slide_index,
                                                                   shape_index, [1], constant.PASSWORD,
-                                                                  constant.FOLDER_NAME)
+                                                                  constant.FOLDER_NAME, None, sub_shape)
         self.assertEqual(1, len(response.paragraph_links))
 
     def test_delete_paragraph(self):
@@ -189,12 +189,12 @@ class TestParagraphs(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
-        shape_index = 1
         paragraph_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.delete_subshape_paragraph(constant.FILE_NAME, slide_index, shape_path,
-                                                                 shape_index, paragraph_index,
-                                                                 constant.PASSWORD, constant.FOLDER_NAME)
+        shape_index = 3
+        sub_shape = "1"
+        response = BaseTest.slides_api.delete_paragraph(constant.FILE_NAME, slide_index, shape_index,
+                                                                 paragraph_index, constant.PASSWORD,
+                                                                 constant.FOLDER_NAME, None, sub_shape)
         self.assertEqual(1, len(response.paragraph_links))
 
     def test_get_paragraph_rect(self):
@@ -250,10 +250,10 @@ class TestParagraphs(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
-        shape_index = 1
         paragraph_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.get_subshape_paragraph_effective(constant.FILE_NAME, slide_index, shape_path,
+        shape_index = 3
+        sub_shape = "1"
+        response = BaseTest.slides_api.get_paragraph_effective(constant.FILE_NAME, slide_index,
                                                                         shape_index, paragraph_index, constant.PASSWORD,
-                                                                        constant.FOLDER_NAME)
+                                                                        constant.FOLDER_NAME, None, sub_shape)
         self.assertEqual(72, response.default_tab_size)

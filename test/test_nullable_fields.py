@@ -19,7 +19,7 @@ class TestNullableFields(BaseTest):
         min2 = 12;
         max1 = 104.3;
         max2 = 87;
-        self.initialize('no_method', 'no_property', None)
+        self.initialize('no_method', 'no_property', None, None)
         BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
 
         test_dto = Chart()

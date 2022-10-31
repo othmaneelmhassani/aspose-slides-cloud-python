@@ -125,13 +125,14 @@ class TestConvert(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
         BaseTest.slides_api.download_shape(file_name, 1, 1, 'png', None, None, None, None, "password", folder_name)
 
-    def test_convert_shape_post_from_storage(self):
+    def test_convert_sub_shape_post_from_storage(self):
             BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME, constant.FOLDER_NAME + "/" + constant.FILE_NAME)
             slide_index = 1
-            shape_index = 1
-            path = "4/shapes"
-            converted = BaseTest.slides_api.download_subshape(constant.FILE_NAME, slide_index, path, shape_index, 'png',
-                                                              None, None, None, None, constant.PASSWORD, constant.FOLDER_NAME)
+            shape_index = 4
+            sub_shape = "1"
+            converted = BaseTest.slides_api.download_shape(constant.FILE_NAME, slide_index, shape_index, 'png', None,
+                                                           None, None, None, constant.PASSWORD, constant.FOLDER_NAME,
+                                                           None, sub_shape)
             self.assertIsNotNone(converted)
 
     def test_convert_shape_put_from_storage(self):
@@ -142,14 +143,15 @@ class TestConvert(BaseTest):
         BaseTest.slides_api.save_shape(file_name, 1, 1, 'png', out_path, None, None, None, None, "password", folder_name)
         self.assertTrue(BaseTest.slides_api.object_exists(out_path).exists)
 
-    def test_convert_subshape_post_from_storage(self):
+    def test_convert_subshape_put_from_storage(self):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME, constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         out_path = "TestData/test.png"
         slide_index = 1
-        shape_index = 1
-        path = "4/shapes"
-        BaseTest.slides_api.download_subshape(constant.FILE_NAME, slide_index, path, shape_index, 'png',
-                                                        None, None, None, None, constant.PASSWORD, constant.FOLDER_NAME)
+        shape_index = 4
+        sub_shape = "1"
+        BaseTest.slides_api.save_shape(constant.FILE_NAME, slide_index, shape_index, 'png', out_path,
+                                       None, None, None, None, constant.PASSWORD, constant.FOLDER_NAME,
+                                       None, sub_shape)
         self.assertTrue(BaseTest.slides_api.object_exists(out_path).exists)
 
     def test_convert_with_font_fallback_rules(self):

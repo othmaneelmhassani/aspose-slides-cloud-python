@@ -27,11 +27,12 @@ class TestPortions(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
-        shape_index = 1
+        shape_index = 3
+        sub_shape = "1"
         paragraph_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.get_subshape_portions(constant.FILE_NAME, slide_index, shape_path, shape_index,
-                                                             paragraph_index, constant.PASSWORD, constant.FOLDER_NAME)
+        response = BaseTest.slides_api.get_portions(constant.FILE_NAME, slide_index, shape_index,
+                                                             paragraph_index, constant.PASSWORD, constant.FOLDER_NAME,
+                                                             None, sub_shape)
         self.assertEqual(2, len(response.items))
 
     def test_get_portion(self):
@@ -49,13 +50,13 @@ class TestPortions(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
-        shape_index = 1
+        shape_index = 3
+        sub_shape = "1"
         paragraph_index = 1
         portion_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.get_subshape_portion(constant.FILE_NAME, slide_index, shape_path, shape_index,
+        response = BaseTest.slides_api.get_portion(constant.FILE_NAME, slide_index, shape_index,
                                                              paragraph_index, portion_index, constant.PASSWORD,
-                                                             constant.FOLDER_NAME)
+                                                             constant.FOLDER_NAME, None, sub_shape)
         self.assertTrue(constant.PORTION_TEXT in response.text)
 
     def test_create_portion(self):
@@ -94,12 +95,13 @@ class TestPortions(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
-        shape_index = 1
+        shape_index = 3
+        sub_shape = "1"
         paragraph_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.create_subshape_portion(constant.FILE_NAME, slide_index, shape_path, shape_index,
+
+        response = BaseTest.slides_api.create_portion(constant.FILE_NAME, slide_index, shape_index,
                                                                paragraph_index, dto, None, constant.PASSWORD,
-                                                               constant.FOLDER_NAME)
+                                                               constant.FOLDER_NAME, None, sub_shape)
         self.assertEqual(dto.text, response.text)
         self.assertEqual(dto.font_bold, response.font_bold)
         self.assertEqual(dto.font_height, response.font_height)
@@ -143,13 +145,13 @@ class TestPortions(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
-        shape_index = 1
+        shape_index = 3
+        sub_shape = "1"
         paragraph_index = 1
         portion_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.update_subshape_portion(constant.FILE_NAME, slide_index, shape_path, shape_index,
+        response = BaseTest.slides_api.update_portion(constant.FILE_NAME, slide_index, shape_index,
                                                                paragraph_index, portion_index, dto, constant.PASSWORD,
-                                                               constant.FOLDER_NAME)
+                                                               constant.FOLDER_NAME, None, sub_shape)
         self.assertEqual(dto.text, response.text)
         self.assertEqual(dto.font_bold, response.font_bold)
         self.assertEqual(dto.font_height, response.font_height)
@@ -180,23 +182,24 @@ class TestPortions(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
-        shape_index = 1
+        shape_index = 3
+        sub_shape = "1"
         paragraph_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.delete_subshape_portions(constant.FILE_NAME, slide_index, shape_path,
+        response = BaseTest.slides_api.delete_portions(constant.FILE_NAME, slide_index,
                                                                  shape_index, paragraph_index, None, constant.PASSWORD,
-                                                                 constant.FOLDER_NAME)
+                                                                 constant.FOLDER_NAME, None, sub_shape)
         self.assertEqual(0, len(response.items))
 
     def test_delete_sub_shape_portions_indexes(self):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
-        shape_index = 1
+        shape_index = 3
+        sub_shape = "1"
         paragraph_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.delete_subshape_portions(constant.FILE_NAME, slide_index, shape_path, shape_index,
-                                                       paragraph_index, [1], constant.PASSWORD, constant.FOLDER_NAME)
+        response = BaseTest.slides_api.delete_portions(constant.FILE_NAME, slide_index, shape_index,
+                                                                paragraph_index, [1], constant.PASSWORD, constant.FOLDER_NAME,
+                                                                None, sub_shape)
         self.assertEqual(1, len(response.items))
 
     def test_delete_portion(self):
@@ -214,13 +217,14 @@ class TestPortions(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
-        shape_index = 1
+        shape_index = 3
+        sub_shape = "1"
         paragraph_index = 1
         portion_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.delete_subshape_portion(constant.FILE_NAME, slide_index, shape_path, shape_index,
+
+        response = BaseTest.slides_api.delete_portion(constant.FILE_NAME, slide_index, shape_index,
                                                                paragraph_index, portion_index, constant.PASSWORD,
-                                                               constant.FOLDER_NAME)
+                                                               constant.FOLDER_NAME, None, sub_shape)
         self.assertEqual(1, len(response.items))
 
     def test_get_portion_rect(self):
@@ -254,11 +258,11 @@ class TestPortions(BaseTest):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
                                       constant.FOLDER_NAME + "/" + constant.FILE_NAME)
         slide_index = 6
-        shape_index = 1
+        shape_index = 3
+        sub_shape = "1"
         paragraph_index = 1
         portion_index = 1
-        shape_path = "3/shapes"
-        response = BaseTest.slides_api.get_subshape_portion_effective(constant.FILE_NAME, slide_index, shape_path,
-                                                                      shape_index, paragraph_index, portion_index,
-                                                                      constant.PASSWORD, constant.FOLDER_NAME)
+        response = BaseTest.slides_api.get_portion_effective(constant.FILE_NAME, slide_index, shape_index,
+                                                                      paragraph_index, portion_index, constant.PASSWORD,
+                                                                      constant.FOLDER_NAME, None, sub_shape)
         self.assertEqual(18, response.font_height)

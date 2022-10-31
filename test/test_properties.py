@@ -4,7 +4,7 @@ from __future__ import absolute_import
 import os
 
 from asposeslidescloud import ProtectionProperties, SlideProperties, DocumentProperty, DocumentProperties, \
-    ViewProperties, CommonSlideViewProperties
+    ViewProperties, CommonSlideViewProperties, SlideShowProperties
 from asposeslidescloud.rest import ApiException
 from test.base_test import BaseTest
 import asposeslidescloud
@@ -187,3 +187,24 @@ class TestProperties(BaseTest):
         protection_properties = BaseTest.slides_api.get_protection_properties(file_name, password, folder_name)
         self.assertEqual(True, protection_properties.is_encrypted)
         self.assertNotEqual(None, protection_properties.read_password)
+
+    def test_get_slide_show_properties(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME, constant.FOLDER_NAME + "/" + constant.FILE_NAME)
+        response = BaseTest.slides_api.get_slide_show_properties(constant.FILE_NAME, constant.PASSWORD, constant.FOLDER_NAME)
+        self.assertTrue(response.show_animation)
+        self.assertTrue(response.show_narration)
+
+    def test_set_view_properties(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME,
+                                      constant.FOLDER_NAME + "/" + constant.FILE_NAME)
+        dto = SlideShowProperties()
+        dto.loop = True
+        dto.use_timings = True
+        dto.slide_show_type = "PresentedBySpeaker"
+
+
+        response = BaseTest.slides_api.set_slide_show_properties(constant.FILE_NAME, dto, constant.PASSWORD,
+                                                           constant.FOLDER_NAME)
+        self.assertEqual(dto.loop, response.loop)
+        self.assertEqual(dto.use_timings, response.use_timings)
+        self.assertEqual(dto.slide_show_type, response.slide_show_type)

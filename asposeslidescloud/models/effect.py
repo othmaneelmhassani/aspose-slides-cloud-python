@@ -56,7 +56,9 @@ class Effect(object):
         'repeat_duration': 'float',
         'restart': 'str',
         'speed': 'float',
-        'trigger_delay_time': 'float'
+        'trigger_delay_time': 'float',
+        'repeat_until_end_slide': 'bool',
+        'repeat_until_next_click': 'bool'
     }
 
     attribute_map = {
@@ -74,13 +76,15 @@ class Effect(object):
         'repeat_duration': 'repeatDuration',
         'restart': 'restart',
         'speed': 'speed',
-        'trigger_delay_time': 'triggerDelayTime'
+        'trigger_delay_time': 'triggerDelayTime',
+        'repeat_until_end_slide': 'repeatUntilEndSlide',
+        'repeat_until_next_click': 'repeatUntilNextClick'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, type=None, subtype=None, preset_class_type=None, shape_index=None, paragraph_index=None, trigger_type=None, accelerate=None, auto_reverse=None, decelerate=None, duration=None, repeat_count=None, repeat_duration=None, restart=None, speed=None, trigger_delay_time=None):  # noqa: E501
+    def __init__(self, type=None, subtype=None, preset_class_type=None, shape_index=None, paragraph_index=None, trigger_type=None, accelerate=None, auto_reverse=None, decelerate=None, duration=None, repeat_count=None, repeat_duration=None, restart=None, speed=None, trigger_delay_time=None, repeat_until_end_slide=None, repeat_until_next_click=None):  # noqa: E501
         """Effect - a model defined in Swagger"""  # noqa: E501
 
         self._type = None
@@ -98,6 +102,8 @@ class Effect(object):
         self._restart = None
         self._speed = None
         self._trigger_delay_time = None
+        self._repeat_until_end_slide = None
+        self._repeat_until_next_click = None
 
         if type is not None:
             self.type = type
@@ -128,6 +134,10 @@ class Effect(object):
             self.speed = speed
         if trigger_delay_time is not None:
             self.trigger_delay_time = trigger_delay_time
+        if repeat_until_end_slide is not None:
+            self.repeat_until_end_slide = repeat_until_end_slide
+        if repeat_until_next_click is not None:
+            self.repeat_until_next_click = repeat_until_next_click
 
     @property
     def type(self):
@@ -538,6 +548,50 @@ class Effect(object):
         :type: float
         """
         self._trigger_delay_time = trigger_delay_time
+
+    @property
+    def repeat_until_end_slide(self):
+        """Gets the repeat_until_end_slide of this Effect.  # noqa: E501
+
+        Specifies if the effect will repeat until the end of slide.  # noqa: E501
+
+        :return: The repeat_until_end_slide of this Effect.  # noqa: E501
+        :rtype: bool
+        """
+        return self._repeat_until_end_slide
+
+    @repeat_until_end_slide.setter
+    def repeat_until_end_slide(self, repeat_until_end_slide):
+        """Sets the repeat_until_end_slide of this Effect.
+
+        Specifies if the effect will repeat until the end of slide.  # noqa: E501
+
+        :param repeat_until_end_slide: The repeat_until_end_slide of this Effect.  # noqa: E501
+        :type: bool
+        """
+        self._repeat_until_end_slide = repeat_until_end_slide
+
+    @property
+    def repeat_until_next_click(self):
+        """Gets the repeat_until_next_click of this Effect.  # noqa: E501
+
+        Specifies if the effect will repeat until the next click.  # noqa: E501
+
+        :return: The repeat_until_next_click of this Effect.  # noqa: E501
+        :rtype: bool
+        """
+        return self._repeat_until_next_click
+
+    @repeat_until_next_click.setter
+    def repeat_until_next_click(self, repeat_until_next_click):
+        """Sets the repeat_until_next_click of this Effect.
+
+        Specifies if the effect will repeat until the next click.  # noqa: E501
+
+        :param repeat_until_next_click: The repeat_until_next_click of this Effect.  # noqa: E501
+        :type: bool
+        """
+        self._repeat_until_next_click = repeat_until_next_click
 
     def to_dict(self):
         """Returns the model properties as a dict"""
