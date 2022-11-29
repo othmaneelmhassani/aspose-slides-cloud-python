@@ -83,6 +83,7 @@ class RESTClientObject(object):
         if configuration.verify_ssl:
             cert_reqs = ssl.CERT_REQUIRED
         else:
+            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
             cert_reqs = ssl.CERT_NONE
 
         # ca_certs
@@ -178,6 +179,7 @@ class RESTClientObject(object):
                     del headers['Content-Type']
                     file_params = {}
                     if not body is None:
+                        body = self.getBytes(body)
                         if not isinstance(body, bytes):
                             body = json.dumps(body)
                         file_params["pipeline"] = (None, body, "text/json")
@@ -185,15 +187,15 @@ class RESTClientObject(object):
                         if type(files) is list:
                             for index, item in enumerate(files):
                                 if type(item) == tuple:
-                                    file_params[item[0]] = (item[0], item[1])
+                                    file_params[item[0]] = (item[0], self.getBytes(item[1]))
                                 else:
-                                    file_params["file" + str(index + 1)] = ("file" + str(index + 1), item)
+                                    file_params["file" + str(index + 1)] = ("file" + str(index + 1), self.getBytes(item))
                         else:
                             for file_key in files:
                                 if type(files[file_key]) == tuple:
-                                    file_params[file_key] = (files[file_key][0], files[file_key][1])
+                                    file_params[file_key] = (files[file_key][0], self.getBytes(files[file_key][1]))
                                 else:
-                                    file_params[file_key] = (file_key, files[file_key])
+                                    file_params[file_key] = (file_key, self.getBytes(files[file_key]))
                     r = self.pool_manager.request(method, url,
                                               fields=file_params,
                                               encode_multipart=True,
@@ -242,6 +244,12 @@ class RESTClientObject(object):
             raise ApiException(http_resp=r)
 
         return r
+
+    def getBytes(self, data):
+        read_op = getattr(data, 'read', None)
+        if callable(read_op):
+            return data.read()
+        return data
 
     def GET(self, url, headers=None, query_params=None, _preload_content=True, _request_timeout=None):
         return self.request("GET", url,

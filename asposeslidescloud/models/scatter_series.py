@@ -45,6 +45,7 @@ class ScatterSeries(XYSeries):
     swagger_types = {
         'type': 'str',
         'name': 'str',
+        'data_source_for_series_name': 'DataSource',
         'is_color_varied': 'bool',
         'inverted_solid_fill_color': 'str',
         'smooth': 'bool',
@@ -59,12 +60,15 @@ class ScatterSeries(XYSeries):
         'data_point_type': 'str',
         'number_format_of_y_values': 'str',
         'number_format_of_x_values': 'str',
+        'data_source_for_x_values': 'DataSource',
+        'data_source_for_y_values': 'DataSource',
         'data_points': 'list[ScatterChartDataPoint]'
     }
 
     attribute_map = {
         'type': 'type',
         'name': 'name',
+        'data_source_for_series_name': 'dataSourceForSeriesName',
         'is_color_varied': 'isColorVaried',
         'inverted_solid_fill_color': 'invertedSolidFillColor',
         'smooth': 'smooth',
@@ -79,6 +83,8 @@ class ScatterSeries(XYSeries):
         'data_point_type': 'dataPointType',
         'number_format_of_y_values': 'numberFormatOfYValues',
         'number_format_of_x_values': 'numberFormatOfXValues',
+        'data_source_for_x_values': 'dataSourceForXValues',
+        'data_source_for_y_values': 'dataSourceForYValues',
         'data_points': 'dataPoints'
     }
 
@@ -86,9 +92,9 @@ class ScatterSeries(XYSeries):
         'dataPointType': 'Scatter',
     }
 
-    def __init__(self, type=None, name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type='Scatter', number_format_of_y_values=None, number_format_of_x_values=None, data_points=None):  # noqa: E501
+    def __init__(self, type=None, name=None, data_source_for_series_name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type='Scatter', number_format_of_y_values=None, number_format_of_x_values=None, data_source_for_x_values=None, data_source_for_y_values=None, data_points=None):  # noqa: E501
         """ScatterSeries - a model defined in Swagger"""  # noqa: E501
-        super(ScatterSeries, self).__init__(type, name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type, number_format_of_y_values, number_format_of_x_values)
+        super(ScatterSeries, self).__init__(type, name, data_source_for_series_name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type, number_format_of_y_values, number_format_of_x_values, data_source_for_x_values, data_source_for_y_values)
 
         self._data_points = None
         self.data_point_type = 'Scatter'

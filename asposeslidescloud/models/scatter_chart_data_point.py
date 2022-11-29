@@ -48,7 +48,9 @@ class ScatterChartDataPoint(DataPoint):
         'three_d_format': 'ThreeDFormat',
         'line_format': 'LineFormat',
         'x_value': 'float',
-        'y_value': 'float'
+        'y_value': 'float',
+        'x_value_formula': 'str',
+        'y_value_formula': 'str'
     }
 
     attribute_map = {
@@ -57,21 +59,29 @@ class ScatterChartDataPoint(DataPoint):
         'three_d_format': 'threeDFormat',
         'line_format': 'lineFormat',
         'x_value': 'xValue',
-        'y_value': 'yValue'
+        'y_value': 'yValue',
+        'x_value_formula': 'xValueFormula',
+        'y_value_formula': 'yValueFormula'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None, x_value=None, y_value=None):  # noqa: E501
+    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None, x_value=None, y_value=None, x_value_formula=None, y_value_formula=None):  # noqa: E501
         """ScatterChartDataPoint - a model defined in Swagger"""  # noqa: E501
         super(ScatterChartDataPoint, self).__init__(fill_format, effect_format, three_d_format, line_format)
 
         self._x_value = None
         self._y_value = None
+        self._x_value_formula = None
+        self._y_value_formula = None
 
         self.x_value = x_value
         self.y_value = y_value
+        if x_value_formula is not None:
+            self.x_value_formula = x_value_formula
+        if y_value_formula is not None:
+            self.y_value_formula = y_value_formula
 
     @property
     def x_value(self):
@@ -116,6 +126,50 @@ class ScatterChartDataPoint(DataPoint):
         :type: float
         """
         self._y_value = y_value
+
+    @property
+    def x_value_formula(self):
+        """Gets the x_value_formula of this ScatterChartDataPoint.  # noqa: E501
+
+        Spreadsheet formula in A1-style.  # noqa: E501
+
+        :return: The x_value_formula of this ScatterChartDataPoint.  # noqa: E501
+        :rtype: str
+        """
+        return self._x_value_formula
+
+    @x_value_formula.setter
+    def x_value_formula(self, x_value_formula):
+        """Sets the x_value_formula of this ScatterChartDataPoint.
+
+        Spreadsheet formula in A1-style.  # noqa: E501
+
+        :param x_value_formula: The x_value_formula of this ScatterChartDataPoint.  # noqa: E501
+        :type: str
+        """
+        self._x_value_formula = x_value_formula
+
+    @property
+    def y_value_formula(self):
+        """Gets the y_value_formula of this ScatterChartDataPoint.  # noqa: E501
+
+        Spreadsheet formula in A1-style.  # noqa: E501
+
+        :return: The y_value_formula of this ScatterChartDataPoint.  # noqa: E501
+        :rtype: str
+        """
+        return self._y_value_formula
+
+    @y_value_formula.setter
+    def y_value_formula(self, y_value_formula):
+        """Sets the y_value_formula of this ScatterChartDataPoint.
+
+        Spreadsheet formula in A1-style.  # noqa: E501
+
+        :param y_value_formula: The y_value_formula of this ScatterChartDataPoint.  # noqa: E501
+        :type: str
+        """
+        self._y_value_formula = y_value_formula
 
     def to_dict(self):
         """Returns the model properties as a dict"""

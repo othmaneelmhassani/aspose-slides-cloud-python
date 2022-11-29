@@ -45,6 +45,7 @@ class XYSeries(Series):
     swagger_types = {
         'type': 'str',
         'name': 'str',
+        'data_source_for_series_name': 'DataSource',
         'is_color_varied': 'bool',
         'inverted_solid_fill_color': 'str',
         'smooth': 'bool',
@@ -58,12 +59,15 @@ class XYSeries(Series):
         'line_format': 'LineFormat',
         'data_point_type': 'str',
         'number_format_of_y_values': 'str',
-        'number_format_of_x_values': 'str'
+        'number_format_of_x_values': 'str',
+        'data_source_for_x_values': 'DataSource',
+        'data_source_for_y_values': 'DataSource'
     }
 
     attribute_map = {
         'type': 'type',
         'name': 'name',
+        'data_source_for_series_name': 'dataSourceForSeriesName',
         'is_color_varied': 'isColorVaried',
         'inverted_solid_fill_color': 'invertedSolidFillColor',
         'smooth': 'smooth',
@@ -77,23 +81,31 @@ class XYSeries(Series):
         'line_format': 'lineFormat',
         'data_point_type': 'dataPointType',
         'number_format_of_y_values': 'numberFormatOfYValues',
-        'number_format_of_x_values': 'numberFormatOfXValues'
+        'number_format_of_x_values': 'numberFormatOfXValues',
+        'data_source_for_x_values': 'dataSourceForXValues',
+        'data_source_for_y_values': 'dataSourceForYValues'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, type=None, name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type=None, number_format_of_y_values=None, number_format_of_x_values=None):  # noqa: E501
+    def __init__(self, type=None, name=None, data_source_for_series_name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type=None, number_format_of_y_values=None, number_format_of_x_values=None, data_source_for_x_values=None, data_source_for_y_values=None):  # noqa: E501
         """XYSeries - a model defined in Swagger"""  # noqa: E501
-        super(XYSeries, self).__init__(type, name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type)
+        super(XYSeries, self).__init__(type, name, data_source_for_series_name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type)
 
         self._number_format_of_y_values = None
         self._number_format_of_x_values = None
+        self._data_source_for_x_values = None
+        self._data_source_for_y_values = None
 
         if number_format_of_y_values is not None:
             self.number_format_of_y_values = number_format_of_y_values
         if number_format_of_x_values is not None:
             self.number_format_of_x_values = number_format_of_x_values
+        if data_source_for_x_values is not None:
+            self.data_source_for_x_values = data_source_for_x_values
+        if data_source_for_y_values is not None:
+            self.data_source_for_y_values = data_source_for_y_values
 
     @property
     def number_format_of_y_values(self):
@@ -138,6 +150,50 @@ class XYSeries(Series):
         :type: str
         """
         self._number_format_of_x_values = number_format_of_x_values
+
+    @property
+    def data_source_for_x_values(self):
+        """Gets the data_source_for_x_values of this XYSeries.  # noqa: E501
+
+        Data source type for X Values.  # noqa: E501
+
+        :return: The data_source_for_x_values of this XYSeries.  # noqa: E501
+        :rtype: DataSource
+        """
+        return self._data_source_for_x_values
+
+    @data_source_for_x_values.setter
+    def data_source_for_x_values(self, data_source_for_x_values):
+        """Sets the data_source_for_x_values of this XYSeries.
+
+        Data source type for X Values.  # noqa: E501
+
+        :param data_source_for_x_values: The data_source_for_x_values of this XYSeries.  # noqa: E501
+        :type: DataSource
+        """
+        self._data_source_for_x_values = data_source_for_x_values
+
+    @property
+    def data_source_for_y_values(self):
+        """Gets the data_source_for_y_values of this XYSeries.  # noqa: E501
+
+        Data source type for Y Values.  # noqa: E501
+
+        :return: The data_source_for_y_values of this XYSeries.  # noqa: E501
+        :rtype: DataSource
+        """
+        return self._data_source_for_y_values
+
+    @data_source_for_y_values.setter
+    def data_source_for_y_values(self, data_source_for_y_values):
+        """Sets the data_source_for_y_values of this XYSeries.
+
+        Data source type for Y Values.  # noqa: E501
+
+        :param data_source_for_y_values: The data_source_for_y_values of this XYSeries.  # noqa: E501
+        :type: DataSource
+        """
+        self._data_source_for_y_values = data_source_for_y_values
 
     def to_dict(self):
         """Returns the model properties as a dict"""

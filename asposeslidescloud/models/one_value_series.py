@@ -45,6 +45,7 @@ class OneValueSeries(Series):
     swagger_types = {
         'type': 'str',
         'name': 'str',
+        'data_source_for_series_name': 'DataSource',
         'is_color_varied': 'bool',
         'inverted_solid_fill_color': 'str',
         'smooth': 'bool',
@@ -59,6 +60,7 @@ class OneValueSeries(Series):
         'data_point_type': 'str',
         'data_points': 'list[OneValueChartDataPoint]',
         'number_format_of_values': 'str',
+        'data_source_for_values': 'DataSource',
         'show_connector_lines': 'bool',
         'quartile_method': 'str',
         'show_inner_points': 'bool',
@@ -70,6 +72,7 @@ class OneValueSeries(Series):
     attribute_map = {
         'type': 'type',
         'name': 'name',
+        'data_source_for_series_name': 'dataSourceForSeriesName',
         'is_color_varied': 'isColorVaried',
         'inverted_solid_fill_color': 'invertedSolidFillColor',
         'smooth': 'smooth',
@@ -84,6 +87,7 @@ class OneValueSeries(Series):
         'data_point_type': 'dataPointType',
         'data_points': 'dataPoints',
         'number_format_of_values': 'numberFormatOfValues',
+        'data_source_for_values': 'dataSourceForValues',
         'show_connector_lines': 'showConnectorLines',
         'quartile_method': 'quartileMethod',
         'show_inner_points': 'showInnerPoints',
@@ -96,12 +100,13 @@ class OneValueSeries(Series):
         'dataPointType': 'OneValue',
     }
 
-    def __init__(self, type=None, name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type='OneValue', data_points=None, number_format_of_values=None, show_connector_lines=None, quartile_method=None, show_inner_points=None, show_mean_line=None, show_mean_markers=None, show_outlier_points=None):  # noqa: E501
+    def __init__(self, type=None, name=None, data_source_for_series_name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type='OneValue', data_points=None, number_format_of_values=None, data_source_for_values=None, show_connector_lines=None, quartile_method=None, show_inner_points=None, show_mean_line=None, show_mean_markers=None, show_outlier_points=None):  # noqa: E501
         """OneValueSeries - a model defined in Swagger"""  # noqa: E501
-        super(OneValueSeries, self).__init__(type, name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type)
+        super(OneValueSeries, self).__init__(type, name, data_source_for_series_name, is_color_varied, inverted_solid_fill_color, smooth, plot_on_second_axis, order, invert_if_negative, explosion, marker, fill_format, effect_format, line_format, data_point_type)
 
         self._data_points = None
         self._number_format_of_values = None
+        self._data_source_for_values = None
         self._show_connector_lines = None
         self._quartile_method = None
         self._show_inner_points = None
@@ -114,6 +119,8 @@ class OneValueSeries(Series):
             self.data_points = data_points
         if number_format_of_values is not None:
             self.number_format_of_values = number_format_of_values
+        if data_source_for_values is not None:
+            self.data_source_for_values = data_source_for_values
         if show_connector_lines is not None:
             self.show_connector_lines = show_connector_lines
         if quartile_method is not None:
@@ -170,6 +177,28 @@ class OneValueSeries(Series):
         :type: str
         """
         self._number_format_of_values = number_format_of_values
+
+    @property
+    def data_source_for_values(self):
+        """Gets the data_source_for_values of this OneValueSeries.  # noqa: E501
+
+        Data source type for values.  # noqa: E501
+
+        :return: The data_source_for_values of this OneValueSeries.  # noqa: E501
+        :rtype: DataSource
+        """
+        return self._data_source_for_values
+
+    @data_source_for_values.setter
+    def data_source_for_values(self, data_source_for_values):
+        """Sets the data_source_for_values of this OneValueSeries.
+
+        Data source type for values.  # noqa: E501
+
+        :param data_source_for_values: The data_source_for_values of this OneValueSeries.  # noqa: E501
+        :type: DataSource
+        """
+        self._data_source_for_values = data_source_for_values
 
     @property
     def show_connector_lines(self):

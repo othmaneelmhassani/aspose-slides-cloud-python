@@ -27,6 +27,7 @@
 
 from __future__ import absolute_import
 
+import inspect
 import json
 import os
 import re
@@ -37,6 +38,10 @@ from asposeslidescloud.api_client import ApiClient
 from asposeslidescloud.apis.slides_api import SlidesApi
 from asposeslidescloud.configuration import Configuration
 from asposeslidescloud.rest import ApiException
+
+base_test_path = '../'
+if inspect.stack().pop().filename == 'run_tests.py':
+    base_test_path = ''
 
 class BaseTest(unittest.TestCase):
 
@@ -57,7 +62,7 @@ class BaseTest(unittest.TestCase):
         self.file_password = "password"
 
         if not BaseTest.slides_api:
-            with open('testConfig.json') as f:
+            with open(base_test_path + 'testConfig.json') as f:
                 config = json.loads(f.read())
             BaseTest.configuration = Configuration()
             BaseTest.configuration.app_sid = config['ClientId']
@@ -67,8 +72,9 @@ class BaseTest(unittest.TestCase):
             if 'AuthBaseUrl' in config:
                 BaseTest.configuration.auth_base_url = config['AuthBaseUrl']
             BaseTest.configuration.debug = config['Debug']
+            BaseTest.configuration.verify_ssl = not 'AllowInsecureRequests' in config or not config['AllowInsecureRequests']
 
-            with open('testRules.json') as f:
+            with open(base_test_path + 'testRules.json') as f:
                 BaseTest.test_rules = json.loads(f.read())
 
             BaseTest.slides_api = asposeslidescloud.apis.slides_api.SlidesApi(self.configuration)  # noqa: E501
@@ -103,6 +109,7 @@ class BaseTest(unittest.TestCase):
                 BaseTest.slides_api.copy_file("TempTests/" + rule['ActualName'], path)
             elif rule['Action'] == 'Delete':
                 BaseTest.slides_api.delete_file(path)
+                BaseTest.slides_api.delete_folder(path)
 
     def get_test_value(self, function_name, field_name, field_type):
         value = None

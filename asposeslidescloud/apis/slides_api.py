@@ -19697,7 +19697,7 @@ class SlidesApi(ApiBase):
             collection_formats=collection_formats)
 
     def get_view_properties(self, name, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Read presentation document properties.  # noqa: E501
+        """Read presentation view properties.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
@@ -19721,7 +19721,7 @@ class SlidesApi(ApiBase):
             return data
 
     def get_view_properties_with_http_info(self, name, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Read presentation document properties.  # noqa: E501
+        """Read presentation view properties.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
@@ -26497,7 +26497,7 @@ class SlidesApi(ApiBase):
             collection_formats=collection_formats)
 
     def set_view_properties(self, name, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Update presentation document properties.  # noqa: E501
+        """Update presentation view properties.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
@@ -26522,7 +26522,7 @@ class SlidesApi(ApiBase):
             return data
 
     def set_view_properties_with_http_info(self, name, dto, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
-        """Update presentation document properties.  # noqa: E501
+        """Update presentation view properties.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True

@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from asposeslidescloud import Axis, Chart, Axes, OneValueChartDataPoint, OneValueSeries, ChartTitle
+from asposeslidescloud import Axis, Chart, Axes, OneValueChartDataPoint, OneValueSeries, ChartTitle, ChartCategory
 from test.base_test import BaseTest
 import asposeslidescloud
 
@@ -26,10 +26,18 @@ class TestNullableFields(BaseTest):
         test_dto.chart_type = "Line"
         test_dto.width = 400
         test_dto.height = 300
+
         test_title = ChartTitle()
         test_title.has_title = True
         test_title.text = "MyTitle"
         test_dto.title = test_title
+
+        category1 = ChartCategory()
+        category1.value = "Category1"
+        category2 = ChartCategory()
+        category2.value = "Category2"
+        test_dto.categories = [category1, category2]
+
         test_series = OneValueSeries()
         test_series.type = "ClusteredColumn"
         test_series.data_point_type = "OneValue"

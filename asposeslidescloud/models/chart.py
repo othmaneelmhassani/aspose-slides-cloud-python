@@ -65,6 +65,7 @@ class Chart(ShapeBase):
         'show_data_labels_over_maximum': 'bool',
         'series': 'list[Series]',
         'categories': 'list[ChartCategory]',
+        'data_source_for_categories': 'DataSource',
         'title': 'ChartTitle',
         'back_wall': 'ChartWall',
         'side_wall': 'ChartWall',
@@ -99,6 +100,7 @@ class Chart(ShapeBase):
         'show_data_labels_over_maximum': 'showDataLabelsOverMaximum',
         'series': 'series',
         'categories': 'categories',
+        'data_source_for_categories': 'dataSourceForCategories',
         'title': 'title',
         'back_wall': 'backWall',
         'side_wall': 'sideWall',
@@ -114,7 +116,7 @@ class Chart(ShapeBase):
         'type': 'Chart',
     }
 
-    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='Chart', chart_type=None, show_data_labels_over_maximum=None, series=None, categories=None, title=None, back_wall=None, side_wall=None, floor=None, legend=None, axes=None, plot_area=None, has_rounded_corners=None, series_groups=None):  # noqa: E501
+    def __init__(self, self_uri=None, alternate_links=None, name=None, width=None, height=None, alternative_text=None, alternative_text_title=None, hidden=None, x=None, y=None, z_order_position=None, fill_format=None, effect_format=None, three_d_format=None, line_format=None, hyperlink_click=None, hyperlink_mouse_over=None, type='Chart', chart_type=None, show_data_labels_over_maximum=None, series=None, categories=None, data_source_for_categories=None, title=None, back_wall=None, side_wall=None, floor=None, legend=None, axes=None, plot_area=None, has_rounded_corners=None, series_groups=None):  # noqa: E501
         """Chart - a model defined in Swagger"""  # noqa: E501
         super(Chart, self).__init__(self_uri, alternate_links, name, width, height, alternative_text, alternative_text_title, hidden, x, y, z_order_position, fill_format, effect_format, three_d_format, line_format, hyperlink_click, hyperlink_mouse_over, type)
 
@@ -122,6 +124,7 @@ class Chart(ShapeBase):
         self._show_data_labels_over_maximum = None
         self._series = None
         self._categories = None
+        self._data_source_for_categories = None
         self._title = None
         self._back_wall = None
         self._side_wall = None
@@ -140,6 +143,8 @@ class Chart(ShapeBase):
             self.series = series
         if categories is not None:
             self.categories = categories
+        if data_source_for_categories is not None:
+            self.data_source_for_categories = data_source_for_categories
         if title is not None:
             self.title = title
         if back_wall is not None:
@@ -262,6 +267,28 @@ class Chart(ShapeBase):
         :type: list[ChartCategory]
         """
         self._categories = categories
+
+    @property
+    def data_source_for_categories(self):
+        """Gets the data_source_for_categories of this Chart.  # noqa: E501
+
+        Data source type for categories.  # noqa: E501
+
+        :return: The data_source_for_categories of this Chart.  # noqa: E501
+        :rtype: DataSource
+        """
+        return self._data_source_for_categories
+
+    @data_source_for_categories.setter
+    def data_source_for_categories(self, data_source_for_categories):
+        """Sets the data_source_for_categories of this Chart.
+
+        Data source type for categories.  # noqa: E501
+
+        :param data_source_for_categories: The data_source_for_categories of this Chart.  # noqa: E501
+        :type: DataSource
+        """
+        self._data_source_for_categories = data_source_for_categories
 
     @property
     def title(self):

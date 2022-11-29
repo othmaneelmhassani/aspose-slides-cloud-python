@@ -2,7 +2,8 @@
 from __future__ import absolute_import
 
 from asposeslidescloud import OneValueSeries, Chart, OneValueChartDataPoint, ChartCategory, Axis, ChartLinesFormat, \
-    LineFormat, NoFill, SolidFill, GradientFill, GradientFillStop, Axes, Legend, ChartWall, EffectFormat, BlurEffect
+    LineFormat, NoFill, SolidFill, GradientFill, GradientFillStop, Axes, Legend, ChartWall, EffectFormat, BlurEffect, \
+    Workbook, Literals
 from asposeslidescloud.rest import ApiException
 from test import constant
 from test.base_test import BaseTest
@@ -28,7 +29,7 @@ class TestChart(BaseTest):
         self.assertEqual(3, len(chart.series))
         self.assertEqual(4, len(chart.categories))
 
-    def test_chart_create(self):
+    def test_chart_create_auto_data_source(self):
         folder_name = "TempSlidesSDK"
         file_name = "test.pptx"
         BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
@@ -54,6 +55,124 @@ class TestChart(BaseTest):
         point23 = OneValueChartDataPoint()
         point23.value = 90
         series2.data_points = [point21, point22, point23]
+        chart.series = [series1, series2]
+        category1 = ChartCategory()
+        category1.value = "Category1"
+        category2 = ChartCategory()
+        category2.value = "Category2"
+        category3 = ChartCategory()
+        category3.value = "Category3"
+        chart.categories = [category1, category2, category3]
+        result = BaseTest.slides_api.create_shape(file_name, 3, chart, None, None, "password", folder_name)
+        self.assertEqual(2, len(result.series))
+        self.assertEqual(3, len(result.categories))
+
+    def test_chart_create_workbook(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        chart = Chart()
+        chart.chart_type = 'ClusteredColumn'
+        chart.width = 400
+        chart.height = 300
+
+        categories_data_source = Workbook()
+        categories_data_source.worksheet_index = 0
+        categories_data_source.row_index = 1
+        categories_data_source.column_index = 0
+        chart.data_source_for_categories = categories_data_source
+
+        series1 = OneValueSeries()
+        series1_name_data_source = Workbook()
+        series1_name_data_source.worksheet_index = 0
+        series1_name_data_source.column_index = 1
+        series1_name_data_source.row_index = 0
+        series1.data_source_for_series_name = series1_name_data_source
+        series1.name = "Series1"
+
+        series1_values_data_source = Workbook()
+        series1_values_data_source.worksheet_index = 0
+        series1_values_data_source.column_index = 1
+        series1_values_data_source.row_index = 1
+        series1.data_source_for_values = series1_values_data_source
+        point11 = OneValueChartDataPoint()
+        point11.value = 40
+        point12 = OneValueChartDataPoint()
+        point12.value = 50
+        point13 = OneValueChartDataPoint()
+        point13.value = 70
+        series1.data_points = [point11, point12, point13]
+
+        series2 = OneValueSeries()
+        series2_name_data_source = Workbook()
+        series2_name_data_source.worksheet_index = 0
+        series2_name_data_source.column_index = 2
+        series2_name_data_source.row_index = 0
+        series2.data_source_for_series_name = series2_name_data_source
+        series2.name = "Series2"
+
+        series2_values_data_source = Workbook()
+        series2_values_data_source.worksheet_index = 0
+        series2_values_data_source.column_index = 2
+        series2_values_data_source.row_index = 1
+        series2.data_source_for_values = series2_values_data_source
+        point21 = OneValueChartDataPoint()
+        point21.value = 55
+        point22 = OneValueChartDataPoint()
+        point22.value = 35
+        point23 = OneValueChartDataPoint()
+        point23.value = 90
+        series2.data_points = [point21, point22, point23]
+
+        chart.series = [series1, series2]
+        category1 = ChartCategory()
+        category1.value = "Category1"
+        category2 = ChartCategory()
+        category2.value = "Category2"
+        category3 = ChartCategory()
+        category3.value = "Category3"
+        chart.categories = [category1, category2, category3]
+        result = BaseTest.slides_api.create_shape(file_name, 3, chart, None, None, "password", folder_name)
+        self.assertEqual(2, len(result.series))
+        self.assertEqual(3, len(result.categories))
+
+    def test_chart_create_literals(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        chart = Chart()
+        chart.chart_type = 'ClusteredColumn'
+        chart.width = 400
+        chart.height = 300
+
+        chart.data_source_for_categories = Literals()
+
+        series1 = OneValueSeries()
+        series1.data_source_for_series_name = Literals()
+        series1.name = "Series1"
+
+        series1.data_source_for_values = Literals()
+        point11 = OneValueChartDataPoint()
+        point11.value = 40
+        point12 = OneValueChartDataPoint()
+        point12.value = 50
+        point13 = OneValueChartDataPoint()
+        point13.value = 70
+        series1.data_points = [point11, point12, point13]
+
+        series2 = OneValueSeries()
+        series2.data_source_for_series_name = Literals()
+        series2.name = "Series2"
+
+        series2.data_source_for_values = Literals()
+        point21 = OneValueChartDataPoint()
+        point21.value = 55
+        point22 = OneValueChartDataPoint()
+        point22.value = 35
+        point23 = OneValueChartDataPoint()
+        point23.value = 90
+        series2.data_points = [point21, point22, point23]
+
         chart.series = [series1, series2]
         category1 = ChartCategory()
         category1.value = "Category1"
@@ -460,4 +579,52 @@ class TestChart(BaseTest):
         data_point = chart.series[series_index - 1].data_points[data_point_index - 1]
         self.assertEqual(data_point.fill_format.type, "Solid")
         self.assertEqual(data_point.line_format.fill_format.type, "Solid")
+
+    def test_chart_formulas(self):
+        folder_name = "TempSlidesSDK"
+        file_name = "test.pptx"
+        BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+        chart = Chart()
+        chart.chart_type = 'ClusteredColumn'
+        chart.width = 400
+        chart.height = 300
+
+        categories_data_source = Workbook()
+        categories_data_source.worksheet_index = 0
+        categories_data_source.row_index = 1
+        categories_data_source.column_index = 0
+        chart.data_source_for_categories = categories_data_source
+
+        series1 = OneValueSeries()
+        series1_name_data_source = Workbook()
+        series1_name_data_source.worksheet_index = 0
+        series1_name_data_source.column_index = 1
+        series1_name_data_source.row_index = 0
+        series1.data_source_for_series_name = series1_name_data_source
+        series1.name = "Series1"
+
+        series1_values_data_source = Workbook()
+        series1_values_data_source.worksheet_index = 0
+        series1_values_data_source.column_index = 1
+        series1_values_data_source.row_index = 1
+        series1.data_source_for_values = series1_values_data_source
+        point11 = OneValueChartDataPoint()
+        point11.value = 40
+        point12 = OneValueChartDataPoint()
+        point12.value = 50
+        point13 = OneValueChartDataPoint()
+        point13.value = 0
+        point13.value_formula = "SUM(B2:B3)"
+        series1.data_points = [point11, point12, point13]
+
+        chart.series = [series1]
+        category1 = ChartCategory()
+        category1.value = "Category1"
+        category2 = ChartCategory()
+        category2.value = "Category2"
+        category3 = ChartCategory()
+        category3.value = "Category3"
+        chart.categories = [category1, category2, category3]
+        result = BaseTest.slides_api.create_shape(file_name, 3, chart, None, None, "password", folder_name)
+        self.assertEqual(90, result.series[0].data_points[2].value)
 

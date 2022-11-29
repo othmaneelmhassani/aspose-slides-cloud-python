@@ -48,6 +48,7 @@ class OneValueChartDataPoint(DataPoint):
         'three_d_format': 'ThreeDFormat',
         'line_format': 'LineFormat',
         'value': 'float',
+        'value_formula': 'str',
         'set_as_total': 'bool',
         'invert_if_negative': 'bool'
     }
@@ -58,6 +59,7 @@ class OneValueChartDataPoint(DataPoint):
         'three_d_format': 'threeDFormat',
         'line_format': 'lineFormat',
         'value': 'value',
+        'value_formula': 'valueFormula',
         'set_as_total': 'setAsTotal',
         'invert_if_negative': 'invertIfNegative'
     }
@@ -65,15 +67,18 @@ class OneValueChartDataPoint(DataPoint):
     type_determiners = {
     }
 
-    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None, value=None, set_as_total=None, invert_if_negative=None):  # noqa: E501
+    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None, value=None, value_formula=None, set_as_total=None, invert_if_negative=None):  # noqa: E501
         """OneValueChartDataPoint - a model defined in Swagger"""  # noqa: E501
         super(OneValueChartDataPoint, self).__init__(fill_format, effect_format, three_d_format, line_format)
 
         self._value = None
+        self._value_formula = None
         self._set_as_total = None
         self._invert_if_negative = None
 
         self.value = value
+        if value_formula is not None:
+            self.value_formula = value_formula
         if set_as_total is not None:
             self.set_as_total = set_as_total
         if invert_if_negative is not None:
@@ -100,6 +105,28 @@ class OneValueChartDataPoint(DataPoint):
         :type: float
         """
         self._value = value
+
+    @property
+    def value_formula(self):
+        """Gets the value_formula of this OneValueChartDataPoint.  # noqa: E501
+
+        Spreadsheet formula in A1-style.  # noqa: E501
+
+        :return: The value_formula of this OneValueChartDataPoint.  # noqa: E501
+        :rtype: str
+        """
+        return self._value_formula
+
+    @value_formula.setter
+    def value_formula(self, value_formula):
+        """Sets the value_formula of this OneValueChartDataPoint.
+
+        Spreadsheet formula in A1-style.  # noqa: E501
+
+        :param value_formula: The value_formula of this OneValueChartDataPoint.  # noqa: E501
+        :type: str
+        """
+        self._value_formula = value_formula
 
     @property
     def set_as_total(self):

@@ -30,9 +30,8 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.scatter_chart_data_point import ScatterChartDataPoint
 
-class BubbleChartDataPoint(ScatterChartDataPoint):
+class DataSource(object):
 
 
     """
@@ -43,88 +42,59 @@ class BubbleChartDataPoint(ScatterChartDataPoint):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'fill_format': 'FillFormat',
-        'effect_format': 'EffectFormat',
-        'three_d_format': 'ThreeDFormat',
-        'line_format': 'LineFormat',
-        'x_value': 'float',
-        'y_value': 'float',
-        'x_value_formula': 'str',
-        'y_value_formula': 'str',
-        'bubble_size': 'float',
-        'bubble_size_formula': 'str'
+        'type': 'str'
     }
 
     attribute_map = {
-        'fill_format': 'fillFormat',
-        'effect_format': 'effectFormat',
-        'three_d_format': 'threeDFormat',
-        'line_format': 'lineFormat',
-        'x_value': 'xValue',
-        'y_value': 'yValue',
-        'x_value_formula': 'xValueFormula',
-        'y_value_formula': 'yValueFormula',
-        'bubble_size': 'bubbleSize',
-        'bubble_size_formula': 'bubbleSizeFormula'
+        'type': 'type'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None, x_value=None, y_value=None, x_value_formula=None, y_value_formula=None, bubble_size=None, bubble_size_formula=None):  # noqa: E501
-        """BubbleChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(BubbleChartDataPoint, self).__init__(fill_format, effect_format, three_d_format, line_format, x_value, y_value, x_value_formula, y_value_formula)
+    def __init__(self, type=None):  # noqa: E501
+        """DataSource - a model defined in Swagger"""  # noqa: E501
 
-        self._bubble_size = None
-        self._bubble_size_formula = None
+        self._type = None
 
-        self.bubble_size = bubble_size
-        if bubble_size_formula is not None:
-            self.bubble_size_formula = bubble_size_formula
+        if type is not None:
+            self.type = type
 
     @property
-    def bubble_size(self):
-        """Gets the bubble_size of this BubbleChartDataPoint.  # noqa: E501
+    def type(self):
+        """Gets the type of this DataSource.  # noqa: E501
 
-        Bubble size.  # noqa: E501
 
-        :return: The bubble_size of this BubbleChartDataPoint.  # noqa: E501
-        :rtype: float
-        """
-        return self._bubble_size
-
-    @bubble_size.setter
-    def bubble_size(self, bubble_size):
-        """Sets the bubble_size of this BubbleChartDataPoint.
-
-        Bubble size.  # noqa: E501
-
-        :param bubble_size: The bubble_size of this BubbleChartDataPoint.  # noqa: E501
-        :type: float
-        """
-        self._bubble_size = bubble_size
-
-    @property
-    def bubble_size_formula(self):
-        """Gets the bubble_size_formula of this BubbleChartDataPoint.  # noqa: E501
-
-        Spreadsheet formula in A1-style.  # noqa: E501
-
-        :return: The bubble_size_formula of this BubbleChartDataPoint.  # noqa: E501
+        :return: The type of this DataSource.  # noqa: E501
         :rtype: str
         """
-        return self._bubble_size_formula
+        return self._type
 
-    @bubble_size_formula.setter
-    def bubble_size_formula(self, bubble_size_formula):
-        """Sets the bubble_size_formula of this BubbleChartDataPoint.
+    @type.setter
+    def type(self, type):
+        """Sets the type of this DataSource.
 
-        Spreadsheet formula in A1-style.  # noqa: E501
 
-        :param bubble_size_formula: The bubble_size_formula of this BubbleChartDataPoint.  # noqa: E501
+        :param type: The type of this DataSource.  # noqa: E501
         :type: str
         """
-        self._bubble_size_formula = bubble_size_formula
+        if type is not None:
+            allowed_values = ["Workbook", "Literals"]  # noqa: E501
+            if type.isdigit():
+                int_type = int(type)
+                if int_type < 0 or int_type >= len(allowed_values):
+                    raise ValueError(
+                        "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                        .format(type, allowed_values)
+                    )
+                self._type = allowed_values[int_type]
+                return
+            if type not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                    .format(type, allowed_values)
+                )
+        self._type = type
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -160,7 +130,7 @@ class BubbleChartDataPoint(ScatterChartDataPoint):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, BubbleChartDataPoint):
+        if not isinstance(other, DataSource):
             return False
 
         return self.__dict__ == other.__dict__

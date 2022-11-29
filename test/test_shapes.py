@@ -230,13 +230,16 @@ class TestShapes(BaseTest):
         result = BaseTest.slides_api.create_shape(file_name, 1, dto, None, None, "password", folder_name)
         self.assertTrue(isinstance(result, SmartArt))
 
-    def test_chart_empty(self): #See Chart tests for non-empty chart examples
+    def test_chart_empty(self):
         folder_name = "TempSlidesSDK"
         file_name = "test.pptx"
         BaseTest.slides_api.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
         dto = Chart()
-        result = BaseTest.slides_api.create_shape(file_name, 1, dto, None, None, "password", folder_name)
-        self.assertTrue(isinstance(result, Chart))
+        try:
+            BaseTest.slides_api.create_shape(file_name, 1, dto, None, None, "password", folder_name)
+            self.fail("Chart with undefined series should not have been created")
+        except ApiException as ex:
+            self.assertEqual(500, ex.status)
 
     def test_table_add(self):
         folder_name = "TempSlidesSDK"

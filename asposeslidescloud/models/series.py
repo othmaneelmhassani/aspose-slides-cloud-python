@@ -44,6 +44,7 @@ class Series(object):
     swagger_types = {
         'type': 'str',
         'name': 'str',
+        'data_source_for_series_name': 'DataSource',
         'is_color_varied': 'bool',
         'inverted_solid_fill_color': 'str',
         'smooth': 'bool',
@@ -61,6 +62,7 @@ class Series(object):
     attribute_map = {
         'type': 'type',
         'name': 'name',
+        'data_source_for_series_name': 'dataSourceForSeriesName',
         'is_color_varied': 'isColorVaried',
         'inverted_solid_fill_color': 'invertedSolidFillColor',
         'smooth': 'smooth',
@@ -78,11 +80,12 @@ class Series(object):
     type_determiners = {
     }
 
-    def __init__(self, type=None, name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type=None):  # noqa: E501
+    def __init__(self, type=None, name=None, data_source_for_series_name=None, is_color_varied=None, inverted_solid_fill_color=None, smooth=None, plot_on_second_axis=None, order=None, invert_if_negative=None, explosion=None, marker=None, fill_format=None, effect_format=None, line_format=None, data_point_type=None):  # noqa: E501
         """Series - a model defined in Swagger"""  # noqa: E501
 
         self._type = None
         self._name = None
+        self._data_source_for_series_name = None
         self._is_color_varied = None
         self._inverted_solid_fill_color = None
         self._smooth = None
@@ -100,6 +103,8 @@ class Series(object):
             self.type = type
         if name is not None:
             self.name = name
+        if data_source_for_series_name is not None:
+            self.data_source_for_series_name = data_source_for_series_name
         if is_color_varied is not None:
             self.is_color_varied = is_color_varied
         if inverted_solid_fill_color is not None:
@@ -184,6 +189,28 @@ class Series(object):
         :type: str
         """
         self._name = name
+
+    @property
+    def data_source_for_series_name(self):
+        """Gets the data_source_for_series_name of this Series.  # noqa: E501
+
+        Series name data source.  # noqa: E501
+
+        :return: The data_source_for_series_name of this Series.  # noqa: E501
+        :rtype: DataSource
+        """
+        return self._data_source_for_series_name
+
+    @data_source_for_series_name.setter
+    def data_source_for_series_name(self, data_source_for_series_name):
+        """Sets the data_source_for_series_name of this Series.
+
+        Series name data source.  # noqa: E501
+
+        :param data_source_for_series_name: The data_source_for_series_name of this Series.  # noqa: E501
+        :type: DataSource
+        """
+        self._data_source_for_series_name = data_source_for_series_name
 
     @property
     def is_color_varied(self):

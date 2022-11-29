@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from asposeslidescloud.models.scatter_chart_data_point import ScatterChartDataPoint
+from asposeslidescloud.models.data_source import DataSource
 
-class BubbleChartDataPoint(ScatterChartDataPoint):
+class Literals(DataSource):
 
 
     """
@@ -43,88 +43,21 @@ class BubbleChartDataPoint(ScatterChartDataPoint):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'fill_format': 'FillFormat',
-        'effect_format': 'EffectFormat',
-        'three_d_format': 'ThreeDFormat',
-        'line_format': 'LineFormat',
-        'x_value': 'float',
-        'y_value': 'float',
-        'x_value_formula': 'str',
-        'y_value_formula': 'str',
-        'bubble_size': 'float',
-        'bubble_size_formula': 'str'
+        'type': 'str'
     }
 
     attribute_map = {
-        'fill_format': 'fillFormat',
-        'effect_format': 'effectFormat',
-        'three_d_format': 'threeDFormat',
-        'line_format': 'lineFormat',
-        'x_value': 'xValue',
-        'y_value': 'yValue',
-        'x_value_formula': 'xValueFormula',
-        'y_value_formula': 'yValueFormula',
-        'bubble_size': 'bubbleSize',
-        'bubble_size_formula': 'bubbleSizeFormula'
+        'type': 'type'
     }
 
     type_determiners = {
+        'type': 'Literals',
     }
 
-    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None, x_value=None, y_value=None, x_value_formula=None, y_value_formula=None, bubble_size=None, bubble_size_formula=None):  # noqa: E501
-        """BubbleChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(BubbleChartDataPoint, self).__init__(fill_format, effect_format, three_d_format, line_format, x_value, y_value, x_value_formula, y_value_formula)
-
-        self._bubble_size = None
-        self._bubble_size_formula = None
-
-        self.bubble_size = bubble_size
-        if bubble_size_formula is not None:
-            self.bubble_size_formula = bubble_size_formula
-
-    @property
-    def bubble_size(self):
-        """Gets the bubble_size of this BubbleChartDataPoint.  # noqa: E501
-
-        Bubble size.  # noqa: E501
-
-        :return: The bubble_size of this BubbleChartDataPoint.  # noqa: E501
-        :rtype: float
-        """
-        return self._bubble_size
-
-    @bubble_size.setter
-    def bubble_size(self, bubble_size):
-        """Sets the bubble_size of this BubbleChartDataPoint.
-
-        Bubble size.  # noqa: E501
-
-        :param bubble_size: The bubble_size of this BubbleChartDataPoint.  # noqa: E501
-        :type: float
-        """
-        self._bubble_size = bubble_size
-
-    @property
-    def bubble_size_formula(self):
-        """Gets the bubble_size_formula of this BubbleChartDataPoint.  # noqa: E501
-
-        Spreadsheet formula in A1-style.  # noqa: E501
-
-        :return: The bubble_size_formula of this BubbleChartDataPoint.  # noqa: E501
-        :rtype: str
-        """
-        return self._bubble_size_formula
-
-    @bubble_size_formula.setter
-    def bubble_size_formula(self, bubble_size_formula):
-        """Sets the bubble_size_formula of this BubbleChartDataPoint.
-
-        Spreadsheet formula in A1-style.  # noqa: E501
-
-        :param bubble_size_formula: The bubble_size_formula of this BubbleChartDataPoint.  # noqa: E501
-        :type: str
-        """
-        self._bubble_size_formula = bubble_size_formula
+    def __init__(self, type='Literals'):  # noqa: E501
+        """Literals - a model defined in Swagger"""  # noqa: E501
+        super(Literals, self).__init__(type)
+        self.type = 'Literals'
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -160,7 +93,7 @@ class BubbleChartDataPoint(ScatterChartDataPoint):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, BubbleChartDataPoint):
+        if not isinstance(other, Literals):
             return False
 
         return self.__dict__ == other.__dict__

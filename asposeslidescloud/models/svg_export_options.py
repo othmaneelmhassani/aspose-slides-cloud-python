@@ -55,7 +55,9 @@ class SvgExportOptions(ExportOptions):
         'jpeg_quality': 'int',
         'pictures_compression': 'str',
         'delete_pictures_cropped_areas': 'bool',
-        'external_fonts_handling': 'str'
+        'external_fonts_handling': 'str',
+        'use_frame_size': 'bool',
+        'use_frame_rotation': 'bool'
     }
 
     attribute_map = {
@@ -71,14 +73,16 @@ class SvgExportOptions(ExportOptions):
         'jpeg_quality': 'jpegQuality',
         'pictures_compression': 'picturesCompression',
         'delete_pictures_cropped_areas': 'deletePicturesCroppedAreas',
-        'external_fonts_handling': 'externalFontsHandling'
+        'external_fonts_handling': 'externalFontsHandling',
+        'use_frame_size': 'useFrameSize',
+        'use_frame_rotation': 'useFrameRotation'
     }
 
     type_determiners = {
         'format': 'svg',
     }
 
-    def __init__(self, default_regular_font=None, font_fallback_rules=None, font_subst_rules=None, format='svg', vectorize_text=None, metafile_rasterization_dpi=None, disable3_d_text=None, disable_gradient_split=None, disable_line_end_cropping=None, jpeg_quality=None, pictures_compression=None, delete_pictures_cropped_areas=None, external_fonts_handling=None):  # noqa: E501
+    def __init__(self, default_regular_font=None, font_fallback_rules=None, font_subst_rules=None, format='svg', vectorize_text=None, metafile_rasterization_dpi=None, disable3_d_text=None, disable_gradient_split=None, disable_line_end_cropping=None, jpeg_quality=None, pictures_compression=None, delete_pictures_cropped_areas=None, external_fonts_handling=None, use_frame_size=None, use_frame_rotation=None):  # noqa: E501
         """SvgExportOptions - a model defined in Swagger"""  # noqa: E501
         super(SvgExportOptions, self).__init__(default_regular_font, font_fallback_rules, font_subst_rules, format)
 
@@ -91,6 +95,8 @@ class SvgExportOptions(ExportOptions):
         self._pictures_compression = None
         self._delete_pictures_cropped_areas = None
         self._external_fonts_handling = None
+        self._use_frame_size = None
+        self._use_frame_rotation = None
         self.format = 'svg'
 
         if vectorize_text is not None:
@@ -111,6 +117,10 @@ class SvgExportOptions(ExportOptions):
             self.delete_pictures_cropped_areas = delete_pictures_cropped_areas
         if external_fonts_handling is not None:
             self.external_fonts_handling = external_fonts_handling
+        if use_frame_size is not None:
+            self.use_frame_size = use_frame_size
+        if use_frame_rotation is not None:
+            self.use_frame_rotation = use_frame_rotation
 
     @property
     def vectorize_text(self):
@@ -341,6 +351,50 @@ class SvgExportOptions(ExportOptions):
                     .format(external_fonts_handling, allowed_values)
                 )
         self._external_fonts_handling = external_fonts_handling
+
+    @property
+    def use_frame_size(self):
+        """Gets the use_frame_size of this SvgExportOptions.  # noqa: E501
+
+        Determines whether the text frame will be included in a rendering area or not.  # noqa: E501
+
+        :return: The use_frame_size of this SvgExportOptions.  # noqa: E501
+        :rtype: bool
+        """
+        return self._use_frame_size
+
+    @use_frame_size.setter
+    def use_frame_size(self, use_frame_size):
+        """Sets the use_frame_size of this SvgExportOptions.
+
+        Determines whether the text frame will be included in a rendering area or not.  # noqa: E501
+
+        :param use_frame_size: The use_frame_size of this SvgExportOptions.  # noqa: E501
+        :type: bool
+        """
+        self._use_frame_size = use_frame_size
+
+    @property
+    def use_frame_rotation(self):
+        """Gets the use_frame_rotation of this SvgExportOptions.  # noqa: E501
+
+        Determines whether to perform the specified rotation of the shape when rendering or not.  # noqa: E501
+
+        :return: The use_frame_rotation of this SvgExportOptions.  # noqa: E501
+        :rtype: bool
+        """
+        return self._use_frame_rotation
+
+    @use_frame_rotation.setter
+    def use_frame_rotation(self, use_frame_rotation):
+        """Sets the use_frame_rotation of this SvgExportOptions.
+
+        Determines whether to perform the specified rotation of the shape when rendering or not.  # noqa: E501
+
+        :param use_frame_rotation: The use_frame_rotation of this SvgExportOptions.  # noqa: E501
+        :type: bool
+        """
+        self._use_frame_rotation = use_frame_rotation
 
     def to_dict(self):
         """Returns the model properties as a dict"""
