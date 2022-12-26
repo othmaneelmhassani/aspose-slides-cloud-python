@@ -45,26 +45,29 @@ class DataPoint(object):
         'fill_format': 'FillFormat',
         'effect_format': 'EffectFormat',
         'three_d_format': 'ThreeDFormat',
-        'line_format': 'LineFormat'
+        'line_format': 'LineFormat',
+        'type': 'str'
     }
 
     attribute_map = {
         'fill_format': 'fillFormat',
         'effect_format': 'effectFormat',
         'three_d_format': 'threeDFormat',
-        'line_format': 'lineFormat'
+        'line_format': 'lineFormat',
+        'type': 'type'
     }
 
     type_determiners = {
     }
 
-    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None):  # noqa: E501
+    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None, type=None):  # noqa: E501
         """DataPoint - a model defined in Swagger"""  # noqa: E501
 
         self._fill_format = None
         self._effect_format = None
         self._three_d_format = None
         self._line_format = None
+        self._type = None
 
         if fill_format is not None:
             self.fill_format = fill_format
@@ -74,6 +77,8 @@ class DataPoint(object):
             self.three_d_format = three_d_format
         if line_format is not None:
             self.line_format = line_format
+        if type is not None:
+            self.type = type
 
     @property
     def fill_format(self):
@@ -162,6 +167,42 @@ class DataPoint(object):
         :type: LineFormat
         """
         self._line_format = line_format
+
+    @property
+    def type(self):
+        """Gets the type of this DataPoint.  # noqa: E501
+
+
+        :return: The type of this DataPoint.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this DataPoint.
+
+
+        :param type: The type of this DataPoint.  # noqa: E501
+        :type: str
+        """
+        if type is not None:
+            allowed_values = ["OneValue", "Scatter", "Bubble"]  # noqa: E501
+            if type.isdigit():
+                int_type = int(type)
+                if int_type < 0 or int_type >= len(allowed_values):
+                    raise ValueError(
+                        "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                        .format(type, allowed_values)
+                    )
+                self._type = allowed_values[int_type]
+                return
+            if type not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                    .format(type, allowed_values)
+                )
+        self._type = type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

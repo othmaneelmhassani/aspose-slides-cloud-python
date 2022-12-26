@@ -77,23 +77,23 @@ class TestChart(BaseTest):
         chart.height = 300
 
         categories_data_source = Workbook()
-        categories_data_source.worksheet_index = 0
-        categories_data_source.row_index = 1
-        categories_data_source.column_index = 0
+        categories_data_source.worksheet_index = 1
+        categories_data_source.row_index = 2
+        categories_data_source.column_index = 1
         chart.data_source_for_categories = categories_data_source
 
         series1 = OneValueSeries()
         series1_name_data_source = Workbook()
-        series1_name_data_source.worksheet_index = 0
-        series1_name_data_source.column_index = 1
-        series1_name_data_source.row_index = 0
+        series1_name_data_source.worksheet_index = 1
+        series1_name_data_source.column_index = 2
+        series1_name_data_source.row_index = 1
         series1.data_source_for_series_name = series1_name_data_source
         series1.name = "Series1"
 
         series1_values_data_source = Workbook()
-        series1_values_data_source.worksheet_index = 0
-        series1_values_data_source.column_index = 1
-        series1_values_data_source.row_index = 1
+        series1_values_data_source.worksheet_index = 1
+        series1_values_data_source.column_index = 2
+        series1_values_data_source.row_index = 2
         series1.data_source_for_values = series1_values_data_source
         point11 = OneValueChartDataPoint()
         point11.value = 40
@@ -105,16 +105,16 @@ class TestChart(BaseTest):
 
         series2 = OneValueSeries()
         series2_name_data_source = Workbook()
-        series2_name_data_source.worksheet_index = 0
-        series2_name_data_source.column_index = 2
-        series2_name_data_source.row_index = 0
+        series2_name_data_source.worksheet_index = 1
+        series2_name_data_source.column_index = 3
+        series2_name_data_source.row_index = 1
         series2.data_source_for_series_name = series2_name_data_source
         series2.name = "Series2"
 
         series2_values_data_source = Workbook()
-        series2_values_data_source.worksheet_index = 0
-        series2_values_data_source.column_index = 2
-        series2_values_data_source.row_index = 1
+        series2_values_data_source.worksheet_index = 1
+        series2_values_data_source.column_index = 3
+        series2_values_data_source.row_index = 2
         series2.data_source_for_values = series2_values_data_source
         point21 = OneValueChartDataPoint()
         point21.value = 55
@@ -590,30 +590,29 @@ class TestChart(BaseTest):
         chart.height = 300
 
         categories_data_source = Workbook()
-        categories_data_source.worksheet_index = 0
-        categories_data_source.row_index = 1
-        categories_data_source.column_index = 0
+        categories_data_source.worksheet_index = 1
+        categories_data_source.row_index = 2
+        categories_data_source.column_index = 1
         chart.data_source_for_categories = categories_data_source
 
         series1 = OneValueSeries()
         series1_name_data_source = Workbook()
-        series1_name_data_source.worksheet_index = 0
-        series1_name_data_source.column_index = 1
-        series1_name_data_source.row_index = 0
+        series1_name_data_source.worksheet_index = 1
+        series1_name_data_source.column_index = 2
+        series1_name_data_source.row_index = 1
         series1.data_source_for_series_name = series1_name_data_source
         series1.name = "Series1"
 
         series1_values_data_source = Workbook()
-        series1_values_data_source.worksheet_index = 0
-        series1_values_data_source.column_index = 1
-        series1_values_data_source.row_index = 1
+        series1_values_data_source.worksheet_index = 1
+        series1_values_data_source.column_index = 2
+        series1_values_data_source.row_index = 2
         series1.data_source_for_values = series1_values_data_source
         point11 = OneValueChartDataPoint()
         point11.value = 40
         point12 = OneValueChartDataPoint()
         point12.value = 50
         point13 = OneValueChartDataPoint()
-        point13.value = 0
         point13.value_formula = "SUM(B2:B3)"
         series1.data_points = [point11, point12, point13]
 

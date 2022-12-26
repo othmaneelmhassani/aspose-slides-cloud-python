@@ -47,6 +47,7 @@ class OneValueChartDataPoint(DataPoint):
         'effect_format': 'EffectFormat',
         'three_d_format': 'ThreeDFormat',
         'line_format': 'LineFormat',
+        'type': 'str',
         'value': 'float',
         'value_formula': 'str',
         'set_as_total': 'bool',
@@ -58,6 +59,7 @@ class OneValueChartDataPoint(DataPoint):
         'effect_format': 'effectFormat',
         'three_d_format': 'threeDFormat',
         'line_format': 'lineFormat',
+        'type': 'type',
         'value': 'value',
         'value_formula': 'valueFormula',
         'set_as_total': 'setAsTotal',
@@ -65,18 +67,21 @@ class OneValueChartDataPoint(DataPoint):
     }
 
     type_determiners = {
+        'type': 'OneValue',
     }
 
-    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None, value=None, value_formula=None, set_as_total=None, invert_if_negative=None):  # noqa: E501
+    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None, type='OneValue', value=None, value_formula=None, set_as_total=None, invert_if_negative=None):  # noqa: E501
         """OneValueChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(OneValueChartDataPoint, self).__init__(fill_format, effect_format, three_d_format, line_format)
+        super(OneValueChartDataPoint, self).__init__(fill_format, effect_format, three_d_format, line_format, type)
 
         self._value = None
         self._value_formula = None
         self._set_as_total = None
         self._invert_if_negative = None
+        self.type = 'OneValue'
 
-        self.value = value
+        if value is not None:
+            self.value = value
         if value_formula is not None:
             self.value_formula = value_formula
         if set_as_total is not None:

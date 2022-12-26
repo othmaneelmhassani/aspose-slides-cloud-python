@@ -32,12 +32,6 @@ class TestNullableFields(BaseTest):
         test_title.text = "MyTitle"
         test_dto.title = test_title
 
-        category1 = ChartCategory()
-        category1.value = "Category1"
-        category2 = ChartCategory()
-        category2.value = "Category2"
-        test_dto.categories = [category1, category2]
-
         test_series = OneValueSeries()
         test_series.type = "ClusteredColumn"
         test_series.data_point_type = "OneValue"

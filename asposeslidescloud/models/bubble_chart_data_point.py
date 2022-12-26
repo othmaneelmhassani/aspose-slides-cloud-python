@@ -47,6 +47,7 @@ class BubbleChartDataPoint(ScatterChartDataPoint):
         'effect_format': 'EffectFormat',
         'three_d_format': 'ThreeDFormat',
         'line_format': 'LineFormat',
+        'type': 'str',
         'x_value': 'float',
         'y_value': 'float',
         'x_value_formula': 'str',
@@ -60,6 +61,7 @@ class BubbleChartDataPoint(ScatterChartDataPoint):
         'effect_format': 'effectFormat',
         'three_d_format': 'threeDFormat',
         'line_format': 'lineFormat',
+        'type': 'type',
         'x_value': 'xValue',
         'y_value': 'yValue',
         'x_value_formula': 'xValueFormula',
@@ -69,16 +71,19 @@ class BubbleChartDataPoint(ScatterChartDataPoint):
     }
 
     type_determiners = {
+        'type': 'Bubble',
     }
 
-    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None, x_value=None, y_value=None, x_value_formula=None, y_value_formula=None, bubble_size=None, bubble_size_formula=None):  # noqa: E501
+    def __init__(self, fill_format=None, effect_format=None, three_d_format=None, line_format=None, type='Bubble', x_value=None, y_value=None, x_value_formula=None, y_value_formula=None, bubble_size=None, bubble_size_formula=None):  # noqa: E501
         """BubbleChartDataPoint - a model defined in Swagger"""  # noqa: E501
-        super(BubbleChartDataPoint, self).__init__(fill_format, effect_format, three_d_format, line_format, x_value, y_value, x_value_formula, y_value_formula)
+        super(BubbleChartDataPoint, self).__init__(fill_format, effect_format, three_d_format, line_format, type, x_value, y_value, x_value_formula, y_value_formula)
 
         self._bubble_size = None
         self._bubble_size_formula = None
+        self.type = 'Bubble'
 
-        self.bubble_size = bubble_size
+        if bubble_size is not None:
+            self.bubble_size = bubble_size
         if bubble_size_formula is not None:
             self.bubble_size_formula = bubble_size_formula
 
