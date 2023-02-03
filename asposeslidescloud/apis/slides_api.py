@@ -322,6 +322,215 @@ class SlidesApi(ApiBase):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def compress_embedded_fonts(self, name, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Compresses embedded fonts by removing unused characters.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(name, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.compress_embedded_fonts_with_http_info(name, password, folder, storage, **kwargs)  # noqa: E501
+        else:
+            (data) = self.compress_embedded_fonts_with_http_info(name, password, folder, storage, **kwargs)  # noqa: E501
+            return data
+
+    def compress_embedded_fonts_with_http_info(self, name, password = None, folder = None, storage = None, **kwargs):  # noqa: E501
+        """Compresses embedded fonts by removing unused characters.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.compress_embedded_fonts_with_http_info(name, password, folder, storage, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param name Document name.
+        :param password Document password.
+        :param folder Document folder.
+        :param storage Document storage.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method compress_embedded_fonts" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if not name:
+            raise ValueError("Missing the required parameter `name` when calling `compress_embedded_fonts`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        path_params['name'] = name  # noqa: E501
+
+        query_params = []
+        if folder:
+            query_params.append(('folder', folder))  # noqa: E501
+        if storage:
+            query_params.append(('storage', storage))  # noqa: E501
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/{name}/fonts/embedded/compress', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def compress_embedded_fonts_online(self, document, password = None, **kwargs):  # noqa: E501
+        """Compresses embedded fonts by removing unused characters.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.(document, password, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data.
+        :param password Document password.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('is_async'):
+            return self.compress_embedded_fonts_online_with_http_info(document, password, **kwargs)  # noqa: E501
+        else:
+            (data) = self.compress_embedded_fonts_online_with_http_info(document, password, **kwargs)  # noqa: E501
+            return data
+
+    def compress_embedded_fonts_online_with_http_info(self, document, password = None, **kwargs):  # noqa: E501
+        """Compresses embedded fonts by removing unused characters.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+        >>> thread = api.compress_embedded_fonts_online_with_http_info(document, password, is_async=True)
+        >>> result = thread.get()
+
+        :param is_async bool
+        :param document Document data.
+        :param password Document password.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('is_async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method compress_embedded_fonts_online" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'document' is set
+        if not document:
+            raise ValueError("Missing the required parameter `document` when calling `compress_embedded_fonts_online`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if password:
+            header_params['password'] = password  # noqa: E501
+
+        form_params = []
+        param_files = {}
+        if document:
+            param_files['document'] = document  # noqa: E501
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['multipart/form-data'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/slides/fonts/embedded/compress', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=param_files,
+            response_type='file',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def convert(self, document, format, password = None, storage = None, fonts_folder = None, slides = None, options = None, **kwargs):  # noqa: E501
         """Convert presentation from request content to format specified.  # noqa: E501
 

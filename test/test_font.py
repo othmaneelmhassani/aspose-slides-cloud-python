@@ -59,6 +59,26 @@ class TestFont(BaseTest):
         response = BaseTest.slides_api.set_embedded_font_from_request_online(source_file, source_font_file, False,
                                                                       constant.PASSWORD)
 
+    def test_compress_embedded_fonts(self):
+        BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME, constant.FOLDER_NAME + "/" +
+                                      constant.FILE_NAME)
+        response = BaseTest.slides_api.set_embedded_font(constant.FILE_NAME, constant.FONT_NAME_CALIBRI, False,
+                                                         constant.PASSWORD, constant.FOLDER_NAME)
+        self.assertEqual(True, response.list[2].is_embedded)
+        #In a real world example, you would rather achieve the same result by calling SetEmbeddedFont with onlyUsed = true
+        response = BaseTest.slides_api.compress_embedded_fonts(constant.FILE_NAME, constant.PASSWORD, constant.FOLDER_NAME)
+        self.assertEqual(True, response.list[2].is_embedded)
+
+    def test_compress_embedded_fonts_online(self):
+        with open(constant.LOCAL_TEST_DATA_FOLDER + "/" + constant.FILE_NAME, 'rb') as f:
+            source = f.read()
+        response = BaseTest.slides_api.set_embedded_font_online(source, constant.FONT_NAME_CALIBRI, False, constant.PASSWORD)
+        with open(response, 'rb') as f:
+            source_embedded = f.read()
+        #In a real world example, you would rather achieve the same result by calling SetEmbeddedFont with onlyUsed = true
+        responseCompressed = BaseTest.slides_api.compress_embedded_fonts_online(source_embedded, constant.PASSWORD)
+        self.assertGreater(os.path.getsize(result), os.path.getsize(responseCompressed))
+
     def test_delete_embedded_font(self):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME, constant.FOLDER_NAME + "/" +
                                       constant.FILE_NAME)
@@ -75,7 +95,8 @@ class TestFont(BaseTest):
         response = BaseTest.slides_api.set_embedded_font_online(source, constant.FONT_NAME_CALIBRI, False, constant.PASSWORD)
         with open(response, 'rb') as f:
             source_embedded = f.read()
-        BaseTest.slides_api.delete_embedded_font_online(source_embedded, constant.FONT_NAME_CALIBRI, constant.PASSWORD)
+        responseDeleted = BaseTest.slides_api.delete_embedded_font_online(source_embedded, constant.FONT_NAME_CALIBRI, constant.PASSWORD)
+        self.assertGreater(os.path.getsize(result), os.path.getsize(responseDeleted))
 
     def test_replace_font(self):
         BaseTest.slides_api.copy_file("TempTests/" + constant.FILE_NAME, constant.FOLDER_NAME + "/" +

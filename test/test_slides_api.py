@@ -561,6 +561,143 @@ class TestSlidesApi(BaseTest):
         if ok:
             self.assert_no_exception('align_special_slide_shapes', 'sub_shape', 'str')
 
+    def test_compress_embedded_fonts(self):
+        """Test case for compress_embedded_fonts
+        """
+        param_name = self.get_test_value('compress_embedded_fonts', 'name', 'str')
+        param_password = self.get_test_value('compress_embedded_fonts', 'password', 'str')
+        param_folder = self.get_test_value('compress_embedded_fonts', 'folder', 'str')
+        param_storage = self.get_test_value('compress_embedded_fonts', 'storage', 'str')
+        self.initialize('compress_embedded_fonts', None, None, None)
+        response = self.api.compress_embedded_fonts(param_name, param_password, param_folder, param_storage)
+        self.assertIsNone(response)
+
+    def test_compress_embedded_fonts_invalid_name(self):
+        """Test case for compress_embedded_fonts with invalid name
+        """
+        param_name = self.get_test_value('compress_embedded_fonts', 'name', 'str')
+        param_password = self.get_test_value('compress_embedded_fonts', 'password', 'str')
+        param_folder = self.get_test_value('compress_embedded_fonts', 'folder', 'str')
+        param_storage = self.get_test_value('compress_embedded_fonts', 'storage', 'str')
+        param_name = self.get_invalid_test_value('compress_embedded_fonts', 'name', param_name, 'str')
+        self.initialize('compress_embedded_fonts', 'name', param_name, 'str')
+        ok = False
+        try:
+            self.api.compress_embedded_fonts(param_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'compress_embedded_fonts', 'name', param_name, 'str')
+        except ValueError as ex:
+            self.assert_value_error(ex, 'compress_embedded_fonts', 'name', param_name, 'str')
+        if ok:
+            self.assert_no_exception('compress_embedded_fonts', 'name', 'str')
+
+    def test_compress_embedded_fonts_invalid_password(self):
+        """Test case for compress_embedded_fonts with invalid password
+        """
+        param_name = self.get_test_value('compress_embedded_fonts', 'name', 'str')
+        param_password = self.get_test_value('compress_embedded_fonts', 'password', 'str')
+        param_folder = self.get_test_value('compress_embedded_fonts', 'folder', 'str')
+        param_storage = self.get_test_value('compress_embedded_fonts', 'storage', 'str')
+        param_password = self.get_invalid_test_value('compress_embedded_fonts', 'password', param_password, 'str')
+        self.initialize('compress_embedded_fonts', 'password', param_password, 'str')
+        ok = False
+        try:
+            self.api.compress_embedded_fonts(param_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'compress_embedded_fonts', 'password', param_password, 'str')
+        except ValueError as ex:
+            self.assert_value_error(ex, 'compress_embedded_fonts', 'password', param_password, 'str')
+        if ok:
+            self.assert_no_exception('compress_embedded_fonts', 'password', 'str')
+
+    def test_compress_embedded_fonts_invalid_folder(self):
+        """Test case for compress_embedded_fonts with invalid folder
+        """
+        param_name = self.get_test_value('compress_embedded_fonts', 'name', 'str')
+        param_password = self.get_test_value('compress_embedded_fonts', 'password', 'str')
+        param_folder = self.get_test_value('compress_embedded_fonts', 'folder', 'str')
+        param_storage = self.get_test_value('compress_embedded_fonts', 'storage', 'str')
+        param_folder = self.get_invalid_test_value('compress_embedded_fonts', 'folder', param_folder, 'str')
+        self.initialize('compress_embedded_fonts', 'folder', param_folder, 'str')
+        ok = False
+        try:
+            self.api.compress_embedded_fonts(param_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'compress_embedded_fonts', 'folder', param_folder, 'str')
+        except ValueError as ex:
+            self.assert_value_error(ex, 'compress_embedded_fonts', 'folder', param_folder, 'str')
+        if ok:
+            self.assert_no_exception('compress_embedded_fonts', 'folder', 'str')
+
+    def test_compress_embedded_fonts_invalid_storage(self):
+        """Test case for compress_embedded_fonts with invalid storage
+        """
+        param_name = self.get_test_value('compress_embedded_fonts', 'name', 'str')
+        param_password = self.get_test_value('compress_embedded_fonts', 'password', 'str')
+        param_folder = self.get_test_value('compress_embedded_fonts', 'folder', 'str')
+        param_storage = self.get_test_value('compress_embedded_fonts', 'storage', 'str')
+        param_storage = self.get_invalid_test_value('compress_embedded_fonts', 'storage', param_storage, 'str')
+        self.initialize('compress_embedded_fonts', 'storage', param_storage, 'str')
+        ok = False
+        try:
+            self.api.compress_embedded_fonts(param_name, param_password, param_folder, param_storage)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'compress_embedded_fonts', 'storage', param_storage, 'str')
+        except ValueError as ex:
+            self.assert_value_error(ex, 'compress_embedded_fonts', 'storage', param_storage, 'str')
+        if ok:
+            self.assert_no_exception('compress_embedded_fonts', 'storage', 'str')
+
+    def test_compress_embedded_fonts_online(self):
+        """Test case for compress_embedded_fonts_online
+        """
+        param_document = self.get_test_value('compress_embedded_fonts_online', 'document', 'file')
+        param_password = self.get_test_value('compress_embedded_fonts_online', 'password', 'str')
+        self.initialize('compress_embedded_fonts_online', None, None, None)
+        response = self.api.compress_embedded_fonts_online(param_document, param_password)
+        self.assertTrue(isinstance(response, str))
+        self.assertTrue(len(response) > 0)
+
+    def test_compress_embedded_fonts_online_invalid_document(self):
+        """Test case for compress_embedded_fonts_online with invalid document
+        """
+        param_document = self.get_test_value('compress_embedded_fonts_online', 'document', 'file')
+        param_password = self.get_test_value('compress_embedded_fonts_online', 'password', 'str')
+        param_document = self.get_invalid_test_value('compress_embedded_fonts_online', 'document', param_document, 'file')
+        self.initialize('compress_embedded_fonts_online', 'document', param_document, 'file')
+        ok = False
+        try:
+            self.api.compress_embedded_fonts_online(param_document, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'compress_embedded_fonts_online', 'document', param_document, 'file')
+        except ValueError as ex:
+            self.assert_value_error(ex, 'compress_embedded_fonts_online', 'document', param_document, 'file')
+        if ok:
+            self.assert_no_exception('compress_embedded_fonts_online', 'document', 'file')
+
+    def test_compress_embedded_fonts_online_invalid_password(self):
+        """Test case for compress_embedded_fonts_online with invalid password
+        """
+        param_document = self.get_test_value('compress_embedded_fonts_online', 'document', 'file')
+        param_password = self.get_test_value('compress_embedded_fonts_online', 'password', 'str')
+        param_password = self.get_invalid_test_value('compress_embedded_fonts_online', 'password', param_password, 'str')
+        self.initialize('compress_embedded_fonts_online', 'password', param_password, 'str')
+        ok = False
+        try:
+            self.api.compress_embedded_fonts_online(param_document, param_password)
+            ok = True
+        except ApiException as ex:
+            self.assert_exception(ex, 'compress_embedded_fonts_online', 'password', param_password, 'str')
+        except ValueError as ex:
+            self.assert_value_error(ex, 'compress_embedded_fonts_online', 'password', param_password, 'str')
+        if ok:
+            self.assert_no_exception('compress_embedded_fonts_online', 'password', 'str')
+
     def test_convert(self):
         """Test case for convert
         """
